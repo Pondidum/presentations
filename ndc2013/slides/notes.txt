@@ -1,0 +1,59 @@
+1:
+
+2: (bulb)
+  - Quite a lot of ideas
+  - continous deployment
+  - testing
+
+3: (stopwatch)
+  - amazon deploy to production every 11s
+  - why shouldn't we be able to release faster?
+
+4: (ariel)
+  - what is cd?
+  - reduce cost, time & risk of delivering incremental change
+
+5: (messy)
+  - current setup problems
+    - branching and merging
+    - testing
+    - scripts
+    - build time
+
+5: (neat)
+  - no branching
+  - feature toggles
+  - packaging
+  - expand/collapse
+  - testing
+
+7: (octopus)
+  - ocotpus deploy
+  
+8: (octopus-diagram)
+  - the same binaries used
+  - demo?
+
+9: (database)
+  - sprocs
+  - column order based currently
+  - use column names (or property names)
+  - expand/collapse
+  - demo
+
+10: (darth testing)
+  - key to being able to deploy often
+  - not aiming for 100% coverage
+
+11: (test-all)
+  - I wanted to remove Object copy
+    - Wrote tests for existing functionality
+    - replaced internals
+    - checked tests
+  - 
+
+12: (test-seams)
+  - avoid static stuff
+  - use seams (datetime.now)
+
+13: (cat-questions)
