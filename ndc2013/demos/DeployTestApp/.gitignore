@@ -1,0 +1,13 @@
+obj
+bin
+build
+packages
+*.ReSharper.user
+_ReSharper.*
+*.resharper
+*.csproj.user
+*.vbproj.user
+*.suo
+*.cache
+*.DotSettings
+*.DotSettings.user
