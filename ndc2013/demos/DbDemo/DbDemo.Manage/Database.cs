@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SQLite;
 
 namespace DbDemo.Manage
@@ -16,14 +17,17 @@ namespace DbDemo.Manage
 			return connection;
 		}
 
-		public static IDataReader ExecuteReader(string commandText)
+		public static void ExecuteReader(string commandText, Action<IDataReader> action)
 		{
-			using (var connection = OpenConnection())
+            using (var connection = OpenConnection())
 			{
 				var command = connection.CreateCommand();
 				command.CommandText = commandText;
 
-				return command.ExecuteReader();
+				using (var reader = command.ExecuteReader())
+                {
+                    action(reader);
+                }
 			}
 		}
 

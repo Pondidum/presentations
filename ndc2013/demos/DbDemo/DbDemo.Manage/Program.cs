@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using DbDemo.Manage.Entities;
 
 namespace DbDemo.Manage
 {
@@ -15,9 +16,11 @@ namespace DbDemo.Manage
 			actions['1'] = new Set { Name = "Setup Database", Action = DatabaseStructure.SetupDatabase };
 			actions['2'] = new Set { Name = "Upgrade: Expand", Action = DatabaseStructure.Expand };
 			actions['3'] = new Set { Name = "Upgrade: Collapse", Action = DatabaseStructure.Collapse };
-			actions['4'] = new Set { Name = "Run version 1", Action = () => Process.Start("DbDemo.Version1.exe") };
-			actions['5'] = new Set { Name = "Run version 2", Action = () => Process.Start("DbDemo.Version2.exe") };
-			actions['6'] = new Set { Name = "Run version 3", Action = () => Process.Start("DbDemo.Version3.exe") };
+			
+            actions['4'] = new Set { Name = "Run version 1", Action = () => ShowView(new DbDemo.Manage.Version1.AddressCollection()) };
+            actions['5'] = new Set { Name = "Run version 2", Action = () => ShowView(new DbDemo.Manage.Version2.AddressCollection()) };
+            actions['6'] = new Set { Name = "Run version 3", Action = () => ShowView(new DbDemo.Manage.Version3.AddressCollection()) };
+
 			actions['0'] = new Set { Name = "Quit", Action = () => Environment.Exit(0) };
 
 
@@ -46,6 +49,14 @@ namespace DbDemo.Manage
 				}
 			}
 		}
+
+        private static void ShowView(IEntityCollection collection)
+        {
+            using (var frm = new Form1(collection))
+            {
+                frm.ShowDialog();
+            }
+        }
 
 		private class Set
 		{
