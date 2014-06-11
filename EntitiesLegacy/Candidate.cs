@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Dapper;
 
-namespace Entities
+namespace EntitiesLegacy
 {
 	public class Candidate : Entity
 	{

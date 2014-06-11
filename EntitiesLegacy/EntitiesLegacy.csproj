@@ -7,8 +7,8 @@
     <ProjectGuid>{0F3B1C08-9CBC-4976-ABE4-D0BA95919ECE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entities</RootNamespace>
-    <AssemblyName>Entities</AssemblyName>
+    <RootNamespace>EntitiesLegacy</RootNamespace>
+    <AssemblyName>EntitiesLegacy</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

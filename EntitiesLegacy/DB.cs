@@ -1,7 +1,7 @@
 ﻿using System.Data.Common;
 using System.Data.SqlClient;
 
-namespace Entities
+namespace EntitiesLegacy
 {
 	public class DB
 	{
