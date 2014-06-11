@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Candidate.cs" />
+    <Compile Include="CandidateCollection.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="EmailAddress.cs" />
     <Compile Include="Entity.cs" />
