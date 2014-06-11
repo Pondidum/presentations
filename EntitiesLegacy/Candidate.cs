@@ -20,7 +20,8 @@ namespace EntitiesLegacy
 				if (ID == Guid.Empty)
 				{
 					ID = Guid.NewGuid();
-					connection.Execute("insert into candidates (ID, Name, Dob, Sex) values (@id, @name, @dob, @sex)", 
+					connection.Execute(
+						"insert into candidates (ID, Name, Dob, Sex) values (@id, @name, @dob, @sex)", 
 						this);
 				}
 				else
