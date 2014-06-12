@@ -46,8 +46,10 @@
     <Compile Include="CandidateCollection.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="EmailAddress.cs" />
+    <Compile Include="EmailAddressCollection.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Phone.cs" />
+    <Compile Include="PhoneCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sexes.cs" />
   </ItemGroup>

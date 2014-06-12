@@ -10,8 +10,14 @@ namespace EntitiesLegacy
 		public DateTime DoB { get; set; }
 		public Sexes Sex { get; set; }
 
-		public List<EmailAddress> Emails { get; private set; }
-		public List<Phone> Phones { get; private set; }
+		public EmailAddressCollection Emails { get; private set; }
+		public PhoneCollection Phones { get; private set; }
+
+		public Candidate()
+		{
+			Emails = new EmailAddressCollection();
+			Phones = new PhoneCollection();
+		}
 
 		public override void Save()
 		{
@@ -32,17 +38,11 @@ namespace EntitiesLegacy
 				}
 			}
 
-			Emails.ForEach(e =>
-			{
-				e.ParentID = ID;
-				e.Save();
-			});
+			Emails.ParentID = ID;
+			Emails.Save();
 
-			Phones.ForEach(p =>
-			{
-				p.ParentID = ID;
-				p.Save();
-			});
+			Phones.ParentID = ID;
+			Phones.Save();
 		}
 	}
 }
