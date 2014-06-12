@@ -5,6 +5,7 @@ namespace EntitiesCqrs
 {
 	public class Candidate
 	{
+		public Guid ID { get; set; }
 		public string Name { get; set; }
 		public DateTime DoB { get; set; }
 		public Sexes Sex { get; set; }
