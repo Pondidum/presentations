@@ -4,7 +4,7 @@ using Dapper;
 
 namespace EntitiesCqrs.Commands
 {
-	public class SavePhoneCommand : ICommand
+	public class SavePhoneCommand
 	{
 		private readonly DbConnection _connection;
 		private readonly Candidate _parent;

@@ -6,7 +6,7 @@ using EntitiesCqrs.Infrastructure;
 
 namespace EntitiesCqrs.Commands
 {
-	public class SaveCandidateCommand : ICommand
+	public class SaveCandidateCommand
 	{
 		private readonly DbConnection _connection;
 		private readonly Candidate _candidate;

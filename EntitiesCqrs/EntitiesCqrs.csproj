@@ -47,7 +47,6 @@
     <Compile Include="Commands\SaveEmailCommand.cs" />
     <Compile Include="Commands\SavePhoneCommand.cs" />
     <Compile Include="EmailAddress.cs" />
-    <Compile Include="ICommand.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Phone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
