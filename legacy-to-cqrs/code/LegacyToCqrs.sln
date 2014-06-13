@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesLegacy", "EntitiesL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesCqrs", "EntitiesCqrs\EntitiesCqrs.csproj", "{F40E9053-6CF3-4895-943B-58153E982D99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{9987C993-02C3-4B0B-82D5-4565C66AB6AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F40E9053-6CF3-4895-943B-58153E982D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F40E9053-6CF3-4895-943B-58153E982D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F40E9053-6CF3-4895-943B-58153E982D99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9987C993-02C3-4B0B-82D5-4565C66AB6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9987C993-02C3-4B0B-82D5-4565C66AB6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9987C993-02C3-4B0B-82D5-4565C66AB6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9987C993-02C3-4B0B-82D5-4565C66AB6AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
