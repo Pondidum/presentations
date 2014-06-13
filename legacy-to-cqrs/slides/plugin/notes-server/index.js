@@ -4,11 +4,10 @@ var io        = require('socket.io');
 var _         = require('underscore');
 var Mustache  = require('mustache');
 
-var app       = express();
-var server    = require('http').createServer(app);
+var app       = express.createServer();
 var staticDir = express.static;
 
-io            = io.listen(server);
+io            = io.listen(app);
 
 var opts = {
 	port :      1947,
@@ -31,6 +30,7 @@ app.configure(function() {
 });
 
 app.get("/", function(req, res) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
 	fs.createReadStream(opts.baseDir + '/index.html').pipe(res);
 });
 
@@ -45,7 +45,7 @@ app.get("/notes/:socketId", function(req, res) {
 });
 
 // Actually listen
-server.listen(opts.port || null);
+app.listen(opts.port || null);
 
 var brown = '\033[33m',
 	green = '\033[32m',
