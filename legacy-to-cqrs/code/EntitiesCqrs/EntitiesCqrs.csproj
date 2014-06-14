@@ -50,6 +50,7 @@
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Phone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\FindCandidateByEmailQuery.cs" />
     <Compile Include="Queries\FindCandidateByNameQuery.cs" />
     <Compile Include="Queries\GetCandidateEmails.cs" />
     <Compile Include="Queries\GetCandidatePhones.cs" />
