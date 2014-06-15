@@ -67,7 +67,21 @@
             <ul>
               <li>It doesnt have to be complex</li>
               <li>ES, EC and DDD fit well, but are not required</li>
-              <li>Start small</li>
+              <li>--</li>
+              <li>Commands perform an action, but return no data</li>
+              <li>Querys return data, but have no side effects</li>
+              <li>Notifications are optional</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/cqrs-command.png" />
+          <aside class="notes">
+            <ul>
+              <li>all dependencies in the constructor</li>
+              <li>execute returns nothing!</li>
+              <li>could do a CreateEmailCommand and an UpdateEmailCommand</li>
             </ul>
           </aside>
         </section>
