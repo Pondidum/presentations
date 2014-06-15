@@ -1,16 +1,16 @@
 using System;
-using System.Data.Common;
+using System.Data;
 using DapperExtensions;
 
 namespace EntitiesCqrs.Commands
 {
 	public class SavePhoneCommand
 	{
-		private readonly DbConnection _connection;
+		private readonly IDbConnection  _connection;
 		private readonly Candidate _parent;
 		private readonly Phone _phone;
 
-		public SavePhoneCommand(DbConnection connection, Candidate parent, Phone phone)
+		public SavePhoneCommand(IDbConnection  connection, Candidate parent, Phone phone)
 		{
 			_connection = connection;
 			_parent = parent;

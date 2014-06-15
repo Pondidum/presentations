@@ -1,16 +1,16 @@
 ﻿using System;
-using System.Data.Common;
+using System.Data;
 using DapperExtensions;
 
 namespace EntitiesCqrs.Commands
 {
 	public class SaveEmailCommand
 	{
-		private readonly DbConnection _connection;
+		private readonly IDbConnection  _connection;
 		private readonly Candidate _parent;
 		private readonly EmailAddress _email;
 
-		public SaveEmailCommand(DbConnection connection, Candidate parent, EmailAddress email)
+		public SaveEmailCommand(IDbConnection  connection, Candidate parent, EmailAddress email)
 		{
 			_connection = connection;
 			_parent = parent;

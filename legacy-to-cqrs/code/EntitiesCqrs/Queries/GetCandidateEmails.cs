@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using System.Data.Common;
+using System.Data;
 using Dapper;
 
 namespace EntitiesCqrs.Queries
 {
 	public class GetCandidateEmails
 	{
-		private readonly DbConnection _connection;
+		private readonly IDbConnection  _connection;
 		private readonly Candidate _parent;
 
-		public GetCandidateEmails(DbConnection connection, Candidate parent)
+		public GetCandidateEmails(IDbConnection  connection, Candidate parent)
 		{
 			_connection = connection;
 			_parent = parent;

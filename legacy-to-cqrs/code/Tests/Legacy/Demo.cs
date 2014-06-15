@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using EntitiesLegacy;
+﻿using EntitiesLegacy;
 
 namespace Tests.Legacy
 {

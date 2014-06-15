@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data.Common;
+using System.Data;
 using System.Linq;
 using DapperExtensions;
 using EntitiesCqrs.Infrastructure;
@@ -8,10 +8,10 @@ namespace EntitiesCqrs.Commands
 {
 	public class SaveCandidateCommand
 	{
-		private readonly DbConnection _connection;
+		private readonly IDbConnection  _connection;
 		private readonly Candidate _candidate;
 
-		public SaveCandidateCommand(DbConnection connection, Candidate candidate)
+		public SaveCandidateCommand(IDbConnection  connection, Candidate candidate)
 		{
 			_connection = connection;
 			_candidate = candidate;

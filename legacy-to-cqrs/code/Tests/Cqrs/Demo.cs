@@ -1,5 +1,4 @@
-﻿using System.Data.Common;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using EntitiesCqrs;
 using EntitiesCqrs.Commands;
 using EntitiesCqrs.Queries;

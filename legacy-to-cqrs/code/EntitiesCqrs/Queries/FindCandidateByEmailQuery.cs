@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Data.Common;
+using System.Data;
 using Dapper;
 using EntitiesCqrs.Infrastructure;
 
@@ -7,10 +7,10 @@ namespace EntitiesCqrs.Queries
 {
 	public class FindCandidateByEmailQuery
 	{
-		private readonly DbConnection _connection;
+		private readonly IDbConnection  _connection;
 		private readonly string _email;
 
-		public FindCandidateByEmailQuery(DbConnection connection, string email)
+		public FindCandidateByEmailQuery(IDbConnection  connection, string email)
 		{
 			_connection = connection;
 			_email = email;
