@@ -22,8 +22,8 @@ namespace EntitiesCqrs.Queries
 
 			return _connection
 				.Query<Candidate>("select ID, Name, Dob, Sex from candidates where name like @name", arg)
-				.Apply(candidate => candidate.Emails.AddRange(new GetCandidateEmails(_connection, candidate).Execute()))
-				.Apply(candidate => candidate.Phones.AddRange(new GetCandidatePhones(_connection, candidate).Execute()));
+				.Apply(candidate => candidate.Emails.AddRange(new GetCandidateEmailsQuery(_connection, candidate).Execute()))
+				.Apply(candidate => candidate.Phones.AddRange(new GetCandidatePhonesQuery(_connection, candidate).Execute()));
 		}
 	}
 }

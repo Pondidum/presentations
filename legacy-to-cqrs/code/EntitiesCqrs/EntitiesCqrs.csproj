@@ -55,8 +55,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\FindCandidateByEmailQuery.cs" />
     <Compile Include="Queries\FindCandidateByNameQuery.cs" />
-    <Compile Include="Queries\GetCandidateEmails.cs" />
-    <Compile Include="Queries\GetCandidatePhones.cs" />
+    <Compile Include="Queries\GetCandidateEmailsQuery.cs" />
+    <Compile Include="Queries\GetCandidatePhonesQuery.cs" />
     <Compile Include="Sexes.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,12 +4,12 @@ using Dapper;
 
 namespace EntitiesCqrs.Queries
 {
-	public class GetCandidatePhones
+	public class GetCandidatePhonesQuery
 	{
 		private readonly IDbConnection  _connection;
 		private readonly Candidate _parent;
 
-		public GetCandidatePhones(IDbConnection  connection, Candidate parent)
+		public GetCandidatePhonesQuery(IDbConnection  connection, Candidate parent)
 		{
 			_connection = connection;
 			_parent = parent;

@@ -26,8 +26,8 @@ namespace EntitiesCqrs.Queries
 					"from candidates " + 
 					"join emails on e.parentID = c.ID " +
 					"where e.email like @email", arg)
-				.Apply(candidate => candidate.Emails.AddRange(new GetCandidateEmails(_connection, candidate).Execute()))
-				.Apply(candidate => candidate.Phones.AddRange(new GetCandidatePhones(_connection, candidate).Execute()));
+				.Apply(candidate => candidate.Emails.AddRange(new GetCandidateEmailsQuery(_connection, candidate).Execute()))
+				.Apply(candidate => candidate.Phones.AddRange(new GetCandidatePhonesQuery(_connection, candidate).Execute()));
 		}
 	}
 }
