@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.Common;
-using Dapper;
+using DapperExtensions;
 
 namespace EntitiesCqrs.Commands
 {
@@ -24,15 +24,11 @@ namespace EntitiesCqrs.Commands
 			if (_email.ID == Guid.Empty)
 			{
 				_email.ID = Guid.NewGuid();
-				_connection.Execute(
-					"insert into emails (ID, candidateID, email, isPrimary) values (@id, @parentID, @email, @isPrimary)",
-					_email);
+				_connection.Insert(_email);
 			}
 			else
 			{
-				_connection.Execute(
-					"update emails set candidateID = @parentID, email = @email, isPrimary = @isPrimary where ID = @id",
-					_email);
+				_connection.Update(_email);
 			}
 		}
 	}

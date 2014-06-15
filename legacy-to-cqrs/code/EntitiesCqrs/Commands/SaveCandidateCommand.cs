@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Common;
 using System.Linq;
-using Dapper;
+using DapperExtensions;
 using EntitiesCqrs.Infrastructure;
 
 namespace EntitiesCqrs.Commands
@@ -22,24 +22,18 @@ namespace EntitiesCqrs.Commands
 			if (_candidate.ID == Guid.Empty)
 			{
 				_candidate.ID = Guid.NewGuid();
-				_connection.Execute(
-					"insert into candidates (ID, Name, Dob, Sex) values (@id, @name, @dob, @sex)",
-					_candidate);	
+				_connection.Insert(_candidate);
 			}
 			else
 			{
-				_connection.Execute(
-					"update candidates set Name = @name, Dob = @dob, Sex = @sex where ID = @id",
-					this);
+				_connection.Update(_candidate);
 			}
 
-			_candidate
-				.Phones
+			_candidate.Phones
 				.Select(p => new SavePhoneCommand(_connection, _candidate, p))
 				.Each(command => command.Execute());
 
-			_candidate
-				.Emails
+			_candidate.Emails
 				.Select(e => new SaveEmailCommand(_connection, _candidate, e))
 				.Each(command => command.Execute());
 		}
