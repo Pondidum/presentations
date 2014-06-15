@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Dapper;
+using DapperExtensions;
 
 namespace EntitiesLegacy
 {
@@ -26,15 +27,11 @@ namespace EntitiesLegacy
 				if (ID == Guid.Empty)
 				{
 					ID = Guid.NewGuid();
-					connection.Execute(
-						"insert into candidates (ID, Name, Dob, Sex) values (@id, @name, @dob, @sex)", 
-						this);
+					connection.Insert(this);
 				}
 				else
 				{
-					connection.Execute(
-						"update candidates set Name = @name, Dob = @dob, Sex = @sex where ID = @id", 
-						this);
+					connection.Update(this);
 				}
 			}
 

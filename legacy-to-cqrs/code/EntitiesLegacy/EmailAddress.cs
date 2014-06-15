@@ -1,5 +1,5 @@
 ﻿using System;
-using Dapper;
+using DapperExtensions;
 
 namespace EntitiesLegacy
 {
@@ -15,15 +15,11 @@ namespace EntitiesLegacy
 				if (ID == Guid.Empty)
 				{
 					ID = Guid.NewGuid();
-					connection.Execute(
-						"insert into emails (ID, candidateID, email, isPrimary) values (@id, @parentID, @email, @isPrimary)", 
-						this);
+					connection.Insert(this);
 				}
 				else
 				{
-					connection.Execute(
-						"update emails set candidateID = @parentID, email = @email, isPrimary = @isPrimary where ID = @id", 
-						this);
+					connection.Update(this);
 				}
 			}
 		}
