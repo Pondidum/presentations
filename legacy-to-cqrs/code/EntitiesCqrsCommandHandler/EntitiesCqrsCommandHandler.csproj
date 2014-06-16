@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\SaveCandidateCommandHandler.cs" />
     <Compile Include="Commands\SaveCandidateCommand.cs" />
     <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\EmailAddress.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Entities\Sexes.cs" />
     <Compile Include="IBus.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="ICommandHandler.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="InMemoryBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
