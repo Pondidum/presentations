@@ -1,8 +1,5 @@
-﻿using System;
-using System.Data;
-using DapperExtensions;
+﻿using System.Data;
 using EntitiesCqrsCommandHandler.Commands;
-using EntitiesCqrsCommandHandler.Entities;
 using EntitiesCqrsCommandHandler.Infrastructure;
 
 namespace EntitiesCqrsCommandHandler.CommandHandlers
@@ -20,30 +17,17 @@ namespace EntitiesCqrsCommandHandler.CommandHandlers
 		{
 			var candidate = command.Candidate;
 
-			Upsert(candidate);
+			_connection.Upsert(candidate);
 
 			candidate
 				.Phones
 				.Apply(phone => phone.ParentID = candidate.ID)
-				.Each(Upsert);
+				.Each(phone => _connection.Upsert(phone));
 
 			candidate
 				.Emails
 				.Apply(email => email.ParentID = candidate.ID)
-				.Each(Upsert);
-		}
-
-		private void Upsert(IKeyed entity)
-		{
-			if (entity.ID == Guid.Empty)
-			{
-				entity.ID = Guid.NewGuid();
-				_connection.Insert(entity);
-			}
-			else
-			{
-				_connection.Update(entity);
-			}
+				.Each(email => _connection.Upsert(email));
 		}
 	}
 }

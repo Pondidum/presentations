@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using DapperExtensions;
+using EntitiesCqrsCommandHandler.Entities;
 
 namespace EntitiesCqrsCommandHandler.Infrastructure
 {
@@ -19,6 +22,19 @@ namespace EntitiesCqrsCommandHandler.Infrastructure
 			{
 				action(item);
 				yield return item;
+			}
+		}
+		
+		public static void Upsert(this IDbConnection connection, IKeyed entity)
+		{
+			if (entity.ID == Guid.Empty)
+			{
+				entity.ID = Guid.NewGuid();
+				connection.Insert(entity);
+			}
+			else
+			{
+				connection.Update(entity);
 			}
 		}
 	}
