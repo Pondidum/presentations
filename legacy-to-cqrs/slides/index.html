@@ -76,22 +76,26 @@
         </section>
 
         <section>
+          <img src="m/cqrs-query.png" />
+          <aside class="notes">
+            <ul>
+              <li>all dependencies in the constructor</li>
+              <li>query return is specific</li>
+              <li>Entities have become pocos</li>
+              <li>could also start applying domain modeling this point</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
           <img src="m/cqrs-command.png" />
           <aside class="notes">
             <ul>
               <li>all dependencies in the constructor</li>
               <li>execute returns nothing!</li>
               <li>could do a CreateEmailCommand and an UpdateEmailCommand</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section>
-          <img src="m/cqrs-query.png" />
-          <aside class="notes">
-            <ul>
-              <li>all dependencies in the constructor</li>
-              <li>query return is specific</li>
+              <li>There are some problems with this simplified model though</li>
+              <li>We can expand it to use command handlers to fix this problem</li>
             </ul>
           </aside>
         </section>
