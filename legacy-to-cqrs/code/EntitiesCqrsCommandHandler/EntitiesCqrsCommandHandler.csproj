@@ -39,11 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\SaveCandidateCommand.cs" />
     <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\EmailAddress.cs" />
     <Compile Include="Entities\Phone.cs" />
     <Compile Include="Entities\Sexes.cs" />
     <Compile Include="IBus.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="InMemoryBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
