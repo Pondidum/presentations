@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EntitiesCqrsCommandHandler.Entities
 {
-	public class Candidate
+	public class Candidate : IKeyed
 	{
 		public Guid ID { get; set; }
 		public string Name { get; set; }

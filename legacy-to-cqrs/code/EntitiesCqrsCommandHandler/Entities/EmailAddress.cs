@@ -2,7 +2,7 @@
 
 namespace EntitiesCqrsCommandHandler.Entities
 {
-	public class EmailAddress
+	public class EmailAddress : IKeyed
 	{
 		public Guid ID { get; set; }
 		public Guid ParentID { get; set; }

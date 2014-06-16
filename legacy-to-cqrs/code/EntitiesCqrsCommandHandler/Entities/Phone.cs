@@ -2,7 +2,7 @@
 
 namespace EntitiesCqrsCommandHandler.Entities
 {
-	public class Phone
+	public class Phone : IKeyed
 	{
 		public Guid ID { get; set; }
 		public Guid ParentID { get; set; }
