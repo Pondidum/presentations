@@ -30,6 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.25.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dapper.1.12\lib\net40\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperExtensions">
+      <HintPath>..\packages\DapperExtensions.1.4.3\lib\net40\DapperExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,12 +49,17 @@
     <Compile Include="Commands\SaveCandidateCommand.cs" />
     <Compile Include="Entities\Candidate.cs" />
     <Compile Include="Entities\EmailAddress.cs" />
+    <Compile Include="Entities\IKeyed.cs" />
     <Compile Include="Entities\Phone.cs" />
     <Compile Include="Entities\Sexes.cs" />
     <Compile Include="IBus.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="InMemoryBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
