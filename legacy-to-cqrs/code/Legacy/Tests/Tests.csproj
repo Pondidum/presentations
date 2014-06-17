@@ -45,11 +45,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\EntitiesCqrs\EntitiesCqrs.csproj">
-      <Project>{f40e9053-6cf3-4895-943b-58153e982d99}</Project>
-      <Name>EntitiesCqrs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntitiesLegacy\EntitiesLegacy.csproj">
+    <ProjectReference Include="..\Legacy\Legacy.csproj">
       <Project>{0f3b1c08-9cbc-4976-abe4-d0ba95919ece}</Project>
       <Name>EntitiesLegacy</Name>
     </ProjectReference>
