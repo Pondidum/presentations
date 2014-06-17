@@ -40,10 +40,42 @@
 
         <section>
           <img src="m/in-release.png"/>
+          <aside class="notes">
+            This is what InRelease looks like - quite busy...
+            Note you have to be in visual studio to manage it
+          </aside>
         </section>
 
         <section>
           <img src="m/octopus-deploy.png"/>
+          <aside class="notes">
+            This is the equivelent screen in Octopus
+            Much cleaner...
+            And anyone with an account and a web browser can manage it
+          </aside>
+        </section>
+
+        <section>
+          <pre><code data-trim>
+            &lt;LogFilePath&gt;c:\local-logs&lt;/LogFilePath&gt;
+          </code></pre>
+          <img src="m/octopus-variables.png" />
+          <aside class="notes">
+            This allows us to have a default value for development
+            Octopus replaces with the relevant value for the target environment on deploy.
+          </aside>
+        </section>
+
+        <section>
+          <pre><code data-trim>
+            &lt;LogFilePath&gt;__SERVERNAME__&lt;/LogFilePath&gt;
+          </code></pre>
+          <img src="m/in-release-variables.png" />
+          <aside class="notes">
+            This forces us to change the value whenever we want to run locally
+            What happens if we accidentally commit this? release will now have the wrong value
+            Where do you store the local versions of the values?
+          </aside>
         </section>
 
         <section>
@@ -54,11 +86,19 @@
             Me: Yes.<br />
             RG: Use that then. Our tools can interact with it.<br />
           </p>
+          <aside class="notes">
+            This is a conversation I had with someone from Redgate the other week
+          </aside>
         </section>
 
         <section>
           <img src="m/octopus-header.png"/>
           <img src="m/octopus-cost.png"/>
+          <aside class="notes">
+            Cost breakdown for Octopus
+            Nice and simple
+            We need the middle package.
+          </aside>
         </section>
 
         <section>
@@ -67,20 +107,10 @@
             $6,200.00 per release manager client<br />
             $620.00 per processor per target server
           </p>
-        </section>
-
-        <section>
-          <pre><code data-trim>
-            &lt;LogFilePath&gt;c:\local-logs&lt;/LogFilePath&gt;
-          </code></pre>
-          <img src="m/octopus-variables.png" />
-        </section>
-
-        <section>
-          <pre><code data-trim>
-            &lt;LogFilePath&gt;__SERVERNAME__&lt;/LogFilePath&gt;
-          </code></pre>
-          <img src="m/in-release-variables.png" />
+          <aside class="notes">
+            This took me hours to find...and I am not sure I understand the per processer per target bit
+            Eitherway for our needs we are talking at least 14K.
+          </aside>
         </section>
 
         <section>
