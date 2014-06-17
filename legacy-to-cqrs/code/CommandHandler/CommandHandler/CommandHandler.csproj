@@ -7,8 +7,8 @@
     <ProjectGuid>{AEA84F39-0AE7-4F77-B70F-14CEE303983C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntitiesCqrsCommandHandler</RootNamespace>
-    <AssemblyName>EntitiesCqrsCommandHandler</AssemblyName>
+    <RootNamespace>CommandHandler</RootNamespace>
+    <AssemblyName>CommandHandler</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
