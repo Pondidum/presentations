@@ -1,4 +1,4 @@
-namespace EntitiesLegacy
+namespace Legacy
 {
 	public enum Sexes
 	{

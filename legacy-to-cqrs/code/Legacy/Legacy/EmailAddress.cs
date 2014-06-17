@@ -1,7 +1,7 @@
 ﻿using System;
 using DapperExtensions;
 
-namespace EntitiesLegacy
+namespace Legacy
 {
 	public class EmailAddress : Entity
 	{

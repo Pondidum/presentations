@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Dapper;
 
-namespace EntitiesLegacy
+namespace Legacy
 {
 	public class PhoneCollection : List<Phone>
 	{

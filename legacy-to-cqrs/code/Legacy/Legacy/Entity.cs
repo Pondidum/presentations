@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntitiesLegacy
+namespace Legacy
 {
 	public class Entity
 	{

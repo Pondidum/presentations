@@ -1,6 +1,6 @@
-﻿using EntitiesLegacy;
+﻿using Legacy;
 
-namespace Tests.Legacy
+namespace Tests
 {
 	public class Demo
 	{

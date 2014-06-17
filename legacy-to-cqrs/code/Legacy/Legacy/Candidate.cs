@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using Dapper;
 using DapperExtensions;
 
-namespace EntitiesLegacy
+namespace Legacy
 {
 	public class Candidate : Entity
 	{
