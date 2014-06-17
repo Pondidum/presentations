@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EntitiesCqrs.Infrastructure
+namespace Cqrs.Infrastructure
 {
 	public static class Extensions
 	{

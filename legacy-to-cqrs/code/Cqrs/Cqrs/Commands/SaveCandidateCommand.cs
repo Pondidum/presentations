@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
+using Cqrs.Infrastructure;
 using DapperExtensions;
-using EntitiesCqrs.Infrastructure;
 
-namespace EntitiesCqrs.Commands
+namespace Cqrs.Commands
 {
 	public class SaveCandidateCommand
 	{

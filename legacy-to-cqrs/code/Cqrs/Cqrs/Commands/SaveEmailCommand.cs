@@ -2,7 +2,7 @@
 using System.Data;
 using DapperExtensions;
 
-namespace EntitiesCqrs.Commands
+namespace Cqrs.Commands
 {
 	public class SaveEmailCommand
 	{

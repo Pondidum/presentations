@@ -2,7 +2,7 @@
 using System.Data;
 using Dapper;
 
-namespace EntitiesCqrs.Queries
+namespace Cqrs.Queries
 {
 	public class GetCandidateEmailsQuery
 	{

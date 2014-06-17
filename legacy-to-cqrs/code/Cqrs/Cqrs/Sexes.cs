@@ -1,4 +1,4 @@
-namespace EntitiesCqrs
+namespace Cqrs
 {
 	public enum Sexes
 	{

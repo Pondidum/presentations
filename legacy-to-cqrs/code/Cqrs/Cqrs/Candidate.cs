@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EntitiesCqrs
+namespace Cqrs
 {
 	public class Candidate
 	{

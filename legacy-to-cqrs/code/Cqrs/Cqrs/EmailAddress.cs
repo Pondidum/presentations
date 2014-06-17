@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntitiesCqrs
+namespace Cqrs
 {
 	public class EmailAddress
 	{

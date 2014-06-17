@@ -1,9 +1,9 @@
 ﻿using System.Data.SqlClient;
-using EntitiesCqrs;
-using EntitiesCqrs.Commands;
-using EntitiesCqrs.Queries;
+using Cqrs;
+using Cqrs.Commands;
+using Cqrs.Queries;
 
-namespace Tests.Cqrs
+namespace Tests
 {
 	public class Demo
 	{

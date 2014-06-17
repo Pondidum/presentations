@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using Cqrs.Infrastructure;
 using Dapper;
-using EntitiesCqrs.Infrastructure;
 
-namespace EntitiesCqrs.Queries
+namespace Cqrs.Queries
 {
 	public class FindCandidateByNameQuery
 	{
