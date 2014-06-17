@@ -1,6 +1,6 @@
-﻿using EntitiesCqrsCommandHandler.Entities;
+﻿using CommandHandler.Entities;
 
-namespace EntitiesCqrsCommandHandler.Commands
+namespace CommandHandler.Commands
 {
 	public class SaveCandidateCommand : ICommand
 	{

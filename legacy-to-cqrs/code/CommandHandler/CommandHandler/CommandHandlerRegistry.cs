@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using EntitiesCqrsCommandHandler.Infrastructure;
+using CommandHandler.Infrastructure;
 
-namespace EntitiesCqrsCommandHandler
+namespace CommandHandler
 {
 	public class CommandHandlerRegistry
 	{

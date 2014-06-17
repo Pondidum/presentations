@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntitiesCqrsCommandHandler
+namespace CommandHandler
 {
 	public interface IBus
 	{

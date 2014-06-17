@@ -2,7 +2,7 @@
 using System.Linq;
 using StructureMap;
 
-namespace EntitiesCqrsCommandHandler
+namespace CommandHandler
 {
 	public class RouteBuilder
 	{

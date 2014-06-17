@@ -1,8 +1,8 @@
 ﻿using System.Data;
-using EntitiesCqrsCommandHandler.Commands;
-using EntitiesCqrsCommandHandler.Infrastructure;
+using CommandHandler.Commands;
+using CommandHandler.Infrastructure;
 
-namespace EntitiesCqrsCommandHandler.CommandHandlers
+namespace CommandHandler.CommandHandlers
 {
 	public class SaveCandidateCommandHandler : ICommandHandler<SaveCandidateCommand>
 	{

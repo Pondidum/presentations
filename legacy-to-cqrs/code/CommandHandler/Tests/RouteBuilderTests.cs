@@ -1,13 +1,12 @@
 ﻿using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
-using EntitiesCqrsCommandHandler;
-using EntitiesCqrsCommandHandler.Commands;
-using EntitiesCqrsCommandHandler.Entities;
+using CommandHandler;
+using CommandHandler.Commands;
+using CommandHandler.Entities;
 using StructureMap;
 using Xunit;
 
-namespace EntitiesCqrsCommandHandlerTests
+namespace Tests
 {
 	public class RouteBuilderTests
 	{

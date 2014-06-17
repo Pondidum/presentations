@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntitiesCqrsCommandHandler.Entities
+namespace CommandHandler.Entities
 {
 	public class EmailAddress : IKeyed
 	{

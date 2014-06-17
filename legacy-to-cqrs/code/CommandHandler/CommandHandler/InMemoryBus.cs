@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EntitiesCqrsCommandHandler
+namespace CommandHandler
 {
 	public class InMemoryBus : IBus
 	{

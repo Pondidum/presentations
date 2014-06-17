@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EntitiesCqrsCommandHandler.Entities
+namespace CommandHandler.Entities
 {
 	public class Candidate : IKeyed
 	{

@@ -1,4 +1,4 @@
-﻿namespace EntitiesCqrsCommandHandler
+﻿namespace CommandHandler
 {
 	public interface ICommandHandler<T> where T : ICommand
 	{

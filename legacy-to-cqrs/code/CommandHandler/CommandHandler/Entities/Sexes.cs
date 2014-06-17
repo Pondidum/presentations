@@ -1,4 +1,4 @@
-namespace EntitiesCqrsCommandHandler.Entities
+namespace CommandHandler.Entities
 {
 	public enum Sexes
 	{

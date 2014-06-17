@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using CommandHandler.Entities;
 using DapperExtensions;
-using EntitiesCqrsCommandHandler.Entities;
 
-namespace EntitiesCqrsCommandHandler.Infrastructure
+namespace CommandHandler.Infrastructure
 {
 	public static class Extensions
 	{
