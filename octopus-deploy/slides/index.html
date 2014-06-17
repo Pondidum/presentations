@@ -65,14 +65,27 @@
           <img src="m/in-release-header.png"/>
           <p class="small">
             $6,200.00 per release manager client<br />
-            $620.00 per target server
+            $620.00 per processor per target server
           </p>
         </section>
 
         <section>
-          
+          <pre><code data-trim>
+            &lt;LogFilePath&gt;c:\local-logs&lt;/LogFilePath&gt;
+          </code></pre>
+          <img src="m/octopus-variables.png" />
         </section>
 
+        <section>
+          <pre><code data-trim>
+            &lt;LogFilePath&gt;__SERVERNAME__&lt;/LogFilePath&gt;
+          </code></pre>
+          <img src="m/in-release-variables.png" />
+        </section>
+
+        <section>
+          <img src="m/cat-questions.jpg" />
+        </section>
       </div>
 
     </div>
@@ -94,6 +107,10 @@
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/none
+
+        dependencies: [
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        ]
       });
 
     </script>

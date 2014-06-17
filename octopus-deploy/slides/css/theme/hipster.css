@@ -46,3 +46,4 @@ body{font-family:'Helvetica Neue LT Std','Helvetica','Arial','DejaVu Sans',sans-
 .reveal .final-slide h3{margin-bottom:-0.5em;}
 .reveal #ponies li{font-size:20pt;line-height:24pt;}
 .reveal .progress span{background-color: #505950;}
+.reveal .nounderline {text-decoration:none;}
