@@ -37,20 +37,20 @@ namespace CommandHandler
 				.ToList();
 		}
 
-		private void Add(IDictionary<Type, IList<Type>> commands, Type type)
+		private void Add(IDictionary<Type, IList<Type>> commands, Type handlerType)
 		{
-			var command = type
+			var commandType = handlerType
 				.GetInterfaces()
 				.First(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICommandHandler<>))
 				.GetGenericArguments()
 				.First();
 
-			if (commands.ContainsKey(command) == false)
+			if (commands.ContainsKey(commandType) == false)
 			{
-				commands[command] = new List<Type>();
+				commands[commandType] = new List<Type>();
 			}
 
-			commands[command].Add(type);
+			commands[commandType].Add(handlerType);
 		}
 	}
 }
