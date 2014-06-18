@@ -46,7 +46,18 @@
               <li>Everything is public get/set</li>
               <li>its enemic</li>
               <li>Most DA uses manual sql parameters etc, moving towards using dapper</li>
-              <li>Demo Legacy code</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Demo!</h1>
+          <aside class="notes">
+            <ul>
+              <li><pre>No_db_setup_done</pre> The db access is done via static class/method</li>
+              <li><pre>Candidate_collections_mutable</pre><pre>You_can_load_by_anything</pre> You can use methods in improper places</li>
+              <li><pre>Not_efficient</pre>There is no transaction boundary available, and we use 3 separate connections for this save</li>
+              <li>This as an api doesn't guide you how to use it</li>
             </ul>
           </aside>
         </section>
@@ -67,10 +78,7 @@
             <ul>
               <li>It doesnt have to be complex</li>
               <li>ES, EC and DDD fit well, but are not required</li>
-              <li>--</li>
-              <li>Commands perform an action, but return no data</li>
-              <li>Querys return data, but have no side effects</li>
-              <li>Notifications are optional</li>
+              <li>My other talk 'EventSourcing for the Legacy Developer' covers some of this</li>
             </ul>
           </aside>
         </section>
@@ -82,7 +90,6 @@
               <li>all dependencies in the constructor</li>
               <li>query return is specific</li>
               <li>Entities have become pocos</li>
-              <li>could also start applying domain modeling this point</li>
             </ul>
           </aside>
         </section>

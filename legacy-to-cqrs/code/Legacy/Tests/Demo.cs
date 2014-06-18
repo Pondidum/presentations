@@ -1,4 +1,6 @@
-﻿using Legacy;
+﻿using System;
+using System.Linq;
+using Legacy;
 
 namespace Tests
 {
@@ -21,9 +23,19 @@ namespace Tests
 			var main = candidates[0];
 			var other = candidates[1];
 
+			//I wonder what the implication of this is...
 			other.Emails.ParentID = main.ID;
 			other.Emails.Save();
-			//interesting...
+		}
+
+		public void You_can_load_by_anything()
+		{
+			var candidates = new CandidateCollection();
+			var candidate = candidates.First();
+
+			//eek
+			candidate.Emails.ParentID = Guid.NewGuid();
+			candidate.Emails.LoadByParentID();
 		}
 
 		public void Not_efficient()
@@ -37,5 +49,6 @@ namespace Tests
 			//3 db connections opened and closed
 			//no transaction boundary available
 		}
+
 	}
 }
