@@ -84,22 +84,12 @@
         </section>
 
         <section>
-          <img src="m/cqrs-query.png" />
+          <h1>Demo!</h1>
           <aside class="notes">
             <ul>
-              <li>all dependencies in the constructor</li>
+              <li>command and query dependencies in the constructor</li>
               <li>query return is specific</li>
-              <li>Entities have become pocos</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section>
-          <img src="m/cqrs-command.png" />
-          <aside class="notes">
-            <ul>
-              <li>all dependencies in the constructor</li>
-              <li>execute returns nothing!</li>
+              <li>command returns nothing!</li>
               <li>could do a CreateEmailCommand and an UpdateEmailCommand</li>
               <li>There are some problems with this simplified model though</li>
               <li>We can expand it to use command handlers to fix this problem</li>
