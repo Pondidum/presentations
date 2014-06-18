@@ -20,14 +20,11 @@ namespace Tests
 
 		public RouteBuilderTests()
 		{
-			_container = new Container(config =>
+			_container = new Container(config => config.Scan(scan =>
 			{
-				config.Scan(scanner =>
-				{
-					scanner.TheCallingAssembly();
-					scanner.WithDefaultConventions();
-				});
-			});
+				scan.TheCallingAssembly();
+				scan.WithDefaultConventions();
+			}));
 		}
 
 		private void Register(ICommandHandlerRegistry registry, Type command, IEnumerable<Type> handlers)
