@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using StructureMap;
 
 namespace CommandHandler
@@ -19,7 +20,7 @@ namespace CommandHandler
 				}
 
 				var wireMethod = typeof(IBus).GetMethod("Wire");
-				var buildMethod = GetType().GetMethod("BuildAction");
+				var buildMethod = GetType().GetMethod("BuildAction", BindingFlags.NonPublic | BindingFlags.Instance);
 
 				foreach (var handler in handlers)
 				{
@@ -36,7 +37,7 @@ namespace CommandHandler
 			}
 		}
 
-		public Action<TCommand> BuildAction<TCommand, THandler>(THandler handler)
+		private Action<TCommand> BuildAction<TCommand, THandler>(THandler handler)
 			where TCommand : ICommand
 			where THandler : ICommandHandler<TCommand>
 		{
