@@ -24,7 +24,7 @@ namespace CommandHandler.Infrastructure
 				yield return item;
 			}
 		}
-		
+
 		public static void Upsert(this IDbConnection connection, IKeyed entity)
 		{
 			if (entity.ID == Guid.Empty)
@@ -36,6 +36,15 @@ namespace CommandHandler.Infrastructure
 			{
 				connection.Update(entity);
 			}
+		}
+
+		public static TValue GetOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> self, TKey key)
+		{
+			TValue result;
+
+			self.TryGetValue(key, out result);
+
+			return result;
 		}
 	}
 }
