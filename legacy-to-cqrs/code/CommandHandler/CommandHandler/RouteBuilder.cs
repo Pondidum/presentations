@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Reflection;
 using CommandHandler.Infrastructure;
 using StructureMap;
@@ -8,7 +7,7 @@ namespace CommandHandler
 {
 	public class RouteBuilder
 	{
-		public RouteBuilder(IContainer container, IBus bus, CommandHandlerRegistry registry)
+		public RouteBuilder(IContainer container, IBus bus, ICommandHandlerRegistry registry)
 		{
 
 			foreach (var command in registry.Commands)

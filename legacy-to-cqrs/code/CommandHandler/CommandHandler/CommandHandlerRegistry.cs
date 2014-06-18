@@ -5,7 +5,7 @@ using CommandHandler.Infrastructure;
 
 namespace CommandHandler
 {
-	public class CommandHandlerRegistry
+	public class CommandHandlerRegistry : ICommandHandlerRegistry
 	{
 		public IEnumerable<Type> Commands { get; private set; }
 		public IDictionary<Type, IList<Type>> CommandHandlers { get; private set; }

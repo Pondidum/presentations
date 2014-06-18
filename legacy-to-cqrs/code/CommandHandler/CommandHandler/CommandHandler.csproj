@@ -63,6 +63,7 @@
     <Compile Include="IBus.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandHandler.cs" />
+    <Compile Include="ICommandHandlerRegistry.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="InMemoryBus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
