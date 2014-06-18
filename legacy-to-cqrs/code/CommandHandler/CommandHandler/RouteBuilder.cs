@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using CommandHandler.Infrastructure;
 using StructureMap;
@@ -14,7 +15,7 @@ namespace CommandHandler
 			{
 				var handlers = registry.CommandHandlers.GetOrDefault(command);
 
-				if (handlers == null)
+				if (handlers.Any() == false)
 				{
 					throw new Exception(string.Format("No command handlers found for command {0},", command.FullName));
 				}
