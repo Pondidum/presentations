@@ -8,7 +8,7 @@ namespace CommandHandler
 	public class CommandHandlerRegistry
 	{
 		public IEnumerable<Type> Commands { get; private set; }
-		public IEnumerable<KeyValuePair<Type, IList<Type>>> CommandHandlers { get; private set; }
+		public IDictionary<Type, IList<Type>> CommandHandlers { get; private set; }
 
 		public CommandHandlerRegistry()
 		{
@@ -16,7 +16,7 @@ namespace CommandHandler
 			CommandHandlers = GetCommandHandlers();
 		}
 
-		private IEnumerable<KeyValuePair<Type, IList<Type>>> GetCommandHandlers()
+		private IDictionary<Type, IList<Type>> GetCommandHandlers()
 		{
 			IDictionary<Type, IList<Type>> handlers = new Dictionary<Type, IList<Type>>();
 
