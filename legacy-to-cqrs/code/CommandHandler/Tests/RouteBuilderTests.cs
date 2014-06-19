@@ -27,21 +27,24 @@ namespace Tests
 			}));
 		}
 
-		private void Register(ICommandHandlerRegistry registry, Type command, IEnumerable<Type> handlers)
+		private ICommandHandlerRegistry RegisteryFor(Type command, IEnumerable<Type> handlers)
 		{
+			var registry = Substitute.For<ICommandHandlerRegistry>();
+
 			registry.Commands.Returns(new[] { command });
 			registry.CommandHandlers.Returns(new Dictionary<Type, IList<Type>>()
 			{
 				{ command, handlers.ToList() }
 			});
+
+			return registry;
 		}
 
 		[Fact]
 		public void When_registering_a_command_to_a_single_handler()
 		{
 			var bus = new InMemoryBus();
-			var registry = Substitute.For<ICommandHandlerRegistry>();
-			Register(registry, typeof(TestCommand), new[] { typeof(TestCommandHandler) });
+			var registry = RegisteryFor(typeof(TestCommand), new[] { typeof(TestCommandHandler) });
 
 			var builder = new RouteBuilder(_container, bus, registry);
 
@@ -56,8 +59,7 @@ namespace Tests
 		public void When_registering_a_command_to_multiple_handlers()
 		{
 			var bus = new InMemoryBus();
-			var registry = Substitute.For<ICommandHandlerRegistry>();
-			Register(registry, typeof(TestCommand), new[] { typeof(TestCommandHandler), typeof(SecondTestCommandHandler) });
+			var registry = RegisteryFor(typeof(TestCommand), new[] { typeof(TestCommandHandler), typeof(SecondTestCommandHandler) });
 
 			var builder = new RouteBuilder(_container, bus, registry);
 
@@ -72,8 +74,7 @@ namespace Tests
 		public void When_there_is_no_handler_for_a_command()
 		{
 			var bus = new InMemoryBus();
-			var registry = Substitute.For<ICommandHandlerRegistry>();
-			Register(registry, typeof(TestCommand), Enumerable.Empty<Type>());
+			var registry = RegisteryFor(typeof(TestCommand), Enumerable.Empty<Type>());
 
 			Assert.Throws<Exception>(() => new RouteBuilder(_container, bus, registry));
 		}
