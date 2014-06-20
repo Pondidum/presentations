@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>Cqrs for the Legacy Developer</title>
+
+    <meta name="description" content="How to convert a legacy application to cqrs"/>
+    <meta name="author" content="Andy Davies"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css"/>
+    <link rel="stylesheet" href="css/theme/hipster.css" id="theme"/>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/tomorrow-night-eighties.css"/>
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section class="title-slide">
+          <h3>Cqrs for the Legacy Developer</h3>
+          <img src="m/avatar.png" />
+          <p class="small centre">andy davies</p>
+        </section>
+
+        <section>
+          <img src="m/entities.png" />
+          <aside class="notes">
+            <ul>
+              <li>Everything inherits Entity</li>
+              <li>Everything is public get/set</li>
+              <li>its enemic</li>
+              <li>Most DA uses manual sql parameters etc, moving towards using dapper</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Demo!</h1>
+          <aside class="notes">
+            <ul>
+              <li><strong>No_db_setup_done</strong> The db access is done via static class/method</li>
+              <li><strong>Candidate_collections_mutable / You_can_load_by_anything</strong> You can use methods in improper places</li>
+              <li><strong>Not_efficient</strong>There is no transaction boundary available, 3 separate connections for this save</li>
+              <li>This as an api doesn't guide you how to use it</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/cqrs-complex.jpg" />
+          <aside class="notes">
+            <ul>
+              <li>People think CQRS is complicated...</li>
+              <li>3 things going on here: CQRS, EventSourcing, Eventual Consistency, DDD</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/cqrs-simple.jpg" />
+          <aside class="notes">
+            <ul>
+              <li>It doesnt have to be complex</li>
+              <li>ES, EC and DDD fit well, but are not required</li>
+              <li>My other talk 'EventSourcing for the Legacy Developer' covers some of this</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Demo!</h1>
+          <aside class="notes">
+            <ul>
+              <li>command and query dependencies in the constructor</li>
+              <li>query return is specific</li>
+              <li>command returns nothing!</li>
+              <li>could do a CreateEmailCommand and an UpdateEmailCommand</li>
+              <li>There are some problems with this simplified model though</li>
+              <li>We can expand it to use command handlers to fix this problem</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/cqrs-command-handlers.png" />
+          <aside class="notes">
+            <ul>
+              <li>CommandHandlers split the execution and the data portion</li>
+              <li>It does complicate the design a little</li>
+              <li>But not much!</li>
+              <li>We can use a simple in-memory bus for this.</li>
+              <li>For anything more complex (or even just for this), use an lib, rather than rolling your own</li>
+              <li>Having said that...I rolled my own...I might be turning into Ayende!</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Demo!</h1>
+          <aside class="notes">
+            <ul>
+              <li>We have a marker interface ICommand</li>
+              <li>ICommandHandler for the handlers</li>
+              <li>CommandHandlerRegistry just does some reflection magic to find all our types</li>
+              <li>RouteBuilder does reflection Black Magic to register all our Command=&lt;Handler routes</li>
+              <li>RouteBuilderTests shows bus publishing</li>
+              <li>You can't guarantee handler order of execution</li>
+            </ul>
+          </aside>
+        </section>
+
+
+        <section>
+          <img src="m/cat-questions.jpg"/>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script type="text/javascript">
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        mouseWheel: true,
+        rollingLinks: false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/underscore.js', async: true, condition: function() { return true; } },
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/prettify/prettify.js', async: true, callback: function() {
+            var i, els = document.querySelectorAll("code"), l = els.length, el;
+            for (i = 0; i < l; i++) {
+              el = els[i];
+              if (el.className !== "no-highlight")
+                el.innerHTML = prettyPrintOne(el.innerHTML, el.className);
+            }
+          } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
