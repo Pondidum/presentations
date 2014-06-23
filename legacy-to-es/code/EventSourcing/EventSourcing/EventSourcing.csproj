@@ -48,6 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Candidate.cs" />
+    <Compile Include="Entities\EmailAddress.cs" />
+    <Compile Include="Entities\Phone.cs" />
+    <Compile Include="Entities\Sexes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
