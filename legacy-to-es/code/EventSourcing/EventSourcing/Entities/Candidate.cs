@@ -27,7 +27,7 @@ namespace EventSourcing.Entities
 		public static Candidate Create(string name, DateTime dob)
 		{
 			var candidate = new Candidate();
-			candidate.ApplyEvent(new CreateCandidateEvent(name, dob));
+			candidate.ApplyEvent(new CreateCandidateEvent(Guid.NewGuid(), name, dob));
 
 			return candidate;
 		}

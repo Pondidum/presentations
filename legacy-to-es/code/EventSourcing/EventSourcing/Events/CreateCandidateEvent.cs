@@ -9,9 +9,9 @@ namespace EventSourcing.Events
 		public string Name { get; private set; }
 		public DateTime DoB { get; private set; }
 
-		public CreateCandidateEvent(string name, DateTime dob)
+		public CreateCandidateEvent(Guid candidateID, string name, DateTime dob)
 		{
-			CandidateID = Guid.NewGuid();
+			CandidateID = candidateID;
 			Name = name;
 			DoB = dob;
 		}
