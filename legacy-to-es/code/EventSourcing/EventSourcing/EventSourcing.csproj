@@ -52,6 +52,8 @@
     <Compile Include="Entities\EmailAddress.cs" />
     <Compile Include="Entities\Phone.cs" />
     <Compile Include="Entities\Sexes.cs" />
+    <Compile Include="Events\AddPhoneEvent.cs" />
+    <Compile Include="Events\CreateCandidateEvent.cs" />
     <Compile Include="Infrastructure\DomainEvent.cs" />
     <Compile Include="Infrastructure\DomainEventHandlerNotFoundException.cs" />
     <Compile Include="Infrastructure\DomainObject.cs" />
