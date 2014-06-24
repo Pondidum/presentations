@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>Vault to Git Introduction</title>
+
+    <meta name="description" content="An introduction and explanation on changing from Vault to Git"/>
+    <meta name="author" content="Andy Davies"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css"/>
+    <link rel="stylesheet" href="css/theme/hipster.css" id="theme"/>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/tomorrow-night-eighties.css"/>
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section class="title-slide">
+          <h3>Vault to Git Introduction</h3>
+          <img src="m/avatar.png" />
+          <p class="small centre">andy davies</p>
+        </section>
+
+
+        <section>
+          <img src="m/cat-questions.jpg"/>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script type="text/javascript">
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        mouseWheel: true,
+        rollingLinks: false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/underscore.js', async: true, condition: function() { return true; } },
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/prettify/prettify.js', async: true, callback: function() {
+            var i, els = document.querySelectorAll("code"), l = els.length, el;
+            for (i = 0; i < l; i++) {
+              el = els[i];
+              if (el.className !== "no-highlight")
+                el.innerHTML = prettyPrintOne(el.innerHTML, el.className);
+            }
+          } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
