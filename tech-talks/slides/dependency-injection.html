@@ -29,7 +29,6 @@
 
     <div class="reveal">
 
-      <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
 
         <section class="title-slide">
@@ -332,8 +331,6 @@
 
     <script type="text/javascript">
 
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
         controls: false,
         progress: true,
@@ -351,18 +348,9 @@
           { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
           { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          // { src: 'plugin/prettify/prettify.js', async: true, callback: function() {
-          //   var i, els = document.querySelectorAll("code"), l = els.length, el;
-          //   for (i = 0; i < l; i++) {
-          //     el = els[i];
-          //     if (el.className !== "no-highlight")
-          //       el.innerHTML = prettyPrintOne(el.innerHTML, el.className);
-          //   }
-          // } },
           { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
           { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
           { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
 
