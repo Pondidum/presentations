@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>Tech Talk - Rich Domain Modeling</title>
+
+    <meta name="description" content="What is Rich Domain Modeling, and why should I use it"/>
+    <meta name="author" content="Andy Davies"/>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css"/>
+    <link rel="stylesheet" href="css/theme/blood.css" id="theme"/>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css"/>
+    <link rel="stylesheet" href="lib/css/tweaks.css" />
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <div class="slides">
+
+        <section class="title-slide">
+          <h3>Tech Talk<br/>Rich Domain Modeling</h3>
+          <img src="m/avatar.png" />
+          <p class="small centre">@andydote</p>
+        </section>
+
+        <section>
+          <img src="m/jackie-chan-meme.jpg" />
+          <div class="pic-label big">
+            What is it?
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>the domain api guides the user into correct actions</li>
+              <li>forces your domain to be expressed in business terms</li>
+              <li>domain maintains a valid state at all times</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <pre><code>
+  public class Candidate {
+
+    public string Name { get; set; }
+    public DateTime Dob { get; set; }
+    public Sexes Sex { get; set; }
+    public string NationalInsuranceNumber { get; set; }
+
+    public AddressCollection Addresses { get; set; }
+    public EmailCollection Emails { get; set; }
+    public PhoneCollection Phone { get; set; }
+  }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Even without the public setters, this is Anemic</li>
+              <li>It's more of a DTO than a domain model</li>
+              <li>You can freely edit anything. Business rules are not explicit (or checked)</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/tree-swing-project.png" />
+          <aside class="notes">
+            <ul>
+              <li>This is a fairly famous picture by now</li>
+              <li>Gather your requirements...</li>
+              <li>"A candidate must have a name and an age, everything else is optional"</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <pre><code>
+  public class Candidate {
+
+    public string Name { get; private set; }
+    public DateTime Dob { get; private set; }
+
+    public Candidate(string name, DateTime dob) {
+      Name = name;
+      Dob = dob;
+    }
+  }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Only showing lines I am changing</li>
+              <li>By adding to the ctor, we are enforcing that a candidate MUST have a name and dob</li>
+              <li>There may be private/internal/protected ctors for loading etc, but non-visible!</li>
+              <li>But the setters are now private...</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <pre><code>
+  public class Candidate {
+
+    public string Name { get; private set; }
+    public DateTime Dob { get; private set; }
+
+    public Candidate(string name, DateTime dob) {
+      Name = name;
+      Dob = dob;
+    }
+
+    public void CorrectDateOfBirth(DateTime newDateOfBirth) {
+      Dob = newDateOfBirth;
+    }
+
+    public void CorrectName(string correctedName) {
+      Name = correctedName;
+    }
+
+    public void NameChangedByDeedPoll(string newName) {
+      Name = newName;
+    }
+  }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Methods to change values have business-y names</li>
+              <li>We have to methods for changing name, with different reasoning</li>
+              <li>If you were doing EventSourcing, these would push different events</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/cat-questions.jpg"/>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script type="text/javascript">
+
+      Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+        mouseWheel: true,
+        rollingLinks: false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/underscore.js', async: true, condition: function() { return true; } },
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
