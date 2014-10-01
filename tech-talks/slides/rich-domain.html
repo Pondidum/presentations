@@ -53,7 +53,7 @@
         </section>
 
         <section>
-          <pre><code>
+          <pre><code class="cs">
   public class Candidate {
 
     public string Name { get; set; }
@@ -87,7 +87,7 @@
         </section>
 
         <section>
-          <pre><code>
+          <pre><code class="cs">
   public class Candidate {
 
     public string Name { get; private set; }
@@ -110,7 +110,7 @@
         </section>
 
         <section>
-          <pre><code>
+          <pre><code class="cs">
   public class Candidate {
 
     public string Name { get; private set; }
@@ -141,6 +141,28 @@
               <li>If you were doing EventSourcing, these would push different events</li>
             </ul>
           </aside>
+        </section>
+
+        <section>
+          <pre><code class="cs">
+  public class Candidate
+  {
+    public IEnumerable&lt;Address&gt; Addresses { get { return _addresses; }}
+
+    private readonly List&lt;Addresses&gt; _addresses = new List&lt;Addresses&gt;();
+
+    public void AddAddress(string line1, string town, string postcode)
+    {
+      _addresses.Add(new Address(line1, town, postcode));
+    }
+
+    public void MovedHouse(Address oldAddress, string line1, string town, string postcode)
+    {
+      _addresses.Remove(oldAddress);
+      _addresses.Add(new Address(line1, town, postcode));
+    }
+  }
+          </code></pre>
         </section>
 
         <section>
