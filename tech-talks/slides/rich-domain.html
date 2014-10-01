@@ -145,21 +145,58 @@
 
         <section>
           <pre><code class="cs">
-  public class Candidate
-  {
+  public class Candidate {
     public IEnumerable&lt;Address&gt; Addresses { get { return _addresses; }}
 
     private readonly List&lt;Addresses&gt; _addresses = new List&lt;Addresses&gt;();
 
-    public void AddAddress(string line1, string town, string postcode)
-    {
+    public void AddAddress(string line1, string town, string postcode) {
       _addresses.Add(new Address(line1, town, postcode));
     }
 
-    public void MovedHouse(Address oldAddress, string line1, string town, string postcode)
-    {
+    public void MovedHouse(Address oldAddress, string line1, string town, string postcode) {
       _addresses.Remove(oldAddress);
       _addresses.Add(new Address(line1, town, postcode));
+    }
+  }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Collections exposed as Ienumerable</li>
+              <li>modification done through business/domain named methods again</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <pre><code class="cs">
+  public class Candidate {
+    public string NationalInsuranceNumber { get; set; }
+  }
+
+  var candidate = new Candidate();
+
+  candidate.NationalInsuranceNumber = "!£$%^333*(){}";
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>thats not a valid ni number!</li>
+              <li>so lets use a domain object</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <pre><code class="cs">
+  public class NationalInsuranceNumber {
+    private readonly string _number;
+
+    public NationalInsuranceNumber(string number) {
+      _number = number;
+    }
+
+    public override string ToString() {
+      return _number;
     }
   }
           </code></pre>
