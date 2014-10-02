@@ -203,6 +203,67 @@
         </section>
 
         <section>
+          <pre><code class="cs">
+  public class NationalInsuranceNumber {
+
+    public NationalInsuranceNumber(string number) {
+      Validate(number).Throw();
+      _number = number;
+    }
+
+    public static ValidationResult Validate(string number) {
+      number = Regex.Replace(number, "\s", "");
+      var prefix = number.Take(2);
+
+      if (prefix.Count != 2 || Regex.IsMatch("^[^DFIQUV]+$", prefix)) {
+        return new ValidationResult.Failure("Invalid Prefix");
+      }
+
+      //...
+
+      return ValidationResult.Success;
+    }
+  }
+          </code></pre>
+          <aside class="notes">
+
+          </aside>
+        </section>
+
+        <section>
+          <pre><code class="cs">
+  var validation = NationalInsuranceNumber.Validate(txtNI.Text);
+
+  if (validation.Passed == false) {
+    DisplayValidationMessage(txtNI, validation.Message);
+  }
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code class="cs">
+  public class ValidationResult {
+
+    public bool Passed { get; private set; }
+    public string Message { get; private set; }
+
+    public void Throw() {
+      if (Passed) return;
+      throw new ValidationException(this);
+    }
+
+    public static ValidationResult Success() {
+      return new ValidationResult { Passed = true; };
+    }
+
+    public static ValidationResult Failure(string message) {
+      return new ValidationResult { Passed = false, Message = message };
+    }
+  }
+          </code></pre>
+        </section>
+
+        <section>
           <img src="m/cat-questions.jpg"/>
         </section>
 
