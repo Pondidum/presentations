@@ -53,6 +53,7 @@
         </section>
 
         <section>
+        <h3>Anemic Domain Model</h3>
           <pre><code class="cs">
   public class Candidate {
 
@@ -150,13 +151,13 @@
 
     private readonly List&lt;Addresses&gt; _addresses = new List&lt;Addresses&gt;();
 
-    public void AddAddress(string line1, string town, string postcode) {
-      _addresses.Add(new Address(line1, town, postcode));
+    public void AddAddress(string line1, string postcode) {
+      _addresses.Add(new Address(line1, postcode));
     }
 
-    public void MovedHouse(Address oldAddress, string line1, string town, string postcode) {
+    public void MovedHouse(Address oldAddress, string line1, string postcode) {
       _addresses.Remove(oldAddress);
-      _addresses.Add(new Address(line1, town, postcode));
+      _addresses.Add(new Address(line1, postcode));
     }
   }
           </code></pre>
@@ -205,10 +206,15 @@
         <section>
           <pre><code class="cs">
   public class NationalInsuranceNumber {
+    private readonly string _number;
 
     public NationalInsuranceNumber(string number) {
       Validate(number).Throw();
       _number = number;
+    }
+
+    public override string ToString() {
+      return _number;
     }
 
     public static ValidationResult Validate(string number) {
@@ -219,9 +225,9 @@
         return new ValidationResult.Failure("Invalid Prefix");
       }
 
-      //...
+      //more validation
 
-      return ValidationResult.Success;
+      return ValidationResult.Success();
     }
   }
           </code></pre>
@@ -237,6 +243,8 @@
   if (validation.Passed == false) {
     DisplayValidationMessage(txtNI, validation.Message);
   }
+
+  candidate.SetNationalInsurance(new NationalInsuranceNumber(txtNI.Text));
           </code></pre>
         </section>
 
