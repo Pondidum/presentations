@@ -102,7 +102,8 @@
           </code></pre>
           <aside class="notes">
             <ul>
-              <li>Only showing lines I am changing</li>
+              <li>LEts start again with our candidate</li>
+              <li>this will be our aggregate root</li>
               <li>By adding to the ctor, we are enforcing that a candidate MUST have a name and dob</li>
               <li>There may be private/internal/protected ctors for loading etc, but non-visible!</li>
               <li>But the setters are now private...</li>
@@ -110,14 +111,17 @@
           </aside>
         </section>
 
+
         <section>
-          <pre><code class="cs">
+          <section>
+            <pre><code class="cs">
   public class Candidate {
 
     public string Name { get; private set; }
     public DateTime Dob { get; private set; }
 
     public Candidate(string name, DateTime dob) {
+      ID = Guid.NewGuid();
       Name = name;
       Dob = dob;
     }
@@ -134,14 +138,78 @@
       Name = newName;
     }
   }
-          </code></pre>
-          <aside class="notes">
-            <ul>
-              <li>Methods to change values have business-y names</li>
-              <li>We have to methods for changing name, with different reasoning</li>
-              <li>If you were doing EventSourcing, these would push different events</li>
-            </ul>
-          </aside>
+            </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Methods to change values have business-y names</li>
+                <li>We have to methods for changing name, with different reasoning</li>
+                <li>If you were doing EventSourcing, these would push different events</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <pre><code class="cs">
+  public class Candidate : AggregateRoot {
+
+    public string Name { get; private set; }
+    public DateTime Dob { get; private set; }
+
+    public Candidate(string name, DateTime dob) {
+      Apply(new CandidateCreatedEvent(Guid.NewGuid(), Name, dob));
+    }
+
+    public void CorrectName(string correctedName) {
+      Apply(new NameWasCorrectedEvent(correctedName));
+    }
+
+    public void NameChangedByDeedPoll(string newName) {
+      Apply(new NameWasDeedPollChangedEvent(newName));
+    }
+
+    private void Handle(CandidateCreatedEvent e) {
+      ID = e.AggregateID;
+      Name = e.Name;
+      Dob = e.Dob;
+    }
+
+    private void Handle(NameWasCorrectedEvent e) {
+      Name = e.Name;
+    }
+
+    private void Handle(NameWasDeedPollChangedEvent e) {
+      Name = e.Name;
+    }
+  }
+            </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>All the public methods just create an event and pass it the the apply method</li>
+                <li>To actually apply the event, the Handle method gets called (by magic)</li>
+                <li>Loading from the DB will re-run all the events on a blank candidate</li>
+                <li>There are optimisations to make, snapshotting.</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <pre><code class="cs">
+  public class CandidateCreatedEvent : DomainEvent {
+
+    public string Name { get; private set; }
+    public DateTime Dob { get; private set; }
+
+    public class CandidateCreatedEvent(Guid newID, string name, DateTime dob) {
+      AggregateID = newID;
+      Name = name;
+      Dob = dob;
+    }
+  }
+            </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Events are very simple</li>
+              </ul>
+            </aside>
+          </section>
         </section>
 
         <section>
@@ -164,6 +232,7 @@
           <aside class="notes">
             <ul>
               <li>Collections exposed as Ienumerable</li>
+              <li>the child items are readonly too, and operations are on the parent (root)</li>
               <li>modification done through business/domain named methods again</li>
             </ul>
           </aside>
@@ -309,7 +378,7 @@
     <script type="text/javascript">
 
       Reveal.initialize({
-        controls: false,
+        controls: true,
         progress: true,
         history: true,
         center: true,
