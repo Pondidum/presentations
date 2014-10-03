@@ -201,6 +201,13 @@
     }
   }
           </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Just a small class which wraps up what a NI Number is</li>
+              <li>You could have readonly props for things like "Prefix", "Suffix" etc</li>
+              <li>Now we can add some behaviour to it</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -232,7 +239,11 @@
   }
           </code></pre>
           <aside class="notes">
-
+            <ul>
+              <li>First we create a public static validation method</li>
+              <li>just an example of some NI validation here</li>
+              <li>This gets called in the ctor, and will throw if validation doesnt pass</li>
+            </ul>
           </aside>
         </section>
 
@@ -246,6 +257,13 @@
 
   candidate.SetNationalInsurance(new NationalInsuranceNumber(txtNI.Text));
           </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Example usage</li>
+              <li>if validation doesnt pass, do something to the ui</li>
+              <li>otherwise, create an ni object and pass to candidate</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -269,6 +287,12 @@
     }
   }
           </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Just Passed and Message properties, and some helpers</li>
+              <li>Got fed up of writing "if not passed then throw new ..."</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
