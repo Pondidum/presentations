@@ -365,6 +365,101 @@
         </section>
 
         <section>
+          <pre><code class="cs">
+  public class Basket {
+
+    public IEnumerable&lt;LineItem&gt; Contents { get; set; }
+
+    public Basket {
+      Contents = new List&lt;LineItem&gt;();
+    }
+
+    public void AddProduct(Product product) {
+      if (Contents.Any(l =&gt; l.ProductID = product.ID) == false) {
+        ((List&lt;LineItem&gt;)Contents).Add(new LineItem(product));
+      }
+
+      Contents.Single(l =&gt; l.ProductID = productID).Quantity++;
+    }
+
+    public decimal Total {
+      return Contents.Sum(l =&gt; l.Quantity * l.Price);
+    }
+  }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>What if we want to add discounts?</li>
+              <li>really not the responsibility of the basket...</li>
+              <li>Lets create a service to calculate discounts, and inject it</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <pre><code class="cs">
+  public class DiscountService {
+    public decimal CalculateDiscount(Basket basket) {
+
+      var total = 0;
+
+      if (basket.Contents.Sum(l =&gt; l.SubTotal) &gt; 50.00M) {
+        total -= basket.Contents
+          .GroupBy(l =&gt; l.ProductID)
+          .Where(g =&gt; g.Count &gt;= 3)
+          .Sum(g =&gt; (g.Count / 3) * g.First().Price);
+      }
+
+      return total;
+    }
+  }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>if > £50, for each mutliple of 3 products, give one free</li>
+              <li>this is called double dispatch</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <pre><code class="cs">
+  public class Basket {
+
+    public IEnumerable&lt;LineItem&gt; Contents { get; set; }
+
+    public Basket {
+      Contents = new List&lt;LineItem&gt;();
+    }
+
+    public void AddProduct(Product product) {
+      if (Contents.Any(l =&gt; l.ProductID = product.ID) == false) {
+        ((List&lt;LineItem&gt;)Contents).Add(new LineItem(product));
+      }
+
+      Contents.Single(l =&gt; l.ProductID = productID).Quantity++;
+    }
+
+    public decimal CalculateTotal(DiscountService discountService) {
+
+      var total = Contents.Sum(l =&gt; l.SubTotal);
+      var discount = discountService.CalculateDiscount(this);
+
+      return total - discount
+    }
+  }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>now the service is encapsulated on its own</li>
+              <li>only needs providing when you want to express a total</li>
+              <li>service could be expanded for invoice generation etc to give better breakdown.</li>
+            </ul>
+          </aside>
+        </section>
+
+
+        <section>
           <img src="m/cat-questions.jpg"/>
         </section>
 
