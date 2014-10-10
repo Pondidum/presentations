@@ -65,7 +65,53 @@
         </section>
 
         <section>
-        <!-- image of an event stream  -->
+          <pre><code>
+  {
+    PlacedOn: new Date(2014, 4, 14),
+    State: States.Completed,
+    Items: [
+      {
+        Name: "The Raid",
+        Price: 12.99,
+        Quantity: 1
+      },
+      {
+        Name: "Dispicable Me",
+        Price: 14.99,
+        Quantity: 1
+      }
+    ],
+  }
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>This tells us that an order was completed, and had these two items in it.</li>
+              <li>We can't tell what the user did before, or how they arrived at this order.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <pre><code>
+  [
+    { type: "createBasket", data: { userID: "12345" } },
+    { type: "addProduct", data: { name: "The Raid", price: 12.99, quantity: 1 } },
+    { type: "addProduct", data: { name: "Finding Nemo", price: 6.99, quantity: 1 } },
+    { type: "addProduct", data: { name: "The Raid", price: 12.99, quantity: 1 } },
+    { type: "removeProduct", data: { name: "Finding Nemo" } },
+    { type: "changeQuantity", data: { name: "The Raid", quantity: 1 } },
+    { type: "addProduct", data: { name: "Dispicable Me", price: 14.99, quantity: 1 } },
+    { type: "checkout", data: { /* ... */} },
+    { type: "paymentAccepted", data: { /* ... */} },
+    { type: "paymentAccepted", data: { /* ... */} },
+    { type: "completeOrder", data: { state: "completed" }},
+  ]
+          </code></pre>
+        </section>
+
+        <section>
+          <!-- image of an event stream  -->
+          <!--  -->
           <aside class="notes">
             <ul>
               <li>allows business to ask questions of what happened in the past</li>
