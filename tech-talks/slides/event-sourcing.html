@@ -111,6 +111,7 @@
               <li>allows business to ask questions of what happened in the past</li>
               <li>eg: do we get many people who add items to their basket, remove it then buy it within a week?</li>
               <li>also acts as an audit trail for free!</li>
+              <li>No table structure changes ever needed, so simpler handling ot upgrades</li>
               <li>perf concerns?</li>
             </ul>
           </aside>
@@ -150,6 +151,25 @@
     and eventData -> 'data' ->> 'name' = @productName
             </code></pre>
           </section>
+          <section>
+            <pre><code class="sql">
+  select count(*), eventData -> 'data' ->> 'name'
+  from dev.events
+  where eventData ->> 'type' = 'productAdded'
+  group by eventData -> 'data' ->> 'name'
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <pre><code class="sql">
+
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>Depending on how you do it ofc...</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
