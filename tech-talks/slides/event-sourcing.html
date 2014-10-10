@@ -103,21 +103,53 @@
     { type: "addProduct", data: { name: "Dispicable Me", price: 14.99, quantity: 1 } },
     { type: "checkout", data: { /* ... */} },
     { type: "paymentAccepted", data: { /* ... */} },
-    { type: "paymentAccepted", data: { /* ... */} },
     { type: "completeOrder", data: { state: "completed" }},
   ]
           </code></pre>
-        </section>
-
-        <section>
-          <!-- image of an event stream  -->
-          <!--  -->
           <aside class="notes">
             <ul>
               <li>allows business to ask questions of what happened in the past</li>
               <li>eg: do we get many people who add items to their basket, remove it then buy it within a week?</li>
+              <li>also acts as an audit trail for free!</li>
+              <li>perf concerns?</li>
             </ul>
           </aside>
+        </section>
+
+        <section>
+          <section>
+            <pre><code class="sql">
+  create table events (
+    id serial primary key, aggregateID integer, sequence integer, eventData json
+  )
+
+
+  select *
+  from events
+  where aggregateID = @aggregateID
+  order by sequence asc
+
+
+  insert into events(aggregateID, sequence, eventData)
+  values (1234, 1, '{ "name":"test" }')
+            </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>We only need one table for all of our data!</li>
+                <li>and one select, and one insert</li>
+                <li>NO UPDATE.</li>
+                <li>Performance: snapshot every x events</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <pre><code class="sql">
+  select count(*)
+  from dev.events
+  where eventData ->> 'type' = @eventType
+    and eventData -> 'data' ->> 'name' = @productName
+            </code></pre>
+          </section>
         </section>
 
         <section>
@@ -138,6 +170,8 @@
         progress: true,
         history: true,
         center: true,
+
+        width: 1080,
 
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/none
