@@ -162,15 +162,81 @@
         </section>
 
         <section>
-          <pre><code class="sql">
+          <section>
+            <pre><code class="c#">
+  public class Basket {
 
-          </code></pre>
-          <aside class="notes">
-            <ul>
-              <li>Depending on how you do it ofc...</li>
-            </ul>
-          </aside>
+    public IEnumerable&lt;BasketEntry&gt; Items { get { return _items; }}
+
+    private readonly List&lt;BasketEntry&gt; _items = new List&lt;BasketEntry&gt;();
+
+    public void AddToBasket(Item item) {
+
+      var entry = _items.FirstOrDefault(entry =&gt; entry.Item == item);
+
+      if (entry == null) {
+        entry = new BasketEntry(item);
+        _items.Add(entry);
+      }
+
+      entry.Quantity++;
+    }
+  }
+            </code></pre>
+          </section>
+          <section>
+            <pre><code class="c#">
+  public class Basket : AggregateRoot {
+
+    public IEnumerable&lt;BasketEntry&gt; Items { get { return _items; }}
+
+    private readonly List&lt;BasketEntry&gt; _items = new List&lt;BasketEntry&gt;();
+
+    public void AddToBasket(Item item) {
+      Apply(new AddToBasketEvent(item));
+    }
+
+    private void Handle(ApplyToBasketEvent e) {
+      var entry = _items.FirstOrDefault(entry =&gt; entry.Item == e.Item);
+
+      if (entry == null) {
+        entry = new BasketEntry(e.Item);
+        _items.Add(entry);
+      }
+
+      entry.Quantity++;
+    }
+  }
+            </code></pre>
+          </section>
+          <section>
+            <pre><code class="c#">
+  public class AggregateRoot {
+
+    private readonly List<DomainEvent> _uncommittedEvents;
+
+    protected void Apply(DomainEvent e) {
+      _uncommittedEvents.Add(e);
+      this.AsDynamic().Handle(e);
+    }
+
+    IEnumerable<DomainEvent> IEventStream.UncommittedEvents {
+      return _uncommittedEvents;
+    }
+
+    void IEventStream.ClearEvents {
+      _uncommittedEvents.Clear();
+    }
+
+    void IEventStream.LoadFromStream(IEnumerable<DomainEvent> stream) {
+      var dynamic = this.AsDynamic();
+      stream.ForEach(e => dynamic.Handle(e));
+    }
+  }
+            </code></pre>
+          </section>
         </section>
+
 
         <section>
           <img src="m/cat-questions.jpg"/>
