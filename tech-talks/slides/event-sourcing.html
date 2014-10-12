@@ -183,6 +183,12 @@
     }
   }
             </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Exibits Rich Domain Modeling</li>
+                <li>Small amount of logic to add an item to the basket</li>
+              </ul>
+            </aside>
           </section>
           <section>
             <pre><code class="c#">
@@ -208,10 +214,17 @@
     }
   }
             </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Inherit from aggregate root</li>
+                <li>move the method implementation to a Handle() method</li>
+                <li>A domain event is just a poco (real impl include sequence numbers etc)</li>
+              </ul>
+            </aside>
           </section>
           <section>
             <pre><code class="c#">
-  public class AggregateRoot {
+  public class AggregateRoot : IEventStream {
 
     private readonly List<DomainEvent> _uncommittedEvents;
 
@@ -234,6 +247,14 @@
     }
   }
             </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Every event applied gets stored in a collection</li>
+                <li>private IEventStream implementation for storage</li>
+                <li>Storage just gets all uncommitted changes, saves them and clears them</li>
+                <li>Loading calls the handle method for each event, but doesnt add to uncommmitted</li>
+              </ul>
+            </aside>
           </section>
         </section>
 
