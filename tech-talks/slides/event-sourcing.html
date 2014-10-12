@@ -226,14 +226,14 @@
             <pre><code class="c#">
   public class AggregateRoot : IEventStream {
 
-    private readonly List<DomainEvent> _uncommittedEvents;
+    private readonly List&lt;DomainEvent&gt; _uncommittedEvents;
 
     protected void Apply(DomainEvent e) {
       _uncommittedEvents.Add(e);
       this.AsDynamic().Handle(e);
     }
 
-    IEnumerable<DomainEvent> IEventStream.UncommittedEvents {
+    IEnumerable&lt;DomainEvent&gt; IEventStream.UncommittedEvents {
       return _uncommittedEvents;
     }
 
@@ -241,9 +241,9 @@
       _uncommittedEvents.Clear();
     }
 
-    void IEventStream.LoadFromStream(IEnumerable<DomainEvent> stream) {
+    void IEventStream.LoadFromStream(IEnumerable&lt;DomainEvent&gt; stream) {
       var dynamic = this.AsDynamic();
-      stream.ForEach(e => dynamic.Handle(e));
+      stream.ForEach(e =&gt; dynamic.Handle(e));
     }
   }
             </code></pre>
