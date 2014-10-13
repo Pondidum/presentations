@@ -130,15 +130,31 @@
           </section>
           <section>
             <pre><code class="sql">
+  select aggregateID, eventSequence, snapshotData
+  from snapshots
+  where aggregateID = @aggregateID
+  order by sequence asc
+  limit 1
+
+  select e.aggregateID, e.eventID, e.eventData
+  from events e
+  join snapshots s on e.aggregateID = s.aggregateID
+  where e.aggregateID = @aggregateID
+    and e.sequence &gt; s.eventSequence
+  order by e.sequence asc
+            </code></pre>
+          </section>
+          <section>
+            <pre><code class="sql">
   select count(*)
   from dev.events
-  where eventData ->> 'type' = @eventType
-    and eventData -> 'data' ->> 'name' = @productName
+  where eventData -&gt;&gt; 'type' = @eventType
+    and eventData -&gt; 'data' -&gt;&gt; 'name' = @productName
 
-  select count(*), eventData -> 'data' ->> 'name'
+  select count(*), eventData -&gt; 'data' -&gt;&gt; 'name'
   from dev.events
-  where eventData ->> 'type' = 'productAdded'
-  group by eventData -> 'data' ->> 'name'
+  where eventData -&gt;&gt; 'type' = 'productAdded'
+  group by eventData -&gt; 'data' -&gt;&gt; 'name'
             </code></pre>
             <aside class="notes">
               <ul>
