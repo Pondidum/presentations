@@ -48,17 +48,7 @@
               <li>It is a different way of storing data</li>
               <li>Slightly more complex than relational to implement</li>
               <li>But infinitely more powerful</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section>
-          <img src="m/change-over-time.jpg" />
-          <!-- http://www.reddit.com/r/pics/comments/tdwmu/my_son_is_away_at_college_now_but_for_13_years_we/ -->
-          <aside class="notes">
-            <ul>
-              <li>It provides history</li>
-              <li>which is immutable</li>
+              <li>It provides history, which is immutable</li>
               <li>event sourcing can be transformed to any other store type</li>
             </ul>
           </aside>
@@ -87,25 +77,20 @@
             <ul>
               <li>This tells us that an order was completed, and had these two items in it.</li>
               <li>We can't tell what the user did before, or how they arrived at this order.</li>
+              <li>Probably represented as Basket, OrderLine, Product tables</li>
+              <li>So, what is the history of that basket?</li>
             </ul>
           </aside>
         </section>
 
         <section>
-          <pre><code>
-  [
-    { type: "createBasket", data: { userID: "12345" } },
-    { type: "addProduct", data: { name: "The Raid", price: 12.99, quantity: 1 } },
-    { type: "addProduct", data: { name: "Finding Nemo", price: 6.99, quantity: 1 } },
-    { type: "addProduct", data: { name: "The Raid", price: 12.99, quantity: 1 } },
-    { type: "removeProduct", data: { name: "Finding Nemo" } },
-    { type: "changeQuantity", data: { name: "The Raid", quantity: 1 } },
-    { type: "addProduct", data: { name: "Dispicable Me", price: 14.99, quantity: 1 } },
-    { type: "checkout", data: { /* ... */} },
-    { type: "paymentAccepted", data: { /* ... */} },
-    { type: "completeOrder", data: { state: "completed" }},
-  ]
-          </code></pre>
+          <img class="image-stack" src="m/event-stream-1.png" /><br />
+          <img class="image-stack fragment" src="m/event-stream-2.png" /><br />
+          <img class="image-stack fragment" src="m/event-stream-3.png" /><br />
+          <img class="image-stack fragment" src="m/event-stream-4.png" /><br />
+          <img class="image-stack fragment" src="m/event-stream-5.png" /><br />
+          <img class="image-stack fragment" src="m/event-stream-6.png" /><br />
+          <img class="image-stack fragment" src="m/event-stream-7.png" />
           <aside class="notes">
             <ul>
               <li>allows business to ask questions of what happened in the past</li>
@@ -136,7 +121,7 @@
             </code></pre>
             <aside class="notes">
               <ul>
-                <li>We only need one table for all of our data!</li>
+                <li>We only need one table for all of our data (or maybe one per aggregate root)</li>
                 <li>and one select, and one insert</li>
                 <li>NO UPDATE.</li>
                 <li>Performance: snapshot every x events</li>
@@ -149,15 +134,19 @@
   from dev.events
   where eventData ->> 'type' = @eventType
     and eventData -> 'data' ->> 'name' = @productName
-            </code></pre>
-          </section>
-          <section>
-            <pre><code class="sql">
+
   select count(*), eventData -> 'data' ->> 'name'
   from dev.events
   where eventData ->> 'type' = 'productAdded'
   group by eventData -> 'data' ->> 'name'
             </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>You can do adhock queries if needed</li>
+                <li>but only on events, not current state</li>
+                <li>We can solve this with a readmodel/data warehouse</li>
+              </ul>
+            </aside>
           </section>
         </section>
 
@@ -187,6 +176,7 @@
               <ul>
                 <li>Exibits Rich Domain Modeling</li>
                 <li>Small amount of logic to add an item to the basket</li>
+                <li>can be converted fairly easily</li>
               </ul>
             </aside>
           </section>
