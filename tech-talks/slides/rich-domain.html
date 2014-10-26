@@ -143,6 +143,7 @@
               <ul>
                 <li>Methods to change values have business-y names</li>
                 <li>We have to methods for changing name, with different reasoning</li>
+                <li>Methods express intent, rahther than raw actions</li>
                 <li>If you were doing EventSourcing, these would push different events</li>
               </ul>
             </aside>
@@ -215,6 +216,7 @@
         <section>
           <pre><code class="cs">
   public class Candidate {
+
     public IEnumerable&lt;Address&gt; Addresses { get { return _addresses; }}
 
     private readonly List&lt;Addresses&gt; _addresses = new List&lt;Addresses&gt;();
@@ -236,6 +238,59 @@
               <li>modification done through business/domain named methods again</li>
             </ul>
           </aside>
+        </section>
+
+        <section>
+          <section>
+            <img src="m/entitymodel.png">
+            <!-- candidate [id, name] => emails [id, address, type] -->
+
+            <aside class="notes">
+              <ul>
+                <li>Not everything needs an ID</li>
+                <li>What is the ID on email actually helping with?</li>
+                <li>Forget the sql, we can worry about how to store, once we have worked out what to store</li>
+              </ul>
+            </aside>
+          </section>
+          <section>
+            <pre><code class="cs">
+  //add
+  _emails.Add("test@example.com");
+
+  //delete
+  _emails.Remove("test@example.com");
+
+  //change
+  _emails.Remove("test@example.com");
+  _emails.Add("new@example.com");
+            </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>Nothing to stop you having complex data, such type, archived too</li>
+                <li>What if we want to add rules to the person which may relate to an email?</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <pre><code class="cs">
+  public void UpdateEmail(string oldAddress, string newAddress) {
+    _emails.Remove(oldAddress);
+    _emails.Add(newAddress);
+
+    _rules
+      .For(oldEmail)
+      .ForEach(rule => rule.ReAssignTo(newAddress));
+  }
+            </code></pre>
+            <aside class="notes">
+              <ul>
+                <li>When the email changes, we just update the rules assosiated</li>
+                <li>as this is the only method to change an email, we know rules will always get updated</li>
+              </ul>
+            </aside>
+          </section>
         </section>
 
         <section>
