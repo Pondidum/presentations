@@ -4,9 +4,9 @@
   <head>
     <meta charset="utf-8"/>
 
-    <title>Tech Talk - Rich Domain Modeling</title>
+    <title>Tech Talk - Service Oriented Architecture</title>
 
-    <meta name="description" content="What is Rich Domain Modeling, and why should I use it"/>
+    <meta name="description" content="What is Service Oriented Architecture, and why should I use it"/>
     <meta name="author" content="Andy Davies"/>
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
       <div class="slides">
 
         <section class="title-slide">
-          <h3>Tech Talk<br/>Rich Domain Modeling</h3>
+          <h3>Tech Talk<br/>Service Oriented Architecture</h3>
           <img src="m/avatar.png" />
           <p class="small centre">@andydote</p>
         </section>
@@ -48,12 +48,71 @@
               <li>It's an alternative to Monolithic Architecture</li>
               <li>It helps keep everything separated</li>
               <li>Current vogue is for MicroServices</li>
+              <li>we split things into separate focused services</li>
             </ul>
           </aside>
         </section>
 
         <section>
+          <!-- image: many services, no interconnection-->
+          <aside class="notes">
+            <ul>
+              <li>how to communicate between them?</li>
+              <li>HTTP?! The answer to all questions...right?</li>
+            </ul>
+          </aside>
+        </section>
 
+        <section>
+        <!-- image: many services, all interconnected-->
+          <aside class="notes">
+            <ul>
+              <li>Well...no.  exchanged references for http calls</li>
+              <li>what happens if you want to publish a piece of data TO many unknown services?</li>
+              <li>Who cares about your info is not your concern</li>
+              <li>Luckily, messagebusses/queues</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+        <!-- image: many services, with a bus/queue-->
+          <aside class="notes">
+            <ul>
+              <li>push things you do to the bus</li>
+              <li>listen to any message which interests you</li>
+              <li>Great, I can just do that with a sql table</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/grumpy-cat-no.jpg" />
+        </section>
+
+        <section>
+          <img src="m/b-tree-mq.png" />
+          <!-- source: http://kejser.org/implementing-message-queues-in-relational-databases/ -->
+          <aside class="notes">
+            <ul>
+              <li>statistics auto updates constantly kick in, creating jagged CPU patterns and throughput.</li>
+              <li>New pages are constantly allocated and deallocated in the buffer pool</li>
+              <li>There are solutions</li>
+              <li>But if Sql Server is your Hammer, all problems are Nails.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/rabbitmq.png" />
+          <img src="m/zeromq.gif" />
+          <aside class="notes">
+            <ul>
+              <li>Why not use a tool designed for this?</li>
+              <li>zeromq is very low level, but has insane performance</li>
+              <li>rabbit is higher level, but still very very good performance</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
