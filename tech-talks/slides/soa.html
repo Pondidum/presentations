@@ -54,36 +54,48 @@
         </section>
 
         <section>
-          <!-- image: many services, no interconnection-->
-          <aside class="notes">
-            <ul>
-              <li>how to communicate between them?</li>
-              <li>HTTP?! The answer to all questions...right?</li>
-            </ul>
-          </aside>
-        </section>
+          <section>
+            <img src="m/soa-http-1.png">
+            <aside class="notes">
+              <ul>
+                <li>how to communicate between them?</li>
+                <li>HTTP?! The answer to all questions...right?</li>
+              </ul>
+            </aside>
+          </section>
 
-        <section>
-        <!-- image: many services, all interconnected-->
-          <aside class="notes">
-            <ul>
-              <li>Well...no.  exchanged references for http calls</li>
-              <li>what happens if you want to publish a piece of data TO many unknown services?</li>
-              <li>Who cares about your info is not your concern</li>
-              <li>Luckily, messagebusses/queues</li>
-            </ul>
-          </aside>
-        </section>
+          <section>
+            <img src="m/soa-http-2.png">
+            <aside class="notes">
+              <ul>
+                <li>Well...no.  exchanged references for http calls</li>
+              </ul>
+            </aside>
+          </section>
 
-        <section>
-        <!-- image: many services, with a bus/queue-->
-          <aside class="notes">
-            <ul>
-              <li>push things you do to the bus</li>
-              <li>listen to any message which interests you</li>
-              <li>Great, I can just do that with a sql table</li>
-            </ul>
-          </aside>
+          <section>
+            <img src="m/soa-http-3.png">
+            <aside class="notes">
+              <ul>
+                <li>Still tightly coupled.</li>
+                <li>Everything needs to know where its endpoints are</li>
+                <li>what happens if you want to publish a piece of data TO many unknown services?</li>
+                <li>Who cares about your published info is not your concern</li>
+                <li>Luckily, messagebusses/queues</li>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <img src="m/soa-http-bus.png">
+            <aside class="notes">
+              <ul>
+                <li>push things you do to the bus</li>
+                <li>listen to any message which interests you</li>
+                <li>Great, I can just do that with a sql table</li>
+              </ul>
+            </aside>
+          </section>
         </section>
 
         <section>
