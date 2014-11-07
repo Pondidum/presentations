@@ -7,3 +7,46 @@ pre code {
 	font-size: 1.2em !important;
 	line-height: 1.2em !important;
 }
+
+.reveal .pic-label {
+	margin-top:-1.5em;
+	color:white;
+	text-shadow:0 0 6px black;
+}
+
+.reveal .pic-label .quote {
+	margin:-3.5em -2em 1em -2em;
+	font-size:32pt;
+	color:white;
+	line-height:40pt;
+	font-weight:bold;
+	text-shadow:2px 2px 2px #000000,2px -2px 2px #000000,-2px 2px 2px #000000,-2px -2px 2px #000000;
+}
+
+.reveal .pic-label .quote .big {
+	font-size:40pt;
+}
+
+.reveal .pic-label .big  {
+	margin:-1.75em -2em 0.75em -2em;
+	font-size:48pt;
+	line-height:64pt;
+	font-weight:bold;
+	text-shadow:2px 2px 2px #000000,2px -2px 2px #000000,-2px 2px 2px #000000,-2px -2px 2px #000000;
+}
+.reveal .pic-label .bigger {
+	margin-top:-1.25em;
+	margin-bottom:0.25em;
+	font-size:80pt;
+	line-height:96pt;
+	font-weight:bold;
+	text-shadow:2px 2px 2px #000000,2px -2px 2px #000000,-2px 2px 2px #000000,-2px -2px 2px #000000;
+}
+
+.reveal .pic-label .x-big {
+	margin-top:-0.75em;
+	margin-bottom:0.35em;
+	font-size:4em;
+	font-weight:bold;
+	text-shadow:4px 4px 4px #ffffff,4px -4px 4px #ffffff,-4px 4px 4px #ffffff,-4px -4px 4px #ffffff;
+}
