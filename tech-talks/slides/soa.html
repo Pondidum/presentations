@@ -131,6 +131,50 @@
         </section>
 
         <section>
+          <img src="" />
+          <aside class="notes">
+            <ul>
+              <li>What if you have many services returning the same data?</li>
+              <li>Eg, Watchdogs, CWS, etc all need to return Candidates</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <img src="m/hydration.jpg" />
+          <aside class="notes">
+            <ul>
+              <li>Hydration is the answer</li>
+              <li>Also known as ESI: Edge Side Includes</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <section>
+            <pre><code>
+  {
+    "refnum":"12345"
+    "name":"Andy Dote",
+    "percent": "100",
+    "email":"andy@andydote.co.uk"
+  }
+            </code></pre>
+          </section>
+
+          <section>
+            <pre><code>
+  {
+    "!ref": {
+      "id": "12345",
+      "type": "person"
+    }
+  }
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
           <img src="m/cat-questions.jpg"/>
         </section>
 
