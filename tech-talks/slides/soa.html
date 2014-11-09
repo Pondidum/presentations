@@ -169,8 +169,13 @@
   {
     "refnum":"12345"
     "name":"Andy Dote",
-    "percent": "100",
-    "email":"andy@andydote.co.uk"
+    "applications":[
+      {
+        "refnum":"54321",
+        "title":"Software Developer",
+        "type":"perm"
+      }
+    ]
   }
             </code></pre>
           </section>
@@ -178,10 +183,16 @@
           <section>
             <pre><code>
   {
-    "!ref": {
-      "id": "12345",
-      "type": "person"
-    }
+    "refnum":"12345"
+    "name":"Andy Dote",
+    "applications":[
+      {
+        "!ref": {
+          "id": "54321",
+          "type": "vacancy"
+        }
+      }
+    ]
   }
             </code></pre>
           </section>
