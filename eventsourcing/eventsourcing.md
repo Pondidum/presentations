@@ -60,8 +60,7 @@ store
 
 
 
-# What about read performance
-
+![Read performance](img/reading.jpg)
 Note: replaying 1000s of events is slow (well comparitively)
 
 
