@@ -91,13 +91,14 @@ order by e.sequence asc
 
 
 
-# How do I search?
-<magnifying glass image>
+![Jack Sparrow Searching](/img/search.jpg)
+Note: how do we handle searching?
 
 
 # Read Models
 One model for each purpose
 Note: formed for the view/purpose. e.g. search vs candidate screen vs candidates on a vacancy screen
+Can also be stored in different places, e.g. sql, elasticsearch, redis
 
 
 ## Candidate Screen
