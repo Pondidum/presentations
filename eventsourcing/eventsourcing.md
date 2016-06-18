@@ -73,15 +73,20 @@ Note: conceptual only
 
 ```sql
 select snapshotType, snapshot
-from {table}
+from snapshots
 where aggregateID = @id
 order by sequence desc
 limit 1
 
-select eventType, event
-from {table}
-where aggregateID = @id and stamp > @last
-order by sequence asc
+select e.eventType, e.event
+from events e
+where e.aggregateID = @id
+  and e.sequence > (
+    select max(sequence)
+    from snapshots s
+    where s.aggregateID = @id
+  )
+order by e.sequence asc
 ```
 
 
