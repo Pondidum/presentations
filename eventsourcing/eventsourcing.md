@@ -23,7 +23,7 @@ Can construct any other data store, e.g. relational, warehouse
 * Candidate 1 Applied  <!-- .element: class="fragment" -->
 * Candidate 2 Applied <!-- .element: class="fragment" -->
 * Candidate 1 Interviewed <!-- .element: class="fragment" -->
-* Candidate 2 Withdraws <!-- .element: class="fragment" -->
+* Candidate 2 Withdrew <!-- .element: class="fragment" -->
 * Candidate 1 Offered Job <!-- .element: class="fragment" -->
 
 
