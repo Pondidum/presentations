@@ -1,4 +1,4 @@
-# Event Sourincg
+# Event Sourcing
 ### Andy Davies
 ![Whois](img/whois.png)
 
@@ -9,7 +9,6 @@ Note: deltas rather than current State this is how source control works!
 
 
 
-# Why use it?
 ![Eventsourcing Advantage](img/advantage.jpg)
 
 Note: completely lossless
