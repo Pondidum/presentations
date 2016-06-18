@@ -64,17 +64,11 @@ store
 Note: replaying 1000s of events is slow (well comparitively)
 
 
-# Snapshotting can solve this
-* event
-* event
-* snapshot
-* event
-* event
-
+![events-separate-snapshots](img/events.png) <!-- .element: class="no-border" -->
 Note: conceptual only
 
 
-# Snapshots as a separate stream
+![events-separate-snapshots](img/events-separate-snapshots.png) <!-- .element: class="no-border" -->
 
 
 ```sql
