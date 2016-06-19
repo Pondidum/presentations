@@ -44,12 +44,22 @@ Note:
 Note: represent the domain as a set of events
 
 
-* TimesheetGenerated <!-- .element: class="fragment" -->
-* UserUpdatedTimesheet <!-- .element: class="fragment" -->
-* UserSubmittedTimesheet <!-- .element: class="fragment" -->
-* TimesheetRejected <!-- .element: class="fragment" -->
-* UserUpdatedTimesheet <!-- .element: class="fragment" -->
-* UserSubmittedTimesheet <!-- .element: class="fragment" -->
-* TimesheetApproved <!-- .element: class="fragment" -->
-* PaymentQueued <!-- .element: class="fragment" -->
-* UserPaid <!-- .element: class="fragment" -->
+`TimesheetGenerated: { weekdate: 2016-06-20 }` <!-- .element: class="fragment" -->
+
+`UserUpdatedTimesheet: { hours_worked: 48 }` <!-- .element: class="fragment" -->
+
+`UserSubmittedTimesheet: { }` <!-- .element: class="fragment" -->
+
+`TimesheetRejected: { }` <!-- .element: class="fragment" -->
+
+`UserUpdatedTimesheet: { hours_worked: 40 }` <!-- .element: class="fragment" -->
+
+`UserSubmittedTimesheet: { }` <!-- .element: class="fragment" -->
+
+`TimesheetApproved: { }` <!-- .element: class="fragment" -->
+
+`PaymentQueued: { account: { ... }, value: 400.00 }` <!-- .element: class="fragment" -->
+
+`UserPaid: { value: 400.00 }` <!-- .element: class="fragment" -->
+
+Note: all events have the current user and timestamp logged against them
