@@ -63,3 +63,33 @@ Note: represent the domain as a set of events
 `UserPaid: { value: 400.00 }` <!-- .element: class="fragment" -->
 
 Note: all events have the current user and timestamp logged against them
+
+
+
+![Read performance](img/reading.jpg)
+
+
+![events-separate-snapshots](img/events.png) <!-- .element: class="no-border" -->
+Note: conceptual only
+
+
+![events-separate-snapshots](img/events-separate-snapshots.png) <!-- .element: class="no-border" -->
+
+
+```sql
+select snapshotType, snapshot
+from snapshots
+where aggregateID = @id
+order by sequence desc
+limit 1
+
+select e.eventType, e.event
+from events e
+where e.aggregateID = @id
+  and e.sequence > (
+    select max(sequence)
+    from snapshots s
+    where s.aggregateID = @id
+  )
+order by e.sequence asc
+```
