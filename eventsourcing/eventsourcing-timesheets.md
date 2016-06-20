@@ -93,3 +93,72 @@ where e.aggregateID = @id
   )
 order by e.sequence asc
 ```
+
+
+
+![Jack Sparrow Searching](/img/search.jpg)
+Note:
+* How do we handle searching?
+* One model for each purpose
+* Can also be stored in different places, e.g. sql, elasticsearch, redis
+
+
+*All Timesheets*
+```json
+{
+  "id": 12345,
+  "name": "Andy Davies",
+  "timesheets": [
+    {
+      "id": 1,
+      "week_date": "2016-06-06",
+      "state": "paid",
+      "hours_worked": 40,
+      "pay_rate": 10.00
+    },
+    {
+      "id": 2,
+      "week_date": "2016-06-13",
+      "state": "submitted",
+      "hours_worked": 40,
+      "pay_rate": 10.00
+    },
+  ]
+}
+```
+<!-- .element: class="stretch" -->
+
+
+*All Timesheets Awaiting Approval*
+```json
+{
+  "id": 2,
+  "week_date": "2016-06-13",
+  "hours_worked": 40,
+  "pay_rate": 10.00,
+  "user": { "id": 12345, "name": "Andy Davies" },
+  "authoriser": { "id": 998, "name": "Dave Johns" }
+},
+{
+  "id": 5,
+  "week_date": "2016-06-13",
+  "hours_worked": 20,
+  "pay_rate": 15.00,
+  "user": { "id": 543, "name": "Cloud Strife" },
+  "authoriser": { "id": 997, "name": "Alice Michaels" }
+}
+```
+
+
+*All Actionable Timesheets for an Authoriser*
+```json
+[
+  {
+    "id": 2,
+    "week_date": "2016-06-13",
+    "hours_worked": 40,
+    "pay_rate": 10.00,
+    "user": { "id": 12345, "name": "Andy Davies" },
+  },
+]
+```
