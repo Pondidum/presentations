@@ -162,3 +162,60 @@ Note:
   },
 ]
 ```
+
+
+
+![Print House](/img/build.png)
+
+
+```c#
+public class Timesheet
+{
+  public static Timesheet Generate(User user, WeekDate week, PayRate pay)
+  {
+    if (week < DateTime.UtcNow) throw new InvalidWeekException(week);
+
+    var ts = new Timesheet();
+    ts.Apply(new TimesheetGenerated(user, week, pay))
+
+    return ts;
+  }
+
+  private void Handles(TimesheetGenerated e)
+  {
+    User = e.User;
+    WeekDate = e.WeekDate;
+    PayRate = e.Pay;
+  }
+}
+```
+<!-- .element: class="stretch" -->
+
+
+```c#
+public void SubmitForApproval()
+{
+  Apply(new UserSubmittedTimesheet());
+}
+
+private void Handles(UserSubmittedTimesheet e)
+{
+  Status = TimesheetStatus.Submitted;
+}
+```
+
+
+```c#
+public void SubmitForApproval()
+{
+  _approverService.Validate(this);    //throws on no approver etc.
+  _approverService.Submit(this);
+
+  Apply(new UserSubmittedTimesheet());
+}
+
+private void Handles(UserSubmittedTimesheet e)
+{
+  Status = TimesheetStatus.Submitted;
+}
+```
