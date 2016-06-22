@@ -87,7 +87,7 @@ select e.eventType, e.event
 from events e
 where e.aggregateID = @id
   and e.sequence > (
-    select max(sequence)
+    select max(s.sequence)
     from snapshots s
     where s.aggregateID = @id
   )
@@ -177,6 +177,8 @@ public class Timesheet
 
     var ts = new Timesheet();
     ts.Apply(new TimesheetGenerated(user, week, pay))
+
+    _emailService.Send(new TimesheetNotification(ts));
 
     return ts;
   }
