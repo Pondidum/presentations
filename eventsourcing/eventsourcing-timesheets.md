@@ -3,6 +3,51 @@
 ![Whois](img/whois.png)
 
 
+![What is it](img/hipster-ariel-irl.jpg)
+Note:
+* A different way of storing data
+* Requires a little more thought to implement
+* Lossless storage - you can transform to any other datastore type
+* Guaranteed audit log
+* Allows historic questions to be answered
+
+
+```json
+{
+  "type": "address_changed",
+  "line1": "9 Home Road",
+  "town": "Home Town",
+  "county": "Dorset",
+  "postcode": "BH22 7LF"
+}
+```
+Note:
+* Events capture intent aswell as the change
+* This is a bad event
+
+
+```json
+{
+  "type": "user_moved_house",
+  "line1": "9 Home Road",
+  "town": "Home Town",
+  "county": "Dorset",
+  "postcode": "BH22 7LF"
+}
+```
+
+```json
+{
+  "type": "address_corrected",
+  "line1": "9 Home Road",
+  "town": "Home Town",
+  "county": "Dorset",
+  "postcode": "BH22 7LF"
+}
+```
+
+
+
 
 # Lets have an example...
 
