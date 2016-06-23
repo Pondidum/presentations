@@ -10,6 +10,7 @@ Note:
 * Lossless storage - you can transform to any other datastore type
 * Guaranteed audit log
 * Allows historic questions to be answered
+* Events are something which happened - they must be named in the past-tense
 
 
 ```json
@@ -22,7 +23,7 @@ Note:
 }
 ```
 Note:
-* Events capture intent aswell as the change
+* Events capture intent as well as the change
 * This is a bad event
 
 
@@ -45,7 +46,9 @@ Note:
   "postcode": "BH22 7LF"
 }
 ```
-
+Note:
+* Events have the same data
+* events have different intent
 
 
 
@@ -250,6 +253,7 @@ private void Handles(UserSubmittedTimesheet e)
   Status = TimesheetStatus.Submitted;
 }
 ```
+<!-- .slide: data-transition="none-out" -->
 
 
 ```c#
@@ -266,3 +270,4 @@ private void Handles(UserSubmittedTimesheet e)
   Status = TimesheetStatus.Submitted;
 }
 ```
+<!-- .slide: data-transition="none-in" -->
