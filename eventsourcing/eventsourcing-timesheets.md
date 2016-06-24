@@ -214,6 +214,9 @@ Note:
 
 
 ![Print House](/img/build.png)
+Note:
+* this is done in a ddd fashion - e.g. methods to change things, rather than direct collection access.
+* also proper encapsulation
 
 
 ```c#
@@ -240,6 +243,9 @@ public class Timesheet
 }
 ```
 <!-- .element: class="stretch" -->
+Note:
+* We use a static method for construction to make methods naming more explicit
+* wouldn't want email sent every time you load
 
 
 ```c#
@@ -254,6 +260,7 @@ private void Handles(UserSubmittedTimesheet e)
 }
 ```
 <!-- .slide: data-transition="none-out" -->
+Note: if we start with this, the logic and validation go into the "apply" method
 
 
 ```c#
@@ -271,3 +278,5 @@ private void Handles(UserSubmittedTimesheet e)
 }
 ```
 <!-- .slide: data-transition="none-in" -->
+Note:
+* when an event gets applied we don't want side effects
