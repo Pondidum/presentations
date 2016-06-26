@@ -52,6 +52,26 @@ Note:
 
 
 
+# Event Sourcing fits well with CQRS
+But its not required
+
+
+# Command Query Responsibility Segregation
+Note:
+* Invented by Greg Young
+* Many videos and talks about it
+* It can be complex, but is good for scalability...
+
+
+![Cqrs Complex](img/cqrs-complex.jpg) <!-- .element: style="height: 600px" -->
+Note: One of the original diagrams
+Quite Complex
+
+
+![Cqrs Complex](img/cqrs-simple.png)
+
+
+
 ![Read performance](img/reading.jpg)
 
 
