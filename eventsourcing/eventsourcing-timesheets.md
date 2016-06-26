@@ -342,25 +342,89 @@ Note:
 
 ```c#
 Register<TimesheetGenerated>(e => {
+
   var user = _getUser.Execute(e.UserID);
 
   user.Timesheets.Add(new UserTimesheetModel(e));
 
   _saveUser.Execute(user);
+
 });
 ```
 Note: saveUser could be sql backed, or elasticsearch etc.
 
 
 ```c#
-var approvers = new Cache<Guid, Approver>(key => _getApprover.Execute(key));
+var approvers = new Cache<Guid, Approver>(
+    key => _getApprover.Execute(key)
+);
 
 Register<UserSubmittedTimesheet>(e => {
-  var approver = _approvers[e.ApproverID];
+    var approver = _approvers[e.ApproverID];
 
-  approver.Timesheets.Add(new ApproverTimesheetModel(e));
+    approver.Timesheets.Add(new ApproverTimesheetModel(e));
 
-  _saveApprover.Execute(approver);
+    _saveApprover.Execute(approver);
 })
 ```
 Note: This one is using a cache of approvers
+
+
+
+# Timesheets Flow
+
+
+```c#
+public class TimesheetController
+{
+    public void PostSubmit(int timesheetID)
+    {
+        _mediator.Publish(new SubmitTimesheetCommand(
+            User.GetUserID(),
+            timesheetID)
+        );
+    }
+}
+```
+
+
+```c#
+public class SubmitTimesheetCommand : INotification
+{
+    public Guid TimesheetID { get; }
+    public Guid UserID { get; }
+
+    public SubmitTimesheetCommand(Guid userID, Guid TimesheetID)
+    {
+        TimesheetID = timesheetID;
+        UserID = userID;
+    }
+}
+```
+
+
+```c#
+public class SubmitTimesheetCommandHandler : INotificationHandler<SubmitTimesheetCommand>
+{
+    private readonly AggregateStore _store;
+    private readonly IEmailService _emailService;
+
+    public SubmitTimesheetCommandHandler(AggregateStore store, IEmailService emailService) {
+        _store = store;
+        _emailService = emailService;
+    }
+
+    public void Handle(SubmitTimesheetCommand message)
+    {
+        var timesheet = store.Load(
+            "Timesheets",
+            message.TimesheetID,
+            Timesheet.Blank);
+
+        timesheet.Submit(_emailService);
+
+        store.Save("Timesheets", timesheet);
+    }
+}
+```
+<!-- .element: class="stretch" -->
