@@ -3,14 +3,17 @@
 ![Whois](img/whois.png)
 
 
-![What is it](img/hipster-ariel-irl.jpg)
+
+![What is it](img/beaker-what-is-this.gif)
 Note:
 * A different way of storing data
 * Requires a little more thought to implement
 * Lossless storage - you can transform to any other datastore type
 * Guaranteed audit log
 * Allows historic questions to be answered
+  * shopping basket example
 * Events are something which happened - they must be named in the past-tense
+
 
 
 ```json
@@ -25,6 +28,7 @@ Note:
 Note:
 * Events capture intent as well as the change
 * This is a bad event
+
 
 
 ```json
@@ -49,37 +53,28 @@ Note:
 Note:
 * Events have the same data
 * events have different intent
-
-
-
-# Event Sourcing fits well with CQRS
-But its not required
-
-
-# Command Query Responsibility Segregation
-Note:
-* Invented by Greg Young
-* Many videos and talks about it
-* It can be complex, but is good for scalability...
-
-
-![Cqrs Complex](img/cqrs-complex.jpg) <!-- .element: style="height: 600px" -->
-Note: One of the original diagrams
-Quite Complex
-
-
-![Cqrs Complex](img/cqrs-simple.png)
+  * who moved house?
+  * which consultant is entering addresses wrong a lot!?
 
 
 
 ![Read performance](img/reading.jpg)
+Note: what happens if you have 1000s of events?
+
 
 
 ![events-separate-snapshots](img/events.png) <!-- .element: class="no-border" -->
+
+
+
+![events-separate-snapshots](img/events-inline-snapshots.png) <!-- .element: class="no-border" -->
 Note: conceptual only
 
 
+
 ![events-separate-snapshots](img/events-separate-snapshots.png) <!-- .element: class="no-border" -->
+Note: actually implemented as a separate stream/table
+
 
 
 ```sql
@@ -99,14 +94,18 @@ where e.aggregateID = @id
   )
 order by e.sequence asc
 ```
+Note: get the latest snapshot, then get all events after that snapshot
 
 
 
 ![Jack Sparrow Searching](/img/search.jpg)
 Note:
-* How do we handle searching?
+* We can only load by ID...so how do we search?
+* Multiple projections can solve this
 * One model for each purpose
 * Can also be stored in different places, e.g. sql, elasticsearch, redis
+* For example a timesheet system...
+
 
 
 *All Timesheets*
@@ -135,6 +134,7 @@ Note:
 <!-- .element: class="stretch" -->
 
 
+
 *All Timesheets Awaiting Approval*
 ```json
 {
@@ -156,6 +156,7 @@ Note:
 ```
 
 
+
 *All Actionable Timesheets for an Authoriser*
 ```json
 [
@@ -171,14 +172,43 @@ Note:
 
 
 
-# Lets have an example...
+# Event Sourcing fits well with CQRS
+But its not required
+Note: we can use cqrs to help solve this
 
-Note: bank accounts and shopping carts are getting tired, and are a little simple.
+
+
+# Command Query Responsibility Segregation
+Note:
+* Invented by Greg Young
+* Many videos and talks about it
+* It can be complex, but is good for scalability...
+
+
+
+![Cqrs Complex](img/cqrs-complex.jpg) <!-- .element: style="height: 600px" -->
+Note: One of the original diagrams
+Quite Complex
+
+
+
+![Cqrs Complex](img/cqrs-simple.png)
+Note:
+* a little simpler
+* We can add queues and messaging systems to aid scalability if needed
+* You end up at the first diagram!
+
+
+
+# This all seems rather complicated
+Note:
+* so lets have an example!
+* bank accounts and shopping carts are getting tired, and are a little simple.
+* how about timesheets?!
 
 
 
 ![Table structure](img/timesheets-1.png)
-
 Note:
 works to start with, but has problems:
 * the user changes bank account
@@ -190,8 +220,8 @@ Has questions we cannot answer too:
 * does this happen often for a given approver?
 
 
-![Table structure](img/timesheets-2.png)
 
+![Table structure](img/timesheets-2.png)
 Note:
 * One solution is to link payments to the account paid
 * However this doesnt haelp if the accounts detail gets modified
@@ -201,14 +231,15 @@ Note:
 * cant apply this historically
 
 
+
 * TimesheetGenerated
 * UserUpdatedTimesheet
 * UserSubmittedTimesheet
 * TimesheetApproved
 * TimesheetRejected
 * UserPaid
-
 Note: represent the domain as a set of events
+
 
 
 `TimesheetGenerated: { weekdate: 2016-06-20 }` <!-- .element: class="fragment" -->
@@ -239,6 +270,7 @@ Note:
 * also proper encapsulation
 
 
+
 ```c#
 public class Timesheet
 {
@@ -266,6 +298,7 @@ public class Timesheet
 Note:
 * We use a static method for construction to make methods naming more explicit
 * wouldn't want email sent every time you load
+
 
 
 ```c#
@@ -300,3 +333,34 @@ private void Handles(UserSubmittedTimesheet e)
 <!-- .slide: data-transition="none-in" -->
 Note:
 * when an event gets applied we don't want side effects
+
+
+
+# Projections?
+
+
+
+```c#
+Register<TimesheetGenerated>(e => {
+  var user = _getUser.Execute(e.UserID);
+
+  user.Timesheets.Add(new UserTimesheetModel(e));
+
+  _saveUser.Execute(user);
+});
+```
+Note: saveUser could be sql backed, or elasticsearch etc.
+
+
+```c#
+var approvers = new Cache<Guid, Approver>(key => _getApprover.Execute(key));
+
+Register<UserSubmittedTimesheet>(e => {
+  var approver = _approvers[e.ApproverID];
+
+  approver.Timesheets.Add(new ApproverTimesheetModel(e));
+
+  _saveApprover.Execute(approver);
+})
+```
+Note: This one is using a cache of approvers
