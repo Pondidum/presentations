@@ -407,10 +407,11 @@ public class SubmitTimesheetCommand : INotification
 public class SubmitTimesheetCommandHandler : INotificationHandler<SubmitTimesheetCommand>
 {
     private readonly AggregateStore _store;
-    private readonly IEmailService _emailService;
+    private readonly AuthoriserService = _authoriserService;
 
-    public SubmitTimesheetCommandHandler(AggregateStore store, IEmailService emailService) {
+    public SubmitTimesheetCommandHandler(AggregateStore store, AuthoriserService authoriserService, IEmailService emailService) {
         _store = store;
+        _authoriserService = authoriserService;
         _emailService = emailService;
     }
 
@@ -421,10 +422,92 @@ public class SubmitTimesheetCommandHandler : INotificationHandler<SubmitTimeshee
             message.TimesheetID,
             Timesheet.Blank);
 
-        timesheet.Submit(_emailService);
+        timesheet.Submit(_authoriserService, _emailService);
 
         store.Save("Timesheets", timesheet);
     }
 }
 ```
 <!-- .element: class="stretch" -->
+
+
+```c#
+public class Timesheet : Aggregate<Guid>
+{
+    public void Submit(AuthoriserService authoriserService, IEmailService emailService)
+    {
+        if (CanSubmit() == false) throw new CannotSubmitException(State);
+
+        //throws if there are no valid authorisers
+        var authoriser = authoriserService.GetBestAuthoriser(this);
+
+        emailService.Send(new TimesheetSubmittedNotification(
+            authoriser,
+            timesheet
+        ));
+
+        Apply(new UserSubmittedTimesheet(authoriser));
+    }
+
+    private void Handles(UserSubmittedTimesheet e)
+    {
+        Status = TimesheetStatus.Submitted;
+    }
+}
+```
+<!-- .element: class="stretch" -->
+
+
+```c#
+public class AuthoriserProjections : Projection
+{
+    public AuthoriserProjections(GetApproverQuery getApprover, GetTimesheetQuery getTimesheet, SaveApproverCommand saveApprover)
+    {
+        var approvers = new Cache<Guid, Approver>(key => getApprover.Execute(key));
+        var timesheets = new Cache<Guid, Timesheet>(key => getTimesheet.Execute(key));
+
+        Register<UserSubmittedTimesheet>(e => {
+            var approver = _approvers[e.ApproverID];
+            var timesheet = _timesheets[e.TimesheetID];
+
+            approver.Timesheets.Add(new ApproverTimesheetModel(timesheet));
+
+            saveApprover.Execute(approver);
+        });
+
+        Register<TimesheetRejected>(e => {
+            var approver = _approvers[e.ApproverID];
+
+            approver.Timesheets.Remove(e.TimesheetID);
+
+            saveApprover.Execute(approver);
+        });
+    }
+}
+```
+<!-- .element: class="stretch" -->
+
+
+```c#
+public class SaveApproverCommand : SqlCommand
+{
+    public void Execute(Approver approver)
+    {
+        using (var connection = OpenConnection())
+        {
+            var json = JsonConvert.SerializeObject(approver);
+
+            connection.Execute(
+                "update approvers set json = @json where id = @approverID",
+                new { approverID = approver.id, json = json }
+            );
+        }
+    }
+}
+```
+
+
+![Questions](img/hipster-ariel-irl.jpg)
+
+Any Questions?
+<!-- .element: class="pic-label quote" -->
