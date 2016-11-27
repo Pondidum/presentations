@@ -1,0 +1,21 @@
+.reveal section img {
+  background: transparent;
+  border: 0px;
+  box-shadow: none;
+}
+
+
+.reveal .pic-label{margin-top:-1.5em;color:black;text-shadow:0 0 6px white;}
+
+.reveal .pic-label.quote{
+  margin:0 -2em -1em -2em;
+  font-size:32pt;
+  color:white;
+  line-height:40pt;
+  font-weight:bold;
+  text-shadow:2px 2px 2px #000000,2px -2px 2px #000000,-2px 2px 2px #000000,-2px -2px 2px #000000;
+  }
+
+.reveal .pic-label.quote .big{font-size:40pt;}
+
+.reveal .pic-label.roketto-dan{margin-top:-3.75em;margin-bottom:2.5em;font-size:80pt;line-height:96pt;font-weight:bold;text-shadow:4px 4px 4px #ffffff,4px -4px 4px #ffffff,-4px 4px 4px #ffffff,-4px -4px 4px #ffffff;-webkit-transform:scaleY(1.5);}

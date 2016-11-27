@@ -1,6 +1,10 @@
-### Things that should be strong typed
-* [Strong Type All The Things Image]
-* (mostly)
+### What should be strong typed?
+
+All The Things <!-- .element: class="pic-label quote fragment" data-fragment-index="1"-->
+
+![Strong Type All The Things Image](img/all-the-things.png) <!-- .element: class="fragment" data-fragment-index="1"-->
+
+(mostly)<!-- .element: class="fragment" data-fragment-index="2"-->
 
 
 
@@ -38,17 +42,18 @@ var url = ConfigurationManager.ConnectionStrings["endpoint"].ConnectionString;
 
 ### Centralise it
 ```csharp
-public interface IConfiguration {
+public interface IConfiguration
+{
     Url Endpoint { get; }
 }
 
 public class Configuration : IConfiguration
 {
-    public Url Endpoint { get; }
+    public Uri Endpoint { get; }
 
     public Configuration()
     {
-        Endpoint = ConfigurationManager.ConnectionString["Endpoint"].ConnectionString;
+        Endpoint = new Uri(ConfigurationManager.AppSetting["XyzEndpoint"]);
     }
 }
 ```
