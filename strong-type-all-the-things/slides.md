@@ -6,6 +6,8 @@ All The Things <!-- .element: class="pic-label quote fragment" data-fragment-ind
 
 (mostly)<!-- .element: class="fragment" data-fragment-index="2"-->
 
+fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg<!-- .element: class="attribution fragment" data-fragment-index="1"-->
+
 
 
 ### But seriously
@@ -69,3 +71,20 @@ public class SomeActionHandler
     }
 }
 ```
+
+
+
+<!-- .slide: class="gains" -->
+![No Pain No Gain](img/no-pain-no-gain-trans.png)
+<ul class="left">
+    <li>Magic Strings Everywhere</li>
+    <li>Coupling to App.Config</li>
+</ul>
+
+<ul class="right">
+    <li>Single Responsibility</li>
+    <li>Testability</li>
+    <li>Discoverability</li>
+</ul>
+
+fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg<!-- .element: class="attribution" -->

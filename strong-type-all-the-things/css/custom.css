@@ -4,8 +4,51 @@
   box-shadow: none;
 }
 
-
 .reveal .pic-label{margin-top:-1.5em;color:black;text-shadow:0 0 6px white;}
+
+.attribution {
+  position: absolute;
+  bottom: -5em;
+  right: 0;
+  font-size: small !important;
+}
+
+.reveal section li {
+  list-style: none;
+}
+
+.gains p, .gains p img {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.gains .left li {
+  text-align: right;
+  color: red;
+  text-decoration: line-through;
+}
+
+.gains .right li {
+  text-align: left;
+  color: green;
+}
+
+.left {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width: 45%;
+  z-index:-10;
+}
+
+.right {
+  left:31.25%;
+  top: 75px;
+  float: right;
+  z-index:-10;
+  width: 45%;
+}
+
 
 .reveal .pic-label.quote{
   margin:0 -2em -1em -2em;
