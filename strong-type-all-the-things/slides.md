@@ -6,7 +6,7 @@ All The Things <!-- .element: class="pic-label quote fragment" data-fragment-ind
 
 (mostly)<!-- .element: class="fragment" data-fragment-index="2"-->
 
-fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg<!-- .element: class="attribution fragment" data-fragment-index="1"-->
+http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="attribution fragment" data-fragment-index="1"-->
 
 
 
@@ -66,8 +66,16 @@ public class Configuration : IConfiguration
 ```csharp
 public class SomeActionHandler
 {
+    private readonly IConfiguration _config;
+
     public SomeActionHandler(IConfiguration config)
     {
+        _config = config;
+    }
+
+    public void DoSomething()
+    {
+        MakeRequest(_config.Endpoint);
     }
 }
 ```
@@ -87,4 +95,144 @@ public class SomeActionHandler
     <li>Discoverability</li>
 </ul>
 
-fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg<!-- .element: class="attribution" -->
+. <!-- .element: class="attribution" -->
+https://fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg <!-- .element: class="attribution" -->
+
+
+
+# Identifiers
+
+
+
+```csharp
+public class Customer
+{
+
+
+    public string Name { get; private set; }
+    public DateTime DateOfBirth { get; private set; }
+    public string EmailAddress { get; private set; }
+    public Address { get; private set; }
+}
+```
+<!-- .slide: data-transition="slide-in none-out"-->
+Note: everyone strong types their entities right?  We have a reasonable entity here...we'll get to it's problems later
+
+
+
+```csharp
+public class Customer
+{
+    public int ID { get; private set; }
+
+    public string Name { get; private set; }
+    public DateTime DateOfBirth { get; private set; }
+    public string EmailAddress { get; private set; }
+    public Address { get; private set; }
+}
+```
+<!-- .slide: data-transition="none-in slide-out"-->
+Note: sure, your db column is usually int or guid, but your objects dont have to be.
+You don't have Foreign Keys in code...
+
+
+
+```csharp
+public interface IGetOpenOrders
+{
+    IEnumerable<Order> Execute(int id);
+}
+```
+
+
+
+```csharp
+var orders = orderQuery.Execute(customer.id);
+
+var orders = orderQuery.Execute(product.id);
+```
+
+
+
+## Use Separate Types
+```csharp
+using ProductId : int;
+using CustomerId : int;
+```
+Note: Scott Wlaschin has a great talk on this kind of thing with F#
+
+
+
+```csharp
+public struct CustomerId
+{
+	private readonly int _key;
+
+	public CustomerId(int key)
+	{
+		_key = key;
+	}
+}
+```
+Note: dont forget to be IEquatable!
+
+
+
+```csharp
+public struct CustomerId : IEquatable<CustomerId>
+{
+    private readonly int _key;
+
+    public CustomerId(int key)
+    {
+        _key = key;
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        return obj is CustomerId && Equals((CustomerId)obj);
+    }
+
+    public bool Equals(CustomerId other) => _key == other._key;
+    public override int GetHashCode() => _key;
+}
+```
+
+
+
+```csharp
+public struct CustomerId : IEquatable<CustomerId>
+{
+    private readonly int _key;
+
+    public CustomerId(int key)
+    {
+        _key = key;
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(null, obj)) return false;
+        return obj is CustomerId && Equals((CustomerId)obj);
+    }
+
+    public bool Equals(CustomerId other) => _key == other._key;
+    public override int GetHashCode() => _key;
+
+    public static bool operator ==(CustomerId left, CustomerId right)
+        => Equals(left, right);
+
+    public static bool operator !=(CustomerId left, CustomerId right)
+        => !Equals(left, right);
+}
+```
+
+
+
+```csharp
+public interface IOrderQuery
+{
+    IEnumerable<Order> Execute(CustomerId id);
+}
+```
