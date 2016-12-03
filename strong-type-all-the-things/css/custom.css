@@ -1,3 +1,8 @@
+
+.reveal pre code {
+  max-height: inherit !important;
+}
+
 .reveal section img {
   background: transparent;
   border: 0px;
@@ -11,6 +16,7 @@
   bottom: -5em;
   right: 0;
   font-size: small !important;
+  clear:both;
 }
 
 .reveal section li {
