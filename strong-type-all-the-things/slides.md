@@ -109,10 +109,10 @@ public class Customer
 {
 
 
-    public string Name { get; private set; }
-    public DateTime DateOfBirth { get; private set; }
-    public string EmailAddress { get; private set; }
-    public Address { get; private set; }
+    public string Name { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    public string EmailAddress { get; set; }
+    public Address { get; set; }
 }
 ```
 <!-- .slide: data-transition="slide-in none-out"-->
@@ -125,10 +125,10 @@ public class Customer
 {
     public int ID { get; private set; }
 
-    public string Name { get; private set; }
-    public DateTime DateOfBirth { get; private set; }
-    public string EmailAddress { get; private set; }
-    public Address { get; private set; }
+    public string Name { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    public string EmailAddress { get; set; }
+    public Address { get; set; }
 }
 ```
 <!-- .slide: data-transition="none-in slide-out"-->
@@ -166,12 +166,12 @@ Note: Scott Wlaschin has a great talk on this kind of thing with F#
 ```csharp
 public struct CustomerId
 {
-	private readonly int _key;
+    private readonly int _key;
 
-	public CustomerId(int key)
-	{
-		_key = key;
-	}
+    public CustomerId(int key)
+    {
+        _key = key;
+    }
 }
 ```
 <!-- .slide: data-transition="slide-in none-out"-->
@@ -256,6 +256,134 @@ var orders = orderQuery.Execute(product.id);
 
 <ul class="right">
     <li class="fragment">Compiler Checking</li>
+    <li class="fragment warn">Serialization (DB)</li>
+    <li class="fragment warn">Serialization (Json)</li>
+</ul>
+
+. <!-- .element: class="attribution" -->
+https://fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg <!-- .element: class="attribution" -->
+
+
+
+# Value Types
+
+
+
+```csharp
+public class Customer
+{
+    public CustomerId ID { get; private set; }
+
+    public string Name { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    public string EmailAddress { get; set; }
+    public Address { get; set; }
+}
+```
+
+
+
+```csharp
+customer.DateOfBirth = new DateTime(1743, 9, 17);
+```
+Note: this is a valid date...but is it valid in our domain?
+It might be for a family tree, but for an HR system maybe not.
+
+
+
+```csharp
+customer.EmailAddress = "Dave";
+```
+Note: what about this?  It compiles...
+
+
+
+```csharp
+public class Email
+{
+    private static readonly RegEx EmailExpression = new RegEx(/* ... */);
+
+    private readonly string _email;
+
+    public Email(string address)
+    {
+        if (EmailExpression.IsMatch(address) == false)
+            throw new InvalidEmailException(address);
+
+        _email = address;
+    }
+
+    //iequatable, operators omitted...
+}
+```
+Note: Regex is left to an exercise for you...
+We can go further with email addresses though, what about proof of ownership?
+
+
+
+```csharp
+class Email
+{
+    private static readonly RegEx EmailExpression = new RegEx(/* ... */);
+
+	private readonly string _email;
+
+    public Email(string address)
+    {
+        if (EmailExpression.IsMatch(address) == false)
+            throw new InvalidEmailException(address);
+
+        _email = address;
+    }
+
+    public virtual bool Verified => false;
+}
+```
+
+
+
+```csharp
+class VerifiedEmail : Email
+{
+	public VerifiedEmail(VerificationService service, EmailAddress email)
+		: base(email.ToString())
+	{
+		if (service.IsVerified(email) == false)
+			throw new UnVerifiedEmailException(email);
+	}
+
+	public override bool Verified => true;
+}
+```
+
+
+
+```csharp
+public void SendVerificationEmail(Email email)
+{
+    if (email.Verified)
+        throw new EmailAlreadyVerifiedException(email);
+    //...
+}
+
+public void SendWelcomeEmail(VerifiedEmail email)
+{
+    //...
+}
+```
+
+
+
+<!-- .slide: class="gains" -->
+![No Pain No Gain](img/no-pain-no-gain-trans.png)
+<ul class="left">
+    <li class="fragment">Silent Errors</li>
+    <li class="fragment">Domain Errors</li>
+</ul>
+
+<ul class="right">
+    <li class="fragment">Compiler Checking</li>
+    <li class="fragment">Explicit Business Rules</li>
     <li class="fragment warn">Serialization (DB)</li>
     <li class="fragment warn">Serialization (Json)</li>
 </ul>
