@@ -46,7 +46,7 @@ var url = ConfigurationManager.ConnectionStrings["endpoint"].ConnectionString;
 ```csharp
 public interface IConfiguration
 {
-    Url Endpoint { get; }
+    Uri Endpoint { get; }
 }
 
 public class Configuration : IConfiguration
@@ -174,6 +174,7 @@ public struct CustomerId
 	}
 }
 ```
+<!-- .slide: data-transition="slide-in none-out"-->
 Note: dont forget to be IEquatable!
 
 
@@ -198,6 +199,7 @@ public struct CustomerId : IEquatable<CustomerId>
     public override int GetHashCode() => _key;
 }
 ```
+<!-- .slide: data-transition="none-in none-out"-->
 
 
 
@@ -227,7 +229,8 @@ public struct CustomerId : IEquatable<CustomerId>
         => !Equals(left, right);
 }
 ```
-
+<!-- .slide: data-transition="none-in slide-out"-->
+Note: don't forget serialization!
 
 
 ```csharp
@@ -236,3 +239,26 @@ public interface IOrderQuery
     IEnumerable<Order> Execute(CustomerId id);
 }
 ```
+
+
+
+```csharp
+var orders = orderQuery.Execute(product.id);
+```
+
+
+
+<!-- .slide: class="gains" -->
+![No Pain No Gain](img/no-pain-no-gain-trans.png)
+<ul class="left">
+    <li class="fragment">Silent Errors</li>
+</ul>
+
+<ul class="right">
+    <li class="fragment">Compiler Checking</li>
+    <li class="fragment warn">Serialization (DB)</li>
+    <li class="fragment warn">Serialization (Json)</li>
+</ul>
+
+. <!-- .element: class="attribution" -->
+https://fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg <!-- .element: class="attribution" -->
