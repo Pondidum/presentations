@@ -19,6 +19,12 @@ p a.attribution {
   clear:both;
 }
 
+a.attribution.background {
+  z-index: 100;
+  position: absolute;
+  bottom: 0.5em;
+}
+
 .reveal section li {
   list-style: none;
 }
@@ -34,7 +40,7 @@ p a.attribution {
 
 .gains .right li {
   text-align: left;
-  color: green;
+  color: lime;
 }
 
 .gains li.warn {
@@ -79,6 +85,7 @@ p a.attribution {
   color: #ff2c2d;
 }
 
+a.small,
 p.small {
   font-size: medium;
 }

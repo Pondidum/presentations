@@ -1,6 +1,6 @@
 
-![Strong Type All The Things Image](img/all-the-things.png)
 ## Strong Type All The Things
+![Strong Type All The Things Image](img/all-the-things.png)
 
 http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="attribution"-->
 
@@ -386,5 +386,10 @@ public void SendWelcomeEmail(VerifiedEmail email)
     <li class="fragment warn">Serialization (DB & Json)</li>
 </ul>
 
-. <!-- .element: class="attribution" -->
 https://fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg <!-- .element: class="attribution" -->
+
+
+
+![Questions](img/questions.jpg)
+
+https://31.media.tumblr.com/22e951b9a924a3f83f03e3c535860e91/tumblr_inline_n32k4mN8SF1qfyjta.jpg <!-- .element: class="attribution" -->
