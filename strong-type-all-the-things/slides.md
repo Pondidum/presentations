@@ -4,12 +4,14 @@
 
 http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="attribution"-->
 
+Andy Davies | AndyDote.co.uk | github.com/pondidum | @pondidum<!-- .element class="small"-->
 
 
-### But seriously
-* Application configuration
-* IDs
-* Value types
+
+## But seriously
+* Application Configuration<!-- .element: class="fragment"-->
+* Identifiers<!-- .element: class="fragment"-->
+* Value Types<!-- .element: class="fragment"-->
 
 
 

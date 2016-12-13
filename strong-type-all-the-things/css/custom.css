@@ -78,3 +78,7 @@ p a.attribution {
 .reveal .slides section .fragment.strike.visible {
   color: #ff2c2d;
 }
+
+p.small {
+  font-size: medium;
+}
