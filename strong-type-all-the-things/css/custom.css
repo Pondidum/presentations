@@ -11,9 +11,9 @@
 
 .reveal .pic-label{margin-top:-1.5em;color:black;text-shadow:0 0 6px white;}
 
-.attribution {
-  position: absolute;
-  bottom: -5em;
+p a.attribution {
+  position: absolute !important;
+  top: -5em;
   right: 0;
   font-size: small !important;
   clear:both;
@@ -30,8 +30,6 @@
 
 .gains .left li {
   text-align: right;
-  color: red;
-  text-decoration: line-through;
 }
 
 .gains .right li {
@@ -71,4 +69,12 @@
 
 .reveal .pic-label.quote .big{font-size:40pt;}
 
-.reveal .pic-label.roketto-dan{margin-top:-3.75em;margin-bottom:2.5em;font-size:80pt;line-height:96pt;font-weight:bold;text-shadow:4px 4px 4px #ffffff,4px -4px 4px #ffffff,-4px 4px 4px #ffffff,-4px -4px 4px #ffffff;-webkit-transform:scaleY(1.5);}
+
+.reveal .slides section .fragment.strike {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.strike.visible {
+  color: #ff2c2d;
+}

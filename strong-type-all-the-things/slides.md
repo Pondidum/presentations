@@ -1,12 +1,8 @@
-### What should be strong typed?
 
-All The Things <!-- .element: class="pic-label quote fragment" data-fragment-index="1"-->
+![Strong Type All The Things Image](img/all-the-things.png)
+## Strong Type All The Things
 
-![Strong Type All The Things Image](img/all-the-things.png) <!-- .element: class="fragment" data-fragment-index="1"-->
-
-(mostly)<!-- .element: class="fragment" data-fragment-index="2"-->
-
-http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="attribution fragment" data-fragment-index="1"-->
+http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="attribution"-->
 
 
 
@@ -85,17 +81,18 @@ public class SomeActionHandler
 <!-- .slide: class="gains" -->
 ![No Pain No Gain](img/no-pain-no-gain-trans.png)
 <ul class="left">
-    <li>Magic Strings Everywhere</li>
-    <li>Coupling to App.Config</li>
+    <li class="fragment strike" data-fragment-index="1">Magic Strings Everywhere</li>
+    <li class="fragment strike" data-fragment-index="2">Coupling to App.Config</li>
 </ul>
 
 <ul class="right">
-    <li>Single Responsibility</li>
-    <li>Testability</li>
-    <li>Discoverability</li>
+    <li class="fragment" data-fragment-index="1">Centralised strings</li>
+    <li class="fragment" data-fragment-index="2">Loose Coupling</li>
+    <li class="fragment">Single Responsibility</li>
+    <li class="fragment">Testability</li>
+    <li class="fragment">Discoverability</li>
 </ul>
 
-. <!-- .element: class="attribution" -->
 https://fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg <!-- .element: class="attribution" -->
 
 
@@ -233,6 +230,7 @@ public struct CustomerId : IEquatable<CustomerId>
 Note: don't forget serialization!
 
 
+
 ```csharp
 public interface IOrderQuery
 {
@@ -251,16 +249,14 @@ var orders = orderQuery.Execute(product.id);
 <!-- .slide: class="gains" -->
 ![No Pain No Gain](img/no-pain-no-gain-trans.png)
 <ul class="left">
-    <li class="fragment">Silent Errors</li>
+    <li class="fragment strike" data-fragment-index="1">Silent Errors</li>
 </ul>
 
 <ul class="right">
-    <li class="fragment">Compiler Checking</li>
-    <li class="fragment warn">Serialization (DB)</li>
-    <li class="fragment warn">Serialization (Json)</li>
+    <li  class="fragment" data-fragment-index="1">Build Time Errors</li>
+    <li class="fragment warn">Serialization (DB & Json)</li>
 </ul>
 
-. <!-- .element: class="attribution" -->
 https://fatslowtriathlete.com/wp-content/uploads/2015/03/NO-PAIN-NO-GAIN.jpg <!-- .element: class="attribution" -->
 
 
@@ -377,15 +373,15 @@ public void SendWelcomeEmail(VerifiedEmail email)
 <!-- .slide: class="gains" -->
 ![No Pain No Gain](img/no-pain-no-gain-trans.png)
 <ul class="left">
-    <li class="fragment">Silent Errors</li>
-    <li class="fragment">Domain Errors</li>
+    <li class="fragment strike" data-fragment-index="1">Silent Errors</li>
+    <li class="fragment strike" data-fragment-index="2">Domain Errors</li>
 </ul>
 
 <ul class="right">
-    <li class="fragment">Compiler Checking</li>
-    <li class="fragment">Explicit Business Rules</li>
-    <li class="fragment warn">Serialization (DB)</li>
-    <li class="fragment warn">Serialization (Json)</li>
+    <li class="fragment" data-fragment-index="1">Build Time Errors</li>
+    <li class="fragment" data-fragment-index="2">Explicit Business Rules</li>
+    <li class="fragment">Centralisation</li>
+    <li class="fragment warn">Serialization (DB & Json)</li>
 </ul>
 
 . <!-- .element: class="attribution" -->
