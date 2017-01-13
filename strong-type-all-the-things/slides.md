@@ -20,7 +20,7 @@ Andy Davies | AndyDote.co.uk | github.com/pondidum | @pondidum<!-- .element clas
 
 
 ```csharp
-var url = ConfigurationManager.AppSetting["Endpoint"];
+var Endpoint = ConfigurationManager.AppSetting[nameof(Endpoint)];
 ```
 
 ```csharp
@@ -238,13 +238,27 @@ public interface IOrderQuery
 {
     IEnumerable<Order> Execute(CustomerId id);
 }
+
+//won't compile
+var orders = orderQuery.Execute(product.id);
+
+//this will :)
+var orders = orderQuery.Execute(customer.id);
 ```
 
 
 
 ```csharp
-var orders = orderQuery.Execute(product.id);
+public class Customer { /* ... */ }
+public class Product { /* ... */ }
+
+public interface IOrderQuery
+{
+    IEnumerable<Order> Execute(Identifier<Customer> id);
+}
 ```
+Note: you can base class it, but you then have to either create types for the param, or use your entities.
+I dont like the generics everywhere , and I am not sure on the perf of this.
 
 
 
@@ -334,6 +348,11 @@ class Email
         _email = address;
     }
 
+    protected Email(Email source)
+    {
+        _email = source._email;
+    }
+
     public virtual bool Verified => false;
 }
 ```
@@ -344,7 +363,7 @@ class Email
 class VerifiedEmail : Email
 {
 	public VerifiedEmail(VerificationService service, EmailAddress email)
-		: base(email.ToString())
+		: base(email)
 	{
 		if (service.IsVerified(email) == false)
 			throw new UnVerifiedEmailException(email);
@@ -369,6 +388,8 @@ public void SendWelcomeEmail(VerifiedEmail email)
     //...
 }
 ```
+
+Note: Email abstract, UnVerifiedEmail and VerifiedEmail?  Worth the perf?
 
 
 
