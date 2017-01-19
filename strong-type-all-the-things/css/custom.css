@@ -9,7 +9,15 @@
   box-shadow: none;
 }
 
-.reveal .pic-label{margin-top:-1.5em;color:black;text-shadow:0 0 6px white;}
+.reveal {
+  color: #eee8d5;
+}
+
+.reveal .pic-label {
+  margin-top:-1.5em;
+  color:black;
+  text-shadow:0 0 6px white;
+}
 
 p a.attribution {
   position: absolute !important;
