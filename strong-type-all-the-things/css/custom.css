@@ -19,6 +19,15 @@
   text-shadow:0 0 6px white;
 }
 
+p img {
+  margin-bottom: 0px !important;
+}
+
+p a.image-attribution {
+  font-size: small !important;
+  display: block;
+}
+
 p a.attribution {
   position: absolute !important;
   top: -5em;

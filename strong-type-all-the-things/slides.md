@@ -1,7 +1,5 @@
 ## Strong Type All The Things
-![Strong Type All The Things Image](img/all-the-things.png)
-
-http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="attribution"-->
+![Strong Type All The Things Image](img/all-the-things.png) http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="image-attribution"-->
 
 ### Andy Davies
 ### AndyDote.co.uk | github.com/pondidum | @pondidum
