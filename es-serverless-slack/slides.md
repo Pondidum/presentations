@@ -128,6 +128,28 @@ Note:
 
 
 
+## Aggregates
+note:
+* we only need two aggregates to start with
+* channels are the primary aggregate
+* has messages, users watching
+
+
+
+```
+const handleUserJoinedChannel = (event) => updateView(
+  "CHANNEL",
+  event.channelId,
+  view => {
+    view.users.push(userView[event.userid].name)
+  })
+```
+
+
+
+
+
+
 ![high level architecture](img/crowbar-architecture.png)
 Note:
 * well, serverless and eventsourcing are in the title
@@ -138,18 +160,3 @@ Note:
 * one lambda per aggregate root to process events
 * views stored as json in s3
 * static site loads s3 objects
-
-
-
-
-
-
-
-
-
-## Aggregates
-note:
-* we only need two aggregates to start with
-* channels are the primary aggregate
-  * has messages, users watching
-* users aggregate stores last messsage read per channel
