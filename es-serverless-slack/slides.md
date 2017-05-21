@@ -155,18 +155,29 @@ Note:
 
 
 ```
-const handleChannelCreated = (event) => {
-  updateView("ALL_CHANNELS", null, view => view.push()
-  updateView("CHANNEL", event.channelId, view => {
-    return {
-      id: event.channelId,
-      name: event.channelName,
-      description: event.description,
-      createdBy: userView[event.userId].name
-    }
-  })
+const updateView = (viewName, id, callback) => {
+  const path = id
+    ? `events/views/${viewName}.json`
+    : `events/views/${viewName}/${id}.json`
+  const query = { Bucket: 'crowbar-store', Key: key }
+
+  s3.getObject(query, (err, data) => {
+
+    const body = data && data.Body ? JSON.parse(data.Body) : null
+    const content = callback(body) || body
+
+    const command = Object.assign({}, query, {
+      Body: JSON.stringify(content, null, 2),
+      ContentType: 'application/json',
+      ACL: 'public-read'
+    })
+
+    s3.putObject(command, (err, data) => {})
+  }
 }
 ```
+Note:
+* again no error handling
 
 
 
