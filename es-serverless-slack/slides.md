@@ -26,7 +26,6 @@ Note:
 
 
 * channel_created
-* channel_created
 * message_sent
 * message_edited
 * user_joined_channel
@@ -137,15 +136,37 @@ note:
 
 
 ```
-const handleUserJoinedChannel = (event) => updateView(
-  "CHANNEL",
-  event.channelId,
-  view => {
-    view.users.push(userView[event.userid].name)
+const handleUserJoinedChannel = event => {
+
+  updateView('CHANNEL', event.channelId, view => {
+    view.users.push(userView[event.userId].name)
   })
+
+  updateView('ALL_CHANNELS', null, view => {
+    view[event.channelId].users += 1
+  })
+
+}
 ```
+Note:
+* views are just json files in s3
+* `updateView` is a function which upserts them
 
 
+
+```
+const handleChannelCreated = (event) => {
+  updateView("ALL_CHANNELS", null, view => view.push()
+  updateView("CHANNEL", event.channelId, view => {
+    return {
+      id: event.channelId,
+      name: event.channelName,
+      description: event.description,
+      createdBy: userView[event.userId].name
+    }
+  })
+}
+```
 
 
 
