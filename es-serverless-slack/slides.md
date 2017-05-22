@@ -192,3 +192,16 @@ Note:
 * one lambda per aggregate root to process events
 * views stored as json in s3
 * static site loads s3 objects
+
+
+
+# Scalability?
+Note:
+* to a a point, there are issues however
+* s3 updates are potentially lossy
+* also entries could appear out of order
+  * especially if you are getting multiple messages a second
+
+
+
+![sns](img/crowbar-architecture-sns.png)
