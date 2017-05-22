@@ -177,15 +177,13 @@ const updateView = (viewName, id, callback) => {
 }
 ```
 Note:
-* again no error handling
-
+* again no error handling, or most-recent update time
+* this has some consistency problems which we will go through later too
 
 
 
 ![high level architecture](img/crowbar-architecture.png)
 Note:
-* well, serverless and eventsourcing are in the title
-* but how to implement it
 * a static website deployed to s3 (react based)
 * an api-gateway, protected by cognito
 * a lambda to receive events from the website
