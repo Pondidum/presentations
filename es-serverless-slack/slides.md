@@ -41,19 +41,21 @@ Note:
 
 
 
-## User Aggregate
-* user_registered,
-* channel_created,
-* user_joined_channel,
-* user_left_channel
-
-## Channel Aggregate
-* channel_created,
-* user_joined_channel
-* user_left_channel
-* message_sent
-* message_edited
-
+<ul class="left">
+  <li><h2>UserAggregate</h2></li>
+  <li>user_registered</li>
+  <li>channel_created</li>
+  <li>user_joined_channel</li>
+  <li>user_left_channel</li>
+</ul>
+<ul class="right">
+  <li><h2>ChannelAggregate</h2></li>
+  <li>channel_created</li>
+  <li>user_joined_channel</li>
+  <li>user_left_channel</li>
+  <li>message_sent</li>
+  <li>message_edited</li>
+</ul>
 Note:
 * we have events which multiple aggregates care about
 * we can either introduce a separation
