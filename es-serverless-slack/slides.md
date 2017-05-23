@@ -192,6 +192,7 @@ Note:
 * one lambda per aggregate root to process events
 * views stored as json in s3
 * static site loads s3 objects
+* n.b., not really using the event storage for anything yet
 
 
 
@@ -205,3 +206,17 @@ Note:
 
 
 ![sns](img/crowbar-architecture-sns.png)
+Note:
+* use sns and sqs
+* sns will publish a message to multiple sqs queues
+* have one aggregate per queue
+* this enforces in-order messaage processing
+* why not do this to start with? start with mvp
+
+
+
+# Event replay
+Note:
+* should be fairly simple to manage
+* for each event, sns -> sqs it
+* or for a specific aggregate, just event -> sqs
