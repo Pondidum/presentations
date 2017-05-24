@@ -32,6 +32,7 @@ Note:
 * user_left_channel
 * user_registered
 Note:
+* this was my initial idea for structure
 * what are our aggregates?
   * can messages be posted to multiple channels at once? (e.g. hashtags on twitter)
   * or are channels owners of messages?
@@ -59,8 +60,24 @@ Note:
 Note:
 * we have events which multiple aggregates care about
 * we can either introduce a separation
-  * "events from the ui" (commands)
-  * "aggregate events" (events)
+
+
+
+# "events from the ui" (commands)
+Note:
+* command -> store -> router -> aggregate methods -> aggregate events
+* each aggregate would create it's own eventsourcing event based on the command
+
+
+
+# "aggregate events" (events)
+Note:
+* event -> store -> router -> aggregate
+* events from the ui get sent to each
+
+
+
+Note:
 * or not bother to start with.
 * single stream is an easier starting point
 * storing in a single stream helps here, we can re-process events to make the split later
@@ -198,7 +215,7 @@ Note:
 
 # Scalability?
 Note:
-* to a a point, there are issues however
+* to a point, there are issues however
 * s3 updates are potentially lossy
 * also entries could appear out of order
   * especially if you are getting multiple messages a second
