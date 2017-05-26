@@ -154,6 +154,50 @@ note:
 
 
 
+```c#
+public class ChannelAggregate : AggregateRoot
+{
+  public void Join(User user)
+  {
+    Apply(new UserJoinedChannelEvent(
+      UserId: user.id,
+      ChannelId: this.id
+    );
+  }
+
+  private void Handle(UserJoinedChannelEvent e)
+  {
+    _users.Add(e.UserId);
+  }
+}
+```
+
+
+
+```c#
+public class ChannelProjection : Projection
+{
+  public IEnumerable<string> => _users;
+  public string Name { get; private set; }
+  public string Description { get; private set; }
+
+  private readonly HashSet<string> _users;
+
+  private void Handle(UserJoinedChannelEvent e)
+  {
+    _users.Add(_userView.GetOrDefault(e.UserId).Name);
+  }
+
+  private void Handle(ChannelCreatedEvent e)
+  {
+    Name = e.Name;
+    Description = e.Description;
+  }
+}
+```
+
+
+
 ```
 const handleUserJoinedChannel = event => {
 
