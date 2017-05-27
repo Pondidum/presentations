@@ -171,6 +171,10 @@ public class ChannelAggregate : AggregateRoot
   }
 }
 ```
+Note:
+* event creation happens within the aggregate (commands to api)
+* handler execution is called by `Apply` and by loading
+* Projections are elsewhere
 
 
 
@@ -195,6 +199,9 @@ public class ChannelProjection : Projection
   }
 }
 ```
+Note:
+* uses a userview projection/service to get usernames from the id
+* this would be async to saving of events
 
 
 
