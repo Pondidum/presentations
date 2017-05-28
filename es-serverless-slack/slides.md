@@ -202,18 +202,25 @@ public class ChannelProjection : Projection
 Note:
 * uses a userview projection/service to get usernames from the id
 * this would be async to saving of events
+* we have the option of splitting the aggregates
+  * public methods clientside
+  * handlers serverside
 
 
 
-```
+```javascript
 const handleUserJoinedChannel = event => {
 
-  updateView('CHANNEL', event.channelId, view => {
-    view.users.push(userView[event.userId].name)
+  updateView({ viewName: 'CHANNEL', id: event.channelId,
+    callback: view => {
+      view.users.push(userView[event.userId].name)
+    }
   })
 
-  updateView('ALL_CHANNELS', null, view => {
-    view[event.channelId].users += 1
+  updateView({ viewName: 'ALL_CHANNELS', defaultView: [],
+    callback: view => {
+      view[event.channelId].users += 1
+    }
   })
 
 }
