@@ -171,6 +171,71 @@ Note:
 
 
 
+```c#
+public class ChannelAggregate
+{
+  public void Join(User user)
+  {
+    //validation...
+
+    var e = new UserJoinedChannelEvent(
+      userId: user.id,
+      channelId: this.id);
+
+    Apply(e);
+  }
+
+  void Handle(UserJoinedChannelEvent e)
+  {
+    _users.Add(e.UserId);
+  }
+}
+
+public class ChannelProjection
+{
+  void Handle(UserJoinedChannelEvent e)
+  {
+    _users.Add(_userView
+      .GetOrDefault(e.UserId)
+      .Name);
+  }
+}
+```
+<!-- .element: class="left"-->
+```c#
+//client side:
+const join = user =>
+{
+  var event = CreateEvent({
+    userId: user.id,
+    channelId: this.id);
+  });
+
+  Validate(this, event);
+  Dispatch(event);
+}
+
+//serverside sync
+const onEvent = event => {
+  Store(event);
+  TriggerProjections(event);
+}
+
+//serverside async
+const channelProjection = event => {
+  const handler = handlers[event.type];
+  handler(view, event);
+}
+```
+<!-- .element: class="right"-->
+Note:
+* it's now javascript
+* clientside `Dispatch` is in browser, calls api-gateway
+* serverside sync is lambda which responds with ok if the event was stored
+* serverside async is lamdbas for projecting events into views
+
+
+
 ## Processing
 Note:
 * basic idea is a endpoint
