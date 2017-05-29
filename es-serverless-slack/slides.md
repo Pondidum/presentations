@@ -109,43 +109,6 @@ Note:
 
 
 
-## Processing
-Note:
-* basic idea is a endpoint
-  * stores the event to permanent storage
-  * forwards it to aggregates (async)
-  * returns "ok"
-* api gateway and lambda for this
-
-
-
-```javascript
-exports.handler = function(awsEvent, context, callback) {
-
-  const metadata = {
-    timestamp: new Date().getTime(),
-    eventId: uuid()
-  }
-
-  const event = Object.assign(
-    {},
-    JSON.parse(awsEvent.body),
-    metadata)
-
-  writeToStorage(event)
-    .then(data => triggerAggregates(event)
-    .then(data => sendOkResponse(callback)))
-}
-```
-Note:
-* error handling has been omitted
-* the lambda controls the timestamp and eventId
-* no sequence number used
-  * don't want to cause blocking resource
-  * ordering by date should be good enough
-
-
-
 ## Aggregates
 note:
 * we only need two aggregates to start with
@@ -159,10 +122,10 @@ public class ChannelAggregate : AggregateRoot
 {
   public void Join(User user)
   {
-    Apply(new UserJoinedChannelEvent(
-      UserId: user.id,
-      ChannelId: this.id
-    );
+    //validation...
+
+    var e = new UserJoinedChannelEvent(userId: user.id, channelId: this.id);
+    Apply(e);
   }
 
   private void Handle(UserJoinedChannelEvent e)
@@ -208,6 +171,43 @@ Note:
 
 
 
+## Processing
+Note:
+* basic idea is a endpoint
+  * stores the event to permanent storage
+  * forwards it to aggregates (async)
+  * returns "ok"
+* api gateway and lambda for this
+
+
+
+```javascript
+exports.handler = function(awsEvent, context, callback) {
+
+  const metadata = {
+    timestamp: new Date().getTime(),
+    eventId: uuid()
+  }
+
+  const event = Object.assign(
+    {},
+    JSON.parse(awsEvent.body),
+    metadata)
+
+  writeToStorage(event)
+    .then(data => triggerAggregates(event)
+    .then(data => sendOkResponse(callback)))
+}
+```
+Note:
+* error handling has been omitted
+* the lambda controls the timestamp and eventId
+* no sequence number used
+  * don't want to cause blocking resource
+  * ordering by date should be good enough
+
+
+
 ```javascript
 const handleUserJoinedChannel = event => {
 
@@ -231,7 +231,7 @@ Note:
 
 
 
-```
+```javascript
 const updateView = (viewName, id, callback) => {
   const path = id
     ? `events/views/${viewName}.json`
