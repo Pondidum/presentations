@@ -63,16 +63,20 @@ a.attribution.background {
   left:-8.33%;
   text-align: left;
   float: left;
-  width: 45%;
+  width: 49% !important;
   z-index:-10;
+  position: static !important;
+  margin-left: 0 !important;
 }
 
 .right {
   left:31.25%;
   top: 75px;
   float: right;
+  width: 49% !important;
   z-index:-10;
-  width: 45%;
+  position: static !important;
+  margin-left: 0 !important;
 }
 
 
