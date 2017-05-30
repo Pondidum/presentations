@@ -236,13 +236,15 @@ Note:
 
 
 
-## Processing
+## ServerSide Async
 Note:
-* basic idea is a endpoint
+* let's skip the clientside for now :)
+* basic idea is a http endpoint
   * stores the event to permanent storage
-  * forwards it to aggregates (async)
+  * triggers aggregates and projections
   * returns "ok"
 * api gateway and lambda for this
+* protect the api to logged in users using cognito
 
 
 
@@ -270,24 +272,31 @@ Note:
 * no sequence number used
   * don't want to cause blocking resource
   * ordering by date should be good enough
+  * this could be solved using rds postgres with a `serial` column
 
 
 
 ```javascript
-const handleUserJoinedChannel = event => {
+const handlers = {
+  CHANNEL_CREATED: (view, event) => {
+    return view.concat([createChannel(event)])
+  },
 
-  updateView({ viewName: 'CHANNEL', id: event.channelId,
-    callback: view => {
-      view.users.push(userView[event.userId].name)
-    }
-  })
+  USER_JOINED_CHANNEL: (view, event) => {
+    return updateChannel(view, event.channelId, existing => {
+      return { users: existing.users + 1 }
+    })
+  }
+}
 
-  updateView({ viewName: 'ALL_CHANNELS', defaultView: [],
-    callback: view => {
-      view[event.channelId].users += 1
-    }
-  })
+module.exports = event => {
+  const handler = handlers[event.type]
 
+  return {
+    viewName: 'allchannels',
+    defaultView: [],
+    callback: view => handler(view, event)
+  }
 }
 ```
 Note:
@@ -297,25 +306,31 @@ Note:
 
 
 ```javascript
-const updateView = (viewName, id, callback) => {
+const updateView = ({s3 = new S3(), defaultView = {}, viewName, id, cb}) => {
   const path = id
     ? `events/views/${viewName}.json`
     : `events/views/${viewName}/${id}.json`
-  const query = { Bucket: 'crowbar-store', Key: key }
 
-  s3.getObject(query, (err, data) => {
+  return new Promise((resolve, reject) => {
+    s3.getObject({ Bucket: 'crowbar-store', Key: key }, (err, data) => {
 
-    const body = data && data.Body ? JSON.parse(data.Body) : null
-    const content = callback(body) || body
+      const body = data && data.Body
+        ? JSON.parse(data.Body)
+        : defaultView
 
-    const command = Object.assign({}, query, {
-      Body: JSON.stringify(content, null, 2),
-      ContentType: 'application/json',
-      ACL: 'public-read'
+      const content = cb(body) || body
+
+      const command = {
+        Bucket: 'crowbar-store',
+        Key: key,
+        Body: JSON.stringify(content, null, 2),
+        ContentType: 'application/json',
+        ACL: 'public-read'
+      }
+
+      s3.putObject(command, (err, data) => resolve())
     })
-
-    s3.putObject(command, (err, data) => {})
-  }
+  })
 }
 ```
 Note:
