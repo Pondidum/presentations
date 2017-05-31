@@ -1,13 +1,12 @@
-## Building a Serverless, EventSourced, Slack Clone.
-![Serverless](img/serverless.png)
-{some attribution here}<!-- .element: class="image-attribution"-->
+### Building a Serverless, EventSourced, Slack Clone
+![Serverless](img/logo.png)
 
+##### AndyDote.co.uk &nbsp; | &nbsp; github.com/pondidum &nbsp; | &nbsp; @pondidum
+http://stavrapid-official.deviantart.com/art/Half-Life-3-logo-with-logotypes-466077248<!-- .element: class="image-attribution"-->
+https://geteventstore.com/<!-- .element: class="image-attribution"-->
 
-
-
-### Andy Davies
-### AndyDote.co.uk | github.com/pondidum | @pondidum
 Note:
+* we're not using EventStore *sadface*
 * I work for Lindorff Oy,  helping to build an online payment service
 
 
