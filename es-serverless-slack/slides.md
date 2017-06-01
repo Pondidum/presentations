@@ -62,14 +62,14 @@ Note:
 
 
 
-# "events from the ui" (commands)
+![Commands](img/commands.png)
 Note:
 * command -> store -> router -> aggregate methods -> aggregate events
 * each aggregate would create it's own eventsourcing event based on the command
 
 
 
-# "aggregate events" (events)
+![Commands](img/events.png)
 Note:
 * event -> store -> router -> aggregate
 * events from the ui get sent to each
