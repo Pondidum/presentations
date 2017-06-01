@@ -73,12 +73,6 @@ Note:
 Note:
 * event -> store -> router -> aggregate
 * events from the ui get sent to each
-
-
-
-Note:
-* or not bother to start with.
-* single stream is an easier starting point
 * storing in a single stream helps here, we can re-process events to make the split later
 
 
@@ -201,7 +195,7 @@ public class ChannelProjection
 }
 ```
 <!-- .element: class="left"-->
-```c#
+```javascript
 //client side:
 const join = user =>
 {
@@ -213,36 +207,29 @@ const join = user =>
   Validate(this, event);
   Dispatch(event);
 }
-
+```
+<!-- .element: class="right fragment"-->
+```javascript
 //serverside sync
 const onEvent = event => {
   Store(event);
   TriggerProjections(event);
 }
-
+```
+<!-- .element: class="right fragment"-->
+```javascript
 //serverside async
 const channelProjection = event => {
   const handler = handlers[event.type];
   handler(view, event);
 }
 ```
-<!-- .element: class="right"-->
+<!-- .element: class="right fragment"-->
 Note:
 * it's now javascript
 * clientside `Dispatch` is in browser, calls api-gateway
 * serverside sync is lambda which responds with ok if the event was stored
 * serverside async is lamdbas for projecting events into views
-
-
-
-## ServerSide Async
-Note:
-* let's skip the clientside for now :)
-* basic idea is a http endpoint
-  * stores the event to permanent storage
-  * triggers aggregates and projections
-  * returns "ok"
-* api gateway and lambda for this
 * protect the api to logged in users using cognito
 
 
