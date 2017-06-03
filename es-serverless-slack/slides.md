@@ -355,7 +355,8 @@ Note:
 
 # Scalability?
 Note:
-* to a point, there are issues however
+* s3 is scalable, so ui & views are fine for access
+* there are issues however
 * s3 updates are potentially lossy
 * also entries could appear out of order
   * especially if you are getting multiple messages a second
