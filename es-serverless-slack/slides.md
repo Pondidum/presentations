@@ -378,3 +378,29 @@ Note:
 * should be fairly simple to manage
 * for each event, sns -> sqs it
 * or for a specific aggregate, just event -> sqs
+
+
+
+# Cognito
+Note:
+* easy to add an api-gateway authoriser for
+* but you have to do it manually, as terraform doesn't support it yet
+
+
+
+```javascript
+const { CognitoUserPool } = AWSCognito.CognitoIdentityServiceProvider
+
+const userPool = new CognitoUserPool({
+  UserPoolId: 'eu-west-1_uZwatXisF',
+  ClientId: 'wat_is_a_client_id_philosophically_?'
+})
+```
+
+
+
+> ...with userPoolId and clientId, only unauthenticated APIs can be called, for eg: SignUp, authenticate, forgotPassword etc...
+
+Note:
+* from the aws forums
+* could hide it behind an api-gateway & lambda if you wanted too
