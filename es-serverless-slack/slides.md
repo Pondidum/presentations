@@ -85,39 +85,6 @@ Note:
 
 
 
-![events](img/events.svg)
-Note:
-* event -> store -> router -> aggregate
-* events from the ui get sent to each
-* storing in a single stream helps here, we can re-process events to make the split later
-
-
-
-![kafka logs](img/log_consumer.png)
-https://kafka.apache.org/intro <!-- .element: class="image-attribution"-->
-Note:
-* Kafka would be pretty ideal for this
-* But it's not serverless
-
-
-
-## Kinesis
-![Kinesis](img/AWS-Summit_recap_KinesisStreams.png)
-Note:
-* Kinesis streams are pretty similar to Kafka
-* But there is a problem, we want permanent log storage
-* "the retention period and is configurable in hourly increments from 1 to 7 days."
-* choice:
-  * use kafka (ec2/docker)
-  * work around Kinesis
-  * something else
-* not going to break the serverless requirement that easily!
-  * events will have timestamps & uuids
-  * so store in rds/dynamo
-  * if an aggregate needs stream position, it can store last-read uuid
-
-
-
 ## Aggregates
 note:
 * we only need two aggregates to start with
@@ -247,6 +214,39 @@ Note:
 * serverside sync is lambda which responds with ok if the event was stored
 * serverside async is lamdbas for projecting events into views
 * protect the api to logged in users using cognito
+
+
+
+![events](img/events.svg)
+Note:
+* event -> store -> router -> aggregate
+* events from the ui get sent to each
+* storing in a single stream helps here, we can re-process events to make the split later
+
+
+
+![kafka logs](img/log_consumer.png)
+https://kafka.apache.org/intro <!-- .element: class="image-attribution"-->
+Note:
+* Kafka would be pretty ideal for this
+* But it's not serverless
+
+
+
+## Kinesis
+![Kinesis](img/AWS-Summit_recap_KinesisStreams.png)
+Note:
+* Kinesis streams are pretty similar to Kafka
+* But there is a problem, we want permanent log storage
+* "the retention period and is configurable in hourly increments from 1 to 7 days."
+* choice:
+  * use kafka (ec2/docker)
+  * work around Kinesis
+  * something else
+* not going to break the serverless requirement that easily!
+  * events will have timestamps & uuids
+  * so store in rds/dynamo
+  * if an aggregate needs stream position, it can store last-read uuid
 
 
 
