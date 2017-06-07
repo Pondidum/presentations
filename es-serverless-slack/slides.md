@@ -69,30 +69,6 @@ Note:
 
 
 
-```javascript
-const event = {
-  timestamp: new Date().getTime(),
-  eventId: uuid(),
-  type: "USER_JOINED_CHANNEL",
-  userId: 1233123,
-  channelId: "general"
-}
-```
-Note:
-* all the commands are very simple (to start with)
-* timestamp and eventid handled by the serverside
-* the rest is pretty light, so mvp can be smaller
-
-
-
-## Aggregates
-note:
-* we only need two aggregates to start with
-* channels are the primary aggregate
-* has messages, users watching
-
-
-
 ```c#
 public class ChannelAggregate : AggregateRoot
 {
@@ -144,6 +120,33 @@ Note:
 * we have the option of splitting the aggregates
   * public methods clientside
   * handlers serverside
+
+
+
+```javascript
+const command = {
+  timestamp: new Date().getTime(),
+  eventId: uuid(),
+  type: "JOIN_CHANNEL",
+  userId: 1233123,
+  channelId: "general"
+}
+```
+<!-- .element: class="left"-->
+```javascript
+const event = {
+  timestamp: new Date().getTime(),
+  eventId: uuid(),
+  type: "USER_JOINED_CHANNEL",
+  userId: 1233123,
+  channelId: "general"
+}
+```
+<!-- .element: class="right fragment"-->
+Note:
+* all the commands are very simple (to start with)
+* timestamp and eventid handled by the serverside
+* the rest is pretty light, so mvp can be smaller
 
 
 
@@ -253,19 +256,18 @@ Note:
 ```javascript
 exports.handler = function(awsEvent, context, callback) {
 
-  const metadata = {
-    timestamp: new Date().getTime(),
-    eventId: uuid()
-  }
+  const defaultValues = { eventId: uuid() }
+  const forcedValues = { timestamp: new Date().getTime() }
 
   const event = Object.assign(
-    {},
+    defaultValues,
     JSON.parse(awsEvent.body),
-    metadata)
+    forcedValues)
 
   writeToStorage(event)
-    .then(data => triggerAggregates(event)
-    .then(data => sendOkResponse(callback)))
+  triggerProjections(event)
+
+  sendOkResponse(callback)
 }
 ```
 Note:
@@ -275,6 +277,52 @@ Note:
   * don't want to cause blocking resource
   * ordering by date should be good enough
   * this could be solved using rds postgres with a `serial` column
+
+
+
+```javascript
+const aws = require('aws-sdk')
+const lambda = new aws.Lambda({ region: 'eu-west-1' })
+
+module.exports = event => {
+
+  const command = {
+    InvocationType: 'Event',
+    Payload: JSON.stringify(event),
+    FunctionName: 'crowbar_projections'
+  }
+
+  return new Promise((resolve, reject) =>
+    lambda.invoke(command, (err, data) => {
+      if (err) reject(err)
+      else resolve(data)
+    })
+  )
+}
+```
+
+
+
+```javascript
+const updateView = require('./util/updateView')
+const allChannels = require('./projections/allchannels')
+const allUsers = require('./projections/allusers')
+
+const projections = [
+  allChannels,
+  allUsers
+]
+
+exports.handler = event => Promise.all(
+  projections.map(project =>
+    updateView(project(event))
+  )
+)
+```
+Note:
+* currently all projects are run (async) within one lambda
+* could move this to trigger 1x lambda per projections if needed
+* `updateView` manages s3 interaction, loads a file, updates it, writes it back
 
 
 
@@ -302,42 +350,9 @@ module.exports = event => {
 }
 ```
 Note:
-* views are just json files in s3
-* `updateView` is a function which upserts them
-
-
-
-```javascript
-const updateView = ({s3 = new S3(), defaultView = {}, viewName, id, cb}) => {
-  const path = id
-    ? `events/views/${viewName}.json`
-    : `events/views/${viewName}/${id}.json`
-
-  return new Promise((resolve, reject) => {
-    s3.getObject({ Bucket: 'crowbar-store', Key: key }, (err, data) => {
-
-      const body = data && data.Body
-        ? JSON.parse(data.Body)
-        : defaultView
-
-      const content = cb(body) || body
-
-      const command = {
-        Bucket: 'crowbar-store',
-        Key: key,
-        Body: JSON.stringify(content, null, 2),
-        ContentType: 'application/json',
-        ACL: 'public-read'
-      }
-
-      s3.putObject(command, (err, data) => resolve())
-    })
-  })
-}
-```
-Note:
-* again no error handling, or most-recent update time
-* this has some consistency problems which we will go through later too
+* handlers are given the current view and event
+* return a new view
+* `updateView` creates a new array based off old, with one element replaced with an updated version
 
 
 
@@ -350,6 +365,34 @@ Note:
 * views stored as json in s3
 * static site loads s3 objects
 * n.b., not really using the event storage for anything yet
+
+
+
+# Cognito
+Note:
+* easy to add an api-gateway authoriser for
+* but you have to do it manually, as terraform doesn't support it yet
+
+
+
+```javascript
+const { CognitoUserPool } = AWSCognito.CognitoIdentityServiceProvider
+
+const userPool = new CognitoUserPool({
+  UserPoolId: 'eu-west-1_uZwatXisF',
+  ClientId: 'wat_is_a_client_id_philosophically_?'
+})
+```
+Note:
+* having a userPoolId and clientId in clientside code worries me
+* but I found this on the aws forums
+
+
+> ...with userPoolId and clientId, only unauthenticated APIs can be called, for eg: SignUp, authenticate, forgotPassword etc...
+
+Note:
+* so it's fine, I guess?
+* you could hide calls behind public api-gateway methods too if preferred
 
 
 
@@ -378,29 +421,3 @@ Note:
 * should be fairly simple to manage
 * for each event, sns -> sqs it
 * or for a specific aggregate, just event -> sqs
-
-
-
-# Cognito
-Note:
-* easy to add an api-gateway authoriser for
-* but you have to do it manually, as terraform doesn't support it yet
-
-
-
-```javascript
-const { CognitoUserPool } = AWSCognito.CognitoIdentityServiceProvider
-
-const userPool = new CognitoUserPool({
-  UserPoolId: 'eu-west-1_uZwatXisF',
-  ClientId: 'wat_is_a_client_id_philosophically_?'
-})
-```
-
-
-
-> ...with userPoolId and clientId, only unauthenticated APIs can be called, for eg: SignUp, authenticate, forgotPassword etc...
-
-Note:
-* from the aws forums
-* could hide it behind an api-gateway & lambda if you wanted too
