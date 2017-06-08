@@ -396,6 +396,31 @@ Note:
 
 
 
+```javascript
+exports.handler = function(awsEvent, context) {
+
+  const attributes = awsEvent.request.userAttributes
+
+  const event = {
+    eventId: uuid(),
+    timestamp: new Date().getTime(),
+    type: 'USER_REGISTERED',
+    userId: attributes.sub,
+    email: attributes.email
+  }
+
+  writeToStorage(event)
+  triggerProjections(event)
+
+  context.done(null, awsEvent)
+}
+```
+Note:
+* very similar to the api event handler
+* we control the whole event, so no need for default eventId, timestamp handling
+* we could add other events to other cognito stages (e.g. PreAuthentication, PostAuthentication)
+
+
 # Scalability?
 Note:
 * s3 is scalable, so ui & views are fine for access
