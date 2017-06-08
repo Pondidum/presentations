@@ -24,6 +24,75 @@ Note:
 
 
 
+![terraform](img/terraform-all-the-things.png)
+## terraform all the things!
+Except cognito : (<!-- .element: class="small fragment" -->
+Note:
+* hashicorp's terraform tool to manage all aws stuff...
+* works with other clouds too, like Azure or....are there any others, really?
+* No cognito support yet (coming soon)
+* for a through guide, look up Paul Stack or James Nugent's talks :)
+
+
+
+```bash
+variable "region" {
+  default = "eu-west-1" # Irish region best region!
+}
+
+provider "aws" {
+  profile = "default"
+  region = "${var.region}"
+}
+
+data "aws_caller_identity" "current" {}
+
+variable "bucket_name" {
+  default = "crowbar-store"
+}
+```
+Note:
+* `aws_caller_identity` will fetch our account_id, no need to hard code it
+* put our common variables here (such as bucket names, db names etc)
+
+
+
+```bash
+resource "aws_s3_bucket" "storage" {
+  bucket = "${var.bucket_name}"
+  acl = "public-read"
+}
+```
+Note:
+* very complex, no?
+
+
+
+```bash
+data "template_file" "s3_role_policy" {
+  template = "${file("policies/api-lambda-role-policy.json")}"
+  vars {
+    bucket_name = "${var.bucket_name}"
+  }
+}
+
+resource "aws_iam_role" "crowbar_lambda_role" {
+  name = "crowbar_lambda_role"
+  assume_role_policy = "${file("policies/api-lambda-role.json")}"
+}
+
+resource "aws_iam_role_policy" "crowbar_lambda_role_policy" {
+  name = "crowbar_lambda_role_policy"
+  role = "${aws_iam_role.crowbar_lambda_role.id}"
+  policy = "${data.template_file.s3_role_policy.rendered}"
+}
+```
+Note:
+* policies are expressed in json
+* template_file is a merge engine, only replaces bucket name in the policy json
+
+
+
 * channel_created
 * message_sent
 * message_edited
