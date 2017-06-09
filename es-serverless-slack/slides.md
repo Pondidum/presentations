@@ -457,6 +457,7 @@ Note:
 * but I found this on the aws forums
 
 
+
 > ...with userPoolId and clientId, only unauthenticated APIs can be called, for eg: SignUp, authenticate, forgotPassword etc...
 
 Note:
@@ -490,11 +491,17 @@ Note:
 * we could add other events to other cognito stages (e.g. PreAuthentication, PostAuthentication)
 
 
+
 # Scalability?
 Note:
 * s3 is scalable, so ui & views are fine for access
+
+
+
+![high level architecture](img/crowbar-architecture.png)
+Note:
 * there are issues however
-* s3 updates are potentially lossy
+* s3 parallel updates could cause data loss
 * also entries could appear out of order
   * especially if you are getting multiple messages a second
 
