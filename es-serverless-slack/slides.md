@@ -27,6 +27,8 @@ Note:
 ![terraform](img/terraform-all-the-things.png)
 ## terraform all the things!
 Except cognito : (<!-- .element: class="small fragment" -->
+
+http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="image-attribution"-->
 Note:
 * hashicorp's terraform tool to manage all aws stuff...
 * works with other clouds too, like Azure or....are there any others, really?
@@ -510,10 +512,10 @@ Note:
 ![sns](img/crowbar-architecture-sns.png)
 Note:
 * use sns and sqs
-* sns will publish a message to multiple sqs queues
 * have one aggregate per queue
 * this enforces in-order messaage processing
 * why not do this to start with? start with mvp
+* sns is here so we can add other queues later without much changing
 
 
 
@@ -522,3 +524,36 @@ Note:
 * should be fairly simple to manage
 * for each event, sns -> sqs it
 * or for a specific aggregate, just event -> sqs
+
+
+
+# Plugins!
+Note:
+* plugins should not effect the running of system
+* we can attach them via queues
+* either at the command phase, or at the event phase
+
+
+
+![plugins](img/crowbar-architecture-plugins.png)
+Note:
+* each plugin get's it's own queue
+* could back-populate the queue on creation if needed
+* could provide a set of standard lambdas which do things like POST to uri
+* could also support using the full arn for a lambda in a different aws account
+* a plugin I want to try is an IRC adaptor...but can it be Serverless?
+
+
+
+# Wrapping Up
+* I've learnt loads about AWS, Terraform
+* Serverless trade-offs
+* Code will be on my github "soon"
+Note:
+* aws: cognito, dynamodb
+
+
+
+# Questions?
+![questions](img/questions.jpg)
+##### AndyDote.co.uk &nbsp; | &nbsp; github.com/pondidum &nbsp; | &nbsp; @pondidum
