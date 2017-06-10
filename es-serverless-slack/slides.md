@@ -42,16 +42,16 @@ variable "region" {
   default = "eu-west-1" # Irish region best region!
 }
 
+variable "bucket_name" {
+  default = "crowbar-store"
+}
+
 provider "aws" {
   profile = "default"
   region = "${var.region}"
 }
 
 data "aws_caller_identity" "current" {}
-
-variable "bucket_name" {
-  default = "crowbar-store"
-}
 ```
 Note:
 * `aws_caller_identity` will fetch our account_id, no need to hard code it
@@ -92,6 +92,26 @@ resource "aws_iam_role_policy" "crowbar_lambda_role_policy" {
 Note:
 * policies are expressed in json
 * template_file is a merge engine, only replaces bucket name in the policy json
+
+
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": [
+              "s3:GetObject*",
+              "s3:PutObject*"
+          ],
+          "Resource": [
+              "arn:aws:s3:::${bucket_name}/*"
+          ]
+      }
+  ]
+}
+```
 
 
 
