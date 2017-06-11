@@ -19,7 +19,7 @@ Note:
 
 
 
-# Chat App ==  Simple
+# Chat App == Simple
 # right? <!-- .element: class="fragment" -->
 
 
@@ -426,6 +426,45 @@ const event = {
 
 
 
+
+```bash
+resource "aws_api_gateway_rest_api" "api" {
+  name = "Crowbar Event Api"
+  description = "Http api for consuming Crowbar events"
+}
+
+resource "aws_api_gateway_resource" "events" {
+  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+  parent_id = "${aws_api_gateway_rest_api.api.root_resource_id}"
+  path_part = "events"
+}
+
+resource "aws_api_gateway_method" "events_post" {
+  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+  resource_id = "${aws_api_gateway_resource.events.id}"
+  http_method = "POST"
+  authorization = "NONE" # terraform doesnt support cognito yet
+}
+
+resource "aws_api_gateway_integration" "events_post_lamdba" {
+  rest_api_id = "${aws_api_gateway_rest_api.api.id}"
+  resource_id = "${aws_api_gateway_resource.events.id}"
+  http_method = "${aws_api_gateway_method.events_post.http_method}"
+  type = "AWS_PROXY"
+  uri = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${var.region}:${data.aws_caller_identity.current.account_id}:function:${aws_lambda_function.crowbar_api_event_lambda.function_name}/invocations"
+  integration_http_method = "POST"
+}
+```
+Note:
+* while this looks fairly daunting, it's not bad
+* an api, single path part "events"
+* supports "POST"
+* triggers a lambda
+* note we can't setup cognito auth yet
+* most of this was taken from the terraform docs
+
+
+
 ```javascript
 exports.handler = function(awsEvent, context, callback) {
 
@@ -542,6 +581,8 @@ Note:
 
 
 # Cognito
+![Cognito logo](img/cognito.png)
+https://aws.amazon.com/cognito/ <!-- .element: class="image-attribution"-->
 Note:
 * easy to add an api-gateway authoriser for
 * but you have to do it manually, as terraform doesn't support it yet
@@ -549,8 +590,60 @@ Note:
 
 
 ```javascript
-const { CognitoUserPool } = AWSCognito.CognitoIdentityServiceProvider
+const userPool = new CognitoUserPool({
+  UserPoolId: 'eu-west-1_uZwatXisF',
+  ClientId: 'wat_is_a_client_id_philosophically_?'
+})
 
+return new Promise((resolve, reject) => {
+  const userId = uuid()
+  const attributes = [
+    new CognitoUserAttribute({ Name: 'email', Value: email })
+  ]
+
+  userPool.signUp(userId, password, attributes, null, (err, result) => {
+    if (err) return reject(err)
+
+    dispatch(userChanged(result.user))
+    resolve(result.user)
+  })
+})
+```
+
+
+
+```javascript
+return new Promise((resolve, reject) => {
+  const authenticationDetails = new AuthenticationDetails({
+    Username: username,
+    Password: password
+  })
+
+  const cognitoUser = new CognitoUser({
+    Username: username,
+    Pool: userPool
+  })
+
+  cognitoUser.authenticateUser(authenticationDetails, {
+    onFailure: reject,
+    onSuccess: result => {
+
+      AWSCognito.config.credentials = new CognitoIdentityCredentials({
+        Logins: {
+          [cognitoPoolUri]: result.getIdToken().getJwtToken()
+        }
+      })
+
+      dispatch(userChanged(cognitoUser))
+      resolve(result)
+    }
+  })
+})
+```
+
+
+
+```javascript
 const userPool = new CognitoUserPool({
   UserPoolId: 'eu-west-1_uZwatXisF',
   ClientId: 'wat_is_a_client_id_philosophically_?'
@@ -562,11 +655,20 @@ Note:
 
 
 
-> ...with userPoolId and clientId, only unauthenticated APIs can be called, for eg: SignUp, authenticate, forgotPassword etc...
+> ...with userPoolId and clientId, only unauthenticated APIs can be called, for eg: SignUp, authenticate, forgotPassword etc.
+>
+> So userPoolId and clientId alone are not enough to do any malicious activity on your user pool.
 
 Note:
 * so it's fine, I guess?
 * you could hide calls behind public api-gateway methods too if preferred
+
+
+
+![cognito-triggers](img/cognito-triggers.png)
+Note:
+* support for other triggers (e.g. PreAuthentication, PostAuthentication)
+* could log login attempts, create a projection for detecting attacks
 
 
 
@@ -592,7 +694,6 @@ exports.handler = function(awsEvent, context) {
 Note:
 * very similar to the api event handler
 * we control the whole event, so no need for default eventId, timestamp handling
-* we could add other events to other cognito stages (e.g. PreAuthentication, PostAuthentication)
 
 
 
@@ -648,11 +749,12 @@ Note:
 
 
 # Wrapping Up
-* I've learnt loads about AWS, Terraform
-* Serverless trade-offs
-* Code will be on my github "soon"
+* I've learnt loads about AWS, Terraform <!-- .element: class="fragment"-->
+* Serverless trade-offs <!-- .element: class="fragment"-->
+* Code will be on my github "soon"  <!-- .element: class="fragment"-->
 Note:
 * aws: cognito, dynamodb
+* code: soon = probably next week
 
 
 
