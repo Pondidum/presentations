@@ -115,6 +115,61 @@ Note:
 
 
 
+![ui](img/crowbar-ui.png)
+Note:
+* super simple looking ui
+* its react, redux, bootstrap based
+* create channels, send messages, register and login is all you get
+
+
+
+```bash
+data "template_file" "s3_public_policy" {
+  template = "${file("policies/s3-public.json")}"
+  vars {
+    bucket_name = "${var.site_bucket}"
+  }
+}
+
+resource "aws_s3_bucket" "static_site" {
+  bucket = "${var.site_bucket}"
+  acl = "public-read"
+  policy = "${data.template_file.s3_public_policy.rendered}"
+  website {
+    index_document = "index.html"
+  }
+}
+
+output "url" {
+  value = "${aws_s3_bucket.static_site.bucket}.s3-website-${var.region}.amazonaws.com"
+}
+```
+Note:
+* when uploading your site, don't forget content-type on files, else bad things
+
+
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${bucket_name}/*"
+      ]
+    }
+  ]
+}
+```
+
+
+
 # Commands
 * register_user
 * create_channel
