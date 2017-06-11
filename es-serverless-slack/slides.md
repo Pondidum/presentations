@@ -115,12 +115,13 @@ Note:
 
 
 
-* channel_created
-* message_sent
-* message_edited
-* user_joined_channel
-* user_left_channel
-* user_registered
+# Commands
+* register_user
+* create_channel
+* join_channel
+* leave_channel
+* send_message
+* edit_message
 Note:
 * this was my initial idea for structure
 * what are our aggregates?
@@ -134,18 +135,18 @@ Note:
 
 <ul class="left">
   <li><h2>UserAggregate</h2></li>
-  <li>user_registered</li>
-  <li>channel_created</li>
-  <li>user_joined_channel</li>
-  <li>user_left_channel</li>
+  <li>register_user</li>
+  <li>create_channel</li>
+  <li>join_channel</li>
+  <li>leave_channel</li>
 </ul>
 <ul class="right">
   <li><h2>ChannelAggregate</h2></li>
-  <li>channel_created</li>
-  <li>user_joined_channel</li>
-  <li>user_left_channel</li>
-  <li>message_sent</li>
-  <li>message_edited</li>
+  <li>create_channel</li>
+  <li>join_channel</li>
+  <li>leave_channel</li>
+  <li>send_message</li>
+  <li>edit_message</li>
 </ul>
 Note:
 * we have events which multiple aggregates care about
@@ -155,12 +156,13 @@ Note:
 
 ![commands](img/commands.svg)
 Note:
+* join_channel
 * command -> store -> router -> aggregate methods -> aggregate events
 * each aggregate would create it's own eventsourcing event based on the command
 
 
 
-```c#
+```csharp
 public class ChannelAggregate : AggregateRoot
 {
   public void Join(User user)
@@ -184,7 +186,7 @@ Note:
 
 
 
-```c#
+```csharp
 public class ChannelProjection : Projection
 {
   public IEnumerable<string> => _users;
@@ -214,34 +216,7 @@ Note:
 
 
 
-```javascript
-const command = {
-  timestamp: new Date().getTime(),
-  eventId: uuid(),
-  type: "JOIN_CHANNEL",
-  userId: 1233123,
-  channelId: "general"
-}
-```
-<!-- .element: class="left"-->
-```javascript
-const event = {
-  timestamp: new Date().getTime(),
-  eventId: uuid(),
-  type: "USER_JOINED_CHANNEL",
-  userId: 1233123,
-  channelId: "general"
-}
-```
-<!-- .element: class="right fragment"-->
-Note:
-* all the commands are very simple (to start with)
-* timestamp and eventid handled by the serverside
-* the rest is pretty light, so mvp can be smaller
-
-
-
-```c#
+```csharp
 public class ChannelAggregate
 {
   public void Join(User user)
@@ -276,29 +251,30 @@ public class ChannelProjection
 //client side:
 const join = user =>
 {
-  var event = CreateEvent({
+  var command = CreateCommand({
     userId: user.id,
     channelId: this.id);
   });
 
-  Validate(this, event);
-  Dispatch(event);
+  Validate(this, command);
+  Dispatch(command);
 }
 ```
 <!-- .element: class="right fragment"-->
 ```javascript
 //serverside sync
-const onEvent = event => {
-  Store(event);
-  TriggerProjections(event);
+const onEvent = command => {
+  Store(command);
+  TriggerAggregates(command);
 }
 ```
 <!-- .element: class="right fragment"-->
 ```javascript
 //serverside async
-const channelProjection = event => {
-  const handler = handlers[event.type];
-  handler(view, event);
+exports.handler = command => {
+  const channel = fetch(command.channelId)
+
+  channel[command.type](command)
 }
 ```
 <!-- .element: class="right fragment"-->
@@ -308,6 +284,54 @@ Note:
 * serverside sync is lambda which responds with ok if the event was stored
 * serverside async is lamdbas for projecting events into views
 * protect the api to logged in users using cognito
+
+
+
+```javascript
+const channelAggregate = {
+
+  JOIN_CHANNEL: function(command) {
+    const event = Object.assign(
+      { },
+      command,
+      { type: 'USER_JOINED_CHANNEL' })
+
+    this.apply(event)
+  },
+
+  USER_JOINED_CHANNEL: function(event) {
+    if (this.users.indexOf(event.userId) === -1)
+      this.users.push(event.userId);
+  },
+}
+```
+
+
+
+```javascript
+const command = {
+  timestamp: new Date().getTime(),
+  eventId: uuid(),
+  type: "JOIN_CHANNEL",
+  userId: 1233123,
+  channelId: "general"
+}
+```
+<!-- .element: class="left"-->
+```javascript
+const event = {
+  timestamp: new Date().getTime(),
+  eventId: uuid(),
+  type: "USER_JOINED_CHANNEL",
+  userId: 1233123,
+  channelId: "general"
+}
+```
+<!-- .element: class="right fragment"-->
+Note:
+* all the commands are very simple (to start with)
+* timestamp and eventid handled by the serverside
+* the rest is pretty light, so mvp can be smaller
 
 
 
@@ -329,6 +353,7 @@ Note:
 
 ## Kinesis
 ![Kinesis](img/AWS-Summit_recap_KinesisStreams.png)
+https://aws.amazon.com/kafka/ <!-- .element: class="image-attribution"-->
 Note:
 * Kinesis streams are pretty similar to Kafka
 * But there is a problem, we want permanent log storage
@@ -341,6 +366,63 @@ Note:
   * events will have timestamps & uuids
   * so store in rds/dynamo
   * if an aggregate needs stream position, it can store last-read uuid
+
+
+
+![dynamodb](img/dynamodb-logo.png)
+http://www.yegor256.com/2014/05/18/cloud-autoincrement-counters.html <!-- .element: class="image-attribution"-->
+Note:
+* cant store empty string values!
+
+
+
+```bash
+resource "aws_dynamodb_table" "event_store" {
+  name = "CrowbarEvents"
+  write_capacity = 5
+  read_capacity = 20
+
+  hash_key = "eventId"
+  range_key = "timestamp"
+
+  attribute {
+    name = "eventId"
+    type = "S"
+  }
+
+  attribute {
+    name = "timestamp"
+    type = "N"
+  }
+}
+```
+
+
+
+```javascript
+const event = {
+  timestamp: new Date().getTime(),
+  eventId: uuid(),
+  type: "CHANNEL_CREATED",
+  userId: 1233123,
+  channelId: uuid(),
+  channelName: "general",
+  channelDescription: ""
+}
+```
+<!-- .element: class="left"-->
+```javascript
+const event = {
+  timestamp: new Date().getTime(),
+  eventId: uuid(),
+  type: "CHANNEL_CREATED",
+  userId: 1233123,
+  channelId: uuid(),
+  channelName: "general",
+  channelDescription: null
+}
+```
+<!-- .element: class="right fragment"-->
 
 
 
