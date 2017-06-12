@@ -664,6 +664,10 @@ return new Promise((resolve, reject) => {
   })
 })
 ```
+Note:
+* using redux, hence the dispatch
+* userid is a guid, allows users to change email later
+* can login with the email :)
 
 
 
