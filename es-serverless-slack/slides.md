@@ -318,7 +318,7 @@ const join = user =>
 <!-- .element: class="right fragment"-->
 ```javascript
 //serverside sync
-const onEvent = command => {
+const onCommand = command => {
   Store(command);
   TriggerAggregates(command);
 }
