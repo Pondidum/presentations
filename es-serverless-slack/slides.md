@@ -810,7 +810,7 @@ Note:
 # Wrapping Up
 * I've learnt loads about AWS, Terraform <!-- .element: class="fragment"-->
 * Serverless trade-offs <!-- .element: class="fragment"-->
-* Code will be on my github "soon"  <!-- .element: class="fragment"-->
+* Code available here: https://github.com/pondidum/crowbar  <!-- .element: class="fragment"-->
 Note:
 * aws: cognito, dynamodb
 * code: soon = probably next week
