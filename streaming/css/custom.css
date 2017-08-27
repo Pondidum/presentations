@@ -1,0 +1,107 @@
+
+.reveal pre code {
+  max-height: inherit !important;
+}
+
+.reveal section img {
+  background: transparent;
+  border: 0px;
+  box-shadow: none;
+}
+
+.reveal {
+  color: #eee8d5;
+}
+
+.reveal .pic-label {
+  margin-top:-1.5em;
+  color:black;
+  text-shadow:0 0 6px white;
+}
+
+p img {
+  margin-bottom: 0px !important;
+}
+
+p a.image-attribution {
+  font-size: small !important;
+  display: block;
+}
+
+p a.attribution {
+  position: absolute !important;
+  top: -5em;
+  right: 0;
+  font-size: small !important;
+  clear:both;
+}
+
+a.attribution.background {
+  z-index: 100;
+  position: absolute;
+  bottom: 0.5em;
+}
+
+.reveal section li {
+  list-style: none;
+}
+
+/*.gains .left li {
+  text-align: right;
+}
+
+.gains .right li {
+  text-align: left;
+  color: lime;
+}
+
+.gains li.warn {
+  color: orange;
+}*/
+
+.left {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width: 49% !important;
+  z-index:-10;
+  position: static !important;
+  margin-left: 0 !important;
+}
+
+.right {
+  left:31.25%;
+  top: 75px;
+  float: right;
+  width: 49% !important;
+  z-index:-10;
+  position: static !important;
+  margin-left: 0 !important;
+}
+
+
+.reveal .pic-label.quote{
+  margin:0 -2em -1em -2em;
+  font-size:32pt;
+  color:white;
+  line-height:40pt;
+  font-weight:bold;
+  text-shadow:2px 2px 2px #000000,2px -2px 2px #000000,-2px 2px 2px #000000,-2px -2px 2px #000000;
+  }
+
+.reveal .pic-label.quote .big{font-size:40pt;}
+
+
+.reveal .slides section .fragment.strike {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.strike.visible {
+  color: #ff2c2d;
+}
+
+a.small,
+p.small {
+  font-size: medium;
+}
