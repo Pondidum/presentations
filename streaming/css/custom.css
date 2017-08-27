@@ -1,4 +1,9 @@
+a.small,
+p.small {
+  font-size: 60%;
+}
 
+/*
 .reveal pre code {
   max-height: inherit !important;
 }
@@ -46,19 +51,6 @@ a.attribution.background {
   list-style: none;
 }
 
-/*.gains .left li {
-  text-align: right;
-}
-
-.gains .right li {
-  text-align: left;
-  color: lime;
-}
-
-.gains li.warn {
-  color: orange;
-}*/
-
 .left {
   left:-8.33%;
   text-align: left;
@@ -100,8 +92,4 @@ a.attribution.background {
 .reveal .slides section .fragment.strike.visible {
   color: #ff2c2d;
 }
-
-a.small,
-p.small {
-  font-size: medium;
-}
+*/
