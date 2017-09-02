@@ -103,11 +103,6 @@ Note:
 * chat can be helpful when you get stuck
 * someone helped me out with operator overloads
 * Get a lot of repeated questions
-  * what are you building?
-  * do you like rider/why not vs?
-  * do you like dotnetcore?
-  * why do you use a finnish keyboard
-* adding some chat commands helped some of this
 
 
 
@@ -118,6 +113,8 @@ Note:
 * Why do you use a Finnish keyboard? <!-- .element: class="talk-bubble fragment" -->
 
 <!-- .element: class="list-unstyled" -->
+Note:
+* added a chat command "!what" to help with what I am building
 
 
 
