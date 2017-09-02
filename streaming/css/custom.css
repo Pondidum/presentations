@@ -3,6 +3,18 @@ p.small {
   font-size: 60%;
 }
 
+.reveal section img.no-border {
+  background: transparent;
+  border: 0px;
+  box-shadow: none;
+}
+
+p.attribution,
+p a.attribution {
+  font-size: small !important;
+  display: block;
+}
+
 /*
 .reveal pre code {
   max-height: inherit !important;
@@ -31,14 +43,6 @@ p img {
 p a.image-attribution {
   font-size: small !important;
   display: block;
-}
-
-p a.attribution {
-  position: absolute !important;
-  top: -5em;
-  right: 0;
-  font-size: small !important;
-  clear:both;
 }
 
 a.attribution.background {
