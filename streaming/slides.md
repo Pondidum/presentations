@@ -130,6 +130,16 @@ Note:
 
 
 
+![british keyboard](img/keyboard.png)
+
+
+![british keyboard](img/keyboard-brackets.png)
+
+
+![british keyboard](img/keyboard-brackets-altgr.png)
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
