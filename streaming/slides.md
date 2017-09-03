@@ -96,6 +96,14 @@ Note:
 
 
 
+![Timeline](img/time.png)
+http://www.bbc.com/future/bespoke/doctorwho50/ <!-- .element: class="attribution" -->
+
+Note:
+* I can see how long a project takes!
+
+
+
 ![Chat help](img/chat-help.jpg)
 http://www.boyter.org/2016/04/collection-orly-book-covers/ <!-- .element: class="attribution" -->
 
