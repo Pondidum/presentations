@@ -23,8 +23,6 @@ Note:
 * so far, the experience has been pretty fun
 * helps me focus (You can't just wander off and stare into space while streaming...)
 * but lets take a step back.  why did I decide to do this?
-* after the first couple of streams, I figured it would be fun to follow a project, from start to finish.
-* not a problem finding a project, I have hundreds of ideas I never get around to!
 
 
 
@@ -59,6 +57,8 @@ Note:
 * step 2 - dunno
 * step 3 - dunno
 * so I dont have any steps...but I am having fun!
+* after the first couple of streams, I figured it would be fun to follow a project, from start to finish.
+* not a problem finding a project, I have hundreds of ideas I never get around to!
 
 
 
@@ -71,6 +71,10 @@ Note:
 * Which I have called Crispin.
 * as one of the use of toggles is canary releasing, I named the project after the cockatiel we had when I was a child.
 * pic related, is him
+
+
+
+## Positive Effects
 
 
 
