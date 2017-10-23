@@ -1,0 +1,39 @@
+a.small,
+p.small {
+  font-size: 60%;
+}
+
+.reveal section img.no-border {
+  background: transparent;
+  border: 0px;
+  box-shadow: none;
+}
+
+p.attribution,
+p a.attribution {
+  font-size: small !important;
+  display: block;
+}
+
+/* chat bubbles */
+
+li.talk-bubble {
+  padding: 0.5em;
+  margin: 0.5em;
+  position: relative;
+  height: auto;
+  background-color: lightyellow;
+}
+
+li.talk-bubble:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 22px solid;
+  border-color: lightyellow transparent transparent transparent;
+}
