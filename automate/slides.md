@@ -10,7 +10,7 @@ Note:
 * But I mean, still automate your builds :)
 
 
-# Lindorff Oy
+![Lindorff Oy](img/lindorff.svg) <!-- .element: class="no-border" -->
 
 Note:
 * Over in Finland
