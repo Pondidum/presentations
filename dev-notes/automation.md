@@ -23,3 +23,8 @@ Come to this talk to see all the automation we have embedded in our organisation
 * auto create a branch (for features starting)
 * prevent merging to master until deployment
 * auto merge to master after x hours of deployment
+* auto fixing tickets
+  * 1st step is adding to our fix tool `paf purchase-export --purchaseNumber 123132123 --store 123`
+  * this does the right checks, then tells you what it will do to fix things, and asks if you want to proceed
+  * 2nd step is to hook up execution of this to our error logging
+  * add a parameter so it can add a comment to the alert ticket, and close the ticket.
