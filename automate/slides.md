@@ -73,3 +73,19 @@ Note:
 
 
 
+# Pull Requests
+
+Note:
+* pull requests are the backbone of our dev process, so there is quite a lot to hang off them
+
+
+
+# Github integration
+
+OnPullRequest
+    => Fix PR title
+    => Add documentation links
+    => Check merge target
+
+Note:
+* implemented in aws lambda
