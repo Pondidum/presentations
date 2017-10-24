@@ -50,3 +50,26 @@ Note:
 Formatting
 
 
+`git checkout -b feature-NewCoolThing-PAY-1234`
+
+Note:
+* task/backlog ids go at the end of branch names
+* we also put them in commit messages for other integration
+
+
+### prepare-commit-msg
+```bash
+#!/bin/sh
+
+TAG=$(git rev-parse --abbrev-ref HEAD | grep -oP '(?<=-)([a-zA-Z]{3,4}-\d*)')
+
+echo -n "[$TAG]"' '|cat - "$1" > /tmp/out && mv /tmp/out "$1"
+```
+
+Note:
+* extracts the task tag from the branch name
+* prefixes commit messages with it
+* don't forget error handling...
+
+
+
