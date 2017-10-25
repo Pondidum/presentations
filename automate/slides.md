@@ -79,7 +79,6 @@ $ git cm "my awesome feature"
 ```
 
 
-
 ### pre-commit
 
 ```bash
@@ -94,6 +93,34 @@ git stash pop -q
 [ $RESULT -ne 0 ] && exit 1
 exit 0
 ```
+
+Note:
+* runs your tests (best hope they're fast!)
+* demo...
+* note we stash everything, then test, then pop stash
+* this is so we only test the things being commited :)
+
+
+# Installation?
+
+
+```bash
+#!/bin/sh
+
+# windows not happy about symbolic links
+if [[ -n "$WINDIR" ]]; then
+  find hooks/ -exec sh -c 'ln --force ./{} .git/hooks/$(basename {})' \;
+else
+  find hooks/ -exec sh -c 'ln -s --force ./{} .git/hooks/$(basename {})' \;
+fi
+
+echo 'hooks installed.'
+```
+
+Note:
+* scripted of course!
+* windows doesnt like symlinked files through ln, so hard links
+* shame we cant write a hook to install hooks on pull...
 
 
 
