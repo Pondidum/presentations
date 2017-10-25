@@ -72,6 +72,30 @@ Note:
 * don't forget error handling...
 
 
+```bash
+$ git cm "my awesome feature"
+[feature-NewCoolThing-PAY-1234 87b7d9a] [PAY-1234] my awesome feature
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+
+
+### pre-commit
+
+```bash
+#!/bin/sh
+git stash -q --keep-index
+
+gulp test --no-cover
+RESULT=$?
+
+git stash pop -q
+
+[ $RESULT -ne 0 ] && exit 1
+exit 0
+```
+
+
 
 # Pull Requests
 
