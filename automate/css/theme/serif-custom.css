@@ -134,6 +134,7 @@ body {
 
 .reveal .list-unstyled {
   padding-left: 0;
+  margin-left: 0;
   list-style: none;
 }
 
