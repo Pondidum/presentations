@@ -98,7 +98,29 @@ Note:
 * runs your tests (best hope they're fast!)
 * demo...
 * note we stash everything, then test, then pop stash
-* this is so we only test the things being commited :)
+* this is so we only test the things being committed :)
+
+
+```bash
+$ git cm "hooks: add prepare commit message"
+[21:24:08] Using gulpfile ./gulpfile.js
+[21:24:08] Starting 'test'...
+[21:24:08] 'test' errored after 700 us
+[21:24:08] Error in plugin 'test-runner'
+Message:
+    There were an odd number of characters.
+```
+
+
+```bash
+$ git cm "hooks: add prepare commit message"
+[21:24:08] Using gulpfile ./gulpfile.js
+[21:24:08] Starting 'test'...
+[21:25:22] Finished 'test' after 484 us
+[master 5221827] hooks: add prepare commit message
+ 1 file changed, 5 insertions(+)
+ create mode 100644 hooks/prepare-commit-msg
+```
 
 
 # Installation?
