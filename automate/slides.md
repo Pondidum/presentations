@@ -24,7 +24,50 @@ Note:
 
 Note:
 * basically anything you do more than a few times
-* let's start with git, as that's where we spend a lot of time
+* let's start at the beginning...
+
+
+
+# Dev Environment
+
+Note:
+* time to set up a new dev machine!
+* it'll be so much quicker than my last
+* I just need to install...everything
+
+
+![depressing](img/depressing.png)
+http://www.blastwave-comic.com/comics/14.jpg <!-- .element: class="attribution" -->
+
+
+![chocolatey](img/chocolatey.svg) <!-- .element: class="no-border" -->
+https://chocolatey.org/ <!-- .element: class="attribution" -->
+
+
+```bash
+cinst Microsoft-Hyper-V-All -source windowsFeatures
+cinst -y docker-for-windows
+```
+
+
+![boxstarter](img/boxstarter.png)
+http://boxstarter.org/ <!-- .element: class="attribution" -->
+
+
+```powershell
+Set-WindowsExplorerOptions `
+    -EnableShowHiddenFilesFoldersDrives `
+    -EnableShowFileExtensions `
+    -DisableOpenFileExplorerToQuickAccess
+
+cinst visualstudiocode
+cinst visualstudio2015professional
+cinst resharper
+cinst git.install
+
+cinst Microsoft-Hyper-V-All -source windowsFeatures
+cinst docker-for-windows
+```
 
 
 
@@ -152,13 +195,15 @@ Note:
 * pull requests are the backbone of our dev process, so there is quite a lot to hang off them
 
 
-
 # Github integration
 
+
+```
 OnPullRequest
     => Fix PR title
     => Add documentation links
     => Check merge target
+```
 
 Note:
 * implemented in aws lambda
