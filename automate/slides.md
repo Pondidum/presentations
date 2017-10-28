@@ -49,9 +49,18 @@ cinst Microsoft-Hyper-V-All -source windowsFeatures
 cinst -y docker-for-windows
 ```
 
+Note:
+* scripting installs is easy now!
+* but what about restarts?
+
 
 ![boxstarter](img/boxstarter.png)
 http://boxstarter.org/ <!-- .element: class="attribution" -->
+
+Note:
+* BoxStarter builds on top of chocolatey
+* automatic restart detection
+* automatic re-login and resume of scripts!
 
 
 ```powershell
@@ -69,28 +78,59 @@ cinst Microsoft-Hyper-V-All -source windowsFeatures
 cinst docker-for-windows
 ```
 
+Note:
+* we use a much bigger script than this at work!
+* Now we have a running machine, what next?
+
 
 
 # Git
 
+Note:
+* Lets speed up our git workflow a bit!
 
-* git s
-* git cm  "my commit message"
-* git dc
+
+* `git s`
+* `git cm "my commit message"` <!-- .element: class="fragment" -->
+* `git dc` <!-- .element: class="fragment" -->
+* `git scrub` <!-- .element: class="fragment" -->
 
 <!-- .element: class="list-unstyled" -->
 Note:
-Formatting!
+* Look at how many characters we can save typing!
 
 
-* git save
-* git undo
-* git scrub
-* git web
+# Rebasing?
+
+Note:
+* So how many people here use rebase?
+* those of you who don't, I assume you dont use git?
+* seriously rebase.
+* who doesn't love seeing this message
+
+
+```bash
+$ git rebase master
+Cannot rebase: You have unstaged changes.
+Please commit or stash them.
+```
+
+
+* `git save`
+* `git rebase` <!-- .element: class="fragment" -->
+* `git undo` <!-- .element: class="fragment" -->
+* `git push` <!-- .element: class="fragment" -->
+* `git web` <!-- .element: class="fragment" -->
 
 <!-- .element: class="list-unstyled" -->
 Note:
-Formatting
+* you could make an alias to do all of this...
+
+
+`git pr`
+
+Note:
+* now, talking of pull requests
 
 
 `git checkout -b feature-NewCoolThing-PAY-1234`
