@@ -350,3 +350,10 @@ OnPullRequest
 
 Note:
 * implemented in aws lambda
+
+
+* `git push origin feature-NewCoolThing-PAY-1234`
+* ![PR title before](img/pr-1.png) <!-- .element: class="fragment no-border" -->
+* ![PR title before](img/pr-2.png) <!-- .element: class="fragment no-border" -->
+
+<!-- .element: class="list-unstyled list-spaced center" -->
