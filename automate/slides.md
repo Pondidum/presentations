@@ -19,12 +19,18 @@ Note:
 * and that's enough of that
 
 
-
-# What can we automate?
+![assembly line](img/automation.jpg)
+http://www.oemupdate.com/cover-story/how-automation-could-impact-make-in-india/ <!-- .element: class="attribution" -->
 
 Note:
-* basically anything you do more than a few times
-* let's start at the beginning...
+* while I love our product, and enjoy seeing people use it
+* what I really love is making other dev's lives easier
+* if they want to add business value, I want to make it easier for them to do
+* I dont want them to have to think about repo structure, build scripts, teamcity, infrastructure etc
+* just producing value
+* I work on 1 or 2 teams, which means I work with 11 other developers
+* which means there are at least 12 machines
+* with mostly the same software (little differences)
 
 
 
