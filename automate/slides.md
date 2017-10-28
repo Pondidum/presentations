@@ -84,10 +84,107 @@ Note:
 
 
 
+# Project Creation
+
+Note:
+* Not really a tech talk without mentioning microservices is it?
+* Having a different folder structure for each service is bad
+  * mental effort
+  * sln/src/source/lib, build script, dependencies, docs
+* So as we are a dotnet team, we used...
+
+
+![Yeoman](img/yeoman.png)
+http://yeoman.io/  <!-- .element: class="attribution" -->
+
+Note:
+* Yeoman! which is really aimed at javascript applications
+* It is a cli based tool, and you can write your own templates easily
+
+
+```bash
+npm install --global yo
+git clone https://github/.../generator-lindorff
+cd generator-lindorff
+npm link
+```
+
+
+```bash
+$ yo --generators
+
+  lindorff
+    api
+    github
+    mvc
+    nuget
+    service
+    solution
+    tooling
+```
+
+Note:
+* api, mvc, service, nuget are the most used
+* the use other sub-generators (project prefix usually)
+* yo lindorff:nuget
+
+
+```bash
+$ yo lindorff:nuget
+? enter the name of the solution: Lindorff.Demo
+? enter a short description of the solution: This is a demo nuget package
+? enter the name of the project: Lindorff.Demo
+```
+
+Note:
+* asks many questions
+* runs npm install
+* runs gulp script
+
+
+```
+|-- Lindorff.Demo.sln
+|-- gulpfile.js
+|-- nuget.config
+|-- package.json
+|-- readme.md
+`-- src
+    |-- Lindorff.Demo
+    |   |-- Lindorff.Demo.csproj
+    |   |-- Lindorff.Demo.csproj.nuspec
+    |   `-- Properties
+    |       `-- AssemblyInfo.cs
+    `-- Lindorff.Demo.Tests
+        |-- Lindorff.Demo.Tests.csproj
+        |-- Properties
+        |   `-- AssemblyInfo.cs
+        |-- Scratchpad.cs
+        `-- packages.config
+```
+
+Note:
+* leaves you with a directory something like this
+
+
+`yo lindorff:github`
+
+Note:
+* uses the github api to create a private repository, setting up:
+  * correct teams (owners, admins etc)
+  * branch protection
+  * webhooks (we'll come back to these later)
+* we want to do similar for TeamCity
+  * but it's rest api is awful
+* and for octopus
+  * which has a nice api
+  * but we haven't worked out a standard pipeline yet
+
+
+
 # Git
 
 Note:
-* Lets speed up our git workflow a bit!
+* Now we have created our new repository we can move on to automating git
 
 
 * `git s`
