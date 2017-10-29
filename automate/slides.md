@@ -369,3 +369,94 @@ Note:
 
 
 ![PR branch question](img/pr-branch.png) <!-- .element: class="no-border" -->
+
+
+
+# Infrastructure
+
+Note:
+* We are going to use a lot of Hashicorp tools here
+* there are others (such as aws's cloudformation), but Hashicorp's are better (and cross platform!)
+* We are veering into experimental stages here, we are still working out how we want to do things at work
+
+
+```json
+"builders": [{
+  "type": "amazon-ebs",
+  "region": "eu-west-1",
+  "source_ami_filter": {
+    "filters": {
+      "name": "ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"
+    },
+    "owners": ["099720109477"],
+    "most_recent": true
+  },
+  "instance_type": "t2.micro",
+  "ami_name": "HelloService {{build_version}}",
+  "tags": { "service": "HelloService", "version": "{{build_version}}" },
+  "provisioners": [
+    { "type": "shell", "script": "./install.sh" }
+  ]
+}]
+```
+
+Note:
+* this is a Packer script
+* we can use packer to create machine images, including AMIs, vagrant boxes, hyper-v images etc.
+* so our build script now calls packer, generating an AMI with the service installed
+
+
+```powershell
+resource "aws_autoscaling_group" "hello_service" {
+  min_size: 1
+  max_sizw: 5,
+  launch_configuration: "${aws_launch_configuration.hello_service.name}"
+}
+
+resource "aws_launch_configuration" "hello_service" {
+  image_id = "${data.aws_ami.hello_service.id}"
+  instance_type = "t2.micro"
+}
+
+data "aws_ami" "hello_service" {
+  most_recent = true
+  filter { name = "tag:service" values = ["HelloService"] }
+  filter { name = "tag:environment" values = ["${var.environment}"] }
+}
+```
+
+Note:
+* this is terraform
+* allows us to script cloud resources
+* tags on the ami finder for the specific environment
+* we can add tags to an ami later to move it into other environments
+
+
+# Multiple Environments
+
+
+## ChatOps?
+
+* Andy: Deploy HelloService to Production <!-- .element: class="fragment" -->
+* <span>Bot: Production is `1.0.0`, I will promote `1.0.1`, ok?</span> <!-- .element: class="fragment" -->
+* <span>Andy: yes</span> <!-- .element: class="fragment" -->
+* <span>Bot: Deploying `HelloService @ 1.0.1` to `Production`</span> <!-- .element: class="fragment" -->
+* <span>Bot: Completed `HelloService @ 1.0.1` to `Production`</span> <!-- .element: class="fragment" -->
+
+<!-- .element: class="list-unstyled list-spaced" -->
+Note:
+* visibility of current state? some kind of webui?
+* don't want to write our own tool for this
+* perhaps we can leverage Octopus
+
+
+* `code`
+* `pull request` <!-- .element: class="fragment" -->
+* `teamcity (gulp)` <!-- .element: class="fragment" -->
+* `-> ami` <!-- .element: class="fragment" -->
+* `-> rolling-update (env: test)` <!-- .element: class="fragment" -->
+* `chatops` <!-- .element: class="fragment" -->
+* `-> tag ami (env: qa)` <!-- .element: class="fragment" -->
+* `-> rolling-update (env: qa)` <!-- .element: class="fragment" -->
+
+<!-- .element: class="list-unstyled list-spaced" -->
