@@ -37,3 +37,8 @@ li.talk-bubble:after {
   border: 22px solid;
   border-color: lightyellow transparent transparent transparent;
 }
+
+.list-spaced li{
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
