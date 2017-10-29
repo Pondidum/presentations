@@ -358,3 +358,14 @@ Note:
 * ![PR docs after](img/pr-docs-2.png) <!-- .element: class="fragment no-border" -->
 
 <!-- .element: class="list-unstyled list-spaced center" -->
+
+
+![branching strategy](img/branching.png)
+
+Note:
+* while I am not a huge fan of this branching strategy, it does work for us
+* github will always suggest to merge to master from a branch
+* so the bot will ask if you are sure if it thinks you are wrong
+
+
+![PR branch question](img/pr-branch.png) <!-- .element: class="no-border" -->
