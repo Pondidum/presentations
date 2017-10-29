@@ -348,8 +348,8 @@ Note:
 
 
 * `git push origin feature-NewCoolThing-PAY-1234`
-* ![PR title before](img/pr-1.png) <!-- .element: class="fragment no-border" -->
-* ![PR title before](img/pr-2.png) <!-- .element: class="fragment no-border" -->
+* ![PR title before](img/pr-title-1.png) <!-- .element: class="fragment no-border" -->
+* ![PR title before](img/pr-title-2.png) <!-- .element: class="fragment no-border" -->
 
 <!-- .element: class="list-unstyled list-spaced center" -->
 
