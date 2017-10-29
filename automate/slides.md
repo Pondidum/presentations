@@ -460,3 +460,35 @@ Note:
 * `-> rolling-update (env: qa)` <!-- .element: class="fragment" -->
 
 <!-- .element: class="list-unstyled list-spaced" -->
+
+
+
+* Build Process -> Try and use it <!-- .element: class="fragment" -->
+* Observe Adhoc Processes -> Automate <!-- .element: class="fragment" -->
+
+<!-- .element: class="list-unstyled list-spaced" -->
+
+Note:
+* some final advice
+* be ready to change your automation
+* processes evolve
+
+
+# What next?
+
+Note:
+* I'd automate the coffee machines, but I think the receptionist does it before I get in
+* Don't make a process, then try and work with it
+
+
+#### Automate Everything
+
+github.com/pondidum | twitch.tv/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
+<br /><br /><br />
+* **chocolatey.org** - environment setup
+* **boxstarter.org** - environment setup
+* **yeoman.io** - project scaffolding
+* **packer.io** - machine image creation
+* **terraform.io** - infrastructure as code
+
+<!-- .element: class="list-unstyled small" -->
