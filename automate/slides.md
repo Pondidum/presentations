@@ -282,7 +282,6 @@ exit 0
 
 Note:
 * runs your tests (best hope they're fast!)
-* demo...
 * note we stash everything, then test, then pop stash
 * this is so we only test the things being committed :)
 
@@ -338,15 +337,11 @@ Note:
 * pull requests are the backbone of our dev process, so there is quite a lot to hang off them
 
 
-# Github integration
+* Fix PR title
+* Add documentation links <!-- .element: class="fragment" -->
+* Check merge target <!-- .element: class="fragment" -->
 
-
-```
-OnPullRequest
-    => Fix PR title
-    => Add documentation links
-    => Check merge target
-```
+<!-- .element: class="list-unstyled list-spaced" -->
 
 Note:
 * implemented in aws lambda
@@ -355,5 +350,11 @@ Note:
 * `git push origin feature-NewCoolThing-PAY-1234`
 * ![PR title before](img/pr-1.png) <!-- .element: class="fragment no-border" -->
 * ![PR title before](img/pr-2.png) <!-- .element: class="fragment no-border" -->
+
+<!-- .element: class="list-unstyled list-spaced center" -->
+
+
+* ![PR docs before](img/pr-docs-1.png) <!-- .element: class="no-border" -->
+* ![PR docs after](img/pr-docs-2.png) <!-- .element: class="fragment no-border" -->
 
 <!-- .element: class="list-unstyled list-spaced center" -->
