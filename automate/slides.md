@@ -2,9 +2,12 @@
 ### Not Just Your Builds
 <br />
 <br />
+<br />
+<br /><br /><br />
 #### Andy Davies
 
 github.com/pondidum | twitch.tv/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
+<!-- .slide: data-background="img/topconf-start.png" class="topconf" -->
 
 Note:
 * But I mean, still automate your builds :)
@@ -463,6 +466,9 @@ Note:
 
 
 
+# Where next?
+
+
 * Build Process -> Try and use it <!-- .element: class="fragment" -->
 * Observe Adhoc Processes -> Automate <!-- .element: class="fragment" -->
 
@@ -472,23 +478,26 @@ Note:
 * some final advice
 * be ready to change your automation
 * processes evolve
-
-
-# What next?
-
-Note:
 * I'd automate the coffee machines, but I think the receptionist does it before I get in
 * Don't make a process, then try and work with it
 
 
-#### Automate Everything
 
-github.com/pondidum | twitch.tv/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
-<br /><br /><br />
-* **chocolatey.org** - environment setup
-* **boxstarter.org** - environment setup
-* **yeoman.io** - project scaffolding
-* **packer.io** - machine image creation
-* **terraform.io** - infrastructure as code
+<div class="left">
+<h2>Andy Davies</h2>
+<h4>Lindorff Oy</h4>
+<h4>andy@andydote.co.uk</h4>
+<br />
+  <ul class="list-unstyled small">
+    <li><strong>chocolatey.org</strong> - environment setup</li>
+    <li><strong>boxstarter.org</strong> - environment setup</li>
+    <li><strong>yeoman.io</strong> - project scaffolding</li>
+    <li><strong>packer.io</strong> - machine image creation</li>
+    <li><strong>terraform.io</strong> - infrastructure as code</li>
+  </ul>
+</div>
 
-<!-- .element: class="list-unstyled small" -->
+<div class="right">
+</div>
+
+<!-- .slide: data-background="img/topconf-end.png" class="topconf" -->

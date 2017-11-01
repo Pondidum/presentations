@@ -1,6 +1,11 @@
 a.small,
-p.small {
+p.small,
+ul.small {
   font-size: 60%;
+}
+
+.reveal large {
+  font-size: 1.2em;
 }
 
 .reveal section img.no-border {
@@ -41,4 +46,35 @@ li.talk-bubble:after {
 .list-spaced li{
   padding-top: 0.25em;
   padding-bottom: 0.25em;
+}
+
+.topconf h2,
+.topconf h3,
+.topconf h4,
+.topconf p
+{
+  text-align: left;
+  color: white !important;
+  font-weight: bold;
+}
+
+.topconf ul
+{
+  text-align: left;
+  color: white !important;
+}
+
+.topconf .left {
+  top: 0;
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width: 50%;
+}
+
+.topconf .right {
+  left:31.25%;
+  float: right;
+  width: 50%;
+  text-align: left;
 }
