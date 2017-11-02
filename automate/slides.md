@@ -469,10 +469,14 @@ Note:
 # Where next?
 
 
-* Build Process -> Try and use it <!-- .element: class="fragment" -->
-* Observe Adhoc Processes -> Automate <!-- .element: class="fragment" -->
+![no](img/no.png)<!-- .element: class="no-border middle" --> Don't build process *and then* try and use them
 
-<!-- .element: class="list-unstyled list-spaced" -->
+![yes](img/yes.jpg)<!-- .element: class="no-border middle" --> Do observe processes *and then* automate them
+
+https://imgur.com/DKUR9Tk <!-- .element: class="attribution" -->
+http://www.falloutfacts.com/other/fallout-vault-boy-history.html <!-- .element: class="attribution" -->
+
+<!-- .slide: class="text-left" -->
 
 Note:
 * some final advice

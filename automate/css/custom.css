@@ -78,3 +78,11 @@ li.talk-bubble:after {
   width: 50%;
   text-align: left;
 }
+
+img.middle {
+  vertical-align: middle;
+}
+
+.text-left {
+  text-align: left;
+}
