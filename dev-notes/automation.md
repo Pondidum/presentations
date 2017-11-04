@@ -28,3 +28,10 @@ Come to this talk to see all the automation we have embedded in our organisation
   * this does the right checks, then tells you what it will do to fix things, and asks if you want to proceed
   * 2nd step is to hook up execution of this to our error logging
   * add a parameter so it can add a comment to the alert ticket, and close the ticket.
+* creating projects
+  * `yo lindorff`
+  * creates different project types: mvc, api, service, tooling, test projects, acceptance projects etc.
+  * can also create github repos!
+  * todo:
+    * teamcity build configurations
+    * octopus deploy configurations
