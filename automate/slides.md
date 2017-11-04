@@ -493,6 +493,7 @@ Note:
 <h4>andy@andydote.co.uk</h4>
 <br />
   <ul class="list-unstyled small">
+    <li><strong>github.com/Pondidum/AutomationExamples</strong></li>
     <li><strong>chocolatey.org</strong> - environment setup</li>
     <li><strong>boxstarter.org</strong> - environment setup</li>
     <li><strong>yeoman.io</strong> - project scaffolding</li>
