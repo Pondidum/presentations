@@ -250,9 +250,20 @@ Note:
 ```bash
 #!/bin/sh
 
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 TAG=$(git rev-parse --abbrev-ref HEAD | grep -oP '(?<=-)([a-zA-Z]{3,4}-\d*)')
+TAG_IN_MESSAGE=$(grep -c "\[$BRANCH_NAME\]" $1)
+REBASING=$(echo $BRANCH_NAME | grep 'rebasing')
 
-echo -n "[$TAG]"' '|cat - "$1" > /tmp/out && mv /tmp/out "$1"
+if [ -n "$TAG" ] && ! [[ $TAG_IN_MESSAGE -ge 1 ]] && [ -z "$REBASING" ] ; then
+    echo -n "[$TAG]"' '|cat - "$1" > /tmp/out && mv /tmp/out "$1"
+else
+    [[ -z "$TAG" ]] &&  echo 'autotag: no Jira tag found'
+
+    [[ -n "$REBASING" ]] &&  echo 'autotag: Rebasing'
+
+    [[ $TAG_IN_MESSAGE -ge 1 ]] &&  echo 'autotag: Jira tag exists already'
+fi
 ```
 
 Note:
