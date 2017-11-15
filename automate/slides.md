@@ -252,7 +252,7 @@ Note:
 
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 TAG=$(git rev-parse --abbrev-ref HEAD | grep -oP '(?<=-)([a-zA-Z]{3,4}-\d*)')
-TAG_IN_MESSAGE=$(grep -c "\[$BRANCH_NAME\]" $1)
+TAG_IN_MESSAGE=$(grep -c "\[$TAG\]" $1)
 REBASING=$(echo $BRANCH_NAME | grep 'rebasing')
 
 if [ -n "$TAG" ] && ! [[ $TAG_IN_MESSAGE -ge 1 ]] && [ -z "$REBASING" ] ; then
