@@ -1,0 +1,51 @@
+# Feature Toggles <!-- .element: class="push-down stroke" -->
+## Andy Davies <!-- .element: class="stroke" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller" -->
+
+https://www.reddit.com/r/gaming/comments/692hqa/mccree_looking_good_in_ac_black_flag/dh3gu1a/ <!-- .element: class="attribution" -->
+
+<!-- .slide: data-background="img/good-bad-ugly.png" data-background-size="contain" class="gbu" -->
+
+
+
+![knight capital logo](img/knight-capital.png) <!-- .element: class="no-border" -->
+https://en.wikipedia.org/wiki/File:Knight_Capital_Group_logo.svg <!-- .element: class="attribution" -->
+Note:
+* Who has heard of a company called Knight Capital?
+* Ok, and *why* have you heard of them?
+* American global financial services firm, doing market-making, trading
+* They had a "slight" hiccup involving deployment and feature toggling
+* on the day in question, they had $365 million in cash and equivalents
+
+
+
+![knight capital shares](img/knight-capital-shares.jpg)
+https://infocus.dellemc.com/dave_bagatelle/knight-capital-group-kcg-a-lesson-on-the-importance-of-sdlc-and-multi-environment-multi-user-testing/ <!-- .element: class="attribution" -->
+Note:
+* this is there shareprice
+* that is a logarithmic graph
+* look at that drop...
+
+
+
+* Deployed to all servers <!-- .element: class="fragment" -->
+* Enabled feature toggle <!-- .element: class="fragment" -->
+* Problem is noticed... <!-- .element: class="fragment" -->
+* Rolled back to last release <!-- .element: class="fragment" -->
+* Problem gets worse... <!-- .element: class="fragment" -->
+
+<!-- .element: class="list-unstyled" -->
+Note:
+* SMARS (split big orders into smaller ones)
+* Powerpeg: counts shares against an order, stops orders once parent fulfilled. tracking had been moved earlier in pipeline, so powerpeg couldnt count. unused 8 years.
+* 1 failed deployment, 8x problem
+* 45mins toggle disabled
+* $365 million in assets to start with
+* the lost $450 million in 45 minutes
+
+
+
+## Questions?
+![questions](img/questions.jpg)
+
+github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
