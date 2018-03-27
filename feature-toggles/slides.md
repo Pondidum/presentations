@@ -45,6 +45,72 @@ Note:
 
 
 
+# Dead Code
+Note:
+* why is it still there!?
+* delete it
+* source-control history
+* trunk based: deploy version with only the removal
+
+
+
+#### Lesson 1
+## NEVER Reuse A Toggle
+Note:
+* if they had a new toggle, problem wouldnt have happened
+
+
+
+#### Lesson 2
+## Name Toggles Well
+
+
+
+![hp logo](img/hp.png) <!-- .element: class="no-border" -->
+https://en.wikipedia.org/wiki/File:Hewlett-Packard_logo.svg <!-- .element: class="attribution" -->
+Note:
+* hp printers
+* 400-800 devs, 10+ million loc
+* 2x releases per year
+* 5% features, 20% merging to master, integration
+* build: 2 days, 1 week for merge status
+
+
+
+## branching image
+Note:
+* branch per printer model
+* `ifdefs` everywhere
+* port fixes to all branches
+
+
+
+* Single branch
+* config file with printer capabilities
+Note:
+* compile-time to run-time toggles
+* trunk based development
+
+
+
+>Getting rid of code branching will often be your biggest efficiency gain
+
+https://itrevolution.com/the-amazing-devops-transformation-of-the-hp-laserjet-firmware-team-gary-gruver/ <!-- .element: class="attribution" -->
+Note:
+* using branches as feature toggles
+* toggles were fairly static, so a config file in the repo
+* branching by abstraction
+
+
+
+#### Lesson 3
+## Architecture Matters
+Note:
+* toggles should be implemented smartly
+* dont spatter the same if statement everywhere
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
