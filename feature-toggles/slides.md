@@ -111,6 +111,65 @@ Note:
 
 
 
+## Toggle Types
+Note:
+* many dimensions to toggles
+* how often it changes (static -> dynamic)
+* how specific (user/group/all)
+
+
+
+![toggle-table](img/toggle-table-release.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
+
+
+
+![toggle-table](img/toggle-table-experiment.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![toggle-table](img/toggle-table-ops.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![toggle-table](img/toggle-table-permission.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![toggle-table](img/toggle-table-time.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![toggle-table](img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![toggle-table](img/toggle-table-time-permission.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![toggle-table](img/toggle-table-time-permission-no.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
+
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 

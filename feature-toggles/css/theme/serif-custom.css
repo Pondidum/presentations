@@ -12,8 +12,8 @@
  * GLOBAL STYLES
  *********************************************/
 body {
-  background: #d6d6d6;
-  background-color: #d6d6d6;
+  background: #e0e0e0;
+  background-color: #e0e0e0;
 }
 
 .reveal {
@@ -253,9 +253,9 @@ body {
 .reveal a {
   color: #51483d;
   text-decoration: none;
-  -webkit-transition: color .15s ease;
-  -moz-transition: color .15s ease;
-  transition: color .15s ease;
+  -webkit-transition: color 0.15s ease;
+  -moz-transition: color 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 .reveal a:hover {
@@ -285,9 +285,9 @@ body {
 }
 
 .reveal a img {
-  -webkit-transition: all .15s linear;
-  -moz-transition: all .15s linear;
-  transition: all .15s linear;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  transition: all 0.15s linear;
 }
 
 .reveal a:hover img {
