@@ -121,52 +121,83 @@ Note:
 
 ![toggle-table](img/toggle-table-release.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
+Note:
+* the feature toggle
 
 
 
 ![toggle-table](img/toggle-table-experiment.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* AB testing
 
 
 
 ![toggle-table](img/toggle-table-ops.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* Performance
+* Possibly automated toggling
+* (the only) longer life toggle
 
 
 
 ![toggle-table](img/toggle-table-permission.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* can a user do something?
 
 
 
 ![toggle-table](img/toggle-table-time.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* compile: rare. sqlprofiler, things CANNOT be in prod
+* startup: microservices > websites
+* periodic: background updated
+* activity: checked every action, uses background probably
 
 
 
 ![toggle-table](img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* compile time not great, needs redeploy
+* startup: change toggle, bounce service
+* periodic: change toggle, wait
 
 
 
 ![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* to a subset of users, usually
+* scale (risk): large=activity, small=startup
 
 
 
 ![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* effects everyone
+* periodic check most likely
 
 
 
 ![toggle-table](img/toggle-table-time-permission.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* can a user/group do something?
+* activity/background
+* but...
 
 
 
 ![toggle-table](img/toggle-table-time-permission-no.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none-in slide-out" -->
-
+<!-- .slide: data-transition="none slide-out" -->
+Note:
+* dont!
+* toggles != authorization
 
 
 
