@@ -201,6 +201,130 @@ Note:
 
 
 
+# Toggles are bad because...
+Note:
+* common reasons
+* horror stories covered!
+
+
+
+### ...I dont want this everywhere
+```csharp
+if (_toggles.PowerPeg.Enabled)) {
+    // ...
+}
+```
+Note:
+* good!
+* Lesson 3: Architecture Matters
+* HP got this right, Knight Capital...didn't
+
+
+
+# Branch By Abstraction
+
+
+
+```csharp
+var container = new Container(c =>
+{
+    if (_toggles.EmailDispatchQueue.Enabled)
+        c.For<IEmailConnector>().Use<RabbitMqConnector>();
+    else
+        c.For<IEmailConnector>().Use<WebServiceConnector>();
+});
+```
+Note:
+* great for startup toggles!
+
+
+
+```csharp
+public class EmailConnectorRouter : IEmailConnector
+{
+    public EmailConnectorRouter(
+        IToggles toggles,
+        IEmailConnector whenEnabled,
+        IEmailConnector whenDisabled)
+    {
+    }
+
+    public Task Dispatch(EmailMessage message)
+    {
+        if (_toggles.EmailDispatchQueue.Enabled)
+            return _whenEnabled.Dispatch(message);
+        else
+            return _whenDisabled.Dispatch(message);
+    }
+}
+```
+Note:
+* better for periodic or activity
+* could be a factory also
+* what about the frontend?
+
+
+
+```javascript
+import  { toggled } from 'react-toggles' //this doesn't exist!
+
+const OneClickBuyButton = buyItem => <a onClick={buyItem}>Buy Now!</a>;
+
+export default toggled(toggles.OneClickEnabled)(OneClickBuyingButton)
+```
+Note:
+* React
+* react-toggles is invented!
+
+
+
+# Testing is harder
+Note:
+Is it?
+
+
+
+image: {old tests, new tests}
+Note:
+* greg young: tests are immutable
+* old tests don't change (toggle off)
+* new tests (toggle on)
+* delete old when toggle removed!
+* manual testing basically the same
+
+
+
+# Adds Complexity
+Note:
+* but what doesn't?
+
+
+
+image: {branch vs toggle}
+Note:
+* branching by abstraction itself is good design
+* don't have a long lived toggle
+* maybe you enjoy merge conflicts?
+* next story!
+
+
+
+# A Previous Employer
+Note:
+* not going to mention names!
+
+
+
+image: {3 long lived branches}
+Note:
+* monolith repo
+* 2x inhouse, 1x outsourced (incompetent)
+* day to day work
+* external branch always out of date
+* priorities changed, multiple merge and revert
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
