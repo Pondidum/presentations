@@ -302,8 +302,6 @@ Note:
 
 image: {branch vs toggle}
 Note:
-* branching by abstraction itself is good design
-* don't have a long lived toggle
 * maybe you enjoy merge conflicts?
 * next story!
 
@@ -322,6 +320,28 @@ Note:
 * day to day work
 * external branch always out of date
 * priorities changed, multiple merge and revert
+
+
+
+## Additional Complexity
+Note:
+* branching by abstraction itself is good design
+* don't have a long lived toggle
+* when to remove?
+
+
+#### Lesson 4
+## Monitor Everything
+Note:
+* queried
+* state change
+
+
+
+image: { toggle graphs }
+Note:
+* we can see a toggle stopped being queried
+* and this one hasn't changed state
 
 
 
