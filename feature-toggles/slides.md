@@ -28,17 +28,42 @@ Note:
 
 
 
-* Deployed to all servers <!-- .element: class="fragment" -->
-* Enabled feature toggle <!-- .element: class="fragment" -->
-* Problem is noticed... <!-- .element: class="fragment" -->
-* Rolled back to last release <!-- .element: class="fragment" -->
-* Problem gets worse... <!-- .element: class="fragment" -->
-
-<!-- .element: class="list-unstyled" -->
+## SMARS and PowerPeg
 Note:
 * SMARS (split big orders into smaller ones)
 * Powerpeg: counts shares against an order, stops orders once parent fulfilled. tracking had been moved earlier in pipeline, so powerpeg couldnt count. unused 8 years.
-* 1 failed deployment, 8x problem
+
+
+
+![knight-capital-process](img/knight-capital-process.png) <!-- .element: class="no-border" -->
+https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
+<!-- .slide: data-transition="slide-in none-out" -->
+
+
+
+![knight-capital-process](img/knight-capital-process-deployed.png) <!-- .element: class="no-border" -->
+https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![knight-capital-process](img/knight-capital-process-toggled.png) <!-- .element: class="no-border" -->
+https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![knight-capital-process](img/knight-capital-process-rolledback.png) <!-- .element: class="no-border" -->
+https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![knight-capital-process](img/knight-capital-process-detoggled.png) <!-- .element: class="no-border" -->
+https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
+<!-- .slide: data-transition="none-in slide-out" -->
+
+Note:
 * 45mins toggle disabled
 * $365 million in assets to start with
 * the lost $450 million in 45 minutes
@@ -58,6 +83,10 @@ Note:
 ## NEVER Reuse A Toggle
 Note:
 * if they had a new toggle, problem wouldnt have happened
+
+
+
+![knight-capital-process](img/knight-capital-process-separate.png) <!-- .element: class="no-border" -->
 
 
 
