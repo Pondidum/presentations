@@ -322,10 +322,17 @@ Is it?
 
 
 
-image: {old tests, new tests}
+![testing-existing](img/testing-existing.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="out-none" -->
 Note:
 * greg young: tests are immutable
 * old tests don't change (toggle off)
+
+
+
+![testing-new-toggle](img/testing-new-toggle.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none" -->
+Note:
 * new tests (toggle on)
 * delete old when toggle removed!
 * manual testing basically the same
