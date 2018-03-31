@@ -122,11 +122,12 @@ Note:
 
 
 
-* Single branch
-* config file with printer capabilities
+![hp-branching-trunk-based](img/hp-branching-tbd.png) <!-- .element: class="no-border" -->
 Note:
 * compile-time to run-time toggles
 * trunk based development
+* Single branch
+* config file with printer capabilities
 
 
 
