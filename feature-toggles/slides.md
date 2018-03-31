@@ -101,16 +101,24 @@ Note:
 * hp printers
 * 400-800 devs, 10+ million loc
 * 2x releases per year
-* 5% features, 20% merging to master, integration
-* build: 2 days, 1 week for merge status
+* 5% features
+* 8 weeks for feedback (6 weeks manual integration)
 
 
 
-## branching image
+![hp-branching-printers](img/hp-branching-1.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
 Note:
 * branch per printer model
 * `ifdefs` everywhere
-* port fixes to all branches
+* build per branch
+
+
+
+![hp-branching-merging](img/hp-branching-2.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
+Note:
+* port fixes (not configs) to all branches
 
 
 
