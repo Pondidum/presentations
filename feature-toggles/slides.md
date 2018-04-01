@@ -358,13 +358,22 @@ Note:
 
 
 
-image: {3 long lived branches}
+![long-lived-branches](img/long-branches-1.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="out-none" -->
 Note:
 * monolith repo
 * 2x inhouse, 1x outsourced (incompetent)
 * day to day work
 * external branch always out of date
-* priorities changed, multiple merge and revert
+
+
+
+![long-lived-branches](img/long-branches-2.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none" -->
+Note:
+* priorities changed
+* multiple merge and revert
+* rebases!
 
 
 
@@ -373,6 +382,7 @@ Note:
 * branching by abstraction itself is good design
 * don't have a long lived toggle
 * when to remove?
+
 
 
 #### Lesson 4
