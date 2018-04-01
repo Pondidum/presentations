@@ -342,19 +342,7 @@ Note:
 # Adds Complexity
 Note:
 * but what doesn't?
-
-
-
-image: {branch vs toggle}
-Note:
-* maybe you enjoy merge conflicts?
-* next story!
-
-
-
-# A Previous Employer
-Note:
-* not going to mention names!
+* at a previous job...
 
 
 
@@ -393,7 +381,7 @@ Note:
 
 
 
-image: { toggle graphs }
+![toggle-graphs](img/toggle-graphs.png) <!-- .element: class="no-border" -->
 Note:
 * we can see a toggle stopped being queried
 * and this one hasn't changed state
