@@ -374,7 +374,7 @@ Note:
 
 
 #### Lesson 4
-## Monitor Everything
+## Monitor Toggles
 Note:
 * queried
 * state change
@@ -385,6 +385,55 @@ Note:
 Note:
 * we can see a toggle stopped being queried
 * and this one hasn't changed state
+
+
+
+# The Good
+
+
+
+![long-lived-branches](img/phased-rollout-off.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="out-none" -->
+
+
+
+![long-lived-branches](img/phased-rollout-on.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none" -->
+
+
+
+![long-lived-branches](img/phased-rollout-progress-0.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="out-none" -->
+
+
+
+![long-lived-branches](img/phased-rollout-progress-1.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![long-lived-branches](img/phased-rollout-progress-2.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![long-lived-branches](img/phased-rollout-progress-3.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![long-lived-branches](img/phased-rollout-progress-4.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![long-lived-branches](img/phased-rollout-progress-5.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+
+
+
+![long-lived-branches](img/phased-rollout-progress-6.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none" -->
 
 
 
