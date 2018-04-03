@@ -389,51 +389,82 @@ Note:
 
 
 # The Good
+Note:
+* phased rollout of a feature
 
 
 
 ![long-lived-branches](img/phased-rollout-off.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="out-none" -->
+Note:
+* exchange random slowdowns
+* soap service was crap
+* did magic also
+* magic was implemented properly in other pipeline connector
+* IEmailConnector, decorator to choose impl
+* default/toggle off = old
 
 
 
 ![long-lived-branches](img/phased-rollout-on.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none" -->
+Note:
+* toggle on, queues
+* rabbitmq plus a couple of workers
 
 
 
 ![long-lived-branches](img/phased-rollout-progress-0.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="out-none" -->
+Note:
+* hierarchy of teams
 
 
 
 ![long-lived-branches](img/phased-rollout-progress-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* picked person who got most problems
+* asked him to beta test (keen!)
+* toggle a few times based on feedback
 
 
 
 ![long-lived-branches](img/phased-rollout-progress-2.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* added teammate
 
 
 
 ![long-lived-branches](img/phased-rollout-progress-3.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* perf issues found!
+* need bulk queue also
 
 
 
 ![long-lived-branches](img/phased-rollout-progress-4.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* no new problems...
 
 
 
 ![long-lived-branches](img/phased-rollout-progress-5.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
+Note:
+* no new problems...
 
 
 
 ![long-lived-branches](img/phased-rollout-progress-6.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none" -->
+Note:
+* process took 6-8 weeks
+* faster towards the end
+* toggle deleted another 4 weeks later
 
 
 
