@@ -468,6 +468,14 @@ Note:
 
 
 
+![ops-toggle](img/ops-toggle.png) <!-- .element: class="no-border" -->
+Note:
+* background process could cause load
+* usually not the root cause
+* monitoring started off manual
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
