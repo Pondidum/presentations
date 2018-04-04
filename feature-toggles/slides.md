@@ -476,6 +476,15 @@ Note:
 
 
 
+## Toggles Promote Experimentation
+Note:
+* A/B testing on a subset of users
+* similar to phased rollout
+* monitoring required for this one!
+* use Scientist or similar!
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
