@@ -394,12 +394,18 @@ Note:
 
 
 
+![long-lived-branches](img/phased-rollout-initial.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="out-none" -->
+Note:
+* soap service was crap
+* did magic also
+* exchange random slowdowns
+
+
+
 ![long-lived-branches](img/phased-rollout-off.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="out-none" -->
 Note:
-* exchange random slowdowns
-* soap service was crap
-* did magic also
 * magic was implemented properly in other pipeline connector
 * IEmailConnector, decorator to choose impl
 * default/toggle off = old
