@@ -22,7 +22,7 @@ Note:
 ![knight capital shares](img/knight-capital-shares.jpg)
 https://infocus.dellemc.com/dave_bagatelle/knight-capital-group-kcg-a-lesson-on-the-importance-of-sdlc-and-multi-environment-multi-user-testing/ <!-- .element: class="attribution" -->
 Note:
-* this is there shareprice
+* this is their shareprice
 * that is a logarithmic graph
 * look at that drop...
 
@@ -92,6 +92,24 @@ Note:
 
 #### Lesson 2
 ## Name Toggles Well
+
+
+
+* `EnablePowerPeg`
+* `PAY-123`
+* `NewFeature`
+* `SmarsActive`
+
+<!-- .element: class="list-unstyled list-spaced" -->
+
+
+
+![toggle-types](img/toggle-types.png) <!-- .element: class="no-border" -->
+Note:
+* compile: debug only
+* startup: microservices, bounce them
+* periodic: background
+* activity: usually actually background
 
 
 
@@ -420,13 +438,6 @@ Note:
 
 
 
-![phased-rollout-progress](img/phased-rollout-progress-0.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="out-none" -->
-Note:
-* hierarchy of teams
-
-
-
 ![phased-rollout-progress](img/phased-rollout-progress-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
 Note:
@@ -452,15 +463,15 @@ Note:
 
 ![phased-rollout-perf](img/phased-rollout-perf-problem.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
-Note:
-* perf issues found!
 
 
 
 ![phased-rollout-perf](img/phased-rollout-perf-solution.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
 Note:
-* perf issues found!
+* Worker reads both queues
+* favours direct queue
+* competing workers added later
 
 
 
