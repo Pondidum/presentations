@@ -447,7 +447,20 @@ Note:
 <!-- .slide: data-transition="none" -->
 Note:
 * perf issues found!
-* need bulk queue also
+
+
+
+![phased-rollout-perf](img/phased-rollout-perf-problem.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+Note:
+* perf issues found!
+
+
+
+![phased-rollout-perf](img/phased-rollout-perf-solution.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+Note:
+* perf issues found!
 
 
 
