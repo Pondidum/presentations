@@ -468,36 +468,6 @@ Note:
 
 
 
-## Additional Complexity
-Note:
-* branching by abstraction itself is good design
-* don't have a long lived toggle
-* when to remove?
-
-
-
-
-
-
-# The Good
-Note:
-* phased rollout of a feature
-
-
-
-
-
-
-
-## Toggles Promote Experimentation
-Note:
-* A/B testing on a subset of users
-* similar to phased rollout
-* monitoring required for this one!
-* use Scientist or similar!
-
-
-
 ## Questions?
 ![questions](img/questions.jpg)
 
