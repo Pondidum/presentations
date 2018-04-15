@@ -142,20 +142,10 @@ Note:
 
 ![hp-branching-trunk-based](img/hp-branching-tbd.png) <!-- .element: class="no-border" -->
 Note:
-* compile-time to run-time toggles
+* compile-time to startup toggles
 * trunk based development
 * Single branch
 * config file with printer capabilities
-
-
-
->Getting rid of code branching will often be your biggest efficiency gain
-
-https://itrevolution.com/the-amazing-devops-transformation-of-the-hp-laserjet-firmware-team-gary-gruver/ <!-- .element: class="attribution" -->
-Note:
-* using branches as feature toggles
-* toggles were fairly static, so a config file in the repo
-* branching by abstraction
 
 
 
@@ -167,104 +157,6 @@ Note:
 
 
 
-## Toggle Types
-Note:
-* many dimensions to toggles
-* how often it changes (static -> dynamic)
-* how specific (user/group/all)
-
-
-
-![toggle-table](img/toggle-table-release.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="slide-in none-out" -->
-Note:
-* the feature toggle
-
-
-
-![toggle-table](img/toggle-table-experiment.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* AB testing
-
-
-
-![toggle-table](img/toggle-table-ops.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* Performance
-* Possibly automated toggling
-* (the only) longer life toggle
-
-
-
-![toggle-table](img/toggle-table-permission.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* can a user do something?
-
-
-
-![toggle-table](img/toggle-table-time.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* compile: rare. sqlprofiler, things CANNOT be in prod
-* startup: microservices > websites
-* periodic: background updated
-* activity: checked every action, uses background probably
-
-
-
-![toggle-table](img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* compile time not great, needs redeploy
-* startup: change toggle, bounce service
-* periodic: change toggle, wait
-
-
-
-![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* to a subset of users, usually
-* scale (risk): large=activity, small=startup
-
-
-
-![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* effects everyone
-* periodic check most likely
-
-
-
-![toggle-table](img/toggle-table-time-permission.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* can a user/group do something?
-* activity/background
-* but...
-
-
-
-![toggle-table](img/toggle-table-time-permission-no.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none slide-out" -->
-Note:
-* dont!
-* toggles != authorization
-
-
-
-# Toggles are bad because...
-Note:
-* common reasons
-* horror stories covered!
-
-
-
-### ...I dont want this everywhere
 ```csharp
 if (_toggles.PowerPeg.Enabled)) {
     // ...
@@ -282,13 +174,43 @@ Note:
 
 
 ```csharp
-var container = new Container(c =>
+public interface IEmailConnector
 {
-    if (_toggles.EmailDispatchQueue.Enabled)
-        c.For<IEmailConnector>().Use<RabbitMqConnector>();
-    else
-        c.For<IEmailConnector>().Use<WebServiceConnector>();
-});
+    Task Dispatch(EmailMessage message);
+}
+```
+
+```csharp
+public class SoapServiceConnector : IEmailConnector
+{
+    // ...
+}
+
+public class RabbitMqConnector : IEmailConnector
+{
+    // ...
+}
+```
+<!-- .element: class="fragment" -->
+
+
+
+```csharp
+public class Startup
+{
+    public void Configure(IAppBuilder app)
+    {
+        var container = new Container(c =>
+        {
+            if (_toggles.EmailDispatchQueue.Enabled)
+                c.For<IEmailConnector>().Use<RabbitMqConnector>();
+            else
+                c.For<IEmailConnector>().Use<WebServiceConnector>();
+        });
+
+        // ...
+    }
+}
 ```
 Note:
 * great for startup toggles!
@@ -322,11 +244,14 @@ Note:
 
 
 ```javascript
-import  { toggled } from 'react-toggles' //this doesn't exist!
+import { toggled } from 'react-toggles' //this doesn't exist!
 
-const OneClickBuyButton = buyItem => <a onClick={buyItem}>Buy Now!</a>;
+const OneClickBuyButton = ({ buyItem, item }) =>
+    <a style="button highlight" onClick={() => buyItem(item.id)}>
+        Buy Now!
+    </a>
 
-export default toggled(toggles.OneClickEnabled)(OneClickBuyingButton)
+export default toggled(toggles.OneClickEnabled)(OneClickBuyButton)
 ```
 Note:
 * React
@@ -334,60 +259,62 @@ Note:
 
 
 
-# Testing is harder
+```javascript
+import { toggled } from 'react-toggles' //this doesn't exist!
+import OneClickBuyButton from './oneClickBuy'
+
+export default toggled(toggles.OneClickEnabled)(OneClickBuyButton)
+```
 Note:
-Is it?
+* React
+* react-toggles is invented!
 
 
 
-![testing-existing](img/testing-existing.png) <!-- .element: class="no-border" -->
+![toggle-table](img/toggle-table-time.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="out-none" -->
 Note:
-* greg young: tests are immutable
-* old tests don't change (toggle off)
+* Release: switch everyone/group
+* Feature: switch for subset. AB testing.
+* Ops: performance
+* Permission:
+  * switch for user/group.
+  * dont do it.
+  * blurred boundaries
+  * use authorization service (identityserver, keycloak, etc.)
 
 
 
-![testing-new-toggle](img/testing-new-toggle.png) <!-- .element: class="no-border" -->
+![toggle-table](img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+Note:
+* compile time not great, needs redeploy
+* startup: change toggle, bounce service
+* periodic: change toggle, wait
+
+
+
+![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+Note:
+* to a subset of users, usually
+* scale (risk): large=activity, small=startup
+
+
+
+![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none" -->
 Note:
-* new tests (toggle on)
-* delete old when toggle removed!
-* manual testing basically the same
+* effects everyone
+* periodic check most likely
 
 
 
-# Adds Complexity
+![ops-toggle](img/ops-toggle.png) <!-- .element: class="no-border" -->
 Note:
-* but what doesn't?
-* at a previous job...
-
-
-
-![long-lived-branches](img/long-branches-1.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="out-none" -->
-Note:
-* monolith repo
-* 2x inhouse, 1x outsourced (incompetent)
-* day to day work
-* external branch always out of date
-
-
-
-![long-lived-branches](img/long-branches-2.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none" -->
-Note:
-* priorities changed
-* multiple merge and revert
-* rebases!
-
-
-
-## Additional Complexity
-Note:
-* branching by abstraction itself is good design
-* don't have a long lived toggle
-* when to remove?
+* background process could cause load
+* usually not the root cause
+* monitoring started off manual
 
 
 
@@ -403,12 +330,6 @@ Note:
 Note:
 * we can see a toggle stopped being queried
 * and this one hasn't changed state
-
-
-
-# The Good
-Note:
-* phased rollout of a feature
 
 
 
@@ -498,11 +419,73 @@ Note:
 
 
 
-![ops-toggle](img/ops-toggle.png) <!-- .element: class="no-border" -->
+# Testing is harder
 Note:
-* background process could cause load
-* usually not the root cause
-* monitoring started off manual
+Is it?
+
+
+
+![testing-existing](img/testing-existing.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="out-none" -->
+Note:
+* greg young: tests are immutable
+* old tests don't change (toggle off)
+
+
+
+![testing-new-toggle](img/testing-new-toggle.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none" -->
+Note:
+* new tests (toggle on)
+* delete old when toggle removed!
+* manual testing basically the same
+
+
+
+# Adds Complexity
+Note:
+* but what doesn't?
+* at a previous job...
+
+
+
+![long-lived-branches](img/long-branches-1.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="out-none" -->
+Note:
+* monolith repo
+* 2x inhouse, 1x outsourced (incompetent)
+* day to day work
+* external branch always out of date
+
+
+
+![long-lived-branches](img/long-branches-2.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none" -->
+Note:
+* priorities changed
+* multiple merge and revert
+* rebases!
+
+
+
+## Additional Complexity
+Note:
+* branching by abstraction itself is good design
+* don't have a long lived toggle
+* when to remove?
+
+
+
+
+
+
+# The Good
+Note:
+* phased rollout of a feature
+
+
+
+
 
 
 
