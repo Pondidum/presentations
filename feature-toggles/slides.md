@@ -468,6 +468,13 @@ Note:
 
 
 
+1. NEVER Reuse A Toggle
+1. Name Toggles Well
+1. Architecture Matters
+1. Monitor Toggles
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
