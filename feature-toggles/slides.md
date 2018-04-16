@@ -473,9 +473,20 @@ Note:
 1. Architecture Matters
 1. Monitor Toggles
 
+<!-- .element: class="list-spaced" -->
+
 
 
 ## Questions?
-![questions](img/questions.jpg)
+<br />
+
+* https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale
+* https://itrevolution.com/the-amazing-devops-transformation-of-the-hp-laserjet-firmware-team-gary-gruver
+* https://martinfowler.com/articles/feature-toggles.html
+* https://trunkbaseddevelopment.com
+* https://andydote.co.uk/presentations/feature-toggles
+
+<!-- .element: class="list-spaced small" -->
+<br />
 
 github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
