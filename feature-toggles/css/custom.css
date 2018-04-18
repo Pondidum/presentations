@@ -1,3 +1,11 @@
+span.attribution.background {
+  z-index: 100;
+  position: absolute;
+  left: 0.5em;
+  bottom: 0.5em;
+  color: #c00;
+}
+
 a.small,
 p.small,
 ul.small,
@@ -36,29 +44,6 @@ p a.attribution {
   display: block;
 }
 
-/* chat bubbles */
-
-li.talk-bubble {
-  padding: 0.5em;
-  margin: 0.5em;
-  position: relative;
-  height: auto;
-  background-color: lightyellow;
-}
-
-li.talk-bubble:after {
-  content: " ";
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -20px;
-  right: auto;
-  top: 0px;
-  bottom: auto;
-  border: 22px solid;
-  border-color: lightyellow transparent transparent transparent;
-}
-
 .list-spaced li {
   padding-top: 0.25em;
   padding-bottom: 0.25em;
@@ -91,12 +76,4 @@ img.middle {
 
 .gbu .push-down {
   margin-top: 2.5em;
-}
-
-span.attribution.background {
-  z-index: 100;
-  position: absolute;
-  left: 0.5em;
-  bottom: 0.5em;
-  color: #c00;
 }
