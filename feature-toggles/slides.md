@@ -1,10 +1,10 @@
 # Feature Toggles <!-- .element: class="push-down stroke" -->
 ## Andy Davies <!-- .element: class="stroke" -->
-github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white" -->
 
 https://www.reddit.com/r/gaming/comments/692hqa/mccree_looking_good_in_ac_black_flag/dh3gu1a/ <!-- .element: class="attribution" -->
 
-<!-- .slide: data-background="img/good-bad-ugly.png" data-background-size="contain" class="gbu" -->
+<!-- .slide: data-background="img/good-bad-ugly.png" data-background-size="contain" class="intro" -->
 
 
 
