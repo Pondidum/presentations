@@ -2,7 +2,7 @@
 ## Andy Davies <!-- .element: class="stroke" -->
 github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white" -->
 
-https://www.reddit.com/r/gaming/comments/692hqa/mccree_looking_good_in_ac_black_flag/dh3gu1a/ <!-- .element: class="attribution" -->
+https://www.reddit.com/r/gaming/comments/692hqa/mccree_looking_good_in_ac_black_flag/dh3gu1a/ <!-- .element: class="attribution white" -->
 
 <!-- .slide: data-background="img/good-bad-ugly.png" data-background-size="contain" class="intro" -->
 
