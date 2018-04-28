@@ -21,11 +21,12 @@ Note:
 
 
 
-# 1. Codebase
+## 1. Codebase
 One codebase tracked in revision control, many deploys
 Note:
 * 1 to 1 mapping repos to services
 * where is service x? in repo named x
+* mutliple codebases means not app, but system
 
 
 
@@ -35,6 +36,25 @@ Note:
 * you are not their scale
 * 2 of them have written filesystems to deal with it
 * perhaps they are solving the wrong problem?
+
+
+
+
+## 2. Dependencies
+Explicitly declare and isolate dependencies
+Note:
+* use nuget/package manager
+* dont rely on system packages
+* in dotnet this means no GAC!
+
+
+
+```csharp
+Process.Start("dig @127.0.0.1 some.other.service +short");
+```
+Note:
+* shelling out to system utilities is banned too
+* include local version in your build
 
 
 
