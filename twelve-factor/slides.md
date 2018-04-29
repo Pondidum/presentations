@@ -58,6 +58,32 @@ Note:
 
 
 
+## 3. Config
+Store config in the environment
+Note:
+* this means environment variables...
+* no app.configs...?
+
+
+
+# Don't Store
+* Connection Strings
+* Passwords
+* ApiKeys
+
+<!-- .element: class="list-unstyled list-spaced" -->
+Note:
+* anything sensitive
+* should be centralised
+
+
+
+![consul logo](img/consul.png) <!-- .element: width="50%" class="no-border" -->
+![vault logo](img/vault.png) <!-- .element: width="50%" class="no-border fragment" -->
+https://www.hashicorp.com/brand <!-- .element: class="attribution" -->
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
