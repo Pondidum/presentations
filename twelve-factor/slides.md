@@ -84,6 +84,17 @@ https://www.hashicorp.com/brand <!-- .element: class="attribution" -->
 
 
 
+
+## 4. Backing services
+Treat backing services as attached resources
+Note:
+* anything over the network
+* in-house database
+* 3rd party api (e.g. Twilio, S3)
+* no-code changes to change (see F3)
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
