@@ -95,6 +95,18 @@ Note:
 
 
 
+## 5. Build, Release, Run
+Strictly separate build and run stages
+Note:
+* no modifying things in prod!
+* build.sh, release.sh, deploy...
+
+
+
+![build release deploy pipeline](img/build-release-deploy.png) <!-- .element: class="no-border" -->
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
