@@ -107,6 +107,13 @@ Note:
 
 
 
+```shell
+./build.sh --config Release
+./release.sh --apikey $OCTOPUS_KEY
+```
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
