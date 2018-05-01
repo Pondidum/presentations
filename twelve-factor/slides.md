@@ -114,6 +114,15 @@ Note:
 
 
 
+## 6. Process
+Execute the app as one or more stateless processes
+Note:
+* avoid threading, spin up more copies
+* state in a backing service (e.g. db)
+* dont assume memory or disk last more than one operation
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
