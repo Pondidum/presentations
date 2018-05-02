@@ -117,9 +117,27 @@ Note:
 ## 6. Process
 Execute the app as one or more stateless processes
 Note:
-* avoid threading, spin up more copies
 * state in a backing service (e.g. db)
 * dont assume memory or disk last more than one operation
+
+
+
+## 7. Port Binding
+Export services via port binding
+Note:
+* harder before dotnet core
+* could do it with OWIN though (but ssl nightmare)
+* webserver, nginx/iis as reverse proxy
+* not just for http (xmpp etc)
+
+
+
+## 8. Concurrency
+Scale out via the process model
+Note:
+* split by work type (http, rabbitmq, background indexing)
+* doesn't ban threads
+* but you should be able to run multiple copies for scale-out
 
 
 
