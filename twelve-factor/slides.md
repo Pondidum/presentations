@@ -160,6 +160,15 @@ Note:
 
 
 
+## 11. Logs
+Treat logs as event streams
+Note:
+* its a datastream (of events)
+* dont handle routing at all (e.g. filesystem)
+* write to stdout
+* pipe to filebeat/fluentd/etc when deployed
+
+
 
 ## Questions?
 ![questions](img/questions.jpg)
