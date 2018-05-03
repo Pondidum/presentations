@@ -150,6 +150,17 @@ Note:
 
 
 
+## 10. Dev/prod parity
+Keep development, staging, and production as similar as possible
+Note:
+* not only environments
+* small ttl of dev => prod (hours)
+* devs support prod
+* backing services: local sqllite vs prod postgres bad
+
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
