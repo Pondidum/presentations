@@ -170,6 +170,15 @@ Note:
 
 
 
+## 12. Admin processes
+Run admin/management tasks as one-off processes
+Note:
+* what else would you do?!
+* separate exe with cli tasks (migration, status check, smoketest)
+* deployed with main app
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
