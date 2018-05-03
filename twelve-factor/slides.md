@@ -141,6 +141,15 @@ Note:
 
 
 
+## 9. Disposability
+Maximize robustness with fast startup and graceful shutdown
+Note:
+* The quicker a new instance can handle requests the better
+* shutdown means stop handling new requests, finish current ones
+* a sudden shutdown should not cause data loss
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
