@@ -39,6 +39,13 @@ Note:
 
 
 
+# Demo
+Note:
+* `dotnet new web --output src/Twelve.Api --name Twelve.Api`
+* `dotnet new sln --name Twelve`
+* `dotnet sln add src/Twelve.Api/Twelve.Api.csproj`
+
+
 
 ## 2. Dependencies
 Explicitly declare and isolate dependencies
@@ -63,6 +70,19 @@ Store config in the environment
 Note:
 * this means environment variables...
 * no app.configs...?
+
+
+
+# Demo
+Note:
+* `dotnet add package microsoft.extensions.configuration`
+* ```
+var config = new ConfigurationBuilder()
+  .AddEnvironmentVariables(ev => ev.Prefix = "TwelveFactor:")
+  .Build()
+  .Get<Configuration>();
+```
+* rider variables
 
 
 
