@@ -245,22 +245,6 @@ Note:
 
 ```javascript
 import { toggled } from 'react-toggles' //this doesn't exist!
-
-const OneClickBuyButton = ({ buyItem, item }) =>
-    <a style="button highlight" onClick={() => buyItem(item.id)}>
-        Buy Now!
-    </a>
-
-export default toggled(toggles.OneClickEnabled)(OneClickBuyButton)
-```
-Note:
-* React
-* react-toggles is invented!
-
-
-
-```javascript
-import { toggled } from 'react-toggles' //this doesn't exist!
 import OneClickBuyButton from './oneClickBuy'
 
 export default toggled(toggles.OneClickEnabled)(OneClickBuyButton)
