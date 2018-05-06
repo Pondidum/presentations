@@ -91,6 +91,11 @@ Note:
 
 
 #### Lesson 2
+## Short Lifespan
+
+
+
+#### Lesson 3
 ## Name Toggles Well
 
 
@@ -149,7 +154,7 @@ Note:
 
 
 
-#### Lesson 3
+#### Lesson 4
 ## Architecture Matters
 Note:
 * toggles should be implemented smartly
@@ -164,7 +169,6 @@ if (_toggles.PowerPeg.Enabled)) {
 ```
 Note:
 * good!
-* Lesson 3: Architecture Matters
 * HP got this right, Knight Capital...didn't
 
 
@@ -321,7 +325,7 @@ Note:
 
 
 
-#### Lesson 4
+#### Lesson 5
 ## Monitor Toggles
 Note:
 * queried
@@ -472,6 +476,7 @@ Note:
 
 
 1. NEVER Reuse A Toggle
+1. Short Lifespan
 1. Name Toggles Well
 1. Architecture Matters
 1. Monitor Toggles
