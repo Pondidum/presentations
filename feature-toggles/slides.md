@@ -244,10 +244,29 @@ Note:
 
 
 ```javascript
-import { toggled } from 'react-toggles' //this doesn't exist!
-import OneClickBuyButton from './oneClickBuy'
+import OneClickBuyButton from './OneClickBuyButton'
 
-export default toggled(toggles.OneClickEnabled)(OneClickBuyButton)
+const ActionsPanel = ({ item }) => <ul>
+    <li><OneClickBuyButton item={item} /></li>
+    <li><AddToCartButton item={item} /></li>
+    <li><AddToWishlistButton item={item} /></li>
+</ul>
+
+export default ActionsPanel
+```
+
+
+
+```javascript
+import { toggled } from 'react-toggles' //this doesn't exist!
+import Toggles from '../toggles'
+
+const OneClickBuyButton = ({ buyItem, item }) =>
+    <a style="button highlight" onClick={() => buyItem(item.id)}>
+        Buy {item.name} Now!
+    </a>
+
+export default toggled(Toggles.OneClickEnabled)(OneClickBuyButton)
 ```
 Note:
 * React
