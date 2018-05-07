@@ -37,13 +37,12 @@ Note:
 
 ![knight-capital-process](img/knight-capital-process.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
-<!-- .slide: data-transition="slide-in none-out" -->
 
 
 
 ![knight-capital-process](img/knight-capital-process-deployed.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="out-none" -->
 
 
 
@@ -70,15 +69,6 @@ Note:
 
 
 
-# Dead Code
-Note:
-* why is it still there!?
-* delete it
-* source-control history
-* trunk based: deploy version with only the removal
-
-
-
 #### Lesson 1
 ## NEVER Reuse A Toggle
 Note:
@@ -90,22 +80,31 @@ Note:
 
 
 
+# Dead Code
+Note:
+* why is it still there!?
+* delete it
+* source-control history
+* trunk based: deploy version with only the removal
+
+
+
 #### Lesson 2
 ## Short Lifespan
 
 
 
-#### Lesson 3
-## Name Toggles Well
-
-
-
 * `EnablePowerPeg`
+* `SmarsActive`
 * `PAY-123`
 * `NewFeature`
-* `SmarsActive`
 
 <!-- .element: class="list-unstyled list-spaced" -->
+
+
+
+#### Lesson 3
+## Name Toggles Well
 
 
 
