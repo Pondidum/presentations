@@ -100,6 +100,9 @@ Note:
 * `NewFeature`
 
 <!-- .element: class="list-unstyled list-spaced" -->
+Note:
+* jira tag should also have a name
+* new feature? wonder what that does
 
 
 
@@ -110,10 +113,10 @@ Note:
 
 ![toggle-types](img/toggle-types.png) <!-- .element: class="no-border" -->
 Note:
-* compile: debug only
+* compile: debug only (e.g. sql profiler)
 * startup: microservices, bounce them
 * periodic: background
-* activity: usually actually background
+* activity: actually uses background (latency)
 
 
 
@@ -184,7 +187,7 @@ public interface IEmailConnector
 ```
 
 ```csharp
-public class SoapServiceConnector : IEmailConnector
+public class WebServiceConnector : IEmailConnector
 {
     // ...
 }
@@ -257,6 +260,10 @@ const ActionsPanel = ({ item }) => <ul>
 
 export default ActionsPanel
 ```
+Note:
+* shopping cart
+* one of these has a feature toggle!
+* probably 1click while checking amazon wont sue you
 
 
 
@@ -451,7 +458,9 @@ Note:
 # Adds Complexity
 Note:
 * but what doesn't?
-* at a previous job...
+* we cant remove complexity
+* can hide it or abstract it a bit
+* toggles can help reduce it...
 
 
 
