@@ -28,10 +28,11 @@ Note:
 
 
 
-## SMARS and PowerPeg
+## PowerPeg and SMARS
 Note:
-* SMARS (split big orders into smaller ones)
 * Powerpeg: counts shares against an order, stops orders once parent fulfilled. tracking had been moved earlier in pipeline, so powerpeg couldnt count. unused 8 years.
+* SMARS (split big orders into smaller ones)
+* Smars replaces PowerPeg
 
 
 
