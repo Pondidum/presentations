@@ -76,12 +76,9 @@ Note:
 # Demo
 Note:
 * `dotnet add package microsoft.extensions.configuration`
-* ```
-var config = new ConfigurationBuilder()
-  .AddEnvironmentVariables(ev => ev.Prefix = "TwelveFactor:")
-  .Build()
-  .Get<Configuration>();
-```
+* `new ConfigurationBuilder()`
+* `.AddEnvironmentVariables()`
+* `.Build().Get<Configuration>();`
 * rider variables
 
 
