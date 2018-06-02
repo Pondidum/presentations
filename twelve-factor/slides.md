@@ -7,9 +7,6 @@ http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/Engineering-pictu
 
 <!-- .slide: data-background="img/gears.jpg" data-background-size="" class="intro" -->
 
-
-
-# Why should I care?
 Note:
 * Originally written by Heroku
 * Set of principals for building software
@@ -18,6 +15,7 @@ Note:
   * portable
   * scalable
   * declarative
+* There are some tradeoffs and dissagreements
 
 
 
@@ -39,11 +37,46 @@ Note:
 
 
 
-# Demo
+- Twelve.Consumer/
+  - .git/
+  - deploy/
+  - src/
+- Twelve.Api/
+  - .git/
+  - deploy/
+  - src/
+- Twelve.Background/
+  - .git/
+  - deploy/
+  - src/
+
 Note:
-* `dotnet new web --output src/Twelve.Api --name Twelve.Api`
-* `dotnet new sln --name Twelve`
-* `dotnet sln add src/Twelve.Api/Twelve.Api.csproj`
+* what about common things?
+* terraform
+
+
+
+- Twelve
+  - .git
+  - Consumer/
+    - deploy/
+    - src/
+  - Api/
+    - deploy/
+    - src/
+  - Background/
+    - deploy/
+    - src/
+  - infrastructure/
+    - variables.tf
+    - database.tf
+Note:
+* shared code? e.g. models
+* nugets
+  * on nuget feed?
+  * only used by this?
+* acceptance tests
+  * event > consumer > api > bacground
 
 
 
@@ -73,13 +106,34 @@ Note:
 
 
 
-# Demo
-Note:
-* `dotnet add package microsoft.extensions.configuration`
-* `new ConfigurationBuilder()`
-* `.AddEnvironmentVariables()`
-* `.Build().Get<Configuration>();`
-* rider variables
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        var config = new ConfigurationBuilder()
+            .AddEnvironmentVariables(ev => ev.Prefix = "twelve:")
+            .Build()
+            .Get<Configuration>();
+
+        services.AddSingleton(config);
+    }
+}
+```
+
+
+
+```csharp
+public class Configuration
+{
+    public string PostgresConnection { get; set; }
+    public string DatabaseName { get; set; }
+
+    public Uri RabbitHost { get; set; }
+    public string RabbitUsername { get; set; }
+    public string RabbitPassword { get; set; }
+}
+```
 
 
 
@@ -99,6 +153,28 @@ Note:
 ![vault logo](img/vault.png) <!-- .element: width="50%" class="no-border fragment" -->
 https://www.hashicorp.com/brand <!-- .element: class="attribution" -->
 
+
+
+```bash
+dotnet add package Consul.Microsoft.Extensions.Configuration
+```
+
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        var config = new ConfigurationBuilder()
+            .AddEnvironmentVariables(ev => ev.Prefix = "twelve:")
+            .AddConsul(prefix: "appsettings/twelve/")
+            .Build()
+            .Get<Configuration>();
+
+        services.AddSingleton(config);
+    }
+}
+```
+<!-- .element: class="fragment" -->
 
 
 
