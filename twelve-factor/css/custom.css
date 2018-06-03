@@ -75,3 +75,7 @@ img.middle {
 .intro .push-down {
   margin-top: 2.5em;
 }
+
+.reveal pre code {
+  overflow: hidden;
+}
