@@ -181,9 +181,16 @@ public class Startup
 ## 4. Backing services
 Treat backing services as attached resources
 Note:
+* bit obtuse...what does it mean?
+
+
+
+![service dependencies](img/attached-resources.png) <!-- .element: class="no-border" -->
+Note:
 * anything over the network
-* in-house database
-* 3rd party api (e.g. Twilio, S3)
+* kafka: who knows where it is!
+* postgres: on premise, RDS, etc.
+* twilio: definitely not self hosted!
 * no-code changes to change (see F3)
 
 
