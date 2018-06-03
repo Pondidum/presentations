@@ -204,6 +204,7 @@ Note:
 
 
 ![build release deploy pipeline](img/build-release-deploy-1-branch.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
 
 
 
@@ -230,11 +231,12 @@ Note:
 * we deploy with octopus, so generate a nuget for apps
 * you could create a docker container
 * bake an ami with packer etc.
+<!-- .slide: data-transition="fade" -->
 
 
 
 ![build release deploy pipeline](img/build-release-deploy-2-publish.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="slide-in none-out" -->
+<!-- .slide: data-transition="none-in none-out" -->
 Note:
 * pr accepted
 * runs build.sh and release.sh
@@ -257,6 +259,7 @@ docker tag $CONTAINER docker.internal.net/myapp
 docker push docker.internal.net/myapp
 ```
 <!-- .element: class="fragment" -->
+<!-- .slide: data-transition="fade" -->
 
 
 
