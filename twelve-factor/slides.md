@@ -226,17 +226,52 @@ dotnet pack \
   --no-restore \
   --output ../../.build
 ```
+Note:
+* we deploy with octopus, so generate a nuget for apps
+* you could create a docker container
+* bake an ami with packer etc.
 
 
 
 ![build release deploy pipeline](img/build-release-deploy-2-publish.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
+Note:
+* pr accepted
+* runs build.sh and release.sh
 
 
 
-![build release deploy pipeline](img/build-release-deploy-3-deploy.png) <!-- .element: class="no-border" -->
+```bash
+APIKEY="$1"
+find .build -iname "*.nupkg" -type f -exec .tools/octo/octo.exe push \
+  --package "{}" \
+  --server https://octopus.internal.net \
+  --apiKey $APIKEY \
+  \;
+```
+
+```bash
+CONTAINER=$(docker images | grep myapp | grep latest | awk '{print $3}')
+
+docker tag $CONTAINER docker.internal.net/myapp
+docker push docker.internal.net/myapp
+```
+<!-- .element: class="fragment" -->
+
+
+
+![build release deploy pipeline](img/build-release-deploy-3-octopus.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in none-out" -->
+
+
+
+![build release deploy pipeline](img/build-release-deploy-4-test.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in none-out" -->
+
+
+
+![build release deploy pipeline](img/build-release-deploy-5-prod.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in slide-out" -->
-
 
 
 
