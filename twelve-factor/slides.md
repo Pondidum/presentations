@@ -203,14 +203,40 @@ Note:
 
 
 
-![build release deploy pipeline](img/build-release-deploy.png) <!-- .element: class="no-border" -->
+![build release deploy pipeline](img/build-release-deploy-1-branch.png) <!-- .element: class="no-border" -->
 
 
 
-```shell
-./build.sh --config Release
-./release.sh --apikey $OCTOPUS_KEY
+```bash
+MODE=${1:-Debug}
+NAME=$(basename $(ls *.sln | head -n 1) .sln)
+
+dotnet restore
+dotnet build --configuration $MODE
+
+find ./src -iname "*.Tests.csproj" -type f -exec dotnet test \
+  --configuration $MODE \
+  --no-build \
+  --no-restore
+  "{}" \;
+
+dotnet pack \
+  --configuration $MODE \
+  --no-build \
+  --no-restore \
+  --output ../../.build
 ```
+
+
+
+![build release deploy pipeline](img/build-release-deploy-2-publish.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
+
+
+
+![build release deploy pipeline](img/build-release-deploy-3-deploy.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
+
 
 
 
