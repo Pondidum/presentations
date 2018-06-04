@@ -286,6 +286,15 @@ Note:
 
 
 
+# Caching?
+Note:
+* single operation only
+* multiple copies, low hit rate
+* maybe in-memory cache where it makes sense
+* don't require it however
+
+
+
 ## 7. Port Binding
 Export services via port binding
 Note:
