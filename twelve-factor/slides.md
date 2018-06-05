@@ -345,6 +345,7 @@ public class Program
 Note:
 * standard .netcore startup
 * added `UseUrls` to force port
+* don't publish this url to consul for service discovery!
 
 
 
@@ -403,6 +404,7 @@ Note:
   * more headers
   * HSTS
   * stapling
+* publish this url to consul for service discovery!
 
 
 
