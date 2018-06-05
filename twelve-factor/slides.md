@@ -349,6 +349,35 @@ Note:
 
 
 
+```nginx
+server {
+    listen                    *:443 ssl;
+    server_name               example.com;
+    ssl_certificate           /etc/ssl/certs/testCert.crt;
+    ssl_certificate_key       /etc/ssl/certs/testCert.key;
+    ssl_protocols             TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers               "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+    ssl_ecdh_curve            secp384r1;
+    ssl_session_cache         shared:SSL:10m;
+    ssl_session_tickets       off;
+
+    location / {
+        proxy_pass  http://localhost:1234;
+    }
+}
+```
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx <!-- .element: class="attribution" -->
+Note:
+* configure nginx to do ssl offload
+* example only!
+  * more headers
+  * HSTS
+  * stapling
+* publish this url to consul for service discovery!
+
+
+
 ```bash
 dotnet add package Microsoft.AspNetCore.HttpOverrides
 ```
@@ -376,35 +405,6 @@ Note:
 * add `HttpOverrides`
 * call `UseForwardedHeaders`
 * Update scheme, host, remoteIpAddress so auth middleware works
-
-
-
-```nginx
-server {
-    listen                    *:443 ssl;
-    server_name               example.com;
-    ssl_certificate           /etc/ssl/certs/testCert.crt;
-    ssl_certificate_key       /etc/ssl/certs/testCert.key;
-    ssl_protocols             TLSv1.1 TLSv1.2;
-    ssl_prefer_server_ciphers on;
-    ssl_ciphers               "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
-    ssl_ecdh_curve            secp384r1;
-    ssl_session_cache         shared:SSL:10m;
-    ssl_session_tickets       off;
-
-    location / {
-        proxy_pass  http://localhost:1234;
-    }
-}
-```
-https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx <!-- .element: class="attribution" -->
-Note:
-* configure nginx to do ssl offload
-* example only!
-  * more headers
-  * HSTS
-  * stapling
-* publish this url to consul for service discovery!
 
 
 
