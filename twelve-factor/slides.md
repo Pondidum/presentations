@@ -298,10 +298,111 @@ Note:
 ## 7. Port Binding
 Export services via port binding
 Note:
-* harder before dotnet core
-* could do it with OWIN though (but ssl nightmare)
-* webserver, nginx/iis as reverse proxy
-* not just for http (xmpp etc)
+* Completely self contained
+* bind to a port, service requests
+* not just for http!
+  * xmpp
+  * kafka etc
+
+
+
+# SSL
+Note:
+* before core you are inside IIS
+* I'm in ur server, killin your appPools
+
+
+
+# OWIN
+Note:
+* tried to self host webserver
+* bind certificate to the host
+* not great, but not too far off
+
+
+
+[image: web -> nginx -> your app ]
+Note:
+* bind to port x on localhost
+* https offload on nginx or other webserver
+
+
+
+```csharp
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        WebHost
+            .CreateDefaultBuilder(args)
+            .UseStartup<Startup>()
+            .UseUrls("http://localhost:1234") //optional force port
+            .Build()
+            .Run();
+    }
+}
+```
+Note:
+* standard .netcore startup
+* added `UseUrls` to force port
+
+
+
+```bash
+dotnet add package Microsoft.AspNetCore.HttpOverrides
+```
+
+```csharp
+public class Startup
+{
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        if (env.IsDevelopment())
+            app.UseDeveloperExceptionPage();
+
+        app.UseForwardedHeaders(new ForwardedHeadersOptions
+        {
+            ForwardedHeaders = ForwardedHeaders.All;
+        });
+
+        app.UseAuthentication();
+        app.UseMvc();
+    }
+}
+```
+<!-- .element: class="fragment" -->
+Note:
+* add `HttpOverrides`
+* call `UseForwardedHeaders`
+* Update scheme, host, remoteIpAddress so auth middleware works
+
+
+
+```nginx
+server {
+    listen                    *:443 ssl;
+    server_name               example.com;
+    ssl_certificate           /etc/ssl/certs/testCert.crt;
+    ssl_certificate_key       /etc/ssl/certs/testCert.key;
+    ssl_protocols             TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers               "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH";
+    ssl_ecdh_curve            secp384r1;
+    ssl_session_cache         shared:SSL:10m;
+    ssl_session_tickets       off;
+
+    location / {
+        proxy_pass  http://localhost:1234;
+    }
+}
+```
+https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx <!-- .element: class="attribution" -->
+Note:
+* configure nginx to do ssl offload
+* example only!
+  * more headers
+  * HSTS
+  * stapling
 
 
 
