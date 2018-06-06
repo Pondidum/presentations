@@ -416,6 +416,29 @@ Note:
 
 
 
+![web haproxy yourapp](img/scaleout-1.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
+Note:
+* normal state
+* maybe aws lb instead of haproxy
+
+
+
+![web haproxy yourapp](img/scaleout-2.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in none-out" -->
+Note:
+* viral post on reddit/hackernews about your new js framework
+
+
+
+![web haproxy yourapp](img/scaleout-3.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
+Note:
+* more instances!
+* be careful of downstream effects
+
+
+
 ## 9. Disposability
 Maximize robustness with fast startup and graceful shutdown
 Note:
