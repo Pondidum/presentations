@@ -66,6 +66,10 @@ img.middle {
   color: white;
 }
 
+ul.center {
+  text-align: center !important;
+}
+
 .intro .bottom-title {
   position: absolute;
   bottom: 0;

@@ -303,25 +303,24 @@ Note:
 * not just for http!
   * xmpp
   * kafka etc
+* no IIS!
 
 
 
-# SSL
+![iis logo](img/iis.png) <!-- .element: class="no-border" -->
+* XML Configuration! <!-- .element: class="fragment" -->
+* Complexity! <!-- .element: class="fragment" -->
+* Killing AppPools at random! <!-- .element: class="fragment" -->
+* SSL Termination <!-- .element: class="fragment" -->
+
+<!-- .element: class="list-unstyled list-spaced center" -->
 Note:
-* before core you are inside IIS
-* I'm in ur server, killin your appPools
+* before core, owin and netsh is not fun
+* configuring reverse proxy...
 
 
 
-# OWIN
-Note:
-* tried to self host webserver
-* bind certificate to the host
-* not great, but not too far off
-
-
-
-![web haproxy yourapp](img/12-factor-7-portbinding.png) <!-- .element: class="no-border" -->
+![web nginx yourapp](img/portbinding.png) <!-- .element: class="no-border" -->
 Note:
 * bind to port x on localhost
 * https offload on nginx or other webserver
