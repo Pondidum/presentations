@@ -321,7 +321,7 @@ Note:
 
 
 
-[image: web -> nginx -> your app ]
+![web haproxy yourapp](img/12-factor-7-portbinding.png) <!-- .element: class="no-border" -->
 Note:
 * bind to port x on localhost
 * https offload on nginx or other webserver
