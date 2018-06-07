@@ -478,8 +478,8 @@ Note:
 Keep development, staging, and production as similar as possible
 Note:
 * not only environments
-* small ttl of dev => prod (hours)
-* devs support prod
+    * small ttl of dev => prod (hours)
+    * devs support prod
 * backing services: local sqllite vs prod postgres bad
 
 
@@ -491,6 +491,76 @@ Note:
 * dont handle routing at all (e.g. filesystem)
 * write to stdout
 * pipe to filebeat/fluentd/etc when deployed
+
+
+
+```csharp
+public static void Main(string[] args)
+{
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>()
+        .UseUrls("http://localhost:1234")
+        .ConfigureLogging((host, logging) =>
+        {
+            logging.ClearProviders();
+            logging.AddSerilog(new LoggerConfiguration()
+                .WriteTo.Console(new JsonFormatter())
+                .CreateLogger()
+            );
+        })
+        .Build()
+        .Run();
+}
+```
+
+
+
+```json
+{
+  "Protocol": "HTTP/1.1",
+  "Method": "GET",
+  "ContentType": null,
+  "ContentLength": null,
+  "Scheme": "http",
+  "Host": "localhost:5000",
+  "PathBase": "",
+  "Path": "/",
+  "QueryString": "",
+  "HostingRequestStartingLog":"Request starting HTTP/1.1 GET http://localhost:5000/",
+  "EventId": { "Id": 1 },
+  "SourceContext": "Microsoft.AspNetCore.Hosting.Internal.WebHost",
+  "RequestId": "0HLECL00SACJ5:00000001",
+  "RequestPath": "/"
+}
+```
+
+
+
+```csharp
+ logging.AddSerilog(new LoggerConfiguration()
+    .WriteTo.Console(Debugger.IsAttached
+        ? new MessageTemplateTextFormatter("[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+        : new JsonFormatter())
+    .CreateLogger());
+```
+
+
+
+```yaml
+filebeat:
+  prospectors:
+    - input_type: stdin
+      fields:
+        environment: ${ENVIRONMENT:local}
+output:
+  logstash:
+    hosts: [ "logstash.internal.net:5044" ]
+```
+
+```bash
+$ dotnet myapp.dll | filebeat
+```
+<!-- .element: class="fragment" -->
 
 
 
