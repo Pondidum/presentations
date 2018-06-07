@@ -320,7 +320,7 @@ Note:
 
 
 
-![web nginx yourapp](img/portbinding.png) <!-- .element: class="no-border" -->
+![web nginx yourapp](img/port-binding.png) <!-- .element: class="no-border" -->
 Note:
 * bind to port x on localhost
 * https offload on nginx or other webserver
@@ -442,9 +442,35 @@ Note:
 ## 9. Disposability
 Maximize robustness with fast startup and graceful shutdown
 Note:
-* The quicker a new instance can handle requests the better
-* shutdown means stop handling new requests, finish current ones
+* quicker it can handle requests the better
+    * quick scale up!
+* shutdown: stop handling new requests, finish current ones
+    * cost!
+* bouncing service has lower downtime
 * a sudden shutdown should not cause data loss
+
+
+
+# MTTR > MTTF
+
+
+
+![mean time to failure - bmw engine](img/mttf-bmw.jpg)
+http://image.superstreetonline.com/f/features/1308_10_top_bmw_3_series_features/42920882/04+2009-bmw-320d+engine-bay.jpg <!-- .element: class="attribution" -->
+Note:
+* doesnt break often!
+* when it does though...
+* take to bmw
+* cost 1000s
+* takes weeks
+
+
+
+![mean time to recovery - jeep engine](img/mttf-jeep.jpg)
+http://car-from-uk.com/ebay/carphotos/full/ebay698037.jpg <!-- .element: class="attribution" -->
+Note:
+* breaks...regularly
+* fixed in 5min with a wrench
 
 
 
