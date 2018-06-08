@@ -573,6 +573,74 @@ Note:
 
 
 
+```bash
+dotnet new console --name Twelve.Tasks -o src/Twelve.Tasks
+dotnet add package Oakton
+```
+
+
+
+```csharp
+public class MigrateInput
+{
+    [Description("Optionally specify which version to migrate to")]
+    public int Version { get; set; }
+}
+```
+```csharp
+[Description("Migrates the Postgres database schema")]
+public class MigrateCommand : OaktonAsyncCommand<MigrateInput>
+{
+    public MigrateCommand()
+    {
+        Usage("Migrate to latest version");
+        Usage("Migrate to a specific version").Arguments(x => x.Version);
+    }
+
+    public override async Task<bool> Execute(MigrateInput input)
+    {
+        await Console.Out.WriteLineAsync("Nothing to migrate");
+        return true;
+    }
+}
+```
+
+
+
+```bash
+$ dotnet Twelve.Tasks
+  ---------------------------------------------------------------------------
+  Available commands:
+  ---------------------------------------------------------------------------
+      inspect -> Inspects various items stored by the service
+      migrate -> Migrates the Postgres database schema
+         gdpr -> Generate a Report on a User, or Annonymise them
+    retention -> Purge all unused old data
+  ---------------------------------------------------------------------------
+```
+
+
+
+```bash
+$ dotnet help migrate
+ Usages for 'migrate' (Migrates the Postgres database schema)
+
+  ---------------------------------------------------------------------------
+    Usages
+  ---------------------------------------------------------------------------
+        Migrate to latest version ->  migrate
+    Migrate to a specific version ->  migrate <version>
+  ---------------------------------------------------------------------------
+
+  ---------------------------------------------------------------------------
+    Arguments
+  ---------------------------------------------------------------------------
+    version -> Optionally specify which version to migrate to
+  ---------------------------------------------------------------------------
+```
+
+
+
 ## Questions?
 ![questions](img/questions.jpg)
 
