@@ -28,12 +28,16 @@ Note:
 
 
 
-# But x uses a monorepo
+# But ![Facebook, Google, Microsoft](img/monorepos.png)<!-- .element: class="no-border" style="vertical-align:middle;" --> use a monorepo
 Note:
 * Google, Facebook, Microsoft use monorepo
 * you are not their scale
 * 2 of them have written filesystems to deal with it
 * perhaps they are solving the wrong problem?
+
+
+
+![amazon, netflix, riot, spotify](img/factor-1-codebase.png) <!-- .element: class="no-border" -->
 
 
 
