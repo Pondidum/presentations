@@ -106,20 +106,32 @@ Note:
 
 
 
+```bash
+dotnet add package Microsoft.Extensions.Configuration
+dotnet add package Microsoft.Extensions.Configuration.Binder
+dotnet add package Microsoft.Extensions.Configuration.EnvironmentVariables
+```
 ```csharp
-public class Startup
-{
-    public void ConfigureServices(IServiceCollection services)
+public static IWebHost BuildWebHost(string[] args) => WebHost
+    .CreateDefaultBuilder(args)
+    .UseStartup<Startup>()
+    .ConfigureServices(services =>
     {
-        var config = new ConfigurationBuilder()
+        services.AddSingleton(new ConfigurationBuilder()
             .AddEnvironmentVariables(ev => ev.Prefix = "twelve:")
             .Build()
-            .Get<Configuration>();
-
-        services.AddSingleton(config);
-    }
-}
+            .Get<Configuration>()
+        );
+    })
+    .Build();
 ```
+<!-- .element: class="fragment" -->
+Note:
+* add 3 packages
+* using aspnetcore.all gives first 2 already
+* not using `ConfigureAppConfiguration`
+* strong config best config
+
 
 
 
@@ -137,14 +149,11 @@ public class Configuration
 
 
 
-# Don't Store
+# Don't Store Sensitive Data in the Environment
+Note:
 * Connection Strings
 * Passwords
 * ApiKeys
-
-<!-- .element: class="list-unstyled list-spaced" -->
-Note:
-* anything sensitive
 * should be centralised
 
 
@@ -158,21 +167,20 @@ https://www.hashicorp.com/brand <!-- .element: class="attribution" -->
 ```bash
 dotnet add package Consul.Microsoft.Extensions.Configuration
 ```
-
 ```csharp
-public class Startup
-{
-    public void ConfigureServices(IServiceCollection services)
+public static IWebHost BuildWebHost(string[] args) => WebHost
+    .CreateDefaultBuilder(args)
+    .UseStartup<Startup>()
+    .ConfigureServices(services =>
     {
-        var config = new ConfigurationBuilder()
+        services.AddSingleton(new ConfigurationBuilder()
             .AddEnvironmentVariables(ev => ev.Prefix = "twelve:")
             .AddConsul(prefix: "appsettings/twelve/")
             .Build()
-            .Get<Configuration>();
-
-        services.AddSingleton(config);
-    }
-}
+            .Get<Configuration>()
+        );
+    })
+    .Build();
 ```
 <!-- .element: class="fragment" -->
 
