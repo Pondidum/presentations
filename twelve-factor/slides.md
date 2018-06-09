@@ -415,15 +415,6 @@ Note:
 
 
 
-## 8. Concurrency
-Scale out via the process model
-Note:
-* split by work type (http, rabbitmq, background indexing)
-* doesn't ban threads
-* but you should be able to run multiple copies for scale-out
-
-
-
 ![web haproxy yourapp](img/scaleout-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 Note:
@@ -433,14 +424,24 @@ Note:
 
 
 ![web haproxy yourapp](img/scaleout-2.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none-in none-out" -->
+<!-- .slide: data-transition="none-in fade-out" -->
 Note:
 * viral post on reddit/hackernews about your new js framework
 
 
 
+## 8. Concurrency
+Scale out via the process model
+<!-- .slide: data-transition="fade" -->
+Note:
+* split by work type (http, rabbitmq, background indexing)
+* doesn't ban threads
+* but you should be able to run multiple copies for scale-out
+
+
+
 ![web haproxy yourapp](img/scaleout-3.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none-in slide-out" -->
+<!-- .slide: data-transition="fade-in slide-out" -->
 Note:
 * more instances!
 * be careful of downstream effects
