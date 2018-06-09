@@ -186,7 +186,7 @@ public static IWebHost BuildWebHost(string[] args) => WebHost
 
 
 
-## 4. Backing services
+## 4. Backing Services
 Treat backing services as attached resources
 Note:
 * bit obtuse...what does it mean?
@@ -220,20 +220,20 @@ Note:
 MODE=${1:-Debug}
 NAME=$(basename $(ls *.sln | head -n 1) .sln)
 
-dotnet restore
 dotnet build --configuration $MODE
 
-find ./src -iname "*.Tests.csproj" -type f -exec dotnet test \
-  --configuration $MODE \
-  --no-build \
-  --no-restore
-  "{}" \;
+find ./src -iname "*.Tests.csproj" -type f -exec \
+  dotnet test --configuration $MODE --no-build --no-restore "{}" \;
 
-dotnet pack \
-  --configuration $MODE \
-  --no-build \
-  --no-restore \
-  --output ../../.build
+dotnet publish \
+  --configuration $MODE --no-build --no-restore
+  --output ../../.build/publish
+
+octo pack \
+  --basePath .build/publish
+  --outFolder .build/artifacts
+  --id $NAME
+  --version $(readVersion.sh $NAME)
 ```
 Note:
 * we deploy with octopus, so generate a nuget for apps
@@ -253,7 +253,7 @@ Note:
 
 ```bash
 APIKEY="$1"
-find .build -iname "*.nupkg" -type f -exec .tools/octo/octo.exe push \
+find .build/artifacts -iname "*.nupkg" -exec octo push \
   --package "{}" \
   --server https://octopus.internal.net \
   --apiKey $APIKEY \
