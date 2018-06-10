@@ -41,39 +41,26 @@ Note:
 
 
 
-- Twelve.Consumer/
-  - .git/
-  - deploy/
-  - src/
-- Twelve.Api/
-  - .git/
-  - deploy/
-  - src/
-- Twelve.Background/
-  - .git/
-  - deploy/
-  - src/
-
+![3 separate repositories](img/separate-repos.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
 Note:
 * what about common things?
 * terraform
+* acceptance tests?
 
 
 
-- Twelve
-  - .git
-  - Consumer/
-    - deploy/
-    - src/
-  - Api/
-    - deploy/
-    - src/
-  - Background/
-    - deploy/
-    - src/
-  - infrastructure/
-    - variables.tf
-    - database.tf
+![3 separate repositories with questions](img/separate-repos-what.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
+Note:
+* one solution
+* extra project for shared stuff
+* acceptance tests
+* generates 3 artifacts
+
+
+
+![one repository with folders for each project](img/one-repo.png) <!-- .element: class="no-border" -->
 Note:
 * shared code? e.g. models
 * nugets
