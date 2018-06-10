@@ -477,6 +477,75 @@ Note:
 ## 10. Dev/prod parity
 Keep development, staging, and production as similar as possible
 Note:
+* first part is infrastructure
+* how to keep all envs the same?
+
+
+
+![terraform logo](img/terraform.png) <!-- .element: width="50%" class="no-border" -->
+Note:
+* declarative infrastructure
+
+
+
+```javascript
+resource "aws_db_instance" "storage" {
+  allocated_storage    = 10
+  storage_type         = "gp2"
+  engine               = "postgres"
+  instance_class       = "db.t2.micro"
+
+  name                 = "Twelve"
+  username             = "${var.db_username}"
+  password             = "${var.db_password}"
+}
+```
+
+
+
+```javascript
+resource "aws_ecs_cluster" "main" {
+  name = "ecs-cluster"
+}
+```
+
+```javascript
+resource "aws_ecs_task_definition" "api" {
+  requires_compatibilities = [ "FARGATE" ]
+  cpu                      = 1
+  memory                   = 256
+  container_definitions    = [ { "image": "${var.app_image}" } ]
+}
+```
+
+```javascript
+resource "aws_ecs_service" "main" {
+  name            = "ecs-service"
+  cluster         = "${aws_ecs_cluster.main.id}"
+  task_definition = "${aws_ecs_task_definition.api.arn}"
+  desired_count   = 3
+  launch_type     = "FARGATE"
+
+  load_balancer {
+    target_group_arn = "${aws_alb_target_group.app.id}"
+    container_name   = "twelve.api"
+    container_port   = "443"
+  }
+}
+```
+
+
+
+![attached services](img/attached-resources.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
+
+
+
+![attached services](img/attached-resources-bad.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
+
+
+
 * not only environments
     * small ttl of dev => prod (hours)
     * devs support prod
