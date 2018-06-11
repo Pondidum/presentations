@@ -639,6 +639,11 @@ output:
     hosts: [ "logstash.internal.net:5044" ]
 ```
 
+
+
+```bash
+$ dotnet myapp.dll
+```
 ```bash
 $ dotnet myapp.dll | filebeat
 ```
