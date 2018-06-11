@@ -500,6 +500,10 @@ resource "aws_db_instance" "storage" {
   password             = "${var.db_password}"
 }
 ```
+Note:
+* "make the db in this state"
+* creates or updates
+* username and pwd from cli/vault/consul
 
 
 
@@ -533,6 +537,11 @@ resource "aws_ecs_service" "main" {
   }
 }
 ```
+Note:
+* lookup the ECS Cluster (managed externally)
+* create a task for our container (id from cli)
+* update our service with the task
+* missing lots!
 
 
 
