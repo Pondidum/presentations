@@ -546,10 +546,14 @@ resource "aws_ecs_service" "main" {
 
 
 
-* not only environments
-    * small ttl of dev => prod (hours)
-    * devs support prod
-* backing services: local sqllite vs prod postgres bad
+![small ttl for changes](img/environment-ttl.png) <!-- .element: class="no-border" -->
+Note:
+* changes have small ttl
+* smaller changes = faster progression
+* sign off?
+    * feature toggles
+    * short lived please!
+* large ttl = conflicts
 
 
 
