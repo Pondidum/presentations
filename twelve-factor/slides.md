@@ -463,7 +463,7 @@ Note:
 
 
 
-![terraform logo](img/terraform.png) <!-- .element: width="50%" class="no-border" -->
+![terraform logo](img/terraform.png) <!-- .element: class="no-border" -->
 Note:
 * declarative infrastructure
 
@@ -619,6 +619,11 @@ output:
   logstash:
     hosts: [ "logstash.internal.net:5044" ]
 ```
+Note:
+* you can do a lot more things here
+* we add the `environment` field
+    * read from envvars, default to local
+
 
 
 
