@@ -729,6 +729,17 @@ $ dotnet help migrate
 
 
 ## Questions?
-![questions](img/questions.jpg)
+<br />
+
+* https://github.com/pondidum/12factor-demo
+* https://andydote.co.uk/presentations/twelve-factor
+* https://12factor.net/
+* https://www.consul.io/
+* https://www.terraform.io/
+* https://www.vaultproject.io/
+* https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
+
+<!-- .element: class="list-spaced small" -->
+<br />
 
 github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
