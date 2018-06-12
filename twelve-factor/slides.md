@@ -578,27 +578,6 @@ public static void Main(string[] args)
 
 
 
-```json
-{
-  "Protocol": "HTTP/1.1",
-  "Method": "GET",
-  "ContentType": null,
-  "ContentLength": null,
-  "Scheme": "http",
-  "Host": "localhost:5000",
-  "PathBase": "",
-  "Path": "/",
-  "QueryString": "",
-  "HostingRequestStartingLog":"Request starting HTTP/1.1 GET http://localhost:5000/",
-  "EventId": { "Id": 1 },
-  "SourceContext": "Microsoft.AspNetCore.Hosting.Internal.WebHost",
-  "RequestId": "0HLECL00SACJ5:00000001",
-  "RequestPath": "/"
-}
-```
-
-
-
 ```csharp
  logging.AddSerilog(new LoggerConfiguration()
     .WriteTo.Console(Debugger.IsAttached
@@ -609,6 +588,10 @@ public static void Main(string[] args)
 
 
 
+![filebeat logo](img/filebeat.png) <!-- .element: class="no-border" -->
+```bash
+filebeat.yml
+```
 ```yaml
 filebeat:
   prospectors:
