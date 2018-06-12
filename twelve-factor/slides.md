@@ -661,12 +661,8 @@ Note:
 
 
 ```bash
-dotnet new console --name Twelve.Tasks -o src/Twelve.Tasks
 dotnet add package Oakton
 ```
-
-
-
 ```csharp
 public class MigrateInput
 {
@@ -674,6 +670,7 @@ public class MigrateInput
     public int Version { get; set; }
 }
 ```
+<!-- .element: class="fragment" data-fragment-index="1" -->
 ```csharp
 [Description("Migrates the Postgres database schema")]
 public class MigrateCommand : OaktonAsyncCommand<MigrateInput>
@@ -686,16 +683,20 @@ public class MigrateCommand : OaktonAsyncCommand<MigrateInput>
 
     public override async Task<bool> Execute(MigrateInput input)
     {
-        await Console.Out.WriteLineAsync("Nothing to migrate");
+        // Fluent Migrator etc...
         return true;
     }
 }
 ```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+Note:
+* cli gets mapped to the input class
+* the command name is the top level action name
 
 
 
 ```bash
-$ dotnet Twelve.Tasks
+$ dotnet Twelve.Tasks.dll
   ---------------------------------------------------------------------------
   Available commands:
   ---------------------------------------------------------------------------
@@ -705,26 +706,21 @@ $ dotnet Twelve.Tasks
     retention -> Purge all unused old data
   ---------------------------------------------------------------------------
 ```
-
-
-
-```bash
-$ dotnet help migrate
- Usages for 'migrate' (Migrates the Postgres database schema)
-
-  ---------------------------------------------------------------------------
-    Usages
-  ---------------------------------------------------------------------------
-        Migrate to latest version ->  migrate
-    Migrate to a specific version ->  migrate <version>
-  ---------------------------------------------------------------------------
-
-  ---------------------------------------------------------------------------
-    Arguments
-  ---------------------------------------------------------------------------
-    version -> Optionally specify which version to migrate to
-  ---------------------------------------------------------------------------
 ```
+$ dotnet Twelve.Tasks.dll migrate --version 23
+
+Database is currently at version 22.
+Running 1 migration...
+Done.
+```
+<!-- .element: class="fragment" -->
+Note:
+* running the app we can see all commands
+* and running the migration itself
+* where did the connection string come from?
+    * consul of course
+    * same config as prod apps
+    * higher priv connection though
 
 
 
