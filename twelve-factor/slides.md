@@ -443,34 +443,15 @@ Note:
 Maximize robustness with fast startup and graceful shutdown
 Note:
 * quicker it can handle requests the better
-    * quick scale up!
+
+
+
+![requests vs container count graph](img/reaction-time.png)<!-- .element: class="no-border" -->
+Note:
 * shutdown: stop handling new requests, finish current ones
     * cost!
 * bouncing service has lower downtime
 * a sudden shutdown should not cause data loss
-
-
-
-# MTTR > MTTF
-
-
-
-![mean time to failure - bmw engine](img/mttf-bmw.jpg)
-http://image.superstreetonline.com/f/features/1308_10_top_bmw_3_series_features/42920882/04+2009-bmw-320d+engine-bay.jpg <!-- .element: class="attribution" -->
-Note:
-* doesnt break often!
-* when it does though...
-* take to bmw
-* cost 1000s
-* takes weeks
-
-
-
-![mean time to recovery - jeep engine](img/mttf-jeep.jpg)
-http://car-from-uk.com/ebay/carphotos/full/ebay698037.jpg <!-- .element: class="attribution" -->
-Note:
-* breaks...regularly
-* fixed in 5min with a wrench
 
 
 
