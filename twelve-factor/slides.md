@@ -152,6 +152,10 @@ Note:
 ![consul logo](img/consul.png) <!-- .element: width="50%" class="no-border" -->
 ![vault logo](img/vault.png) <!-- .element: width="50%" class="no-border fragment" -->
 https://www.hashicorp.com/brand <!-- .element: class="attribution" -->
+Note:
+* connection strings in consul
+* but username and pwd in vault
+    * which stores in consul...
 
 
 
