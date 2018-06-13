@@ -578,13 +578,38 @@ public static void Main(string[] args)
 
 
 
-```csharp
- logging.AddSerilog(new LoggerConfiguration()
-    .WriteTo.Console(Debugger.IsAttached
-        ? new MessageTemplateTextFormatter("[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
-        : new JsonFormatter())
-    .CreateLogger());
+```json
+{
+  "Protocol": "HTTP/1.1",
+  "Method": "GET",
+  "ContentType": null,
+  "ContentLength": null,
+  "Scheme": "http",
+  "Host": "localhost:5000",
+  "PathBase": "",
+  "Path": "/",
+  "QueryString": "",
+  "HostingRequestStartingLog":"Request starting HTTP/1.1 GET http://localhost:5000/",
+  "EventId": { "Id": 1 },
+  "SourceContext": "Microsoft.AspNetCore.Hosting.Internal.WebHost",
+  "RequestId": "0HLECL00SACJ5:00000001",
+  "RequestPath": "/"
+}
 ```
+
+
+
+```bash
+$ dotnet myapp.dll
+```
+```bash
+$ dotnet myapp.dll | dotnet serirender.dll
+```
+<!-- .element: class="fragment" -->
+```bash
+$ dotnet myapp.dll | filebeat
+```
+<!-- .element: class="fragment" -->
 
 
 
@@ -609,23 +634,41 @@ Note:
 
 
 
-
-```bash
-$ dotnet myapp.dll
-```
-```bash
-$ dotnet myapp.dll | filebeat
-```
-<!-- .element: class="fragment" -->
-
-
-
 ## 12. Admin processes
 Run admin/management tasks as one-off processes
 Note:
 * what else would you do?!
 * separate exe with cli tasks (migration, status check, smoketest)
 * deployed with main app
+
+
+
+```bash
+$ dotnet Twelve.Tasks.dll
+  ---------------------------------------------------------------------------
+  Available commands:
+  ---------------------------------------------------------------------------
+      inspect -> Inspects various items stored by the service
+      migrate -> Migrates the Postgres database schema
+         gdpr -> Generate a Report on a User, or Annonymise them
+    retention -> Purge all unused old data
+  ---------------------------------------------------------------------------
+```
+```
+$ dotnet Twelve.Tasks.dll migrate --version 23
+
+Database is currently at version 22.
+Running 1 migration...
+Done.
+```
+<!-- .element: class="fragment" -->
+Note:
+* running the app we can see all commands
+* and running the migration itself
+* where did the connection string come from?
+    * consul of course
+    * same config as prod apps
+    * higher priv connection though
 
 
 
@@ -661,35 +704,6 @@ public class MigrateCommand : OaktonAsyncCommand<MigrateInput>
 Note:
 * cli gets mapped to the input class
 * the command name is the top level action name
-
-
-
-```bash
-$ dotnet Twelve.Tasks.dll
-  ---------------------------------------------------------------------------
-  Available commands:
-  ---------------------------------------------------------------------------
-      inspect -> Inspects various items stored by the service
-      migrate -> Migrates the Postgres database schema
-         gdpr -> Generate a Report on a User, or Annonymise them
-    retention -> Purge all unused old data
-  ---------------------------------------------------------------------------
-```
-```
-$ dotnet Twelve.Tasks.dll migrate --version 23
-
-Database is currently at version 22.
-Running 1 migration...
-Done.
-```
-<!-- .element: class="fragment" -->
-Note:
-* running the app we can see all commands
-* and running the migration itself
-* where did the connection string come from?
-    * consul of course
-    * same config as prod apps
-    * higher priv connection though
 
 
 
