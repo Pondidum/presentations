@@ -555,6 +555,16 @@ Note:
 
 
 
+![container logs to central](img/logs-how.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
+
+
+
+![container logs to central](img/logs-how-elk.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
+
+
+
 ```csharp
 public static void Main(string[] args)
 {
@@ -597,20 +607,6 @@ public static void Main(string[] args)
 
 
 
-```bash
-$ dotnet myapp.dll
-```
-```bash
-$ dotnet myapp.dll | dotnet serirender.dll
-```
-<!-- .element: class="fragment" -->
-```bash
-$ dotnet myapp.dll | filebeat
-```
-<!-- .element: class="fragment" -->
-
-
-
 ![filebeat logo](img/filebeat.png) <!-- .element: class="no-border" -->
 ```bash
 filebeat.yml
@@ -629,6 +625,20 @@ Note:
 * you can do a lot more things here
 * we add the `environment` field
     * read from envvars, default to local
+
+
+
+```bash
+$ dotnet myapp.dll
+```
+```bash
+$ dotnet myapp.dll | filebeat
+```
+<!-- .element: class="fragment" -->
+```bash
+$ dotnet myapp.dll | dotnet serirender.dll
+```
+<!-- .element: class="fragment" -->
 
 
 
