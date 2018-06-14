@@ -221,17 +221,14 @@ find ./src -iname "*.Tests.csproj" -type f -exec \
   dotnet test --configuration $MODE --no-build --no-restore "{}" \;
 
 dotnet publish \
-  --configuration $MODE --no-build --no-restore
-  --output ../../.build/publish
+  --configuration $MODE --no-build --no-restore \
+  --runtime linux-x64 \
+  --output publish
 
-octo pack \
-  --basePath .build/publish
-  --outFolder .build/artifacts
-  --id $NAME
-  --version $(readVersion.sh $NAME)
+find ./src -iname "Dockerfile"
+  -exec ./dockerBuild.sh {} \;
 ```
 Note:
-* we deploy with octopus, so generate a nuget for apps
 * you could create a docker container
 * bake an ami with packer etc.
 <!-- .slide: data-transition="fade" -->
@@ -246,17 +243,14 @@ Note:
 
 
 
-```bash
-APIKEY="$1"
-find .build/artifacts -iname "*.nupkg" -exec octo push \
-  --package "{}" \
-  --server https://octopus.internal.net \
-  --apiKey $APIKEY \
-  \;
-```
 
 ```bash
-CONTAINER=$(docker images | grep myapp | grep latest | awk '{print $3}')
+find ./src -iname "Dockerfile"
+  -exec ./dockerPublish.sh $TAG {} \;
+```
+```bash
+TAG=$1
+CONTAINER=$(docker images | grep $TAG | awk '{print $3}' | head -n 1)
 
 docker tag $CONTAINER docker.internal.net/myapp
 docker push docker.internal.net/myapp
@@ -266,7 +260,7 @@ docker push docker.internal.net/myapp
 
 
 
-![build release deploy pipeline](img/build-release-deploy-3-octopus.png) <!-- .element: class="no-border" -->
+![build release deploy pipeline](img/build-release-deploy-3-docker.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in none-out" -->
 
 
