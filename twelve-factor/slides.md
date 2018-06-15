@@ -685,7 +685,7 @@ public class MigrateInput
     public int Version { get; set; }
 }
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
+<!-- .element: class="fragment" -->
 ```csharp
 [Description("Migrates the Postgres database schema")]
 public class MigrateCommand : OaktonAsyncCommand<MigrateInput>
@@ -703,7 +703,7 @@ public class MigrateCommand : OaktonAsyncCommand<MigrateInput>
     }
 }
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
+<!-- .element: class="fragment" -->
 Note:
 * cli gets mapped to the input class
 * the command name is the top level action name
