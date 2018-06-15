@@ -41,8 +41,13 @@ Note:
 
 
 
-![3 separate repositories](img/separate-repos.png) <!-- .element: class="no-border" -->
+![twelve factor app example](img/codebase.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
+
+
+
+![twelve factor app example](img/codebase-multirepo.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
 Note:
 * what about common things?
 * terraform
@@ -50,17 +55,7 @@ Note:
 
 
 
-![3 separate repositories with questions](img/separate-repos-what.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none-in slide-out" -->
-Note:
-* one solution
-* extra project for shared stuff
-* acceptance tests
-* generates 3 artifacts
-
-
-
-![one repository with folders for each project](img/one-repo.png) <!-- .element: class="no-border" -->
+![one repository with folders for each project](img/codebase-onerepo.png) <!-- .element: class="no-border" -->
 Note:
 * shared code? e.g. models
 * nugets
