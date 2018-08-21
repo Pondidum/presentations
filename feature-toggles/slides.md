@@ -374,7 +374,7 @@ Note:
 
 
 ![phased-rollout-progress](img/phased-rollout-progress-1.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="out-none" -->
 Note:
 * picked person who got most problems
 * asked him to beta test (keen!)
@@ -393,6 +393,11 @@ Note:
 <!-- .slide: data-transition="none" -->
 Note:
 * perf issues found!
+
+
+
+![phased-rollout-perf](img/phased-rollout-perf-initial.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
 
 
 
