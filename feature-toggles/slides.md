@@ -438,6 +438,24 @@ Note:
 
 
 
+![phased-rollout-progress](img/phased-rollout-graph.png) <!-- .element: class="no-border" -->
+Note:
+* percent of users with toggle on
+
+
+
+# User Perception
+<br />
+![phased-rollout-progress](img/phased-rollout-perception-first.png) <!-- .element: class="no-border fragment" -->
+![phased-rollout-progress](img/phased-rollout-perception-early.png) <!-- .element: class="no-border fragment" -->
+![phased-rollout-progress](img/phased-rollout-perception-everyone.png) <!-- .element: class="no-border fragment" -->
+Note:
+* first: pita. Harness it. Feels special, first! helped write feature.
+* early: "we had early access", feels special
+* all: big bang release, flawless.
+
+
+
 # Testing is harder
 Note:
 Is it?
