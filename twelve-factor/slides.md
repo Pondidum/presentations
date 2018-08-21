@@ -631,7 +631,7 @@ $ dotnet myapp.dll | filebeat
 ```
 <!-- .element: class="fragment" -->
 ```bash
-$ dotnet myapp.dll | dotnet serirender.dll
+$ dotnet myapp.dll | transcribe  # github.com/pondidum/transcribe
 ```
 <!-- .element: class="fragment" -->
 
