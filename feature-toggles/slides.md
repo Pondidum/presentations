@@ -70,7 +70,7 @@ Note:
 
 
 
-#### Lesson 1
+#### Rule 1
 ## NEVER Reuse A Toggle
 Note:
 * if they had a new toggle, problem wouldnt have happened
@@ -90,7 +90,7 @@ Note:
 
 
 
-#### Lesson 2
+#### Rule 2
 ## Short Lifespan
 
 
@@ -107,7 +107,7 @@ Note:
 
 
 
-#### Lesson 3
+#### Rule 3
 ## Name Toggles Well
 
 
@@ -157,7 +157,7 @@ Note:
 
 
 
-#### Lesson 4
+#### Rule 4
 ## Architecture Matters
 Note:
 * toggles should be implemented smartly
@@ -332,21 +332,6 @@ Note:
 
 
 
-#### Lesson 5
-## Monitor Toggles
-Note:
-* queried
-* state change
-
-
-
-![toggle-graphs](img/toggle-graphs.png) <!-- .element: class="no-border" -->
-Note:
-* we can see a toggle stopped being queried
-* and this one hasn't changed state
-
-
-
 ![phased-rollout](img/phased-rollout-initial.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="out-none" -->
 Note:
@@ -441,6 +426,32 @@ Note:
 ![phased-rollout-progress](img/phased-rollout-graph.png) <!-- .element: class="no-border" -->
 Note:
 * percent of users with toggle on
+
+
+
+#### Rule 5
+## Monitor Toggles
+Note:
+* when/how often queried
+* what state is it
+
+
+
+![toggle-graphs](img/monitoring-graph.png) <!-- .element: class="no-border" -->
+Note:
+* left: ramp up of users querying
+* middle: everyone active
+* right: stopped querying (toggle can be deleted)
+
+
+
+    # Alerts
+* Toggle isn't queried
+* Toggle state hasn't changed
+
+Note:
+* how long? it depends
+* state: active % hasn't changed
 
 
 
