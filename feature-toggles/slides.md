@@ -317,7 +317,7 @@ Note:
 
 
 ![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none" -->
+<!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * effects everyone
 * periodic check most likely
@@ -333,7 +333,7 @@ Note:
 
 
 ![phased-rollout](img/phased-rollout-initial.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="out-none" -->
+<!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * soap service was crap
 * did magic also
@@ -351,7 +351,7 @@ Note:
 
 
 ![phased-rollout](img/phased-rollout-on.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none" -->
+<!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * toggle on, queues
 * rabbitmq plus a couple of workers
@@ -359,7 +359,7 @@ Note:
 
 
 ![phased-rollout-progress](img/phased-rollout-progress-1.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="out-none" -->
+<!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * picked person who got most problems
 * asked him to beta test (keen!)
@@ -415,7 +415,7 @@ Note:
 
 
 ![phased-rollout-progress](img/phased-rollout-progress-6.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none" -->
+<!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * process took 6-8 weeks
 * faster towards the end
@@ -467,30 +467,7 @@ Note:
 
 
 
-# Testing is harder
-Note:
-Is it?
-
-
-
-![testing-existing](img/testing-existing.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="out-none" -->
-Note:
-* greg young: tests are immutable
-* old tests don't change (toggle off)
-
-
-
-![testing-new-toggle](img/testing-new-toggle.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none" -->
-Note:
-* new tests (toggle on)
-* delete old when toggle removed!
-* manual testing basically the same
-
-
-
-# Adds Complexity
+# Complexity
 Note:
 * but what doesn't?
 * we cant remove complexity
@@ -500,7 +477,7 @@ Note:
 
 
 ![long-lived-branches](img/long-branches-1.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="out-none" -->
+<!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * monolith repo
 * 2x inhouse, 1x outsourced (incompetent)
@@ -510,11 +487,34 @@ Note:
 
 
 ![long-lived-branches](img/long-branches-2.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none" -->
+<!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * priorities changed
 * multiple merge and revert
 * rebases!
+
+
+
+# Testing is harder
+Note:
+Is it?
+
+
+
+![testing-existing](img/testing-existing.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in out-none" -->
+Note:
+* greg young: tests are immutable
+* old tests don't change (toggle off)
+
+
+
+![testing-new-toggle](img/testing-new-toggle.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none slide-out" -->
+Note:
+* new tests (toggle on)
+* delete old when toggle removed!
+* manual testing basically the same
 
 
 
