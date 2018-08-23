@@ -91,7 +91,7 @@ Note:
 
 
 #### Rule 2
-## Short Lifespan
+## Keep Lifespan Short
 
 
 
@@ -512,8 +512,10 @@ Note:
 
 
 
+## Rules
+
 1. NEVER Reuse A Toggle
-1. Short Lifespan
+1. Keep Lifespan Short
 1. Name Toggles Well
 1. Architecture Matters
 1. Monitor Toggles
