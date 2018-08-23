@@ -445,7 +445,7 @@ Note:
 
 
 
-    # Alerts
+# Alerts
 * Toggle isn't queried
 * Toggle state hasn't changed
 
@@ -501,17 +501,11 @@ Is it?
 
 
 
-![testing-existing](img/testing-existing.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="slide-in out-none" -->
+![testing-existing](img/testing-toggles-original.png) <!-- .element: class="no-border fragment fade-out" data-fragment-index="2" -->
+![testing-new-toggle](img/testing-toggles-toggle.png) <!-- .element: class="no-border fragment" data-fragment-index="1"-->
 Note:
 * greg young: tests are immutable
 * old tests don't change (toggle off)
-
-
-
-![testing-new-toggle](img/testing-new-toggle.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none slide-out" -->
-Note:
 * new tests (toggle on)
 * delete old when toggle removed!
 * manual testing basically the same
