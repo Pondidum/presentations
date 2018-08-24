@@ -36,6 +36,64 @@ Note:
 
 
 
+```csharp
+if (feature_enabled) {
+
+    while (order.current < order.total) {
+        submitNewOrder(1)
+    }
+}
+else {
+    submitNewOrder(order.total)
+}
+
+void submitNewOrder(howMany) {
+    // do magic
+    order.current += howMany
+}
+```
+<!-- .slide: data-transition="slide-in out-none" -->
+
+
+
+```csharp
+if (feature_enabled) {
+
+    while (order.current < order.total) {
+        submitNewOrder(1)
+    }
+}
+else {
+    submitNewOrder(order.total)
+}
+order.current = countProcessedEvents();
+
+void submitNewOrder(howMany) {
+    // do magic
+}
+```
+<!-- .slide: data-transition="in-none out-none" -->
+
+
+
+```csharp
+if (feature_enabled) {
+    splitIntoSmallerOrders();
+}
+else {
+    submitNewOrder(order.total)
+}
+
+order.current = countProcessedEvents();
+
+void submitNewOrder(howMany) {
+    // do magic
+}
+```
+<!-- .slide: data-transition="in-none slide-out" -->
+
+
+
 ![knight-capital-process](img/knight-capital-process.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
 
