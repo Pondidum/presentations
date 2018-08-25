@@ -407,18 +407,12 @@ Note:
 
 
 
-![phased-rollout](img/phased-rollout-off.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="out-none" -->
+![phased-rollout](img/phased-rollout-new.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * magic was implemented properly in other pipeline connector
 * IEmailConnector, decorator to choose impl
 * default/toggle off = old
-
-
-
-![phased-rollout](img/phased-rollout-on.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none slide-out" -->
-Note:
 * toggle on, queues
 * rabbitmq plus a couple of workers
 
