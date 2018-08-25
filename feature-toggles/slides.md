@@ -96,12 +96,13 @@ void submitNewOrder(howMany) {
 
 ![knight-capital-process](img/knight-capital-process.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
+<!-- .slide: data-transition="slide-in out-none" -->
 
 
 
 ![knight-capital-process](img/knight-capital-process-deployed.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
-<!-- .slide: data-transition="out-none" -->
+<!-- .slide: data-transition="in-none out-none" -->
 
 
 
@@ -135,7 +136,14 @@ Note:
 
 
 
+![knight-capital-process](img/knight-capital-process-deployed.png) <!-- .element: class="no-border" -->
+https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
+<!-- .slide: data-transition="slide-in out-none" -->
+
+
+
 ![knight-capital-process](img/knight-capital-process-separate.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="in-none slide-out" -->
 
 
 
