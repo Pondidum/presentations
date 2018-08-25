@@ -365,23 +365,6 @@ Note:
 
 
 
-![toggle-table](img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* compile time not great, needs redeploy
-* startup: change toggle, bounce service
-* periodic: change toggle, wait
-
-
-
-![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
-Note:
-* to a subset of users, usually
-* scale (risk): large=activity, small=startup
-
-
-
 ![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none slide-out" -->
 Note:
@@ -395,6 +378,23 @@ Note:
 * background process could cause load
 * usually not the root cause
 * monitoring started off manual
+
+
+
+![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+Note:
+* to a subset of users, usually
+* scale (risk): large=activity, small=startup
+
+
+
+![toggle-table](img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none" -->
+Note:
+* compile time not great, needs redeploy
+* startup: change toggle, bounce service
+* periodic: change toggle, wait
 
 
 
