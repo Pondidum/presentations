@@ -352,7 +352,7 @@ Note:
 
 
 ![toggle-table](img/toggle-table-time.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="out-none" -->
+<!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * Release: switch everyone/group
 * Feature: switch for subset. AB testing.
@@ -382,7 +382,7 @@ Note:
 
 
 ![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * to a subset of users, usually
 * scale (risk): large=activity, small=startup
@@ -390,7 +390,7 @@ Note:
 
 
 ![toggle-table](img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * compile time not great, needs redeploy
 * startup: change toggle, bounce service
@@ -435,14 +435,14 @@ Note:
 
 
 ![phased-rollout-progress](img/phased-rollout-progress-3.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="none slide-out" -->
 Note:
 * perf issues found!
 
 
 
 ![phased-rollout-perf](img/phased-rollout-perf-initial.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="slide-in none" -->
 
 
 
@@ -452,7 +452,7 @@ Note:
 
 
 ![phased-rollout-perf](img/phased-rollout-perf-solution.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="none slide-out" -->
 Note:
 * Worker reads both queues
 * favours direct queue
@@ -461,7 +461,7 @@ Note:
 
 
 ![phased-rollout-progress](img/phased-rollout-progress-4.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none" -->
+<!-- .slide: data-transition="slide-in none" -->
 Note:
 * no new problems...
 
