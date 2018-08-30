@@ -381,8 +381,16 @@ Note:
 
 
 
+![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
+Note:
+* effects everyone
+* periodic check most likely
+
+
+
 ![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="slide-in out-none" -->
+<!-- .slide: data-transition="none" -->
 Note:
 * to a subset of users, usually
 * scale (risk): large=activity, small=startup
