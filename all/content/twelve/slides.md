@@ -5,7 +5,7 @@ github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller 
 
 http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/Engineering-pictures-2.jpg <!-- .element: class="attribution white" -->
 
-<!-- .slide: data-background="img/gears.jpg" data-background-size="" class="intro" -->
+<!-- .slide: data-background="content/twelve/img/gears.jpg" data-background-size="" class="intro" -->
 
 Note:
 * Originally written by Heroku
@@ -28,7 +28,7 @@ Note:
 
 
 
-# But ![Facebook, Google, Microsoft](img/monorepos.png)<!-- .element: class="no-border" style="vertical-align:middle;" --> use a monorepo
+# But ![Facebook, Google, Microsoft](content/twelve/img/monorepos.png)<!-- .element: class="no-border" style="vertical-align:middle;" --> use a monorepo
 Note:
 * Google, Facebook, Microsoft use monorepo
 * you are not their scale
@@ -37,16 +37,16 @@ Note:
 
 
 
-![amazon, netflix, riot, spotify](img/factor-1-codebase.png) <!-- .element: class="no-border" -->
+![amazon, netflix, riot, spotify](content/twelve/img/factor-1-codebase.png) <!-- .element: class="no-border" -->
 
 
 
-![twelve factor app example](img/codebase.png) <!-- .element: class="no-border" -->
+![twelve factor app example](content/twelve/img/codebase.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 
 
 
-![twelve factor app example](img/codebase-multirepo.png) <!-- .element: class="no-border" -->
+![twelve factor app example](content/twelve/img/codebase-multirepo.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in slide-out" -->
 Note:
 * what about common things?
@@ -55,7 +55,7 @@ Note:
 
 
 
-![one repository with folders for each project](img/codebase-onerepo.png) <!-- .element: class="no-border" -->
+![one repository with folders for each project](content/twelve/img/codebase-onerepo.png) <!-- .element: class="no-border" -->
 Note:
 * shared code? e.g. models
 * nugets
@@ -144,8 +144,8 @@ Note:
 
 
 
-![consul logo](img/consul.png) <!-- .element: width="50%" class="no-border" -->
-![vault logo](img/vault.png) <!-- .element: width="50%" class="no-border fragment" -->
+![consul logo](content/twelve/img/consul.png) <!-- .element: width="50%" class="no-border" -->
+![vault logo](content/twelve/img/vault.png) <!-- .element: width="50%" class="no-border fragment" -->
 https://www.hashicorp.com/brand <!-- .element: class="attribution" -->
 Note:
 * connection strings in consul
@@ -183,7 +183,7 @@ Note:
 
 
 
-![service dependencies](img/attached-resources.png) <!-- .element: class="no-border" -->
+![service dependencies](content/twelve/img/attached-resources.png) <!-- .element: class="no-border" -->
 Note:
 * anything over the network
 * kafka: who knows where it is!
@@ -201,7 +201,7 @@ Note:
 
 
 
-![build release deploy pipeline](img/build-release-deploy-1-branch.png) <!-- .element: class="no-border" -->
+![build release deploy pipeline](content/twelve/img/build-release-deploy-1-branch.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 
 
@@ -230,7 +230,7 @@ Note:
 
 
 
-![build release deploy pipeline](img/build-release-deploy-2-publish.png) <!-- .element: class="no-border" -->
+![build release deploy pipeline](content/twelve/img/build-release-deploy-2-publish.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in none-out" -->
 Note:
 * pr accepted
@@ -255,17 +255,17 @@ docker push docker.internal.net/myapp
 
 
 
-![build release deploy pipeline](img/build-release-deploy-3-docker.png) <!-- .element: class="no-border" -->
+![build release deploy pipeline](content/twelve/img/build-release-deploy-3-docker.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in none-out" -->
 
 
 
-![build release deploy pipeline](img/build-release-deploy-4-test.png) <!-- .element: class="no-border" -->
+![build release deploy pipeline](content/twelve/img/build-release-deploy-4-test.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in none-out" -->
 
 
 
-![build release deploy pipeline](img/build-release-deploy-5-prod.png) <!-- .element: class="no-border" -->
+![build release deploy pipeline](content/twelve/img/build-release-deploy-5-prod.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in slide-out" -->
 
 
@@ -299,7 +299,7 @@ Note:
 
 
 
-![iis logo](img/iis.png) <!-- .element: class="no-border" -->
+![iis logo](content/twelve/img/iis.png) <!-- .element: class="no-border" -->
 * XML Configuration! <!-- .element: class="fragment" -->
 * Complexity! <!-- .element: class="fragment" -->
 * Killing AppPools at random! <!-- .element: class="fragment" -->
@@ -312,7 +312,7 @@ Note:
 
 
 
-![web nginx yourapp](img/port-binding.png) <!-- .element: class="no-border" -->
+![web nginx yourapp](content/twelve/img/port-binding.png) <!-- .element: class="no-border" -->
 Note:
 * bind to port x on localhost
 * https offload on nginx or other webserver
@@ -399,7 +399,7 @@ Note:
 
 
 
-![web haproxy yourapp](img/scaleout-1.png) <!-- .element: class="no-border" -->
+![web haproxy yourapp](content/twelve/img/scaleout-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 Note:
 * normal state
@@ -407,7 +407,7 @@ Note:
 
 
 
-![web haproxy yourapp](img/scaleout-2.png) <!-- .element: class="no-border" -->
+![web haproxy yourapp](content/twelve/img/scaleout-2.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in fade-out" -->
 Note:
 * viral post on reddit/hackernews about your new js framework
@@ -424,7 +424,7 @@ Note:
 
 
 
-![web haproxy yourapp](img/scaleout-3.png) <!-- .element: class="no-border" -->
+![web haproxy yourapp](content/twelve/img/scaleout-3.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="fade-in slide-out" -->
 Note:
 * more instances!
@@ -439,7 +439,7 @@ Note:
 
 
 
-![requests vs container count graph](img/reaction-time.png)<!-- .element: class="no-border" -->
+![requests vs container count graph](content/twelve/img/reaction-time.png)<!-- .element: class="no-border" -->
 Note:
 * shutdown: stop handling new requests, finish current ones
     * cost!
@@ -456,7 +456,7 @@ Note:
 
 
 
-![terraform logo](img/terraform.png) <!-- .element: class="no-border" -->
+![terraform logo](content/twelve/img/terraform.png) <!-- .element: class="no-border" -->
 Note:
 * declarative infrastructure
 
@@ -519,17 +519,17 @@ Note:
 
 
 
-![attached services](img/attached-resources.png) <!-- .element: class="no-border" -->
+![attached services](content/twelve/img/attached-resources.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 
 
 
-![attached services](img/attached-resources-bad.png) <!-- .element: class="no-border" -->
+![attached services](content/twelve/img/attached-resources-bad.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in slide-out" -->
 
 
 
-![small ttl for changes](img/environment-ttl.png) <!-- .element: class="no-border" -->
+![small ttl for changes](content/twelve/img/environment-ttl.png) <!-- .element: class="no-border" -->
 Note:
 * changes have small ttl
 * smaller changes = faster progression
@@ -550,12 +550,12 @@ Note:
 
 
 
-![container logs to central](img/logs-how.png) <!-- .element: class="no-border" -->
+![container logs to central](content/twelve/img/logs-how.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 
 
 
-![container logs to central](img/logs-how-elk.png) <!-- .element: class="no-border" -->
+![container logs to central](content/twelve/img/logs-how-elk.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in slide-out" -->
 
 
@@ -602,7 +602,7 @@ public static void Main(string[] args)
 
 
 
-![filebeat logo](img/filebeat.png) <!-- .element: class="no-border" -->
+![filebeat logo](content/twelve/img/filebeat.png) <!-- .element: class="no-border" -->
 ```bash
 filebeat.yml
 ```
