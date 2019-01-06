@@ -7,13 +7,13 @@
 #### Andy Davies
 
 github.com/pondidum | twitch.tv/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
-<!-- .slide: data-background="img/topconf-start.png" class="topconf" -->
 
 Note:
 * But I mean, still automate your builds :)
 
 
-![Lindorff Oy](img/lindorff.svg) <!-- .element: class="no-border" -->
+
+![Lindorff Oy](content/automate/img/lindorff.svg) <!-- .element: class="no-border" -->
 
 Note:
 * Over in Finland
@@ -22,7 +22,8 @@ Note:
 * and that's enough of that
 
 
-![assembly line](img/automation.jpg)
+
+![assembly line](content/automate/img/automation.jpg)
 http://www.oemupdate.com/cover-story/how-automation-could-impact-make-in-india/ <!-- .element: class="attribution" -->
 
 Note:
@@ -45,12 +46,15 @@ Note:
 * I just need to install...everything
 
 
-![depressing](img/depressing.png)
+
+![depressing](content/automate/img/depressing.png)
 http://www.blastwave-comic.com/comics/14.jpg <!-- .element: class="attribution" -->
 
 
-![chocolatey](img/chocolatey.svg) <!-- .element: class="no-border" -->
+
+![chocolatey](content/automate/img/chocolatey.svg) <!-- .element: class="no-border" -->
 https://chocolatey.org/ <!-- .element: class="attribution" -->
+
 
 
 ```bash
@@ -63,13 +67,15 @@ Note:
 * but what about restarts?
 
 
-![boxstarter](img/boxstarter.png)
+
+![boxstarter](content/automate/img/boxstarter.png)
 http://boxstarter.org/ <!-- .element: class="attribution" -->
 
 Note:
 * BoxStarter builds on top of chocolatey
 * automatic restart detection
 * automatic re-login and resume of scripts!
+
 
 
 ```powershell
@@ -103,12 +109,14 @@ Note:
 * So as we are a dotnet team, we used...
 
 
-![Yeoman](img/yeoman.png)
+
+![Yeoman](content/automate/img/yeoman.png)
 http://yeoman.io/  <!-- .element: class="attribution" -->
 
 Note:
 * Yeoman! which is really aimed at javascript applications
 * It is a cli based tool, and you can write your own templates easily
+
 
 
 ```bash
@@ -117,6 +125,7 @@ git clone https://github/.../generator-lindorff
 cd generator-lindorff
 npm link
 ```
+
 
 
 ```bash
@@ -138,6 +147,7 @@ Note:
 * yo lindorff:nuget
 
 
+
 ```bash
 $ yo lindorff:nuget
 ? enter the name of the solution: Lindorff.Demo
@@ -149,6 +159,7 @@ Note:
 * asks many questions
 * runs npm install
 * runs gulp script
+
 
 
 ```
@@ -175,6 +186,7 @@ Note:
 * leaves you with a directory something like this
 
 
+
 `yo lindorff:github`
 
 Note:
@@ -196,6 +208,7 @@ Note:
 * Now we have created our new repository we can move on to automating git
 
 
+
 * `git s`
 * `git cm "my commit message"` <!-- .element: class="fragment" -->
 * `git dc` <!-- .element: class="fragment" -->
@@ -204,6 +217,7 @@ Note:
 <!-- .element: class="list-unstyled" -->
 Note:
 * Look at how many characters we can save typing!
+
 
 
 # Rebasing?
@@ -215,11 +229,13 @@ Note:
 * who doesn't love seeing this message
 
 
+
 ```bash
 $ git rebase master
 Cannot rebase: You have unstaged changes.
 Please commit or stash them.
 ```
+
 
 
 * `git save`
@@ -233,17 +249,20 @@ Note:
 * you could make an alias to do all of this...
 
 
+
 `git pr`
 
 Note:
 * now, talking of pull requests
 
 
-`git checkout -b feature-NewCoolThing-PAY-1234`
+
+`git checkout -b feature-NameHere-PAY-1234`
 
 Note:
 * task/backlog ids go at the end of branch names
 * we also put them in commit messages for other integration
+
 
 
 ### prepare-commit-msg
@@ -272,11 +291,13 @@ Note:
 * don't forget error handling...
 
 
+
 ```bash
 $ git cm "my awesome feature"
 [feature-NewCoolThing-PAY-1234 87b7d9a] [PAY-1234] my awesome feature
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
+
 
 
 ### pre-commit
@@ -300,6 +321,7 @@ Note:
 * this is so we only test the things being committed :)
 
 
+
 ```bash
 $ git cm "hooks: add prepare commit message"
 [21:24:08] Using gulpfile ./gulpfile.js
@@ -309,6 +331,7 @@ $ git cm "hooks: add prepare commit message"
 Message:
     There were an odd number of characters.
 ```
+
 
 
 ```bash
@@ -322,7 +345,9 @@ $ git cm "hooks: add prepare commit message"
 ```
 
 
+
 # Installation?
+
 
 
 ```bash
@@ -351,6 +376,7 @@ Note:
 * pull requests are the backbone of our dev process, so there is quite a lot to hang off them
 
 
+
 * Fix PR title
 * Add documentation links <!-- .element: class="fragment" -->
 * Check merge target <!-- .element: class="fragment" -->
@@ -361,20 +387,23 @@ Note:
 * implemented in aws lambda
 
 
-* `git push origin feature-NewCoolThing-PAY-1234`
-* ![PR title before](img/pr-title-1.png) <!-- .element: class="fragment no-border" -->
-* ![PR title before](img/pr-title-2.png) <!-- .element: class="fragment no-border" -->
+
+* `git push origin feature-NewCoolThing-PAY-1234` <!-- .element: class="small" -->
+* ![PR title before](content/automate/img/pr-title-1.png) <!-- .element: class="fragment no-border" -->
+* ![PR title before](content/automate/img/pr-title-2.png) <!-- .element: class="fragment no-border" -->
 
 <!-- .element: class="list-unstyled list-spaced center" -->
 
 
-* ![PR docs before](img/pr-docs-1.png) <!-- .element: class="no-border" -->
-* ![PR docs after](img/pr-docs-2.png) <!-- .element: class="fragment no-border" -->
+
+* ![PR docs before](content/automate/img/pr-docs-1.png) <!-- .element: class="no-border" -->
+* ![PR docs after](content/automate/img/pr-docs-2.png) <!-- .element: class="fragment no-border" -->
 
 <!-- .element: class="list-unstyled list-spaced center" -->
 
 
-![branching strategy](img/branching.png)
+
+![branching strategy](content/automate/img/branching.png)
 
 Note:
 * while I am not a huge fan of this branching strategy, it does work for us
@@ -382,7 +411,8 @@ Note:
 * so the bot will ask if you are sure if it thinks you are wrong
 
 
-![PR branch question](img/pr-branch.png) <!-- .element: class="no-border" -->
+
+![PR branch question](content/automate/img/pr-branch.png) <!-- .element: class="no-border" -->
 
 
 
@@ -392,6 +422,7 @@ Note:
 * We are going to use a lot of Hashicorp tools here
 * there are others (such as aws's cloudformation), but Hashicorp's are better (and cross platform!)
 * We are veering into experimental stages here, we are still working out how we want to do things at work
+
 
 
 ```json
@@ -420,6 +451,7 @@ Note:
 * so our build script now calls packer, generating an AMI with the service installed
 
 
+
 ```powershell
 resource "aws_autoscaling_group" "hello_service" {
   min_size: 1
@@ -446,7 +478,9 @@ Note:
 * we can add tags to an ami later to move it into other environments
 
 
+
 # Multiple Environments
+
 
 
 ## ChatOps?
@@ -462,6 +496,7 @@ Note:
 * visibility of current state? some kind of webui?
 * don't want to write our own tool for this
 * perhaps we can leverage Octopus
+
 
 
 * `code`
@@ -480,9 +515,10 @@ Note:
 # Where next?
 
 
-![no](img/no.png)<!-- .element: class="no-border middle" --> Don't build process *and then* try and use them
 
-![yes](img/yes.jpg)<!-- .element: class="no-border middle" --> Do observe processes *and then* automate them
+![no](content/automate/img/no.png)<!-- .element: class="no-border middle" --> Don't build process *and then* try and use them
+
+![yes](content/automate/img/yes.jpg)<!-- .element: class="no-border middle" --> Do observe processes *and then* automate them
 
 https://imgur.com/DKUR9Tk <!-- .element: class="attribution" -->
 http://www.falloutfacts.com/other/fallout-vault-boy-history.html <!-- .element: class="attribution" -->
@@ -498,22 +534,17 @@ Note:
 
 
 
-<div class="left">
-<h2>Andy Davies</h2>
-<h4>Lindorff Oy</h4>
-<h4>andy@andydote.co.uk</h4>
+## Questions?
 <br />
-  <ul class="list-unstyled small">
-    <li><strong>github.com/Pondidum/AutomationExamples</strong></li>
-    <li><strong>chocolatey.org</strong> - environment setup</li>
-    <li><strong>boxstarter.org</strong> - environment setup</li>
-    <li><strong>yeoman.io</strong> - project scaffolding</li>
-    <li><strong>packer.io</strong> - machine image creation</li>
-    <li><strong>terraform.io</strong> - infrastructure as code</li>
-  </ul>
-</div>
 
-<div class="right">
-</div>
+* https://github.com/Pondidum/AutomationExamples
+* **chocolatey.org** - environment setup
+* **boxstarter.org** - environment setup
+* **yeoman.io** - project scaffolding
+* **packer.io** - machine image creation
+* **terraform.io** - infrastructure as code
 
-<!-- .slide: data-background="img/topconf-end.png" class="topconf" -->
+<!-- .element: class="list-spaced small" -->
+<br />
+
+github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
