@@ -9,7 +9,8 @@ span.attribution.background {
 a.small,
 p.small,
 ul.small,
-span.small {
+span.small,
+code.small {
   font-size: 60%;
 }
 
