@@ -4,11 +4,11 @@ github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller 
 
 https://www.reddit.com/r/gaming/comments/692hqa/mccree_looking_good_in_ac_black_flag/dh3gu1a/ <!-- .element: class="attribution white" -->
 
-<!-- .slide: data-background="img/good-bad-ugly.png" data-background-size="contain" class="intro" -->
+<!-- .slide: data-background="content/feature-toggles/img/good-bad-ugly.png" data-background-size="contain" class="intro" -->
 
 
 
-![knight capital logo](img/knight-capital.png) <!-- .element: class="no-border" -->
+![knight capital logo](content/feature-toggles/img/knight-capital.png) <!-- .element: class="no-border" -->
 https://en.wikipedia.org/wiki/File:Knight_Capital_Group_logo.svg <!-- .element: class="attribution" -->
 Note:
 * Who has heard of a company called Knight Capital?
@@ -19,7 +19,7 @@ Note:
 
 
 
-![knight capital shares](img/knight-capital-shares.jpg)
+![knight capital shares](content/feature-toggles/img/knight-capital-shares.jpg)
 https://infocus.dellemc.com/dave_bagatelle/knight-capital-group-kcg-a-lesson-on-the-importance-of-sdlc-and-multi-environment-multi-user-testing/ <!-- .element: class="attribution" -->
 Note:
 * this is their shareprice
@@ -94,31 +94,31 @@ void submitNewOrder(howMany) {
 
 
 
-![knight-capital-process](img/knight-capital-process.png) <!-- .element: class="no-border" -->
+![knight-capital-process](content/feature-toggles/img/knight-capital-process.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
 <!-- .slide: data-transition="slide-in out-none" -->
 
 
 
-![knight-capital-process](img/knight-capital-process-deployed.png) <!-- .element: class="no-border" -->
+![knight-capital-process](content/feature-toggles/img/knight-capital-process-deployed.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
 <!-- .slide: data-transition="in-none out-none" -->
 
 
 
-![knight-capital-process](img/knight-capital-process-toggled.png) <!-- .element: class="no-border" -->
+![knight-capital-process](content/feature-toggles/img/knight-capital-process-toggled.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
 <!-- .slide: data-transition="none" -->
 
 
 
-![knight-capital-process](img/knight-capital-process-rolledback.png) <!-- .element: class="no-border" -->
+![knight-capital-process](content/feature-toggles/img/knight-capital-process-rolledback.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
 <!-- .slide: data-transition="none" -->
 
 
 
-![knight-capital-process](img/knight-capital-process-detoggled.png) <!-- .element: class="no-border" -->
+![knight-capital-process](content/feature-toggles/img/knight-capital-process-detoggled.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
 <!-- .slide: data-transition="none-in slide-out" -->
 
@@ -136,13 +136,13 @@ Note:
 
 
 
-![knight-capital-process](img/knight-capital-process-deployed.png) <!-- .element: class="no-border" -->
+![knight-capital-process](content/feature-toggles/img/knight-capital-process-deployed.png) <!-- .element: class="no-border" -->
 https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
 <!-- .slide: data-transition="slide-in out-none" -->
 
 
 
-![knight-capital-process](img/knight-capital-process-separate.png) <!-- .element: class="no-border" -->
+![knight-capital-process](content/feature-toggles/img/knight-capital-process-separate.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none slide-out" -->
 
 
@@ -178,7 +178,7 @@ Note:
 
 
 
-![toggle-types](img/toggle-types.png) <!-- .element: class="no-border" -->
+![toggle-types](content/feature-toggles/img/toggle-types.png) <!-- .element: class="no-border" -->
 Note:
 * compile: debug only (e.g. sql profiler)
 * startup: microservices, bounce them
@@ -187,7 +187,7 @@ Note:
 
 
 
-![hp logo](img/hp.png) <!-- .element: class="no-border" -->
+![hp logo](content/feature-toggles/img/hp.png) <!-- .element: class="no-border" -->
 https://en.wikipedia.org/wiki/File:Hewlett-Packard_logo.svg <!-- .element: class="attribution" -->
 Note:
 * hp printers
@@ -198,7 +198,7 @@ Note:
 
 
 
-![hp-branching-printers](img/hp-branching-1.png) <!-- .element: class="no-border" -->
+![hp-branching-printers](content/feature-toggles/img/hp-branching-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 Note:
 * branch per printer model
@@ -207,14 +207,14 @@ Note:
 
 
 
-![hp-branching-merging](img/hp-branching-2.png) <!-- .element: class="no-border" -->
+![hp-branching-merging](content/feature-toggles/img/hp-branching-2.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in slide-out" -->
 Note:
 * port fixes (not configs) to all branches
 
 
 
-![hp-branching-trunk-based](img/hp-branching-tbd.png) <!-- .element: class="no-border" -->
+![hp-branching-trunk-based](content/feature-toggles/img/hp-branching-tbd.png) <!-- .element: class="no-border" -->
 Note:
 * compile-time to startup toggles
 * trunk based development
@@ -351,7 +351,7 @@ Note:
 
 
 
-![toggle-table](img/toggle-table-time.png)  <!-- .element: class="no-border" -->
+![toggle-table](content/feature-toggles/img/toggle-table-time.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * Release: switch everyone/group
@@ -365,7 +365,7 @@ Note:
 
 
 
-![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
+![toggle-table](content/feature-toggles/img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * effects everyone
@@ -373,7 +373,7 @@ Note:
 
 
 
-![ops-toggle](img/ops-toggle.png) <!-- .element: class="no-border" -->
+![ops-toggle](content/feature-toggles/img/ops-toggle.png) <!-- .element: class="no-border" -->
 Note:
 * background process could cause load
 * usually not the root cause
@@ -381,7 +381,7 @@ Note:
 
 
 
-![toggle-table](img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
+![toggle-table](content/feature-toggles/img/toggle-table-time-ops.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 Note:
 * effects everyone
@@ -389,7 +389,7 @@ Note:
 
 
 
-![toggle-table](img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
+![toggle-table](content/feature-toggles/img/toggle-table-time-experiment.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
 Note:
 * to a subset of users, usually
@@ -397,7 +397,7 @@ Note:
 
 
 
-![toggle-table](img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
+![toggle-table](content/feature-toggles/img/toggle-table-time-release.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * compile time not great, needs redeploy
@@ -406,7 +406,7 @@ Note:
 
 
 
-![phased-rollout](img/phased-rollout-initial.png) <!-- .element: class="no-border" -->
+![phased-rollout](content/feature-toggles/img/phased-rollout-initial.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * soap service was crap
@@ -415,7 +415,7 @@ Note:
 
 
 
-![phased-rollout](img/phased-rollout-new.png) <!-- .element: class="no-border" -->
+![phased-rollout](content/feature-toggles/img/phased-rollout-new.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * magic was implemented properly in other pipeline connector
@@ -426,7 +426,7 @@ Note:
 
 
 
-![phased-rollout-progress](img/phased-rollout-progress-1.png) <!-- .element: class="no-border" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-progress-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * picked person who got most problems
@@ -435,31 +435,31 @@ Note:
 
 
 
-![phased-rollout-progress](img/phased-rollout-progress-2.png) <!-- .element: class="no-border" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-progress-2.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
 Note:
 * added teammate
 
 
 
-![phased-rollout-progress](img/phased-rollout-progress-3.png) <!-- .element: class="no-border" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-progress-3.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none slide-out" -->
 Note:
 * perf issues found!
 
 
 
-![phased-rollout-perf](img/phased-rollout-perf-initial.png) <!-- .element: class="no-border" -->
+![phased-rollout-perf](content/feature-toggles/img/phased-rollout-perf-initial.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none" -->
 
 
 
-![phased-rollout-perf](img/phased-rollout-perf-problem.png) <!-- .element: class="no-border" -->
+![phased-rollout-perf](content/feature-toggles/img/phased-rollout-perf-problem.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
 
 
 
-![phased-rollout-perf](img/phased-rollout-perf-solution.png) <!-- .element: class="no-border" -->
+![phased-rollout-perf](content/feature-toggles/img/phased-rollout-perf-solution.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none slide-out" -->
 Note:
 * Worker reads both queues
@@ -468,21 +468,21 @@ Note:
 
 
 
-![phased-rollout-progress](img/phased-rollout-progress-4.png) <!-- .element: class="no-border" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-progress-4.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none" -->
 Note:
 * no new problems...
 
 
 
-![phased-rollout-progress](img/phased-rollout-progress-5.png) <!-- .element: class="no-border" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-progress-5.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none" -->
 Note:
 * no new problems...
 
 
 
-![phased-rollout-progress](img/phased-rollout-progress-6.png) <!-- .element: class="no-border" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-progress-6.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * process took 6-8 weeks
@@ -491,7 +491,7 @@ Note:
 
 
 
-![phased-rollout-progress](img/phased-rollout-graph.png) <!-- .element: class="no-border" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-graph.png) <!-- .element: class="no-border" -->
 Note:
 * percent of users with toggle on
 
@@ -505,7 +505,7 @@ Note:
 
 
 
-![toggle-graphs](img/monitoring-graph.png) <!-- .element: class="no-border" -->
+![toggle-graphs](content/feature-toggles/img/monitoring-graph.png) <!-- .element: class="no-border" -->
 Note:
 * left: ramp up of users querying
 * middle: everyone active
@@ -525,9 +525,9 @@ Note:
 
 # User Perception
 <br />
-![phased-rollout-progress](img/phased-rollout-perception-first.png) <!-- .element: class="no-border fragment" -->
-![phased-rollout-progress](img/phased-rollout-perception-early.png) <!-- .element: class="no-border fragment" -->
-![phased-rollout-progress](img/phased-rollout-perception-everyone.png) <!-- .element: class="no-border fragment" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-perception-first.png) <!-- .element: class="no-border fragment" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-perception-early.png) <!-- .element: class="no-border fragment" -->
+![phased-rollout-progress](content/feature-toggles/img/phased-rollout-perception-everyone.png) <!-- .element: class="no-border fragment" -->
 Note:
 * first: pita. Harness it. Feels special, first! helped write feature.
 * early: "we had early access", feels special
@@ -544,7 +544,7 @@ Note:
 
 
 
-![long-lived-branches](img/long-branches-1.png) <!-- .element: class="no-border" -->
+![long-lived-branches](content/feature-toggles/img/long-branches-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * monolith repo
@@ -554,7 +554,7 @@ Note:
 
 
 
-![long-lived-branches](img/long-branches-2.png) <!-- .element: class="no-border" -->
+![long-lived-branches](content/feature-toggles/img/long-branches-2.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * priorities changed
@@ -569,8 +569,8 @@ Is it?
 
 
 
-![testing-existing](img/testing-toggles-original.png) <!-- .element: class="no-border fragment fade-out" data-fragment-index="2" -->
-![testing-new-toggle](img/testing-toggles-toggle.png) <!-- .element: class="no-border fragment" data-fragment-index="1"-->
+![testing-existing](content/feature-toggles/img/testing-toggles-original.png) <!-- .element: class="no-border fragment fade-out" data-fragment-index="2" -->
+![testing-new-toggle](content/feature-toggles/img/testing-toggles-toggle.png) <!-- .element: class="no-border fragment" data-fragment-index="1"-->
 Note:
 * greg young: tests are immutable
 * old tests don't change (toggle off)
