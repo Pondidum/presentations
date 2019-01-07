@@ -1,9 +1,11 @@
-### Building a Serverless, EventSourced, Slack Clone
-![Serverless](img/logo.png)
+## Building a Serverless, EventSourced, Slack clone <!-- .element: class="push-down stroke-black orange" -->
 
-##### AndyDote.co.uk &nbsp; | &nbsp; github.com/pondidum &nbsp; | &nbsp; @pondidum
-http://stavrapid-official.deviantart.com/art/Half-Life-3-logo-with-logotypes-466077248<!-- .element: class="image-attribution"-->
-https://geteventstore.com/<!-- .element: class="image-attribution"-->
+## Andy Davies <!-- .element: class="stroke-black orange" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller black" -->
+
+https://cdn.wallpapersafari.com/18/2/OIyfJP.jpg <!-- .element: class="attribution white" -->
+
+<!-- .slide: data-background="content/serverless-slack/img/OIyfJP.jpg" data-background-size="cover" class="intro" -->
 
 Note:
 * we're not using EventStore *sadface*
@@ -19,16 +21,16 @@ Note:
 
 
 
-# Chat App == Simple
-# right? <!-- .element: class="fragment" -->
+## Chat App == Simple
+## right? <!-- .element: class="fragment" -->
 
 
 
-![terraform](img/terraform-all-the-things.png)
+![terraform](content/serverless-slack/img/terraform-all-the-things.png)
 ## terraform all the things!
 Except cognito : (<!-- .element: class="small fragment" -->
 
-http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="image-attribution"-->
+http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="attribution"-->
 Note:
 * hashicorp's terraform tool to manage all aws stuff...
 * works with other clouds too, like Azure or....are there any others, really?
@@ -115,7 +117,7 @@ Note:
 
 
 
-![ui](img/crowbar-ui.png)
+![ui](content/serverless-slack/img/crowbar-ui.png)
 Note:
 * super simple looking ui
 * its react, redux, bootstrap based
@@ -135,15 +137,14 @@ resource "aws_s3_bucket" "static_site" {
   bucket = "${var.site_bucket}"
   acl = "public-read"
   policy = "${data.template_file.s3_public_policy.rendered}"
-  website {
-    index_document = "index.html"
-  }
+  website { document = "index.html" }
 }
 
 output "url" {
   value = "${aws_s3_bucket.static_site.bucket}.s3-website-${var.region}.amazonaws.com"
 }
 ```
+
 Note:
 * when uploading your site, don't forget content-type on files, else bad things
 
@@ -170,13 +171,15 @@ Note:
 
 
 
-# Commands
-* register_user
-* create_channel
-* join_channel
-* leave_channel
-* send_message
-* edit_message
+## Commands
+* `register_user`
+* `create_channel`
+* `join_channel`
+* `leave_channel`
+* `send_message`
+* `edit_message`
+
+<!-- .element: class="list-unstyled list-spaced" -->
 Note:
 * this was my initial idea for structure
 * what are our aggregates?
@@ -188,28 +191,23 @@ Note:
 
 
 
-<ul class="left">
-  <li><h2>UserAggregate</h2></li>
-  <li>register_user</li>
-  <li>create_channel</li>
-  <li>join_channel</li>
-  <li>leave_channel</li>
-</ul>
-<ul class="right">
-  <li><h2>ChannelAggregate</h2></li>
-  <li>create_channel</li>
-  <li>join_channel</li>
-  <li>leave_channel</li>
-  <li>send_message</li>
-  <li>edit_message</li>
-</ul>
+| Command          | UserAggregate | ChannelAggregate |
+|------------------|---------------|------------------|
+| `register_user`  | x             |                  |
+| `create_channel` | x             | x                |
+| `join_channel`   | x             | x                |
+| `leave_channel`  | x             | x                |
+| `send_message`   |               | x                |
+| `edit_message`   |               | x                |
+
 Note:
 * we have events which multiple aggregates care about
 * we can either introduce a separation
 
 
 
-![commands](img/commands.svg)
+![commands](content/serverless-slack/img/commands.svg)
+
 Note:
 * join_channel
 * command -> store -> router -> aggregate methods -> aggregate events
@@ -301,7 +299,8 @@ public class ChannelProjection
   }
 }
 ```
-<!-- .element: class="left"-->
+<!-- .element: class="left full-height"-->
+
 ```javascript
 //client side:
 const join = user =>
@@ -316,6 +315,7 @@ const join = user =>
 }
 ```
 <!-- .element: class="right fragment"-->
+
 ```javascript
 //serverside sync
 const onCommand = command => {
@@ -324,6 +324,7 @@ const onCommand = command => {
 }
 ```
 <!-- .element: class="right fragment"-->
+
 ```javascript
 //serverside async
 exports.handler = command => {
@@ -333,6 +334,7 @@ exports.handler = command => {
 }
 ```
 <!-- .element: class="right fragment"-->
+
 Note:
 * it's now javascript
 * clientside `Dispatch` is in browser, calls api-gateway
@@ -390,7 +392,7 @@ Note:
 
 
 
-![events](img/events.svg)
+![events](content/serverless-slack/img/events.svg)
 Note:
 * event -> store -> router -> aggregate
 * events from the ui get sent to each
@@ -398,8 +400,8 @@ Note:
 
 
 
-![kafka logs](img/log_consumer.png)
-https://kafka.apache.org/intro <!-- .element: class="image-attribution"-->
+![kafka logs](content/serverless-slack/img/log_consumer.png)
+https://kafka.apache.org/intro <!-- .element: class="attribution"-->
 Note:
 * Kafka would be pretty ideal for this
 * But it's not serverless
@@ -407,8 +409,8 @@ Note:
 
 
 ## Kinesis
-![Kinesis](img/AWS-Summit_recap_KinesisStreams.png)
-https://aws.amazon.com/kafka/ <!-- .element: class="image-attribution"-->
+![Kinesis](content/serverless-slack/img/AWS-Summit_recap_KinesisStreams.png)
+https://aws.amazon.com/kafka/ <!-- .element: class="attribution"-->
 Note:
 * Kinesis streams are pretty similar to Kafka
 * But there is a problem, we want permanent log storage
@@ -424,8 +426,8 @@ Note:
 
 
 
-![dynamodb](img/dynamodb-logo.png)
-http://www.yegor256.com/2014/05/18/cloud-autoincrement-counters.html <!-- .element: class="image-attribution"-->
+![dynamodb](content/serverless-slack/img/dynamodb-logo.png)
+http://www.yegor256.com/2014/05/18/cloud-autoincrement-counters.html <!-- .element: class="attribution"-->
 Note:
 * cant store empty string values!
 
@@ -623,7 +625,7 @@ Note:
 
 
 
-![high level architecture](img/crowbar-architecture.png)
+![high level architecture](content/serverless-slack/img/crowbar-architecture.png)
 Note:
 * a static website deployed to s3 (react based)
 * an api-gateway, protected by cognito
@@ -636,8 +638,8 @@ Note:
 
 
 # Cognito
-![Cognito logo](img/cognito.png)
-https://aws.amazon.com/cognito/ <!-- .element: class="image-attribution"-->
+![Cognito logo](content/serverless-slack/img/cognito.png)
+https://aws.amazon.com/cognito/ <!-- .element: class="attribution"-->
 Note:
 * easy to add an api-gateway authoriser for
 * but you have to do it manually, as terraform doesn't support it yet
@@ -724,7 +726,7 @@ Note:
 
 
 
-![cognito-triggers](img/cognito-triggers.png)
+![cognito-triggers](content/serverless-slack/img/cognito-triggers.png)
 Note:
 * support for other triggers (e.g. PreAuthentication, PostAuthentication)
 * could log login attempts, create a projection for detecting attacks
@@ -762,7 +764,7 @@ Note:
 
 
 
-![high level architecture](img/crowbar-architecture.png)
+![high level architecture](content/serverless-slack/img/crowbar-architecture.png)
 Note:
 * there are issues however
 * s3 parallel updates could cause data loss
@@ -771,7 +773,7 @@ Note:
 
 
 
-![sns](img/crowbar-architecture-sns.png)
+![sns](content/serverless-slack/img/crowbar-architecture-sns.png)
 Note:
 * use sns and sqs
 * have one aggregate per queue
@@ -781,7 +783,7 @@ Note:
 
 
 
-![replay](img/event-replay.svg)
+![replay](content/serverless-slack/img/event-replay.svg)
 Note:
 * should be fairly simple to manage
 * for each event, sns -> sqs it
@@ -797,7 +799,7 @@ Note:
 
 
 
-![plugins](img/crowbar-architecture-plugins.png)
+![plugins](content/serverless-slack/img/crowbar-architecture-plugins.png)
 Note:
 * each plugin get's it's own queue
 * could back-populate the queue on creation if needed
@@ -807,16 +809,28 @@ Note:
 
 
 
-# Wrapping Up
+## Wrapping Up
+
 * I've learnt loads about AWS, Terraform <!-- .element: class="fragment"-->
 * Serverless trade-offs <!-- .element: class="fragment"-->
-* Code available here: https://github.com/pondidum/crowbar  <!-- .element: class="fragment"-->
+*  <!-- .element: class="fragment"-->
+
+<!-- .element: class="list-unstyled list-spaced" -->
+
 Note:
-* aws: cognito, dynamodb
-* code: soon = probably next week
+* learnt a lot
+  * cognito, dynamodb
+* tradeoffs: kafka, dynamodb
 
 
 
-# Questions?
-![questions](img/questions.jpg)
-##### AndyDote.co.uk &nbsp; | &nbsp; github.com/pondidum &nbsp; | &nbsp; @pondidum
+## Questions?
+<br />
+
+* https://github.com/pondidum/crowbar
+* https://terraform.io/
+
+<!-- .element: class="list-spaced small" -->
+<br />
+
+github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->

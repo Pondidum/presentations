@@ -21,13 +21,12 @@ span.smaller {
   font-size: 50%;
 }
 
-h1.stroke {
+.stroke {
   -webkit-text-stroke: 1px white;
 }
 
-h2.stroke,
-h3.stroke {
-  -webkit-text-stroke: 1px white;
+.stroke-black {
+  -webkit-text-stroke: 1px black;
 }
 
 .reveal large {
@@ -64,7 +63,11 @@ img.middle {
 }
 
 .white {
-  color: white;
+  color: white !important;
+}
+
+.orange {
+  color: #de7c31 !important;
 }
 
 ul.center {
@@ -83,4 +86,28 @@ ul.center {
 
 .reveal pre code {
   overflow: hidden;
+}
+
+.reveal pre.full-height code {
+  max-height: inherit !important;
+}
+
+.left {
+  left: -8.33%;
+  text-align: left;
+  float: left;
+  width: 49% !important;
+  z-index: -10;
+  position: static !important;
+  margin-left: 0 !important;
+}
+
+.right {
+  left: 31.25%;
+  top: 75px;
+  float: right;
+  width: 49% !important;
+  z-index: -10;
+  position: static !important;
+  margin-left: 0 !important;
 }

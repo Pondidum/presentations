@@ -2,8 +2,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="530px" height="352px" version="1.1">
   <defs/>
   <g transform="translate(0.5,0.5)">
-    <path d="M 429.33 109.83 L 472.97 109.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 478.22 109.83 L 471.22 113.33 L 472.97 109.83 L 471.22 106.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 429.33 109.83 L 472.97 109.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 478.22 109.83 L 471.22 113.33 L 472.97 109.83 L 471.22 106.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
     <path d="M 429 130.19 C 429 135.27 424.68 140 418.62 140 L 379.34 140 C 373.15 140 369 135.09 369 130.23 L 369 89.59 C 369 85.02 373.09 80 379.42 80 L 418.62 80 C 424.76 80 429 84.75 429 90.06 Z" fill="#5294cf" stroke="none" pointer-events="none"/>
     <path d="M 429 127.54 L 429 130.19 C 429 135.28 424.68 140 418.62 140 L 379.34 140 C 373.15 140 369 135.09 369 130.23 L 369 127.68 C 369 132.77 373.63 137.35 379.1 137.35 L 418.89 137.35 C 424.34 137.35 429 132.9 429 127.54 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <rect x="369" y="80" width="0" height="0" fill="none" stroke="#000000" pointer-events="none"/>
@@ -12,8 +12,8 @@
     <path d="M 483.03 90.42 L 483.03 129.51 L 479 127.48 L 479 92.45 Z M 504 95.15 L 494.84 97.4 L 494.84 84.58 L 504 80 Z M 504 117.57 L 494.84 116.4 L 494.84 103.59 L 504 102.42 Z M 504 140 L 494.84 135.42 L 494.84 122.6 L 504 124.85 Z M 524.96 129.51 L 513.11 126.65 L 513.11 122.55 L 504 120.92 L 504 117.57 L 513.11 116.4 L 513.11 103.59 L 504 102.42 L 504 99.07 L 513.11 97.4 L 513.11 93.24 L 524.96 90.41 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 504 99.07 L 494.84 97.4 L 504 95.15 L 513.11 97.4 Z" fill-opacity="0.5" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 513.11 122.65 L 504 124.85 L 494.84 122.6 L 504 120.92 Z" fill-opacity="0.5" fill="#ffffff" stroke="none" pointer-events="none"/>
-    <path d="M 39.33 254.83 L 39.33 196.2" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 39.33 190.95 L 42.83 197.95 L 39.33 196.2 L 35.83 197.95 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 39.33 254.83 L 39.33 196.2" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 39.33 190.95 L 42.83 197.95 L 39.33 196.2 L 35.83 197.95 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
     <path d="M 28.86 325 L 14.81 318.09 L 8 309.54 L 8 302.15 L 9.95 301.96 L 9.95 300.1 L 8 298.94 L 8 291.55 L 9.95 291.55 L 9.95 288.44 L 8 288.44 L 8 281.06 L 9.95 279.88 L 9.95 278.04 L 8 277.84 L 8 270.45 L 14.81 261.9 L 28.86 255 L 48.3 255 L 62.21 261.9 L 70 270.45 L 70 277.84 L 67.38 278.03 L 67.38 279.78 L 70 281.14 L 70 288.44 L 67.38 288.44 L 67.38 291.55 L 70 291.55 L 70 299.04 L 67.38 300.3 L 67.38 301.96 L 70 302.15 L 70 309.54 L 62.21 318.09 L 48.3 325 Z" fill="#2e73b8" stroke="none" pointer-events="none"/>
     <path d="M 28.86 267.92 L 14.81 272.6 L 14.81 261.9 L 28.86 255 Z M 28.86 287.36 L 14.81 287.75 L 14.81 277.1 L 28.86 273.75 Z M 28.86 305.84 L 14.81 302.72 L 14.81 292.24 L 28.86 293.21 Z M 28.86 325 L 14.81 318.09 L 14.81 307.39 L 28.86 311.68 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 70 302.15 L 62.21 307.4 L 48.3 311.68 L 28.86 311.68 L 14.81 307.39 L 14.81 318.09 L 8 309.54 L 8 302.15 L 9.95 301.96 L 9.95 300.1 L 8 298.94 L 8 291.55 L 9.95 291.55 L 9.95 288.44 L 8 288.44 L 8 281.06 L 9.95 279.88 L 9.95 278.04 L 8 277.84 L 8 270.45 L 14.81 261.9 L 14.81 272.6 L 28.86 267.92 L 48.3 267.92 L 62.21 272.41 L 70 277.84 L 67.38 278.03 L 67.38 279.78 L 62.21 277.06 L 48.3 273.75 L 28.86 273.75 L 14.81 277.1 L 14.81 287.75 L 28.86 287.36 L 48.3 287.36 L 62.21 287.86 L 70 288.44 L 67.38 288.44 L 67.38 291.55 L 70 291.55 L 62.21 292.24 L 48.3 293.21 L 28.86 293.21 L 14.81 292.24 L 14.81 302.72 L 28.86 305.84 L 48.3 305.84 L 62.21 302.82 L 67.38 300.3 L 67.38 301.96 Z" fill-opacity="0.5" fill="#000000" stroke="none" pointer-events="none"/>
@@ -21,16 +21,16 @@
     <path d="M 48.3 273.75 L 62.21 277.06 L 62.21 287.86 L 48.3 287.36 Z" fill-opacity="0.3" fill="#ffffff" stroke="none" pointer-events="none"/>
     <path d="M 48.3 293.21 L 62.21 292.24 L 62.21 302.82 L 48.3 305.84 Z" fill-opacity="0.3" fill="#ffffff" stroke="none" pointer-events="none"/>
     <path d="M 48.3 311.68 L 62.21 307.4 L 62.21 318.09 L 48.3 325 Z" fill-opacity="0.3" fill="#ffffff" stroke="none" pointer-events="none"/>
-    <path d="M 189.33 159.83 L 279.33 159.83 L 279.33 29.83 L 362.97 29.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 368.22 29.83 L 361.22 33.33 L 362.97 29.83 L 361.22 26.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 189.33 159.83 L 279.33 159.83 L 279.33 109.83 L 362.97 109.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 368.22 109.83 L 361.22 113.33 L 362.97 109.83 L 361.22 106.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 189.33 159.83 L 279.33 159.83 L 279.33 209.83 L 362.97 209.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 368.22 209.83 L 361.22 213.33 L 362.97 209.83 L 361.22 206.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 189.33 159.83 L 279.33 159.83 L 279.33 289.83 L 362.97 289.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 368.22 289.83 L 361.22 293.33 L 362.97 289.83 L 361.22 286.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 429.33 29.83 L 472.97 29.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 478.22 29.83 L 471.22 33.33 L 472.97 29.83 L 471.22 26.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 189.33 159.83 L 279.33 159.83 L 279.33 29.83 L 362.97 29.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 368.22 29.83 L 361.22 33.33 L 362.97 29.83 L 361.22 26.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 189.33 159.83 L 279.33 159.83 L 279.33 109.83 L 362.97 109.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 368.22 109.83 L 361.22 113.33 L 362.97 109.83 L 361.22 106.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 189.33 159.83 L 279.33 159.83 L 279.33 209.83 L 362.97 209.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 368.22 209.83 L 361.22 213.33 L 362.97 209.83 L 361.22 206.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 189.33 159.83 L 279.33 159.83 L 279.33 289.83 L 362.97 289.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 368.22 289.83 L 361.22 293.33 L 362.97 289.83 L 361.22 286.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 429.33 29.83 L 472.97 29.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 478.22 29.83 L 471.22 33.33 L 472.97 29.83 L 471.22 26.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
     <path d="M 429 50.19 C 429 55.27 424.68 60 418.62 60 L 379.34 60 C 373.15 60 369 55.09 369 50.23 L 369 9.59 C 369 5.02 373.09 0 379.42 0 L 418.62 0 C 424.76 0 429 4.75 429 10.06 Z" fill="#5294cf" stroke="none" pointer-events="none"/>
     <path d="M 429 47.54 L 429 50.19 C 429 55.28 424.68 60 418.62 60 L 379.34 60 C 373.15 60 369 55.09 369 50.23 L 369 47.68 C 369 52.77 373.63 57.35 379.1 57.35 L 418.89 57.35 C 424.34 57.35 429 52.9 429 47.54 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <rect x="369" y="0" width="0" height="0" fill="none" stroke="#000000" pointer-events="none"/>
@@ -39,8 +39,8 @@
     <path d="M 483.03 10.42 L 483.03 49.51 L 479 47.48 L 479 12.45 Z M 504 15.15 L 494.84 17.4 L 494.84 4.58 L 504 0 Z M 504 37.57 L 494.84 36.4 L 494.84 23.59 L 504 22.42 Z M 504 60 L 494.84 55.42 L 494.84 42.6 L 504 44.85 Z M 524.96 49.51 L 513.11 46.65 L 513.11 42.55 L 504 40.92 L 504 37.57 L 513.11 36.4 L 513.11 23.59 L 504 22.42 L 504 19.07 L 513.11 17.4 L 513.11 13.24 L 524.96 10.41 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 504 19.07 L 494.84 17.4 L 504 15.15 L 513.11 17.4 Z" fill-opacity="0.5" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 513.11 42.65 L 504 44.85 L 494.84 42.6 L 504 40.92 Z" fill-opacity="0.5" fill="#ffffff" stroke="none" pointer-events="none"/>
-    <path d="M 429.33 289.83 L 472.97 289.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 478.22 289.83 L 471.22 293.33 L 472.97 289.83 L 471.22 286.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 429.33 289.83 L 472.97 289.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 478.22 289.83 L 471.22 293.33 L 472.97 289.83 L 471.22 286.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
     <path d="M 429 310.02 C 429 315.1 424.68 319.83 418.62 319.83 L 379.34 319.83 C 373.15 319.83 369 314.93 369 310.07 L 369 269.43 C 369 264.85 373.09 259.83 379.42 259.83 L 418.62 259.83 C 424.76 259.83 429 264.58 429 269.89 Z" fill="#5294cf" stroke="none" pointer-events="none"/>
     <path d="M 429 307.37 L 429 310.02 C 429 315.12 424.68 319.83 418.62 319.83 L 379.34 319.83 C 373.15 319.83 369 314.93 369 310.07 L 369 307.51 C 369 312.61 373.63 317.18 379.1 317.18 L 418.89 317.18 C 424.34 317.18 429 312.74 429 307.37 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <rect x="369" y="259.83" width="0" height="0" fill="none" stroke="#000000" pointer-events="none"/>
@@ -49,8 +49,8 @@
     <path d="M 483.03 270.25 L 483.03 309.35 L 479 307.32 L 479 272.28 Z M 504 274.98 L 494.84 277.23 L 494.84 264.42 L 504 259.83 Z M 504 297.4 L 494.84 296.24 L 494.84 283.42 L 504 282.25 Z M 504 319.83 L 494.84 315.25 L 494.84 302.43 L 504 304.69 Z M 524.96 309.35 L 513.11 306.48 L 513.11 302.38 L 504 300.75 L 504 297.4 L 513.11 296.24 L 513.11 283.42 L 504 282.25 L 504 278.9 L 513.11 277.23 L 513.11 273.07 L 524.96 270.24 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 504 278.9 L 494.84 277.23 L 504 274.98 L 513.11 277.23 Z" fill-opacity="0.5" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 513.11 302.48 L 504 304.69 L 494.84 302.43 L 504 300.75 Z" fill-opacity="0.5" fill="#ffffff" stroke="none" pointer-events="none"/>
-    <path d="M 429.33 209.83 L 472.97 209.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 478.22 209.83 L 471.22 213.33 L 472.97 209.83 L 471.22 206.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 429.33 209.83 L 472.97 209.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 478.22 209.83 L 471.22 213.33 L 472.97 209.83 L 471.22 206.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
     <path d="M 429 230.02 C 429 235.1 424.68 239.83 418.62 239.83 L 379.34 239.83 C 373.15 239.83 369 234.93 369 230.07 L 369 189.43 C 369 184.85 373.09 179.83 379.42 179.83 L 418.62 179.83 C 424.76 179.83 429 184.58 429 189.89 Z" fill="#5294cf" stroke="none" pointer-events="none"/>
     <path d="M 429 227.37 L 429 230.02 C 429 235.12 424.68 239.83 418.62 239.83 L 379.34 239.83 C 373.15 239.83 369 234.93 369 230.07 L 369 227.51 C 369 232.61 373.63 237.18 379.1 237.18 L 418.89 237.18 C 424.34 237.18 429 232.74 429 227.37 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <rect x="369" y="179.83" width="0" height="0" fill="none" stroke="#000000" pointer-events="none"/>
@@ -62,7 +62,7 @@
     <g transform="translate(215.5,142.5)">
       <switch>
         <foreignObject style="overflow:visible;" pointer-events="all" width="37" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
             <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Events</div>
           </div>
         </foreignObject>
@@ -72,7 +72,7 @@
     <g transform="translate(368.5,152.5)">
       <switch>
         <foreignObject style="overflow:visible;" pointer-events="all" width="61" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
             <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Projections</div>
           </div>
         </foreignObject>
@@ -82,7 +82,7 @@
     <g transform="translate(487.5,152.5)">
       <switch>
         <foreignObject style="overflow:visible;" pointer-events="all" width="33" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
             <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Views</div>
           </div>
         </foreignObject>
@@ -92,7 +92,7 @@
     <g transform="translate(8.5,332.5)">
       <switch>
         <foreignObject style="overflow:visible;" pointer-events="all" width="63" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
             <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Event Store</div>
           </div>
         </foreignObject>
@@ -103,12 +103,12 @@
     <path d="M 143.96 167.05 L 136.84 166.21 L 136.84 153.8 L 143.96 152.95 Z M 158.99 168.83 L 147.91 167.48 L 147.91 152.46 L 158.99 151.09 Z M 158.99 195 L 129 180.48 L 129 139.53 L 158.99 125 L 158.99 139.02 L 132.87 146.58 L 132.87 173.42 L 158.99 180.99 Z" fill-opacity="0.3" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 163.49 150.75 L 132.87 146.58 L 158.99 139.02 L 189 147.69 Z" fill-opacity="0.5" fill="#000000" stroke="none" pointer-events="none"/>
     <path d="M 163.49 169.27 L 189 172.32 L 158.99 180.99 L 132.87 173.42 Z" fill-opacity="0.3" fill="#ffffff" stroke="none" pointer-events="none"/>
-    <path d="M 69.33 159.83 L 99.33 159.83 L 122.97 159.83" fill="none" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
-    <path d="M 128.22 159.83 L 121.22 163.33 L 122.97 159.83 L 121.22 156.33 Z" fill="#ffffff" stroke="#ffffff" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 69.33 159.83 L 99.33 159.83 L 122.97 159.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+    <path d="M 128.22 159.83 L 121.22 163.33 L 122.97 159.83 L 121.22 156.33 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
     <g transform="translate(146.5,107.5)">
       <switch>
         <foreignObject style="overflow:visible;" pointer-events="all" width="25" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
             <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">SQS</div>
           </div>
         </foreignObject>
@@ -122,7 +122,7 @@
     <g transform="translate(20.5,107.5)">
       <switch>
         <foreignObject style="overflow:visible;" pointer-events="all" width="39" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(255, 255, 255); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+          <div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
             <div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Loader</div>
           </div>
         </foreignObject>
