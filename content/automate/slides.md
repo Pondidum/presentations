@@ -1,12 +1,11 @@
-## Automate Everything
-### Not Just Your Builds
-<br />
-<br />
-<br />
-<br /><br /><br />
-#### Andy Davies
+## Automate Everything <!-- .element: class="push-down stroke" -->
+## Andy Davies <!-- .element: class="stroke" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white" -->
 
-github.com/pondidum | twitch.tv/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
+https://www.lorom.com/wp-files/uploads/2015/05/factoryauto.jpg<!-- .element: class="attribution white" -->
+
+<!-- .slide: data-background="content/automate/img/factoryauto.jpg" data-background-size="cover" class="intro" -->
+
 
 Note:
 * But I mean, still automate your builds :)

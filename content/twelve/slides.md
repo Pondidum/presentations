@@ -1,6 +1,6 @@
-# 12 Factor Microservices <!-- .element: class="stroke white" -->
+# 12 Factor Microservices <!-- .element: class="stroke" -->
 <br />
-## Andy Davies <!-- .element: class="stroke white" -->
+## Andy Davies <!-- .element: class="stroke" -->
 github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white" -->
 
 http://cdn.wonderfulengineering.com/wp-content/uploads/2014/06/Engineering-pictures-2.jpg <!-- .element: class="attribution white" -->
