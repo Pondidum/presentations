@@ -1,8 +1,11 @@
-## Strong Type All The Things
-![Strong Type All The Things Image](img/all-the-things.png) http://hyperboleandahalf.blogspot.fi/2010/06/this-is-why-ill-never-be-adult.html<!-- .element: class="image-attribution"-->
+## Strong Type All The Things <!-- .element: class="push-down stroke" -->
+## Andy Davies <!-- .element: class="stroke" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white" -->
 
-### Andy Davies
-### AndyDote.co.uk | github.com/pondidum | @pondidum
+Hulk, by Jonas Thornqvist <!-- .element: class="attribution white" -->
+
+<!-- .slide: data-background="content/strong-typing/img/hulkfan1.jpg" data-background-size="contain" class="intro" -->
+
 Note: there are two (and a bit areas to talk about). First Configuration
 
 
@@ -20,6 +23,7 @@ var x = ConfigurationManager.AppSetting["someUrlName"];
 var x = ConfigurationManager.ConnectionString["someUrlName"].ConnectionString;
 ```
 <!-- .element: class="fragment" -->
+
 Note:
 * All too often...
 * magic strings
@@ -56,6 +60,7 @@ Note:
   * Discoverability - one place to find all configuration usage
   * stronger-typing - all prop assignment is done on ctor.  errors fast.
 * Stronk!
+
 
 
 ```csharp
@@ -133,6 +138,7 @@ public struct CustomerId {
 <!-- .slide: data-transition="slide-in none-out" -->
 Note:
 * dont forget IEquatable, serialization (http, db)
+
 
 
 ```csharp
@@ -232,6 +238,7 @@ Note:
   * valid vs verified
 
 
+
 ```csharp
 public abstract class Email {
 
@@ -299,11 +306,15 @@ public void SendWelcomeEmail(VerifiedEmail email) {
 
 
 
-# strong type all the things?
+# Strong Type All The Things?
 
 ## at least think about it :) <!-- .element: class="fragment" -->
 
 
 
-# Andy Davies
-### AndyDote.co.uk | github.com/pondidum | @pondidum
+## Questions?
+<br />
+
+<br />
+
+github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
