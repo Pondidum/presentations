@@ -1,10 +1,11 @@
-## Streaming Development
-##for fun and ...?
-<br />
-<br />
-#### Andy Davies
+## Streaming Development <!-- .element: class="push-down stroke-black" -->
+## for fun and ...? <!-- .element: class="stroke-black" -->
+## Andy Davies <!-- .element: class="stroke-black" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller" -->
 
-github.com/pondidum | twitch.tv/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
+https://static.pexels.com/photos/7014/stream-river-sonja-langford.jpg <!-- .element: class="attribution" -->
+
+<!-- .slide: data-background="content/streaming/img/stream-river-sonja-langford.jpg" data-background-size="cover" class="intro" -->
 
 Note:
 * normally I talk about technical topics; Architecture, design patterns, domain design etc.
@@ -15,7 +16,7 @@ Note:
 
 
 
-![twitch](img/twitch.svg) <!-- .element: class="no-border" -->
+![twitch](content/streaming/img/twitch.svg) <!-- .element: class="no-border" -->
 https://app.twitch.tv/ <!-- .element: class="attribution" -->
 
 Note:
@@ -37,7 +38,7 @@ Note:
 
 
 
-![noopkat](img/noopkat-twitch.png)
+![noopkat](content/streaming/img/noopkat-twitch.png)
 
 Note:
 * but in my case, I saw an article by Suz Hinton about streaming nodejs hardware dev
@@ -62,7 +63,7 @@ Note:
 
 
 
-![Crispin](img/crispin.jpg)
+![Crispin](content/streaming/img/crispin.jpg)
 
 Photo: Courtesy of my father <!-- .element: class="attribution" -->
 
@@ -78,7 +79,7 @@ Note:
 
 
 
-![Giant Rubber Duck](img/rubber-duck.jpg)
+![Giant Rubber Duck](content/streaming/img/rubber-duck.jpg)
 
 By Kate Whitehead, for CNN |<!-- .element: class="attribution" --> https://www.thebigduck.us/
 
@@ -89,7 +90,7 @@ Note:
 
 
 
-![Concentrate on the ball](img/concentrate-tennis.jpg)
+![Concentrate on the ball](content/streaming/img/concentrate-tennis.jpg)
 http://imgur.com/EQZJ2Jt <!-- .element: class="attribution" -->
 
 Note:
@@ -100,7 +101,7 @@ Note:
 
 
 
-![Timeline](img/time.png)
+![Timeline](content/streaming/img/time.png)
 http://www.bbc.com/future/bespoke/doctorwho50/ <!-- .element: class="attribution" -->
 
 Note:
@@ -108,7 +109,7 @@ Note:
 
 
 
-![Chat help](img/chat-help.jpg)
+![Chat help](content/streaming/img/chat-help.jpg)
 http://www.boyter.org/2016/04/collection-orly-book-covers/ <!-- .element: class="attribution" -->
 
 Note:
@@ -130,17 +131,25 @@ Note:
 
 
 
-![british keyboard](img/keyboard.png)
+![british keyboard](content/streaming/img/keyboard.png)
+<!-- .slide: data-transition="slide-in none-out" -->
 
 
-![british keyboard](img/keyboard-brackets.png)
+
+![british keyboard](content/streaming/img/keyboard-brackets.png)
+<!-- .slide: data-transition="none" -->
 
 
-![british keyboard](img/keyboard-brackets-altgr.png)
+
+![british keyboard](content/streaming/img/keyboard-brackets-altgr.png)
+<!-- .slide: data-transition="none-in slide-out" -->
 
 
 
 ## Questions?
-![questions](img/questions.jpg)
+<br />
 
-github.com/pondidum | twitch.tv/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
+<!-- .element: class="list-spaced small" -->
+<br />
+
+github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
