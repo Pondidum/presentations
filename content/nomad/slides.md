@@ -19,17 +19,60 @@ Note:
 
 
 
+![kubernetes is the systemd of the container world](content/nomad/img/tweet.png) <!-- .element: class="no-border" -->
+
+https://twitter.com/Pondidum/status/1068758260965101568 <!-- .element: class="attribution" -->
+
+Note:
+* who's heard of this? likes it?
+* It does a lot of things.
+* If you need a lot of things, it's fine.
+* If you just want init...maybe just use upstart/sysvinit?
+* why bring this up?
+
+
+
+![kubernetes control plane architecture](content/nomad/img/kubernetes-control-plane.png)
+
+https://docs.google.com/presentation/d/1Gp-2blk5WExI_QR59EUZdwfO2BWLJqa626mK2ej-huo/edit#slide=id.g1e639c415b_0_56 <!-- .element: class="attribution" -->
+
+Note:
+* don't run this yourself! waste of time/resources
+* use a cloud provider service
+
+
+
+* Service Discovery,
+* Load Balancing, <!-- .element: class="fragment" -->
+* Configuration Management, <!-- .element: class="fragment" -->
+* Secret Storage, <!-- .element: class="fragment" -->
+* Feature Gates, <!-- .element: class="fragment" -->
+* Routing, <!-- .element: class="fragment" -->
+* Storage Orchestration, <!-- .element: class="fragment" -->
+* AutoScaling, <!-- .element: class="fragment" -->
+* Container Management, <!-- .element: class="fragment" -->
+* Rollouts & Rollbacks <!-- .element: class="fragment" -->
+
+<!-- .element: class="list-unstyled list-inline" -->
+
+Note:
+* and probably others I forget.
+* if you need all this, great
+* brown-field apps probably have a lot of these already
+* green + microservices = sure!
+* green + monolith = pointless
+* brown + monolith = pointless
+* brown + microservices = maybe
+
 
 
 
 ## Questions?
 <br />
 
-* https://dougseven.com/2014/04/17/knightmare-a-devops-cautionary-tale
-* https://itrevolution.com/the-amazing-devops-transformation-of-the-hp-laserjet-firmware-team-gary-gruver
-* https://martinfowler.com/articles/feature-toggles.html
-* https://trunkbaseddevelopment.com
-* https://andydote.co.uk/presentations/feature-toggles
+* https://www.nomadproject.io/
+* go
+* here
 
 <!-- .element: class="list-spaced small" -->
 <br />
