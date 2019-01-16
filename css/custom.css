@@ -50,6 +50,20 @@ p a.attribution {
   padding-bottom: 0.25em;
 }
 
+.reveal .list-unstyled {
+  padding-left: 0;
+  margin-left: 0;
+  list-style: none;
+}
+
+.reveal .list-inline {
+  display: inline;
+}
+
+.reveal .list-inline li {
+  display: inline;
+}
+
 img.middle {
   vertical-align: middle;
 }

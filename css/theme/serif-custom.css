@@ -132,12 +132,6 @@ body {
   margin-left: 40px;
 }
 
-.reveal .list-unstyled {
-  padding-left: 0;
-  margin-left: 0;
-  list-style: none;
-}
-
 .reveal dt {
   font-weight: bold;
 }
