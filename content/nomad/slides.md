@@ -67,6 +67,37 @@ Note:
 
 
 
+![Nomad Logo](content/nomad/img/Nomad_PrimaryLogo_FullColor.png)
+
+Note:
+* just a container orchestrator
+* single binary! (server, client, communicator)
+* no extra stuff, but integrates
+
+
+
+![Nomad architecture single region](content/nomad/img/nomad-architecture-region.png)
+
+<!-- .slide: data-transition="slide-in out-none" -->
+
+Note:
+* architecture is pretty simple for a single region
+* 3 or 5 servers
+  * accept jobs, manage clients, select task placement
+* as many clients as you want
+  * run the tasks
+
+
+
+![Nomad architecture multi region](content/nomad/img/nomad-architecture-global.png)
+
+<!-- .slide: data-transition="in-none slide-out" -->
+
+Note:
+* same, but the servers gossip!
+
+
+
 ## Questions?
 <br />
 
