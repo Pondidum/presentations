@@ -34,7 +34,7 @@
 	</div>
 
 	<script>
-		var name = window.location.search.slice(1) || "root";
+		var name = window.location.search.split("&")[0].replace("?","") || "root";
 		document
 			.getElementsByTagName("section")[0]
 			.setAttribute("data-markdown", "content/" + name + "/slides.md");
