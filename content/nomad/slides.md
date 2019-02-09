@@ -39,10 +39,25 @@ https://docs.google.com/presentation/d/1Gp-2blk5WExI_QR59EUZdwfO2BWLJqa626mK2ej-
 Note:
 * don't run this yourself! waste of time/resources
 * use a cloud provider service
+* compare this to nomad's architecture
 
 
 
-* Service Discovery,
+![nomad cloud asg layout](content/nomad/img/nomad-cloud.png)
+https://github.com/hashicorp/terraform-aws-nomad/tree/master <!-- .element: class="attribution" -->
+
+Note:
+* single binary, either server, client, or cli modes
+* put it in an asg and don't worry
+* you can definitely run this yourself
+* there are terraform modules for it too
+* vagrant box for local playing
+
+
+
+![kubernetes logo](content/nomad/img/kubernetes.png) <!-- .element: class="no-border" -->
+
+* Service Discovery, <!-- .element: class="fragment" -->
 * Load Balancing, <!-- .element: class="fragment" -->
 * Configuration Management, <!-- .element: class="fragment" -->
 * Secret Storage, <!-- .element: class="fragment" -->
@@ -55,6 +70,8 @@ Note:
 
 <!-- .element: class="list-unstyled list-inline" -->
 
+https://assets.rightscale.com/870a9090f829755c6720d173dcb0f72a58a5d2d9/web/images/kubernetes-lg.png <!-- .element: class="attribution" -->
+
 Note:
 * and probably others I forget.
 * if you need all this, great
@@ -66,37 +83,15 @@ Note:
 
 
 
+![Nomad Logo](content/nomad/img/Nomad_PrimaryLogo_FullColor.png) <!-- .element: class="no-border" -->
 
-![Nomad Logo](content/nomad/img/Nomad_PrimaryLogo_FullColor.png)
+1. Container Orchestration <!-- .element: class="fragment" -->
 
 Note:
 * just a container orchestrator
-* single binary! (server, client, communicator)
-* no extra stuff, but integrates
+* everything else is up to you
+* add the components you want or need, when you want or need them
 
-
-
-![Nomad architecture single region](content/nomad/img/nomad-architecture-region.png)
-
-<!-- .slide: data-transition="slide-in out-none" -->
-
-Note:
-* architecture is pretty simple for a single region
-* 3 or 5 servers
-  * accept jobs, manage clients, select task placement
-* as many clients as you want
-  * run the tasks
-
-
-
-![Nomad architecture multi region](content/nomad/img/nomad-architecture-global.png)
-
-<!-- .slide: data-transition="in-none slide-out" -->
-
-Note:
-* same, but the servers gossip!
-* terraform scripts available to set this up properly
-* locally, we can use a vagrant box
 
 
 
