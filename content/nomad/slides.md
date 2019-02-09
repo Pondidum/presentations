@@ -95,6 +95,77 @@ Note:
 
 Note:
 * same, but the servers gossip!
+* terraform scripts available to set this up properly
+* locally, we can use a vagrant box
+
+
+
+```javascript
+job "rabbit" {
+  datacenters = ["dc1"]
+  type = "service"
+
+  group "cluster" {
+    count = 1
+
+    task "rabbit" {
+      driver = "docker"
+      config {
+        image = "pondidum/rabbitmq:consul"
+      }
+    }
+  }
+}
+```
+
+<!-- .slide: data-transition="slide-in fade-out" -->
+
+
+
+```javascript
+task "rabbit" {
+  driver = "docker"
+
+  config {
+    image = "pondidum/rabbitmq:consul"
+    hostname = "${attr.unique.hostname}"
+    port_map {
+      amqp = 5672
+    }
+  }
+
+  resources {
+    network {
+      port "amqp" { }
+    }
+  }
+
+  service {
+    name = "rabbitmq"
+    port = "amqp"
+    check {
+      name = "alive"
+      type = "tcp"
+      interval = "10s"
+      timeout = "2s"
+    }
+  }
+}
+```
+
+<!-- .element class="full-height" -->
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+
+
+# Demo
+Note:
+* rabbit.nomad
+* nomad job plan rabbit.nomad
+* nomad job run rabbit.nomad
+* update count => 3
+* nomad job plan rabbit.nomad
+* nomad job run rabbit.nomad
 
 
 
