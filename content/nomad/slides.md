@@ -103,11 +103,8 @@ Note:
 ```javascript
 job "rabbit" {
   datacenters = ["dc1"]
-  type = "service"
 
   group "cluster" {
-    count = 1
-
     task "rabbit" {
       driver = "docker"
       config {
@@ -119,6 +116,14 @@ job "rabbit" {
 ```
 
 <!-- .slide: data-transition="slide-in fade-out" -->
+Note:
+* we have to specify a datacenter
+* a group can have multiple tasks
+* nomad will keep all tasks for a group on one host
+
+
+
+# image of hosts and groups?
 
 
 
@@ -160,12 +165,205 @@ task "rabbit" {
 
 # Demo
 Note:
-* rabbit.nomad
-* nomad job plan rabbit.nomad
-* nomad job run rabbit.nomad
+* deploying
+* run rabbit.nomad
+* HA would be good...
 * update count => 3
-* nomad job plan rabbit.nomad
-* nomad job run rabbit.nomad
+* plan rabbit.nomad
+* run rabbit.nomad
+
+
+
+# Application Image
+Note:
+* consume messages from rabbitmq
+* expose http api
+* but where do we connect?
+
+
+
+# image of 3 nodes / n nodes
+Note:
+* we have 3 containers on 3 hosts...
+* and we know the ports...
+* but what if we have 10, 100, hosts?
+* or dynamic ports?
+
+
+
+```javascript
+network stanza / service stanza
+```
+Note:
+* this registers the service into Consul
+* no need to know host or port
+
+
+
+```bash
+curl http://localhost:8500/v1/catalog/rabbitmq
+```
+Note:
+* we can also use a dns interface to consul
+* load balancing:
+  * random!
+
+
+
+# Not using Consul?
+Note:
+* fine! no `service` stanza for you!
+* service registration by you
+  * in-app
+  * another task
+
+
+
+# Demo
+Note:
+* app code: service discovery
+* run `microservice.nomad`
+* publish messages
+
+
+
+# But...
+```csharp
+var broker = await _configuration.GetRabbitHost();
+
+var cf = new ConnectionFactory
+{
+  HostName = broker.Host,
+  Port = broker.Port,
+  DispatchConsumersAsync = true,
+  Username: "guest",
+  Password: "guest"
+};
+```
+Note:
+* connecting with guest/guest is not great!
+* your credentials should be, well, secret...
+
+
+
+# Secrets
+Image of a "shhh" (perhaps simpsons lenny and carl "shutuuuup")
+
+Note:
+* two kinds of secret
+* static - e.g. apikeys from 3rd parties
+* dynamic - short lifetime or limited use count
+* ideally rabbit connections will be dynamic
+* if something leaks, it's time limited, and auditable
+* Secrets as a Service is one of those things you shouldnt write
+
+
+
+![Vault Logo]()
+
+Note:
+* SaaS
+* Hashicorp (I really should get paid by them...)
+* Compliant with xxxxxxxxxxx
+* mutliple backends (storage), including Consul
+* multiple providers (e.g. sql, ssh, kv)
+* not too much depth on this
+
+
+
+```json
+{
+  "plugin_name": "postgresql-database-plugin",
+  "allowed_roles": "rabbitmq",
+  "connection_url": "postgresql://{{username}}:{{password}}@rabbitmq.service.consul:5432/postgres?sslmode=disable",
+  "username": "elmarFudd",
+  "password": "KillTheWabbits"
+}
+```
+
+Note:
+* this is setup by a vault Operator (admin)
+
+
+
+```bash
+var credentials = await _vault
+  .Secrets
+  .Database
+  .GetCredentialsAsync("rabbitmq");
+```
+
+```javascript
+template {
+  data = <<EOF
+    {{ with secret "database/creds/rabbitmq" }}
+      {
+        "host": "rabbitmq.service.consul",
+        "port": 5432,
+        "username": "{{ .Data.username }}",
+        "password": "{{ .Data.password }}"
+      }
+    {{ end }}
+    EOF
+  destination = "secrets/config.json"
+}
+```
+<!-- .element: class="fragment" -->
+
+Note:
+* our app can fetch credentials itself
+* of we can use Nomad integration
+
+
+
+## Did you notice?
+
+```javascript
+task "api" {
+  driver = "exec"
+
+  config {
+    command = "/usr/bin/dotnet"
+    args = [
+      "local/HelloApi.dll",
+      "urls=http://*:${NOMAD_PORT_http}"
+    ]
+  }
+}
+```
+Note:
+* no docker container!
+  * nomad supports many `drivers`
+  * LXC, RKT, Docker...and exec.
+* but where did it come from?
+* you saw me compile it, and I didn't scp it to a host...
+
+
+
+```javascript
+task "api" {
+  driver = "exec"
+
+  config {
+    command = "/usr/bin/dotnet"
+    args = [
+      "local/HelloApi.dll",
+      "urls=http://*:${NOMAD_PORT_http}"
+    ]
+  }
+
+  artifact {
+    source = "http://172.27.48.17:3030/Hello.zip"
+  }
+}
+```
+Note:
+* artifacts are a way of fetching things your task needs to run
+  * http, s3,
+  * auto extract tar, zip, gz
+* so if your app isn't dockerized, dont worry!
+  * zip it, push to s3
+* you do lose out on isolation of containers though
 
 
 
