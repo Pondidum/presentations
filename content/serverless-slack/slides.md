@@ -299,7 +299,7 @@ public class ChannelProjection
   }
 }
 ```
-<!-- .element: class="left full-height"-->
+<!-- .element: class="pull-left full-height"-->
 
 ```javascript
 //client side:
@@ -314,7 +314,7 @@ const join = user =>
   Dispatch(command);
 }
 ```
-<!-- .element: class="right fragment"-->
+<!-- .element: class="pull-right fragment"-->
 
 ```javascript
 //serverside sync
@@ -323,7 +323,7 @@ const onCommand = command => {
   TriggerAggregates(command);
 }
 ```
-<!-- .element: class="right fragment"-->
+<!-- .element: class="pull-right fragment"-->
 
 ```javascript
 //serverside async
@@ -333,7 +333,7 @@ exports.handler = command => {
   channel[command.type](command)
 }
 ```
-<!-- .element: class="right fragment"-->
+<!-- .element: class="pull-right fragment"-->
 
 Note:
 * it's now javascript
@@ -374,7 +374,7 @@ const command = {
   channelId: "general"
 }
 ```
-<!-- .element: class="left"-->
+<!-- .element: class="pull-left"-->
 ```javascript
 const event = {
   timestamp: new Date().getTime(),
@@ -384,7 +384,7 @@ const event = {
   channelId: "general"
 }
 ```
-<!-- .element: class="right fragment"-->
+<!-- .element: class="pull-right fragment"-->
 Note:
 * all the commands are very simple (to start with)
 * timestamp and eventid handled by the serverside
@@ -467,7 +467,7 @@ const event = {
   channelDescription: ""
 }
 ```
-<!-- .element: class="left"-->
+<!-- .element: class="pull-left"-->
 ```javascript
 const event = {
   timestamp: new Date().getTime(),
@@ -479,7 +479,7 @@ const event = {
   channelDescription: null
 }
 ```
-<!-- .element: class="right fragment"-->
+<!-- .element: class="pull-right fragment"-->
 
 
 

@@ -110,7 +110,7 @@ ul.center {
   max-height: inherit !important;
 }
 
-.left {
+.pull-left {
   left: -8.33%;
   text-align: left;
   float: left;
@@ -120,7 +120,7 @@ ul.center {
   margin-left: 0 !important;
 }
 
-.right {
+.pull-right {
   left: 31.25%;
   top: 75px;
   float: right;
