@@ -122,10 +122,6 @@ Note:
 
 
 
-# image of hosts and groups?
-
-
-
 ```javascript
 task "rabbit" {
   driver = "docker"
@@ -162,6 +158,10 @@ task "rabbit" {
 
 
 
+# image of hosts and groups?
+
+
+
 # Demo
 Note:
 * deploying
@@ -181,17 +181,51 @@ Note:
 
 
 
-# image of 3 nodes / n nodes
+![3 nomad hosts](content/nomad/img/cluster-3.png) <!-- .element: class="no-border" -->
+
+<!-- .slide: data-transition="slide-in fade-out" -->
+
 Note:
-* we have 3 containers on 3 hosts...
-* and we know the ports...
+* 3 Nomad hosts
+* and we know their names at least
+
+
+
+![3 nomad hosts with a rabbitmq container on each](content/nomad/img/cluster-3-rabbit.png) <!-- .element: class="no-border" -->
+
+<!-- .slide: data-transition="fade-in fade-out" -->
+
+Note:
+* but the containers are mapped to random ports
+
+
+
+![n nomad hosts](content/nomad/img/cluster-n.png) <!-- .element: class="no-border" -->
+
+<!-- .slide: data-transition="fade-in slide-out" -->
+Note:
 * but what if we have 10, 100, hosts?
-* or dynamic ports?
 
 
 
 ```javascript
-network stanza / service stanza
+service {
+  name = "rabbitmq"
+  port = "amqp"
+  tags = ["amqp"]
+  check {
+    name     = "alive"
+    type     = "tcp"
+    interval = "10s"
+    timeout  = "2s"
+  }
+}
+
+service {
+  name = "rabbitmq"
+  port = "ui"
+  tags = ["management", "http"]
+}
 ```
 Note:
 * this registers the service into Consul
@@ -206,6 +240,8 @@ Note:
 * we can also use a dns interface to consul
 * load balancing:
   * random!
+  * client side
+  * fabio
 
 
 
@@ -258,7 +294,7 @@ Note:
 
 
 
-![Vault Logo]()
+![Vault Logo](content/nomad/img/vault.png) <!-- .element: class="no-border" -->
 
 Note:
 * SaaS
@@ -270,37 +306,36 @@ Note:
 
 
 
-```json
-{
-  "plugin_name": "postgresql-database-plugin",
-  "allowed_roles": "rabbitmq",
-  "connection_url": "postgresql://{{username}}:{{password}}@rabbitmq.service.consul:5432/postgres?sslmode=disable",
-  "username": "elmarFudd",
-  "password": "KillTheWabbits"
-}
+```bash
+vault write rabbitmq/config/connection \
+    connection_uri="http://localhost:15672" \
+    username="admin" \
+    password="password"
+
+vault write rabbitmq/roles/read-write \
+    vhosts='{ "/" : { "write" : ".*", "read" : ".*" } }'
 ```
 
 Note:
 * this is setup by a vault Operator (admin)
+* you'd use servicediscovery for `connection_uri`
 
 
 
 ```bash
 var credentials = await _vault
-  .Secrets
-  .Database
-  .GetCredentialsAsync("rabbitmq");
+    .Secrets
+    .RabbitMQ
+    .GetCredentialsAsync("read-write");
 ```
 
-```javascript
+```json
 template {
   data = <<EOF
-    {{ with secret "database/creds/rabbitmq" }}
+    {{ with secret "rabbitmq/creds/read-write" }}
       {
-        "host": "rabbitmq.service.consul",
-        "port": 5432,
-        "username": "{{ .Data.username }}",
-        "password": "{{ .Data.password }}"
+        "rabbitUsername": "{{ .Data.username }}",
+        "rabbitPassword": "{{ .Data.password }}"
       }
     {{ end }}
     EOF
@@ -330,6 +365,9 @@ task "api" {
   }
 }
 ```
+
+<!-- .slide: data-transition="slide-in fade-out" -->
+
 Note:
 * no docker container!
   * nomad supports many `drivers`
@@ -356,6 +394,9 @@ task "api" {
   }
 }
 ```
+
+<!-- .slide: data-transition="fade-in slide-out" -->
+
 Note:
 * artifacts are a way of fetching things your task needs to run
   * http, s3,

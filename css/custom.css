@@ -72,6 +72,10 @@ img.middle {
   text-align: left;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .intro h1 {
   font-weight: 500;
 }
@@ -84,18 +88,16 @@ img.middle {
   color: #de7c31 !important;
 }
 
+.red {
+  color: #c00 !important;
+}
+
 .black {
   color: black !important;
 }
 
 ul.center {
   text-align: center !important;
-}
-
-.intro .bottom-title {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: -2.5em;
 }
 
 .intro .push-down {
