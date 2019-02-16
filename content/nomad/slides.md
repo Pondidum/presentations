@@ -1,12 +1,16 @@
-# Nomad: <!-- .element: class="stroke" -->
-## Kubernetes, without the complexity <!-- .element: class="stroke" -->
+# Nomad <!-- .element: class="stroke text-right" -->
+### Kubernetes, <!-- .element: class="stroke text-right" -->
+### without the complexity <!-- .element: class="stroke text-right" -->
 <br/>
-## Andy Davies <!-- .element: class="stroke" -->
-github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white" -->
+<br/>
+<br/>
+## Andy Davies <!-- .element: class="stroke text-right" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller red text-right" -->
 
-https://commons.wikimedia.org/wiki/File:Nomads_near_Namtso.jpg <!-- .element: class="attribution white" -->
+<br/>
+https://www.techjunkies.nl/2018/05/02/why-the-term-can-it-run-crysis-is-still-justified-in-2018/ <!-- .element: class="attribution red" -->
 
-<!-- .slide: data-background="content/nomad/img/Nomads_near_Namtso.jpg" data-background-size="cover" class="intro" -->
+<!-- .slide: data-background="content/nomad/img/crysis.jpg" data-background-size="cover" class="intro" -->
 
 
 
