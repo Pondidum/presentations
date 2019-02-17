@@ -91,11 +91,31 @@ Note:
 
 1. Container Orchestration <!-- .element: class="fragment" -->
 
-Note:
+Note:x
 * just a container orchestrator
 * everything else is up to you
 * add the components you want or need, when you want or need them
 
+
+
+![separate deployments, kubernetes on one side, existing on the other](content/nomad/img/deployments-separate.png)
+<br />
+<br />
+<br />
+<!-- .slide: data-transition="slide-in fade-out" -->
+
+
+
+
+![separate deployments, kubernetes on one side, existing on the other](content/nomad/img/deployments-sync.png)
+
+The API server stores secrets as plaintext in etcd <!-- .element: class="fragment" -->
+
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+
+
+# No YAML!
 
 
 
@@ -131,24 +151,21 @@ task "rabbit" {
     hostname = "${attr.unique.hostname}"
     port_map {
       amqp = 5672
+      ui = 15672
     }
   }
 
   resources {
     network {
       port "amqp" { }
+      port "ui" { }
     }
   }
 
   service {
     name = "rabbitmq"
-    port = "amqp"
-    check {
-      name = "alive"
-      type = "tcp"
-      interval = "10s"
-      timeout = "2s"
-    }
+    port = "ui"
+    tags = ["management", "http"]
   }
 }
 ```
