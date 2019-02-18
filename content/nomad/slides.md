@@ -175,7 +175,7 @@ task "rabbit" {
 
 
 
-# image of hosts and groups?
+![nomad task groups](content/nomad/img/nomad-groups.png) <!-- .element: class="no-border" -->
 
 
 
