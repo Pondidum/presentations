@@ -91,14 +91,14 @@ Note:
 
 1. Container Orchestration <!-- .element: class="fragment" -->
 
-Note:x
+Note:
 * just a container orchestrator
 * everything else is up to you
 * add the components you want or need, when you want or need them
 
 
 
-![separate deployments, kubernetes on one side, existing on the other](content/nomad/img/deployments-separate.png)
+![separate deployments, kubernetes on one side, existing on the other](content/nomad/img/deployments-separate.png) <!-- .element: class="no-border" -->
 <br />
 <br />
 <br />
@@ -107,7 +107,7 @@ Note:x
 
 
 
-![separate deployments, kubernetes on one side, existing on the other](content/nomad/img/deployments-sync.png)
+![separate deployments, kubernetes on one side, existing on the other](content/nomad/img/deployments-sync.png) <!-- .element: class="no-border" -->
 
 The API server stores secrets as plaintext in etcd <!-- .element: class="fragment" -->
 
@@ -298,8 +298,8 @@ Note:
 
 
 
-# Secrets
-Image of a "shhh" (perhaps simpsons lenny and carl "shutuuuup")
+![librarian shhhh](content/nomad/img/library-silence.jpg)
+https://gistofthegrist.wordpress.com/2013/01/12/library-observations/ <!-- .element: class="attribution" -->
 
 Note:
 * two kinds of secret
