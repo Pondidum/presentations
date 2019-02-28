@@ -93,6 +93,12 @@ Note:
 
 
 ![approle role and secret id progression](content/vault/img/approles.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in none-out" -->
+
+
+
+![approles, with roleid embedded in app](content/vault/img/approles-embedded.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="none-in slide-out" -->
 
 
 
