@@ -6,10 +6,13 @@ wat <!-- .element: class="attribution white" -->
 
 <!-- .slide: data-background="" data-background-size="contain" class="intro" -->
 Note:
-* Checklist
-  * docker-compose up -d
-  * dbeaver running
-  * bash setup
+### Checklist
+* docker-compose up -d
+* dbeaver running
+* rider open with demo solution
+* export VAULT_TOKEN=vault
+* export VAULT_ADDR=http://localhost:8200
+* init.sh
 
 
 
@@ -70,7 +73,8 @@ password = abcdef
 Note:
 * create db secrets engine
 * create roles
-* get credentials, show expiry in dbeaver
+* `vault read database/creds/writer`
+* show expiry in dbeaver
 * DirectAccess app
 
 
@@ -104,7 +108,23 @@ Note:
 
 # Demo
 Note:
+* cat approles.sh
+* ./approles.sh
+* update roleid and secretid
 * AppRoleAccess demo
+
+
+
+
+# Goals
+
+* unique credentials <span class="fragment">&#10004;</span>
+* no manual steps or scripts <span class="fragment">&#10004;</span>
+* securely stored <span class="fragment">&#10004;</span>
+* auditable <span class="fragment">&#10004;</span>
+* minimal code written <span class="fragment">&#10004;</span>
+
+<!-- .element: class="list-spaced" -->
 
 
 
@@ -113,9 +133,8 @@ Note:
 
 * https://www.vaultproject.io
 * https://learn.hashicorp.com/vault/security/iam-approle-trusted-entities
-* some
-* links
-* here
+* https://consul.io/
+* ######### GITHUB DEMO REPO LINK #########
 
 <!-- .element: class="list-spaced small" -->
 <br />
