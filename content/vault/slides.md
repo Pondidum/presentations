@@ -117,11 +117,22 @@ Note:
 
 ![approle role and secret id progression](content/vault/img/approles.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
+Note:
+* ci -> vault = PR approval
+* terraform can only fetch roleids
+* spinnaker can only fetch secretids
+* roleid in environment
+* secretid in config file, only readable by app/process
+
 
 
 
 ![approles, with roleid embedded in app](content/vault/img/approles-embedded.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in slide-out" -->
+Note:
+* roleid embedded by dev in binary
+* secretid in config by spinnaker as before
+* slightly less secure
 
 
 
@@ -144,6 +155,9 @@ Note:
 * minimal code written <span class="fragment">&#10004;</span>
 
 <!-- .element: class="list-spaced" -->
+Note:
+* unique users = expand with AD support later
+* audit: not covered, but easy to configure
 
 
 
