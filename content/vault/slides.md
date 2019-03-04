@@ -1,22 +1,27 @@
-# How to Secure Your Microservices <!-- .element: class="stroke" -->
-## Andy Davies <!-- .element: class="stroke" -->
-github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white" -->
+# How to Secure Your Microservices <!-- .element: class="stroke text-left" -->
+## Andy Davies <!-- .element: class="stroke text-left" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white text-left" -->
 
-wat <!-- .element: class="attribution white" -->
+https://michellegable.com/2014/03/landmarks-paris-apartment-pont-des-arts/the-hundreds-of-thousands-of-locks-on-the-pont-des-arts-bridge-paris-france/ <!-- .element: class="attribution white text-left" -->
 
-<!-- .slide: data-background="" data-background-size="contain" class="intro" -->
+<!-- .slide: data-background="content/vault/img/PontDesArts.jpg" data-background-size="cover" class="intro" -->
 Note:
 ### Checklist
 * docker-compose up -d
 * dbeaver running
-* rider open with demo solution
+* rider open
+* solution built
 * export VAULT_TOKEN=vault
 * export VAULT_ADDR=http://localhost:8200
-* init.sh
+* ./init.sh
 
 
 
 ![initial architecture, fat clients, 1 db, 3 services](content/vault/img/architecture.png) <!-- .element: class="no-border" -->
+Note:
+* monolithic codebase
+* few services, 2 desktop apps
+* shared config fie
 
 
 
@@ -27,6 +32,9 @@ Note:
   </connectionStrings>
 </configuraton>
 ```
+Note:
+* shared connectionstring
+* decryption key in binary
 
 
 
@@ -49,7 +57,10 @@ password = 123456
 username = worker
 password = abcdef
 ```
-
+Note:
+* started using template cs
+* done using octopus deploy
+* but manual: create user, enter octo values
 
 
 
@@ -62,10 +73,18 @@ password = abcdef
 * minimal code written <!-- .element: class="fragment" -->
 
 <!-- .element: class="list-spaced" -->
+Note:
+* per user nice to have
+* don't write your own crypto
 
 
 
 ![Vault Logo](content/vault/img/Vault_PrimaryLogo_FullColor.png)
+Note:
+* secrets as a service
+* HA
+* FIPS 140-2 (Federal Information Processing Standard)
+* engines, backends, audit
 
 
 
@@ -134,7 +153,8 @@ Note:
 * https://www.vaultproject.io
 * https://learn.hashicorp.com/vault/security/iam-approle-trusted-entities
 * https://consul.io/
-* ######### GITHUB DEMO REPO LINK #########
+* https://github.com/Pondidum/vault-demo
+* https://andydote.co.uk/presentations/index.html?vault
 
 <!-- .element: class="list-spaced small" -->
 <br />
