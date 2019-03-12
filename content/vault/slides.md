@@ -165,7 +165,7 @@ Note:
 ## Questions?
 <br />
 
-* https://www.vaultproject.io
+* https://vaultproject.io
 * https://learn.hashicorp.com/vault/security/iam-approle-trusted-entities
 * https://consul.io/
 * https://github.com/Pondidum/vault-demo
