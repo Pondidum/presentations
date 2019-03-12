@@ -35,6 +35,7 @@ Note:
 Note:
 * shared connectionstring
 * decryption key in binary
+* migration to separate connections
 
 
 
@@ -58,10 +59,10 @@ username = worker
 password = abcdef
 ```
 Note:
-* started using template cs
+* started using templates
 * done using octopus deploy
 * but manual: create user, enter octo values
-
+* errors!
 
 
 # Goals
@@ -138,10 +139,10 @@ Note:
 
 # Demo
 Note:
-* cat approles.sh
 * ./approles.sh
 * update roleid and secretid
 * AppRoleAccess demo
+* pit of success!
 
 
 
