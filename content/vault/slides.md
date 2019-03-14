@@ -65,6 +65,7 @@ Note:
 * errors!
 
 
+
 # Goals
 
 * unique credentials (environment, app, and user) <!-- .element: class="fragment" -->
@@ -92,6 +93,7 @@ Note:
 # Demo
 Note:
 * create db secrets engine
+  * + influx, cassandra, mongo
 * create roles
 * `vault read database/creds/writer`
 * show expiry in dbeaver
@@ -101,16 +103,17 @@ Note:
 
 # Who wants to know?
 Note:
-* is the app allowed to fetch this role?
-* is the app actually who it claims to be?
-* so, how do we authenticate with vault?
+* dont distribute root token
+* how to authenticate apps?
+* many backends:
+  * github (for devs)
+  * aws (iam), azure (ad)
+  * jwt, ldap, tls
 
 
 
 # AppRoles
 Note:
-* many ways to do this
-* appRoles make the most sense (usually)
 * RoleID (username)
 * SecretID (password)
 
