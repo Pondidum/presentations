@@ -134,11 +134,14 @@ job "rabbit" {
 }
 ```
 
-<!-- .slide: data-transition="slide-in fade-out" -->
 Note:
 * we have to specify a datacenter
 * a group can have multiple tasks
 * nomad will keep all tasks for a group on one host
+
+
+
+![nomad task groups](content/nomad/img/nomad-groups.png) <!-- .element: class="no-border" -->
 
 
 
@@ -171,11 +174,6 @@ task "rabbit" {
 ```
 
 <!-- .element class="full-height" -->
-<!-- .slide: data-transition="fade-in slide-out" -->
-
-
-
-![nomad task groups](content/nomad/img/nomad-groups.png) <!-- .element: class="no-border" -->
 
 
 
@@ -190,7 +188,7 @@ Note:
 
 
 
-# Application Image
+![mutliple consumers, single api](content/nomad/img/application-architecture.png) <!-- .element: class="no-border" -->
 Note:
 * consume messages from rabbitmq
 * expose http api
