@@ -98,20 +98,45 @@ Note:
 
 
 
-![separate deployments, kubernetes on one side, existing on the other](content/nomad/img/deployments-separate.png) <!-- .element: class="no-border" -->
-<br />
-<br />
-<br />
+![initial microservices, some containers, some not, using consul and vault](content/nomad/img/migration-initial.png) <!-- .element: class="no-border" -->
+
 <!-- .slide: data-transition="slide-in fade-out" -->
+Note:
+* not all services are in containers
+* consul and vault
+* decide to add kubernetes
 
 
 
+![additional kubernetes cluster with only containers](content/nomad/img/migration-kubernetes.png) <!-- .element: class="no-border" -->
 
-![separate deployments, kubernetes on one side, existing on the other](content/nomad/img/deployments-sync.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade-in fade-out" -->
+Note:
+* can't move everything over (non-containers)
+* big-bang sucks anyway
+* but things probably need to talk to each other
 
-The API server stores secrets as plaintext in etcd <!-- .element: class="fragment" -->
+
+
+![cluster sync between consult vault and kubernetes](content/nomad/img/migration-sync.png) <!-- .element: class="no-border" -->
+
+<!-- .slide: data-transition="fade-in fade-out" -->
+Note:
+* sync our infra services
+  * consul -> kubernetes sd
+  * vault -> kubernetes secrets
+  * how do you sync secrets?! (etcd plaintext...)
+* adds complexity...
+
+
+
+![kubernetes replaced by nomad](content/nomad/img/migration-nomad.png) <!-- .element: class="no-border" -->
 
 <!-- .slide: data-transition="fade-in slide-out" -->
+Note:
+* conceptially the same
+* but our services directly use consul and vault
+* no translation/sync required
 
 
 
