@@ -11,6 +11,14 @@ github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller 
 https://www.techjunkies.nl/2018/05/02/why-the-term-can-it-run-crysis-is-still-justified-in-2018/ <!-- .element: class="attribution red" -->
 
 <!-- .slide: data-background="content/nomad/img/crysis.jpg" data-background-size="cover" class="intro" -->
+Note:
+* vagrant up
+* admin prompt: ./scripts/demo.sh
+* vscode on nomad-demo
+* rider:
+  * light theme
+  * built
+  * presentation mode
 
 
 
@@ -145,22 +153,33 @@ Note:
 
 
 ```javascript
-job "rabbit" {
+job "api" {
   datacenters = ["dc1"]
 
-  group "cluster" {
-    task "rabbit" {
+  group "api-group" {
+
+    task "app" {
       driver = "docker"
       config {
-        image = "pondidum/rabbitmq:consul"
+        image = "company/app:latest"
       }
     }
+
+    task "nginx" {
+      driver = "docker"
+      config {
+        image = "nginx:latest"
+      }
+    }
+
   }
 }
 ```
+<!-- .element class="full-height" -->
 
 Note:
 * we have to specify a datacenter
+* multiple groups are allowed
 * a group can have multiple tasks
 * nomad will keep all tasks for a group on one host
 
@@ -274,7 +293,25 @@ Note:
 
 
 ```bash
-curl http://localhost:8500/v1/catalog/rabbitmq
+curl http://localhost:8500/v1/catalog/service/rabbitmq?tag=amqp
+```
+
+```csharp
+var services = await _consul.Catalog.Service(serviceName, tag: "amqp");
+```
+
+```json
+[
+  {
+    "ID": "9187bde1-3bfa-1b90-dc62-6b7e075175a1",
+    "Node": "nomad3",
+    "Address": "192.168.148.73",
+    "ServiceName": "rabbitmq",
+    "ServiceTags": [ "amqp" ],
+    "ServiceAddress": "nomad3",
+    "ServicePort": 20755
+  }
+]
 ```
 Note:
 * we can also use a dns interface to consul
@@ -297,23 +334,26 @@ Note:
 # Demo
 Note:
 * app code: service discovery
-* run `microservice.nomad`
+* run `consumer.nomad`
 * publish messages
+* increase consumers
 
 
 
 # But...
 ```csharp
-var broker = await _configuration.GetRabbitHost();
+var broker = await _configuration.GetRabbitBroker();
 
-var cf = new ConnectionFactory
+var bus = Bus.Factory.CreateUsingRabbitMq(c =>
 {
-  HostName = broker.Host,
-  Port = broker.Port,
-  DispatchConsumersAsync = true,
-  Username: "guest",
-  Password: "guest"
-};
+    var host = c.Host(broker, r =>
+    {
+        r.Username("guest");
+        r.Password("guest");
+    });
+
+    //...
+});
 ```
 Note:
 * connecting with guest/guest is not great!
@@ -339,7 +379,7 @@ Note:
 Note:
 * SaaS
 * Hashicorp (I really should get paid by them...)
-* Compliant with xxxxxxxxxxx
+* Compliant with FIPS 140-2
 * mutliple backends (storage), including Consul
 * multiple providers (e.g. sql, ssh, kv)
 * not too much depth on this
@@ -348,31 +388,31 @@ Note:
 
 ```bash
 vault write rabbitmq/config/connection \
-    connection_uri="http://localhost:15672" \
+    connection_uri="http://rabbitmq.service.consul:15672" \
     username="admin" \
     password="password"
 
-vault write rabbitmq/roles/read-write \
+vault write rabbitmq/roles/consumer \
     vhosts='{ "/" : { "write" : ".*", "read" : ".*" } }'
 ```
 
 Note:
 * this is setup by a vault Operator (admin)
-* you'd use servicediscovery for `connection_uri`
 
 
 
+#### In App
 ```bash
 var credentials = await _vault
     .Secrets
     .RabbitMQ
-    .GetCredentialsAsync("read-write");
+    .GetCredentialsAsync("consumer");
 ```
-
+#### In .nomad file
 ```json
 template {
   data = <<EOF
-    {{ with secret "rabbitmq/creds/read-write" }}
+    {{ with secret "rabbitmq/creds/consumer" }}
       {
         "rabbitUsername": "{{ .Data.username }}",
         "rabbitPassword": "{{ .Data.password }}"
@@ -382,11 +422,11 @@ template {
   destination = "secrets/config.json"
 }
 ```
-<!-- .element: class="fragment" -->
 
 Note:
-* our app can fetch credentials itself
-* of we can use Nomad integration
+* either in app, or in nomad job
+* app = complexity, but flexibility
+* nomad = simple, but restart for new creds
 
 
 
@@ -399,8 +439,7 @@ task "api" {
   config {
     command = "/usr/bin/dotnet"
     args = [
-      "local/HelloApi.dll",
-      "urls=http://*:${NOMAD_PORT_http}"
+      "local/Consumer.dll"
     ]
   }
 }
@@ -424,13 +463,12 @@ task "api" {
   config {
     command = "/usr/bin/dotnet"
     args = [
-      "local/HelloApi.dll",
-      "urls=http://*:${NOMAD_PORT_http}"
+      "local/Consumer.dll"
     ]
   }
 
   artifact {
-    source = "http://172.27.48.17:3030/Hello.zip"
+    source = "http://artifacts.service.consul:3030/Consumer.zip"
   }
 }
 ```
@@ -447,12 +485,22 @@ Note:
 
 
 
+# That's not all...
+Note
+* batch jobs
+* rendering pipeline
+* stream processing etc.
+
+
+
 ## Questions?
 <br />
 
-* https://www.nomadproject.io/
-* go
-* here
+* https://andydote.co.uk/presentations/index.html?nomad
+* https://github.com/Pondidum/nomad-demo
+* https://nomadproject.io/
+* https://vaultproject.io
+* https://consul.io/
 
 <!-- .element: class="list-spaced small" -->
 <br />
