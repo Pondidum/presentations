@@ -13,7 +13,8 @@ https://www.techjunkies.nl/2018/05/02/why-the-term-can-it-run-crysis-is-still-ju
 <!-- .slide: data-background="content/nomad/img/crysis.jpg" data-background-size="cover" class="intro" -->
 Note:
 * vagrant up
-* admin prompt: ./scripts/demo.sh
+* admin prompt: `./scripts/demo.sh`
+* admin prompt: `cd nomad-demo`
 * vscode on nomad-demo
 * rider:
   * light theme
@@ -101,6 +102,7 @@ Note:
 
 Note:
 * just a container orchestrator
+* maybe storage too
 * everything else is up to you
 * add the components you want or need, when you want or need them
 
@@ -189,7 +191,7 @@ Note:
 
 
 
-```javascript
+```ruby
 task "rabbit" {
   driver = "docker"
 
@@ -207,12 +209,9 @@ task "rabbit" {
       port "amqp" { }
       port "ui" { }
     }
-  }
 
-  service {
-    name = "rabbitmq"
-    port = "ui"
-    tags = ["management", "http"]
+    cpu = 500 # MHz
+    memory = 256 #MB
   }
 }
 ```
@@ -297,8 +296,9 @@ curl http://localhost:8500/v1/catalog/service/rabbitmq?tag=amqp
 ```
 
 ```csharp
-var services = await _consul.Catalog.Service(serviceName, tag: "amqp");
+var services = await _consul.Catalog.Service("rabbitmq", tag: "amqp");
 ```
+<!-- .element: class="fragment" -->
 
 ```json
 [
@@ -313,6 +313,8 @@ var services = await _consul.Catalog.Service(serviceName, tag: "amqp");
   }
 ]
 ```
+<!-- .element: class="fragment" -->
+
 Note:
 * we can also use a dns interface to consul
 * load balancing:
@@ -324,10 +326,10 @@ Note:
 
 # Not using Consul?
 Note:
-* fine! no `service` stanza for you!
-* service registration by you
-  * in-app
-  * another task
+* e.g. Netflix Eureka, Zookeeper, Etcd.
+* diy
+  * no `service` stanza
+  * in-app registration
 
 
 
@@ -386,15 +388,7 @@ Note:
 
 
 
-```bash
-vault write rabbitmq/config/connection \
-    connection_uri="http://rabbitmq.service.consul:15672" \
-    username="admin" \
-    password="password"
-
-vault write rabbitmq/roles/consumer \
-    vhosts='{ "/" : { "write" : ".*", "read" : ".*" } }'
-```
+![apps and nomad use vault, vault uses aws/azure/github auth](content/nomad/img/vault-usage.png) <!-- .element: class="no-border" -->
 
 Note:
 * this is setup by a vault Operator (admin)
@@ -485,8 +479,9 @@ Note:
 
 
 
-# That's not all...
-Note
+# One more thing
+
+Note:
 * batch jobs
 * rendering pipeline
 * stream processing etc.
@@ -498,9 +493,9 @@ Note
 
 * https://andydote.co.uk/presentations/index.html?nomad
 * https://github.com/Pondidum/nomad-demo
-* https://nomadproject.io/
+* https://nomadproject.io
 * https://vaultproject.io
-* https://consul.io/
+* https://consul.io
 
 <!-- .element: class="list-spaced small" -->
 <br />
