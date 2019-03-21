@@ -26,9 +26,8 @@ Note:
 # Disclaimer
 
 Note:
-* not about kubernetes
-* if you're hoping to learn something about kubernetes, I won't be offended if you leave
-* but maybe if you stay you'll have an alternative to consider?
+* lots of kubernetes talks here...
+* whos heard of systemd?
 
 
 
@@ -37,8 +36,6 @@ Note:
 https://twitter.com/Pondidum/status/1068758260965101568 <!-- .element: class="attribution" -->
 
 Note:
-* who's heard of this? likes it?
-* It does a lot of things.
 * If you need a lot of things, it's fine.
 * If you just want init...maybe just use upstart/sysvinit?
 * why bring this up?
@@ -70,16 +67,16 @@ Note:
 
 ![kubernetes logo](content/nomad/img/kubernetes.png) <!-- .element: class="no-border" -->
 
-* Service Discovery, <!-- .element: class="fragment" -->
-* Load Balancing, <!-- .element: class="fragment" -->
-* Configuration Management, <!-- .element: class="fragment" -->
-* Secret Storage, <!-- .element: class="fragment" -->
-* Feature Gates, <!-- .element: class="fragment" -->
-* Routing, <!-- .element: class="fragment" -->
-* Storage Orchestration, <!-- .element: class="fragment" -->
-* AutoScaling, <!-- .element: class="fragment" -->
-* Container Management, <!-- .element: class="fragment" -->
-* Rollouts & Rollbacks <!-- .element: class="fragment" -->
+* Service Discovery, <!-- .element: class="fragment" data-autoslide="750" -->
+* Load Balancing, <!-- .element: class="fragment" data-autoslide="750" -->
+* Configuration Management, <!-- .element: class="fragment" data-autoslide="750" -->
+* Secret Storage, <!-- .element: class="fragment" data-autoslide="750" -->
+* Feature Gates, <!-- .element: class="fragment" data-autoslide="750" -->
+* Routing, <!-- .element: class="fragment" data-autoslide="750" -->
+* Storage Orchestration, <!-- .element: class="fragment" data-autoslide="750" -->
+* AutoScaling, <!-- .element: class="fragment" data-autoslide="750" -->
+* Container Management, <!-- .element: class="fragment" data-autoslide="750" -->
+* and Rollouts & Rollbacks <!-- .element: class="fragment" -->
 
 <!-- .element: class="list-unstyled list-inline" -->
 
