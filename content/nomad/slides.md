@@ -315,8 +315,7 @@ var services = await _consul.Catalog.Service("rabbitmq", tag: "amqp");
 Note:
 * we can also use a dns interface to consul
 * load balancing:
-  * random!
-  * client side
+  * client side: random, weights from consul
   * fabio
 
 
@@ -388,7 +387,9 @@ Note:
 ![apps and nomad use vault, vault uses aws/azure/github auth](content/nomad/img/vault-usage.png) <!-- .element: class="no-border" -->
 
 Note:
-* this is setup by a vault Operator (admin)
+* vault generates credentials
+* requested by nomad or app
+* pros|cons to both methods
 
 
 
@@ -399,7 +400,8 @@ var credentials = await _vault
     .RabbitMQ
     .GetCredentialsAsync("consumer");
 ```
-#### In .nomad file
+
+#### In .nomad file <!-- .element: class="fragment"  data-fragment-index="1" -->
 ```json
 template {
   data = <<EOF
@@ -413,6 +415,7 @@ template {
   destination = "secrets/config.json"
 }
 ```
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 Note:
 * either in app, or in nomad job
@@ -420,8 +423,6 @@ Note:
 * nomad = simple, but restart for new creds
 
 
-
-## Did you notice?
 
 ```javascript
 task "api" {
