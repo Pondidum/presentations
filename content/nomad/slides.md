@@ -496,6 +496,7 @@ Note:
 * https://nomadproject.io
 * https://vaultproject.io
 * https://consul.io
+* https://noyaml.com
 
 <!-- .element: class="list-spaced small" -->
 <br />
