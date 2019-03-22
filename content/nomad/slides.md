@@ -7,6 +7,8 @@
 ## Andy Davies <!-- .element: class="stroke text-right" -->
 github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller red text-right" -->
 
+CC BY-NC-SA 3.0 <!-- .element: class="smaller red text-right" -->
+
 <br/>
 https://www.techjunkies.nl/2018/05/02/why-the-term-can-it-run-crysis-is-still-justified-in-2018/ <!-- .element: class="attribution red" -->
 
@@ -500,3 +502,5 @@ Note:
 <br />
 
 github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
+
+CC BY-NC-SA 3.0 <!-- .element: class="smaller red" -->
