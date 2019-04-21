@@ -43,6 +43,132 @@ Note:
 
 
 
+```typescript
+export function BuildWelcomeEmail(name: string, email: string): IEmail {
+  return {
+    to: email,
+    name: name,
+    subject: "Welcome to Shinra",
+    body: "For all you Mako needs"
+  };
+}
+
+it("should build the email", () => {
+  const email = BuildWelcomeEmail("test.nain@koti.fi", "Mrs Nain");
+
+  expect(email.name).toBe("Mrs Nain");
+  expect(email.to).toBe("test.nain@koti.fi");
+});
+```
+
+
+
+```typescript
+export class Email {
+  private _email: string;
+
+  constructor(email: string) {
+    this._email = email;
+  }
+
+  public toString(): string {
+    return this._email;
+  }
+}
+```
+
+
+
+```typescript
+export function BuildWelcomeEmail(email: Email, name: string): IEmail {
+  return {
+    to: email,
+    name: name
+  };
+}
+
+const testName = "Mrs Nain";
+const testEmail = new Email("test.nain@koti.fi");
+
+it("should build the email", () => {
+  const email = BuildWelcomeEmail(testEmail, testName);
+
+  expect(email.name).toBe(testName);
+  expect(email.to).toBe(testEmail);
+});
+```
+
+
+
+```typescript
+const testName = "Mrs Nain";
+const testEmail = new Email("test.nain@koti.fi");
+
+it("should build the email", () => {
+
+  BuildVerificationEmail(testEmail, testName);
+  BuildWelcomeEmail(testEmail, testName);
+  BuildAccountStatement(testEmail, testName, {});
+
+});
+```
+
+
+
+```typescript
+export class Email {
+  public IsVerified: bool;
+
+  private _email: string;
+
+  constructor(email: string) {
+    if (!email.match(/^(.+)@(.+)$/)) {
+      throw new Error("Invalid email address format");
+    }
+
+    this._email = email;
+  }
+
+  public toString(): string {
+    return this._email;
+  }
+}
+```
+
+
+
+```typescript
+type Email = UnverifiedEmail | VerifiedEmail;
+```
+
+```typescript
+class VerifiedEmail {
+  private _email: string;
+
+  constructor(email: UnverifiedEmail, IVerification service) {
+    service.ThrowIfUnverified(email);
+    this._email = email.toString();
+  }
+
+  public toString(): string {
+    return this._email;
+  }
+}
+```
+<!-- .element: class="fragment" -->
+
+
+
+```typescript
+function BuildVerificationEmail(email: UnverifiedEmail): IEmail
+
+function BuildWelcomeEmail(email: Email, name: string): IEmail
+
+function BuildStatement(email: VerifiedEmail, name: string): IEmail
+```
+
+
+
 ## Questions?
 <br />
 
