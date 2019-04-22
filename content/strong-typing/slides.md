@@ -169,6 +169,70 @@ function BuildStatement(email: VerifiedEmail, name: string): IEmail
 
 
 
+```typescript
+import { fetchOrders } from "./orders"
+
+const merchant = new Merchant(1234);
+const customer = new Customer(1234);
+
+const orders = fetchOrders(merchant.id);
+const orders = fetchOrders(customer.id);
+```
+Note:
+* unit testing wont help you here
+* both are valid ids, but integers are the same
+* so we have a semantic/runtime error
+
+
+
+```typescript
+class MerchantID {
+  private _key: number;
+
+  constructor(key: number) {
+    this._key = key;
+  }
+
+  public toKey(): number {
+    return this._key;
+  }
+
+  public toString(): string {
+    return `Merchant: ${this._key}`;
+  }
+}
+```
+
+
+
+```typescript
+export function fetchOrders(ownerID: MerchantID) {
+    //dome db magic
+}
+
+export function fetchOrders(ownerID: CustomerID) {
+    //dome db magic
+}
+```
+
+
+
+```typescript
+import { fetchOrders } from "./orders"
+
+const merchant = new Merchant(1234);
+const customer = new Customer(1234);
+
+const merchantOrders = fetchOrders(merchant.id);
+const customerOrders = fetchOrders(customer.id);
+```
+
+
+
+# Configuration
+
+
+
 ## Questions?
 <br />
 
