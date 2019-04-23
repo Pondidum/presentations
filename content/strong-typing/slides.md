@@ -16,12 +16,6 @@ Note:
 
 
 
-Unit Testing, correctness vs cost
-Note:
-* at some point, it's not worth adding to
-
-
-
 ## Correctness
 
 ![cost vs correctness](content/strong-typing/img/correctness-cost-unit.png) <!-- .element: class="no-border" -->
@@ -115,17 +109,35 @@ it("should build the email", () => {
 
 
 
-```typescript
+```diff
 export class Email {
-  public IsVerified: bool;
++  public isVerified: bool;
 
   private _email: string;
 
   constructor(email: string) {
-    if (!email.match(/^(.+)@(.+)$/)) {
-      throw new Error("Invalid email address format");
-    }
+    this._email = email;
+  }
 
+  public toString(): string {
+    return this._email;
+  }
+}
+```
+
+
+
+1. Changing email must set `isVerified = false`
+1. Verification must be done by the VerificationService
+
+
+
+```diff
+- export class Email {
++ export class UnverifiedEmail {
+  private _email: string;
+
+  constructor(email: string) {
     this._email = email;
   }
 
@@ -229,7 +241,93 @@ const customerOrders = fetchOrders(customer.id);
 
 
 
+```diff
+class MerchantID {
+-  private _key: number;
++  private _key: UUID;
+
+-  constructor(key: number) {
++  constructor(key: UUID) {
+    this._key = key;
+  }
+
+-  public toKey(): number {
++  public toKey(): UUID {
+    return this._key;
+  }
+
+  public toString(): string {
+    return `Merchant: ${this._key}`;
+  }
+}
+```
+
+
+
 # Configuration
+
+
+
+```csharp
+var a = ConfigurationManager.AppSetting["endpoint"];
+
+var b = ConfigurationManager.AppSetting["workers"];
+
+var c = ConfigurationManager.ConnectionString["db"].ConnectionString;
+```
+
+
+
+```typescript
+interface IConfig {
+  url: string;
+  workers: number;
+}
+
+const content = fs.readFileSync("./config.json", "utf8");
+const config = JSON.parse(content) as IConfig;
+```
+
+
+
+```json
+{
+    "url": "http://localhost",
+    "workers": 15
+}
+```
+
+```json
+{
+    "url": "http://localhost",
+    "workers": [ "Andy", "Anssi", "Henrik", "Teemu" ]
+}
+```
+<!-- .element: class="fragment" -->
+
+
+
+```typescript
+import * as t from "io-ts";
+
+const reader = t.type({
+  url: t.string,
+  workers: t.number
+});
+
+export type IConfig = t.TypeOf<typeof reader>;
+
+export function parseConfig(input: string): IConfig {
+  const config = reader.decode(JSON.parse(input));
+
+  if (config.isRight()) {
+    return config.value;
+  }
+
+  throw new Error(PathReporter.report(config).join("\n"));
+}
+```
+<!-- .element: class="full-height" -->
 
 
 
