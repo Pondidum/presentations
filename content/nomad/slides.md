@@ -185,6 +185,17 @@ Note:
 
 
 ![nomad task groups](content/nomad/img/nomad-groups.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in fade-out" -->
+
+
+
+![nomad task groups](content/nomad/img/nomad-groups-bad.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade-in fade-out" -->
+
+
+
+![nomad task groups](content/nomad/img/nomad-groups-good.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade-in slide-out" -->
 
 
 
