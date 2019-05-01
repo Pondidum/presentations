@@ -67,22 +67,9 @@ Note:
 
 
 
-![kubernetes logo](content/nomad/img/kubernetes.png) <!-- .element: class="no-border" -->
+![kubernetes feature list](content/nomad/img/kubernetes-features.png) <!-- .element: class="no-border" -->
 
-* Service Discovery, <!-- .element: class="fragment" data-autoslide="750" -->
-* Load Balancing, <!-- .element: class="fragment" data-autoslide="750" -->
-* Configuration Management, <!-- .element: class="fragment" data-autoslide="750" -->
-* Secret Storage, <!-- .element: class="fragment" data-autoslide="750" -->
-* Feature Gates, <!-- .element: class="fragment" data-autoslide="750" -->
-* Routing, <!-- .element: class="fragment" data-autoslide="750" -->
-* Storage Orchestration, <!-- .element: class="fragment" data-autoslide="750" -->
-* AutoScaling, <!-- .element: class="fragment" data-autoslide="750" -->
-* Container Management, <!-- .element: class="fragment" data-autoslide="750" -->
-* and Rollouts & Rollbacks <!-- .element: class="fragment" -->
-
-<!-- .element: class="list-unstyled list-inline" -->
-
-https://assets.rightscale.com/870a9090f829755c6720d173dcb0f72a58a5d2d9/web/images/kubernetes-lg.png <!-- .element: class="attribution" -->
+<!-- .slide: data-transition="slide-in fade-out" -->
 
 Note:
 * and probably others I forget.
@@ -95,15 +82,26 @@ Note:
 
 
 
-![Nomad Logo](content/nomad/img/Nomad_PrimaryLogo_FullColor.png) <!-- .element: class="no-border" -->
+![nomad feature list](content/nomad/img/nomad-features.png) <!-- .element: class="no-border" -->
 
-1. Container Orchestration <!-- .element: class="fragment" -->
+<!-- .slide: data-transition="fade-in fade-out" -->
 
 Note:
 * just a container orchestrator
 * maybe storage too
 * everything else is up to you
+
+
+
+![nomad feature list](content/nomad/img/nomad-features-choice.png) <!-- .element: class="no-border" -->
+
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+Note:
+
 * add the components you want or need, when you want or need them
+* fabio: routing and loadbalancing
+* autoscaling is metrics scaling
 
 
 
