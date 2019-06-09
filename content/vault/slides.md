@@ -93,7 +93,7 @@ Note:
 # Demo
 Note:
 * create db secrets engine
-  * + influx, cassandra, mongo
+  * influx, cassandra, mongo
 * create roles
 * `vault read database/creds/writer`
 * show expiry in dbeaver
@@ -119,19 +119,65 @@ Note:
 
 
 
-![approle role and secret id progression](content/vault/img/approles.png) <!-- .element: class="no-border" -->
+![policies for app defined in repo, ci writes to vault](content/vault/img/approles-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
+
+
+
+```bash
+vault write auth/approle/role/$repo_name \
+    token_ttl=20m \
+    token_max_ttl=1h \
+    policies="$policies_csv"
+```
+<!-- .slide: data-transition="fade" -->
+Note:
+* CI can only run this operation
+
+
+
+![policies for app defined in repo, ci writes to vault](content/vault/img/approles-1.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade" -->
 Note:
 * ci -> vault = PR approval
-* terraform can only fetch roleids
+* optional, but single source of truth
+
+
+
+![ci pushes artifacts to deployment tool](content/vault/img/approles-2.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade" -->
+Note:
+* push artifacts
+* octopus etc.
+
+
+
+![deployment tool fetches secretid from vault](content/vault/img/approles-3.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade" -->
+Note:
 * spinnaker can only fetch secretids
-* roleid in environment
 * secretid in config file, only readable by app/process
 
 
 
+![deployment tool embeds secretid in app and deploys to host](content/vault/img/approles-4.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade" -->
+Note:
+* secretid in config file, only readable by app/process
 
-![approles, with roleid embedded in app](content/vault/img/approles-embedded.png) <!-- .element: class="no-border" -->
+
+
+![terraform fetches roleid from vault and writes to host environment variables](content/vault/img/approles-5.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade" -->
+Note:
+* terraform can only fetch roleids
+* roleid in environment
+* chef/puppet/ansible/etc
+
+
+
+
+![instead of terraform, roleid is read by dev, and embedded in in sourcecode](content/vault/img/approles-embedded.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="none-in slide-out" -->
 Note:
 * roleid embedded by dev in binary
