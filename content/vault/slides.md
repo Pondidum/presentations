@@ -17,6 +17,23 @@ Note:
 
 
 
+![angry security guy](content/vault/img/056300321-angry-geek-faces.jpeg)
+https://protectedbytrust.com/wp-content/uploads/2016/04/056300321-angry-geek-faces.jpeg <!-- .element: class="attribution" -->
+
+
+
+![easy to hard, security on the hard end](content/vault/img/security-hard.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="slide-in fade-out" -->
+
+
+
+![easy to hard, security on the easy end](content/vault/img/security-easy.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade-in slide-out" -->
+Note:
+* pit of success
+
+
+
 ![initial architecture, fat clients, 1 db, 3 services](content/vault/img/architecture.png) <!-- .element: class="no-border" -->
 Note:
 * monolithic codebase
@@ -193,6 +210,28 @@ Note:
 * AppRoleAccess demo
 * pit of success!
 
+
+
+# Auditing
+Note:
+* file, syslog, socket
+* multiple
+* &gt;1 must write
+
+
+
+```bash
+vault audit enable file file_path=/var/log/vault/audit.log
+```
+Note:
+* enabled before presentation ;)
+* if using `ext{2,3,4}` use `chattr +a <file>` to make append only
+
+
+
+# Demo
+Note:
+* `tail -1 .vault/audit.log | jq .`
 
 
 
