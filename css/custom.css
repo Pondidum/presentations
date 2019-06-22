@@ -131,3 +131,7 @@ ul.center {
   position: static !important;
   margin-left: 0 !important;
 }
+
+pre.wrap {
+  white-space: pre-line;
+}

@@ -18,11 +18,22 @@ wat
 
 
 
-* Easy to write <!-- .element: class="fragment" -->
+* Architecture Decision
+* Architecture Decision Record <!-- .element: class="fragment" -->
+* Architecture Decision Log <!-- .element: class="fragment" -->
+* Architecturally Significant Requirement <!-- .element: class="fragment" -->
+
+<!-- .element: class="list-spaced list-unstyled" -->
+Note:
+
+
+
+
+* Easy to write
 * Easy to read <!-- .element: class="fragment" -->
 * Easy to find <!-- .element: class="fragment" -->
 
-<!-- .element: class="list-spaced" -->
+<!-- .element: class="list-spaced list-unstyled" -->
 Note:
 
 
@@ -65,6 +76,10 @@ $ tree ~/dev/projects/awesome-api
 
 ## Consequences
 ```
+Note:
+* Immutable (except `status`)
+* multiple formats available
+* this is a hybrid one I invented
 
 
 
@@ -73,58 +88,67 @@ $ tree ~/dev/projects/awesome-api
 
 ## Status
 
-In Development | Proposed | Accepted | Superseded | Invalid
+In Development, Proposed, Accepted, Rejected, Superseded, Deprecated
 ```
 Note:
-* `Superseded` should include link
+* short title
+* `Superseded`/`Deprecated` should include link
 
 
 
 ```markdown
 ## Context
 
-We need to have a consistent serialization scheme for the API.  It needs to be backwards and forwards compatible, as we don't control all of the clients.  Messages will be fairly high volume, but don't *need* to be human readable.
+We need to have a consistent serialization scheme for the API.  It needs to be backwards and forwards compatible, as we don't control all of the clients.  Messages will be fairly high volume, and don't *need* to be human readable.
 ```
+<!-- .element: class="wrap" -->
 
 
 
 ```markdown
 ## Considered Options
 
-1. Json
-1. ProtoBuf / gRPC
-1. Apache Avro
-1. Inbuilt Binary
-1. Custom Built
+1. **Json**: Very portable, and with seriaizers available for all languages.  We need to agree a date format, and numeric precision however.  The serialization should not include white space to save payload size.  Forwards and Backwards compatability exists, but is the developer's responsibility.
+
+2. **Apache Avro**: Binary format which includes the schema with the data, meaning no need for schema distribution.  No code generator to run, and libraries are available for most languages.
+
+3. **Inbuilt Binary**: The API is awkward to use, and it's output is not portable to other programming languages, so wouldn't be easy to consume for other teams, as well as some of our internal services.
+
+4. **Custom Built**: A lot of overhead for little to no benefit over Avro/gRPC etc.
+
+5. ...
 ```
+<!-- .element: class="wrap full-height" -->
 
 
 
 ```markdown
 ## Chosen Decision
 
-* 3. Apache Avro
+**2. Apache Avro**
 
-Avro was chosen because...
+Avro was chosen because it has the best combination of message size and schema definition.  No need to have a central schema repository set up is also a huge benefit.
 ```
+<!-- .element: class="wrap" -->
 
 
 
 ```markdown
 ## Consequences
 
-We won't be able to view messages on the wire without some custom tooling, such as a small cli which can take a message and type and produce an output.
+As the messages are binary format, we cannot directly view them on the wire.  However a small CLI will be built to take a message and pretty print it to aid debugging.
 ```
+<!-- .element: class="wrap" -->
+Note:
+* what do we need to start doing because of this?
 
 
 
 ## Questions?
 <br />
 
-* some
-* list
-* of
-* links
+* https://github.com/joelparkerhenderson/architecture_decision_record
+* https://www.thoughtworks.com/radar/techniques/lightweight-architecture-decision-records
 
 <!-- .element: class="list-spaced small" -->
 <br />
