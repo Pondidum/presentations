@@ -1,10 +1,10 @@
-# Architecture Decision Records <!-- .element: class="stroke" -->
-## Andy Davies <!-- .element: class="stroke" -->
-github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller white text-left" -->
+# Architecture Decision Records <!-- .element: class="stroke-black text-left" -->
+## Andy Davies <!-- .element: class="stroke-black text-left" -->
+github.com/pondidum | @pondidum | andydote.co.uk  <!-- .element: class="smaller text-left" -->
 
-some url here <!-- .element: class="attribution white text-left" -->
+https://www.pesark.com/news2016-2015.html <!-- .element: class="attribution text-left" -->
 
-<!-- .slide: data-background="content/adr/" data-background-size="cover" class="intro" -->
+<!-- .slide: data-background="content/adr/img/hki.jpg" data-background-size="cover" class="intro" -->
 Note:
 wat
 
