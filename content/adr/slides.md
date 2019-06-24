@@ -18,14 +18,12 @@ wat
 
 
 
-* Architecture Decision
+* Architecturally Significant Requirement
+* Architecture Decision <!-- .element: class="fragment" -->
 * Architecture Decision Record <!-- .element: class="fragment" -->
 * Architecture Decision Log <!-- .element: class="fragment" -->
-* Architecturally Significant Requirement <!-- .element: class="fragment" -->
 
 <!-- .element: class="list-spaced list-unstyled" -->
-Note:
-
 
 
 
@@ -97,6 +95,19 @@ Note:
 
 
 ```markdown
+# Serialization Format
+
+## Status
+
+Superseded by [Api Transport Mechanisms](api-transport-mechanisms.md)
+```
+Note:
+* short title
+* `Superseded`/`Deprecated` should include link
+
+
+
+```markdown
 ## Context
 
 We need to have a consistent serialization scheme for the API.  It needs to be backwards and forwards compatible, as we don't control all of the clients.  Messages will be fairly high volume, and don't *need* to be human readable.
@@ -141,6 +152,29 @@ As the messages are binary format, we cannot directly view them on the wire.  Ho
 <!-- .element: class="wrap" -->
 Note:
 * what do we need to start doing because of this?
+
+
+
+# Dates?
+
+
+
+```
+$ git log --format='%ci %s' -- docs/arch/
+
+2018-09-17 11:41:46: adr: start serialization format doc
+2018-09-18 15:33:57: adr: add additional considered options
+2018-09-22 09:07:34: adr: selected option, accepted
+2019-04-17 10:17:07: adr: add transport mechanisms
+2019-04-17 14:30:44: adr: accept transport mechanisms
+```
+Note:
+* parse in build, output to github wiki etc.
+
+
+
+![adr rendering](content/adr/img/adr-serialization-formt.png)
+
 
 
 
