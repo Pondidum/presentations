@@ -7,13 +7,12 @@
 * [Automate Everything](index.html?automate)
 * [Building a Serverless, EventSourced, Slack Clone](index.html?serverless-slack)
 
-<!-- .element: class="list-unstyled list-spaced center" -->
+<!-- .element: class="list-unstyled list-spaced center small" -->
 
 ### Lightning Talks
 
 * [Streaming Software Development](index.html?streaming)
 * [Strong Type All The Things](index.html?strong-typing)
+* [Architecture Decision Records](index.html?adr)
 
-
-
-<!-- .element: class="list-unstyled list-spaced center" -->
+<!-- .element: class="list-unstyled list-spaced center small" -->
