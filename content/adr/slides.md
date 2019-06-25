@@ -88,6 +88,7 @@ Note:
 
 In Development, Proposed, Accepted, Rejected, Superseded, Deprecated
 ```
+<!-- .slide: data-transition="slide-in fade-out" -->
 Note:
 * short title
 * `Superseded`/`Deprecated` should include link
@@ -101,6 +102,7 @@ Note:
 
 Superseded by [Api Transport Mechanisms](api-transport-mechanisms.md)
 ```
+<!-- .slide: data-transition="fade" -->
 Note:
 * short title
 * `Superseded`/`Deprecated` should include link
@@ -113,6 +115,7 @@ Note:
 We need to have a consistent serialization scheme for the API.  It needs to be backwards and forwards compatible, as we don't control all of the clients.  Messages will be fairly high volume, and don't *need* to be human readable.
 ```
 <!-- .element: class="wrap" -->
+<!-- .slide: data-transition="fade" -->
 
 
 
@@ -130,6 +133,7 @@ We need to have a consistent serialization scheme for the API.  It needs to be b
 5. ...
 ```
 <!-- .element: class="wrap full-height" -->
+<!-- .slide: data-transition="fade" -->
 
 
 
@@ -141,6 +145,7 @@ We need to have a consistent serialization scheme for the API.  It needs to be b
 Avro was chosen because it has the best combination of message size and schema definition.  No need to have a central schema repository set up is also a huge benefit.
 ```
 <!-- .element: class="wrap" -->
+<!-- .slide: data-transition="fade" -->
 
 
 
@@ -150,6 +155,7 @@ Avro was chosen because it has the best combination of message size and schema d
 As the messages are binary format, we cannot directly view them on the wire.  However a small CLI will be built to take a message and pretty print it to aid debugging.
 ```
 <!-- .element: class="wrap" -->
+<!-- .slide: data-transition="fade-in slide-out" -->
 Note:
 * what do we need to start doing because of this?
 
