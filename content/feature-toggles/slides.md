@@ -218,6 +218,27 @@ Note:
 
 
 ![hp-branching-printers](content/feature-toggles/img/hp-branching-1.png) <!-- .element: class="no-border" -->
+Note:
+* branch per printer model
+* `ifdefs` everywhere
+* build per branch
+
+
+
+```csharp
+bool CanDoubleSidePrint()
+{
+#if (PRINTER_LASERJET_1080 || PRINTER_LASERJET_1090 || PRINTER_DESKJET || PRINTER_DESKJET_PRO_A)
+    return true;
+#else
+    return false;
+#end
+}
+```
+
+
+
+![hp-branching-printers](content/feature-toggles/img/hp-branching-1.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in none-out" -->
 Note:
 * branch per printer model
@@ -239,6 +260,51 @@ Note:
 * trunk based development
 * Single branch
 * config file with printer capabilities
+
+
+
+```csharp
+void OnPrinterStart()
+{
+    var metadata = ReadFirmwareMetadata();
+    var config = ReadConfig(metadata.Model);
+
+    //...
+}
+
+IConfiguration ReadConfig(string printerModel)
+{
+    var path = Path.Combine(configs, printerModel + ".json");
+    var json = File.ReadAllText(path);
+
+    return JsonConvert.Deserialize<IConfiguration>(json);
+}
+```
+
+
+
+```json
+{
+    "isColour": true,
+    "features": [
+        "double_siding",
+        "scanning",
+        "emailing",
+        "wifi"
+    ]
+}
+```
+
+
+
+```csharp
+private const string DoubleSidingKey = "double_siding";
+
+bool CanDoubleSidePrint(IConfiguration config)
+{
+    return config.Features.Contains(DoubleSidingKey);
+}
+```
 
 
 
