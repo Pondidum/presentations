@@ -37,59 +37,78 @@ Note:
 
 
 ```csharp
-if (feature_enabled) {
-
-    while (order.current < order.total) {
-        submitNewOrder(1)
+void ProcessOrder(Order order)
+{
+    if (feature_enabled)
+    {
+        while (order.current < order.total)
+        {
+            submitNewOrder(1)
+        }
+    }
+    else
+    {
+        submitNewOrder(order.total)
     }
 }
-else {
-    submitNewOrder(order.total)
-}
 
-void submitNewOrder(howMany) {
+void submitNewOrder(howMany)
+{
     // do magic
     order.current += howMany
 }
 ```
+<!-- .element class="full-height" -->
 <!-- .slide: data-transition="slide-in out-none" -->
 
 
 
 ```csharp
-if (feature_enabled) {
-
-    while (order.current < order.total) {
-        submitNewOrder(1)
+void ProcessOrder(Order order)
+{
+    if (feature_enabled)
+    {
+        while (order.current < order.total)
+        {
+            submitNewOrder(1)
+        }
+    }
+    else
+    {
+        submitNewOrder(order.total)
+        order.current = order.total;
     }
 }
-else {
-    submitNewOrder(order.total)
-}
-order.current = countProcessedEvents();
 
-void submitNewOrder(howMany) {
+void submitNewOrder(howMany)
+{
     // do magic
 }
 ```
+<!-- .element class="full-height" -->
 <!-- .slide: data-transition="in-none out-none" -->
 
 
 
 ```csharp
-if (feature_enabled) {
-    splitIntoSmallerOrders();
-}
-else {
+void ProcessOrder(Order order)
+{
+    if (feature_enabled && order.IsBig)
+    {
+        splitIntoSmallerOrders();
+        return;
+    }
+
     submitNewOrder(order.total)
+    order.current = order.total;
 }
 
-order.current = countProcessedEvents();
-
-void submitNewOrder(howMany) {
+void submitNewOrder(howMany)
+{
     // do magic
 }
 ```
+<!-- .element class="full-height" -->
 <!-- .slide: data-transition="in-none slide-out" -->
 
 
