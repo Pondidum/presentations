@@ -316,126 +316,6 @@ Note:
 
 
 
-```csharp
-if (_toggles.PowerPeg.Enabled)) {
-    // ...
-}
-```
-Note:
-* good!
-* HP got this right, Knight Capital...didn't
-
-
-
-# Branch By Abstraction
-
-
-
-```csharp
-public interface IEmailConnector
-{
-    Task Dispatch(EmailMessage message);
-}
-```
-
-```csharp
-public class WebServiceConnector : IEmailConnector
-{
-    // ...
-}
-
-public class RabbitMqConnector : IEmailConnector
-{
-    // ...
-}
-```
-<!-- .element: class="fragment" -->
-
-
-
-```csharp
-public class Startup
-{
-    public void Configure(IAppBuilder app)
-    {
-        var container = new Container(c =>
-        {
-            if (_toggles.EmailDispatchQueue.Enabled)
-                c.For<IEmailConnector>().Use<RabbitMqConnector>();
-            else
-                c.For<IEmailConnector>().Use<WebServiceConnector>();
-        });
-
-        // ...
-    }
-}
-```
-Note:
-* great for startup toggles!
-
-
-
-```csharp
-public class EmailConnectorRouter : IEmailConnector
-{
-    public EmailConnectorRouter(
-        IToggles toggles,
-        IEmailConnector whenEnabled,
-        IEmailConnector whenDisabled)
-    {
-    }
-
-    public Task Dispatch(EmailMessage message)
-    {
-        if (_toggles.EmailDispatchQueue.Enabled)
-            return _whenEnabled.Dispatch(message);
-        else
-            return _whenDisabled.Dispatch(message);
-    }
-}
-```
-Note:
-* better for periodic or activity
-* could be a factory also
-* what about the frontend?
-
-
-
-```javascript
-import OneClickBuyButton from './OneClickBuyButton'
-
-const ActionsPanel = ({ item }) => <ul>
-    <li><OneClickBuyButton item={item} /></li>
-    <li><AddToCartButton item={item} /></li>
-    <li><AddToWishlistButton item={item} /></li>
-</ul>
-
-export default ActionsPanel
-```
-Note:
-* shopping cart
-* one of these has a feature toggle!
-* probably 1click while checking amazon wont sue you
-
-
-
-```javascript
-import { toggled } from 'react-toggles' //this doesn't exist!
-import Toggles from '../toggles'
-
-const OneClickBuyButton = ({ buyItem, item }) =>
-    <a style="button highlight" onClick={() => buyItem(item.id)}>
-        Buy {item.name} Now!
-    </a>
-
-export default toggled(Toggles.OneClickEnabled)(OneClickBuyButton)
-```
-Note:
-* React
-* react-toggles is invented!
-
-
-
 ![toggle-table](content/feature-toggles/img/toggle-table-time.png)  <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in out-none" -->
 Note:
@@ -492,7 +372,6 @@ Note:
 
 
 ![phased-rollout](content/feature-toggles/img/phased-rollout-initial.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="slide-in out-none" -->
 Note:
 * soap service was crap
 * did magic also
@@ -500,8 +379,79 @@ Note:
 
 
 
+# Branch By Abstraction
+
+
+
+```csharp
+public interface IEmailConnector
+{
+    Task Dispatch(EmailMessage message);
+}
+```
+
+```csharp
+public class WebServiceConnector : IEmailConnector
+{
+    // ...
+}
+```
+
+```csharp
+public class RabbitMqConnector : IEmailConnector
+{
+    // ...
+}
+```
+<!-- .element: class="fragment" -->
+
+
+
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        var toggles = services
+            .BuildServiceProvider()
+            .GetService<IToggles>();
+
+        if (toggles.EmailDispatchQueue.Enabled)
+        {
+            services.AddScoped<IEmailConnector, RabbitMqConnector>();
+        }
+        else
+        {
+            services.AddScoped<IEmailConnector, WebServiceConnector>();
+        }
+    }
+}
+```
+Note:
+* great for startup toggles!
+
+
+
+```csharp
+public class EmailConnectorRouter : IEmailConnector
+{
+    public Task Dispatch(EmailMessage message)
+    {
+        if (_toggles.EmailDispatchQueue.Enabled)
+            return _whenEnabled.Dispatch(message);
+        else
+            return _whenDisabled.Dispatch(message);
+    }
+}
+```
+Note:
+* better for periodic or activity
+* could be a factory also
+* what about the frontend?
+
+
+
 ![phased-rollout](content/feature-toggles/img/phased-rollout-new.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="in-none slide-out" -->
 Note:
 * magic was implemented properly in other pipeline connector
 * IEmailConnector, decorator to choose impl
