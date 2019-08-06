@@ -54,7 +54,7 @@ void ProcessOrder(Order order)
 
 void submitNewOrder(howMany)
 {
-    // do magic
+    // complex order submission logic...
     order.current += howMany
 }
 ```
@@ -63,7 +63,7 @@ void submitNewOrder(howMany)
 
 
 
-```csharp
+```diff
 void ProcessOrder(Order order)
 {
     if (feature_enabled)
@@ -76,13 +76,14 @@ void ProcessOrder(Order order)
     else
     {
         submitNewOrder(order.total)
-        order.current = order.total;
++       order.current = order.total;
     }
 }
 
 void submitNewOrder(howMany)
 {
-    // do magic
+    // complex order submission logic...
+-   order.current += howMany
 }
 ```
 <!-- .element class="full-height" -->
@@ -105,7 +106,7 @@ void ProcessOrder(Order order)
 
 void submitNewOrder(howMany)
 {
-    // do magic
+    // complex order submission logic...
 }
 ```
 <!-- .element class="full-height" -->
@@ -166,17 +167,8 @@ https://cloud.google.com/icons/ <!-- .element: class="attribution" -->
 
 
 
-# Dead Code
-Note:
-* why is it still there!?
-* delete it
-* source-control history
-* trunk based: deploy version with only the removal
-
-
-
 #### Rule 2
-## Keep Lifespan Short
+## Name Toggles Well
 
 
 
@@ -193,10 +185,18 @@ Note:
 
 
 #### Rule 3
-## Name Toggles Well
+## Keep Lifespan Short
+Note:
+* why is it still there!?
+* delete it
+* source-control history
+* trunk based: deploy version with only the removal
 
 
 
+# Flexibility
+<br />
+<br />
 ![toggle-types](content/feature-toggles/img/toggle-types.png) <!-- .element: class="no-border" -->
 Note:
 * compile: debug only (e.g. sql profiler)
@@ -254,6 +254,10 @@ Note:
 
 
 
+# Trunk Based Development
+
+
+
 ![hp-branching-trunk-based](content/feature-toggles/img/hp-branching-tbd.png) <!-- .element: class="no-border" -->
 Note:
 * compile-time to startup toggles
@@ -298,11 +302,14 @@ IConfiguration ReadConfig(string printerModel)
 
 
 ```csharp
-private const string DoubleSidingKey = "double_siding";
-
-bool CanDoubleSidePrint(IConfiguration config)
+public class PrinterConfiguration : IConfiguration
 {
-    return config.Features.Contains(DoubleSidingKey);
+    private const string DoubleSidingKey = "double_siding";
+
+    public bool CanDoubleSidePrint(IConfiguration config)
+    {
+        return _features.Contains(DoubleSidingKey);
+    }
 }
 ```
 
@@ -403,7 +410,6 @@ public class RabbitMqConnector : IEmailConnector
     // ...
 }
 ```
-<!-- .element: class="fragment" -->
 
 
 
@@ -427,6 +433,7 @@ public class Startup
     }
 }
 ```
+<!-- .element class="full-height" -->
 Note:
 * great for startup toggles!
 
@@ -618,8 +625,8 @@ Note:
 ## Rules
 
 1. NEVER Reuse A Toggle
-1. Keep Lifespan Short
 1. Name Toggles Well
+1. Keep Lifespan Short
 1. Architecture Matters
 1. Monitor Toggles
 
