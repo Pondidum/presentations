@@ -6,18 +6,11 @@
   color: #c00;
 }
 
-a.small,
-p.small,
-ul.small,
-span.small,
-code.small {
+a.small, p.small, ul.small, span.small, code.small {
   font-size: 60%;
 }
 
-a.smaller,
-p.smaller,
-ul.smaller,
-span.smaller {
+a.smaller, p.smaller, ul.smaller, span.smaller {
   font-size: 50%;
 }
 
@@ -39,8 +32,7 @@ span.smaller {
   box-shadow: none;
 }
 
-p.attribution,
-p a.attribution {
+p.attribution, p a.attribution {
   font-size: small !important;
   display: block;
 }
@@ -94,6 +86,10 @@ img.middle {
 
 .black {
   color: black !important;
+}
+
+.blue {
+  color: rgb(138, 168, 232) !important;
 }
 
 ul.center {

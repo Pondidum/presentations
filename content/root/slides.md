@@ -14,5 +14,6 @@
 * [Streaming Software Development](index.html?streaming)
 * [Strong Type All The Things](index.html?strong-typing)
 * [Architecture Decision Records](index.html?adr)
+* [WTF is Packer](index.html?packer)
 
 <!-- .element: class="list-unstyled list-spaced center small" -->

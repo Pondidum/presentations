@@ -1,0 +1,34 @@
+{
+  "variables": {
+    "image_tag": "local"
+  },
+  "builders": [
+    {
+      "type": "docker",
+      "image": "alpine:latest",
+      "commit": true,
+      "changes": [
+        "EXPOSE 5000",
+        "ENTRYPOINT nws -p 5000 -d /srv/presentations"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "./install.sh"
+    },
+    {
+      "type": "file",
+      "source": "../../",
+      "destination": "/srv/presentations"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "docker-tag",
+      "repository": "presentations",
+      "tag": "{{ user `image_tag` }}"
+    }
+  ]
+}
