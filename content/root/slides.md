@@ -1,19 +1,9 @@
-### Presentations
+* [![Feature Toggles](content/feature-toggles/logo.png)Feature Toggles: The Good, The Bad and The Ugly](index.html?feature-toggles)
+* [![Nomad](content/nomad/logo.png) Nomad: Kubernetes Without the Complexity](index.html?nomad)
+* [![Vault](content/vault/logo.png)How To Secure Your MicroServices](index.html?vault)
+* [![Packer](content/packer/logo.png)WTF is Packer (Lightning Talk)](index.html?packer)
+* [![Airport](content/adr/logo.png) Architecture Decision Records (Lightning Talk)](index.html?adr)
+* [![Gears](content/twelve/logo.png)Twelve Factor Microservices](index.html?twelve)
+* [![Hulk](content/strong-typing/logo.png)Strong Type All The Things (Lightning Talk)](index.html?strong-typing)
 
-* [Feature Toggles: The Good, The Bad and The Ugly](index.html?feature-toggles)
-* [Twelve Factor Microservices](index.html?twelve)
-* [Nomad: Kubernetes Without the Complexity](index.html?nomad)
-* [How To Secure Your MicroServices](index.html?vault)
-* [Automate Everything](index.html?automate)
-* [Building a Serverless, EventSourced, Slack Clone](index.html?serverless-slack)
-
-<!-- .element: class="list-unstyled list-spaced center small" -->
-
-### Lightning Talks
-
-* [Streaming Software Development](index.html?streaming)
-* [Strong Type All The Things](index.html?strong-typing)
-* [Architecture Decision Records](index.html?adr)
-* [WTF is Packer](index.html?packer)
-
-<!-- .element: class="list-unstyled list-spaced center small" -->
+<!-- .element: class="list-unstyled selector-menu" -->

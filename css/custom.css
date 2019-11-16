@@ -6,11 +6,18 @@
   color: #c00;
 }
 
-a.small, p.small, ul.small, span.small, code.small {
+a.small,
+p.small,
+ul.small,
+span.small,
+code.small {
   font-size: 60%;
 }
 
-a.smaller, p.smaller, ul.smaller, span.smaller {
+a.smaller,
+p.smaller,
+ul.smaller,
+span.smaller {
   font-size: 50%;
 }
 
@@ -32,7 +39,8 @@ a.smaller, p.smaller, ul.smaller, span.smaller {
   box-shadow: none;
 }
 
-p.attribution, p a.attribution {
+p.attribution,
+p a.attribution {
   font-size: small !important;
   display: block;
 }
@@ -130,4 +138,13 @@ ul.center {
 
 pre.wrap {
   white-space: pre-line;
+}
+
+.selector-menu li {
+  /* float: left; */
+  width: 30%;
+  font-size: 50%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
 }
