@@ -141,10 +141,16 @@ pre.wrap {
 }
 
 .selector-menu li {
-  /* float: left; */
   width: 30%;
   font-size: 50%;
   text-align: center;
   display: inline-block;
   vertical-align: top;
+}
+
+.list-columns-2 li {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
 }

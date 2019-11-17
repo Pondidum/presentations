@@ -27,20 +27,20 @@ Note:
 
 # Disclaimer
 
-Note:
-* lots of kubernetes talks here...
-* whos heard of systemd?
+I don't like (non-essentail) complexity <!-- .element: class="fragment" -->
 
 
 
-![kubernetes is the systemd of the container world](content/nomad/img/tweet.png) <!-- .element: class="no-border" -->
-
+* ![kubernetes is the systemd of the container world](content/nomad/img/tweet.png) <!-- .element: class="no-border" -->
 https://twitter.com/Pondidum/status/1068758260965101568 <!-- .element: class="attribution" -->
 
+* ![kubernetes was and remains a hostile piece of software to learn, run, operate, maintain.](content/nomad/img/tweet-cindy.png) <!-- .element: class="no-border" -->
+https://twitter.com/copyconstruct/status/1194701905248673792 <!-- .element: class="attribution" -->
+
+<!-- .element: class="list-unstyled list-columns-2" -->
+
 Note:
-* If you need a lot of things, it's fine.
-* If you just want init...maybe just use upstart/sysvinit?
-* why bring this up?
+* complexity
 
 
 
@@ -95,6 +95,12 @@ Note:
 
 ![nomad feature list](content/nomad/img/nomad-features-choice.png) <!-- .element: class="no-border" -->
 
+<!-- .slide: data-transition="fade-in fade-out" -->
+
+
+
+![nomad feature list](content/nomad/img/kubernetes-features-plus.png) <!-- .element: class="no-border" -->
+
 <!-- .slide: data-transition="fade-in slide-out" -->
 
 Note:
@@ -102,48 +108,6 @@ Note:
 * add the components you want or need, when you want or need them
 * fabio: routing and loadbalancing
 * autoscaling is metrics scaling
-
-
-
-![initial microservices, some containers, some not, using consul and vault](content/nomad/img/migration-initial.png) <!-- .element: class="no-border" -->
-
-<!-- .slide: data-transition="slide-in fade-out" -->
-Note:
-* not all services are in containers
-* consul and vault
-* decide to add kubernetes
-
-
-
-![additional kubernetes cluster with only containers](content/nomad/img/migration-kubernetes.png) <!-- .element: class="no-border" -->
-
-<!-- .slide: data-transition="fade-in fade-out" -->
-Note:
-* can't move everything over (non-containers)
-* big-bang sucks anyway
-* but things probably need to talk to each other
-
-
-
-![cluster sync between consult vault and kubernetes](content/nomad/img/migration-sync.png) <!-- .element: class="no-border" -->
-
-<!-- .slide: data-transition="fade-in fade-out" -->
-Note:
-* sync our infra services
-  * consul -> kubernetes sd
-  * vault -> kubernetes secrets
-  * how do you sync secrets?! (etcd plaintext...)
-* adds complexity...
-
-
-
-![kubernetes replaced by nomad](content/nomad/img/migration-nomad.png) <!-- .element: class="no-border" -->
-
-<!-- .slide: data-transition="fade-in slide-out" -->
-Note:
-* conceptially the same
-* but our services directly use consul and vault
-* no translation/sync required
 
 
 
@@ -349,7 +313,6 @@ Note:
 
 
 
-# But...
 ```csharp
 var broker = await _configuration.GetRabbitBroker();
 
@@ -380,6 +343,16 @@ Note:
 * ideally rabbit connections will be dynamic
 * if something leaks, it's time limited, and auditable
 * Secrets as a Service is one of those things you shouldnt write
+
+
+
+## Kubernetes
+# "secrets"
+
+> ...secret data is stored in etcd; therefore:
+> Administrators should limit access to etcd to admin users
+
+https://kubernetes.io/docs/concepts/configuration/secret/#risks <!-- .element: class="attribution" -->
 
 
 
@@ -432,6 +405,10 @@ Note:
 * either in app, or in nomad job
 * app = complexity, but flexibility
 * nomad = simple, but restart for new creds
+
+
+
+# Docker Only?
 
 
 
@@ -488,7 +465,7 @@ Note:
 
 
 
-# One more thing
+# Batch & System Jobs
 
 Note:
 * batch jobs
@@ -511,5 +488,3 @@ Note:
 <br />
 
 github.com/pondidum | twitter.com/pondidum | andydote.co.uk  <!-- .element: class="small" -->
-
-CC BY-NC-SA 3.0 <!-- .element: class="smaller red" -->
