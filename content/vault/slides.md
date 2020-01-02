@@ -115,6 +115,7 @@ Note:
 * `vault read database/creds/writer`
 * show expiry in dbeaver
 * DirectAccess app
+* pit of success!
 
 
 
@@ -172,19 +173,12 @@ Note:
 ![deployment tool fetches secretid from vault](content/vault/img/approles-3.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="fade" -->
 Note:
-* spinnaker can only fetch secretids
+* octopus can only fetch secretids
 * secretid in config file, only readable by app/process
 
 
 
-![deployment tool embeds secretid in app and deploys to host](content/vault/img/approles-4.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="fade" -->
-Note:
-* secretid in config file, only readable by app/process
-
-
-
-![terraform fetches roleid from vault and writes to host environment variables](content/vault/img/approles-5.png) <!-- .element: class="no-border" -->
+![terraform fetches roleid from vault and writes to host environment variables](content/vault/img/approles-4.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="fade" -->
 Note:
 * terraform can only fetch roleids
@@ -195,11 +189,18 @@ Note:
 
 
 ![instead of terraform, roleid is read by dev, and embedded in in sourcecode](content/vault/img/approles-embedded.png) <!-- .element: class="no-border" -->
-<!-- .slide: data-transition="none-in slide-out" -->
+<!-- .slide: data-transition="fade" -->
 Note:
 * roleid embedded by dev in binary
-* secretid in config by spinnaker as before
+* secretid in config by octopus as before
 * slightly less secure
+
+
+
+![instead of terraform and octopus, nomad is used](content/vault/img/approles-nomad.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade-in slide-out" -->
+Note:
+* nomad fetches both
 
 
 
@@ -208,7 +209,6 @@ Note:
 * ./approles.sh
 * update roleid and secretid
 * AppRoleAccess demo
-* pit of success!
 
 
 
