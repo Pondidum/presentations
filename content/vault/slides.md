@@ -19,15 +19,17 @@ Note:
 
 ![angry security guy](content/vault/img/056300321-angry-geek-faces.jpeg)
 https://protectedbytrust.com/wp-content/uploads/2016/04/056300321-angry-geek-faces.jpeg <!-- .element: class="attribution" -->
+Note:
+* end of project
 
 
 
-![easy to hard, security on the hard end](content/vault/img/security-hard.png) <!-- .element: class="no-border" -->
+![graph of time vs difficulty, security is difficult at the end](content/vault/img/difficulty-late.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="slide-in fade-out" -->
 
 
 
-![easy to hard, security on the easy end](content/vault/img/security-easy.png) <!-- .element: class="no-border" -->
+![graph of time vs difficulty, security is moving to easy at the beginning](content/vault/img/difficulty-early.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="fade-in slide-out" -->
 Note:
 * pit of success
