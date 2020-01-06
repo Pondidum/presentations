@@ -189,6 +189,20 @@ Note:
 
 
 
+# Demo
+Note:
+* ./approles.sh
+* update roleid and secretid
+* AppRoleAccess demo
+
+
+
+![terraform fetches roleid from vault and writes to host environment variables](content/vault/img/approles-4.png) <!-- .element: class="no-border" -->
+<!-- .slide: data-transition="fade" -->
+Note:
+* dont' want to terraform?
+
+
 
 ![instead of terraform, roleid is read by dev, and embedded in in sourcecode](content/vault/img/approles-embedded.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="fade" -->
@@ -203,14 +217,37 @@ Note:
 <!-- .slide: data-transition="fade-in slide-out" -->
 Note:
 * nomad fetches both
+* policies moved to .nomad file
+
+
+
+```ruby
+task "external_configured" {
+  vault {
+    policies = [ "postgres_connector" ]
+  }
+
+  template {
+    data = <<EOF
+DB_HOST=postgres.service.consul
+
+{{ with secret "database/creds/reader" }}
+DB_USERNAME={{ .Data.username | toJSON }}
+DB_PASSWORD={{ .Data.password | toJSON }}
+{{ end }}
+    EOF
+    destination = "secrets/file.env"
+    env = true
+  }
+}
+```
 
 
 
 # Demo
 Note:
-* ./approles.sh
-* update roleid and secretid
-* AppRoleAccess demo
+* nomad job
+* show `stdout` in nomad
 
 
 
@@ -223,7 +260,9 @@ Note:
 
 
 ```bash
-vault audit enable file file_path=/var/log/vault/audit.log
+vault audit enable file file_path=/var/log/vault_audit.log
+
+chattr +a /var/log/vault_audit.log
 ```
 Note:
 * enabled before presentation ;)
