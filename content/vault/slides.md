@@ -111,9 +111,8 @@ Note:
 
 # Demo
 Note:
-* create db secrets engine
-  * influx, cassandra, mongo
-* create roles
+* `./scripts/postgres.sh`
+* other dbs: ... + influx, cassandra, mongo
 * `vault read database/creds/writer`
 * show expiry in dbeaver
 * DirectAccess app
@@ -191,16 +190,21 @@ Note:
 
 # Demo
 Note:
-* ./approles.sh
-* update roleid and secretid
-* AppRoleAccess demo
+
+```shell
+./scripts/approles.sh
+cd apps/bin/AppRoleAccess
+export VAULT_ROLE_ID=
+vi appsettings.json
+dotnet AppRoleAccess.dll
+```
 
 
 
 ![terraform fetches roleid from vault and writes to host environment variables](content/vault/img/approles-4.png) <!-- .element: class="no-border" -->
 <!-- .slide: data-transition="fade" -->
 Note:
-* dont' want to terraform?
+* don't want to terraform?
 
 
 
