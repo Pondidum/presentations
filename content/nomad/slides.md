@@ -14,14 +14,9 @@ https://www.techjunkies.nl/2018/05/02/why-the-term-can-it-run-crysis-is-still-ju
 
 <!-- .slide: data-background="content/nomad/img/crysis.jpg" data-background-size="cover" class="intro" -->
 Note:
-* vagrant up
-* admin prompt: `./scripts/demo.sh`
-* admin prompt: `cd nomad-demo`
-* vscode on nomad-demo
-* rider:
-  * light theme
-  * built
-  * presentation mode
+* `vagrant up`
+* `./scripts/host.sh`
+* `source .machine/env`
 
 
 
@@ -67,18 +62,18 @@ Note:
 
 
 
+`nomad agent -dev`
+
+
+
 ![kubernetes feature list](content/nomad/img/kubernetes-features.png) <!-- .element: class="no-border" -->
 
 <!-- .slide: data-transition="slide-in fade-out" -->
 
 Note:
-* and probably others I forget.
 * if you need all this, great
 * brown-field apps probably have a lot of these already
-* green + microservices = sure!
-* green + monolith = pointless
-* brown + monolith = pointless
-* brown + microservices = maybe
+* green-field: make choices
 
 
 
@@ -112,12 +107,14 @@ Note:
 
 
 # No YAML!
+<br />
+
+## [noyaml.com](https://noyaml.com)
 
 
 
 ```javascript
 job "api" {
-  datacenters = ["dc1"]
 
   group "api-group" {
 
@@ -136,6 +133,7 @@ job "api" {
     }
 
   }
+
 }
 ```
 <!-- .element class="full-height" -->
