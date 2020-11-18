@@ -14,6 +14,7 @@ code.small {
   font-size: 60%;
 }
 
+table.smaller,
 a.smaller,
 p.smaller,
 ul.smaller,
@@ -153,4 +154,8 @@ pre.wrap {
   display: inline-block;
   vertical-align: top;
   text-align: center;
+}
+
+.reveal blockquote {
+  background-color: white;
 }
