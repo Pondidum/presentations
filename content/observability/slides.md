@@ -14,7 +14,7 @@ https://en.wikipedia.org/wiki/Observability <!-- .element: class="attribution" -
 
 
 
-![3 store pillars](/content/observability/img/3-pillars.jpg)
+![3 store pillars](content/observability/img/3-pillars.jpg)
 https://www.irmi.com/articles/expert-commentary/three-pillars-of-litigation-management <!-- .element: class="attribution" -->
 <!-- .slide: data-transition="slide-in fade-out" -->
 Note:
@@ -22,7 +22,7 @@ Note:
 
 
 
-![3 store pillars](/content/observability/img/3-pillars-bs.jpg)
+![3 store pillars](content/observability/img/3-pillars-bs.jpg)
 https://st3.depositphotos.com/1031343/13382/v/450/depositphotos_133827724-stock-illustration-bullshit-sign-or-stamp.jpg <!-- .element: class="attribution" -->
 <!-- .slide: data-transition="fade-in slide-out" -->
 Note:
@@ -357,7 +357,7 @@ app.post('/user/:id', function (request, res) {
 
 
 ## Linear Scaling / Cheaper
-![honeycomb cost chart](/content/observability/img/honey-cost.png)
+![honeycomb cost chart](content/observability/img/honey-cost.png)
 
 https://www.honeycomb.io/pricing <!-- .element: class="attribution" -->
 
@@ -388,39 +388,39 @@ Me <!-- .element: class="attribution" -->
 
 
 
-![honeycomb walkthrough 1](/content/observability/img/honey-tracing-1.png)
+![honeycomb walkthrough 1](content/observability/img/honey-tracing-1.png)
 
 
 
-![honeycomb walkthrough 2](/content/observability/img/honey-tracing-2-bubble.png)
+![honeycomb walkthrough 2](content/observability/img/honey-tracing-2-bubble.png)
 
 
 
-![honeycomb walkthrough 3](/content/observability/img/honey-tracing-3-endpoint.png)
+![honeycomb walkthrough 3](content/observability/img/honey-tracing-3-endpoint.png)
 
 
 
-![honeycomb walkthrough 4](/content/observability/img/honey-tracing-4-user.png)
+![honeycomb walkthrough 4](content/observability/img/honey-tracing-4-user.png)
 
 
 
-![honeycomb walkthrough 5](/content/observability/img/honey-tracing-5-trace.png)
+![honeycomb walkthrough 5](content/observability/img/honey-tracing-5-trace.png)
 
 
 
-![honeycomb walkthrough 5](/content/observability/img/honey-tracing-5-trace-view.png)
+![honeycomb walkthrough 5](content/observability/img/honey-tracing-5-trace-view.png)
 
 
 
-![honeycomb walkthrough 6](/content/observability/img/honey-tracing-6-span-view.png)
+![honeycomb walkthrough 6](content/observability/img/honey-tracing-6-span-view.png)
 
 
 
-![honeycomb walkthrough 7](/content/observability/img/honey-tracing-7-trace-fast.png)
+![honeycomb walkthrough 7](content/observability/img/honey-tracing-7-trace-fast.png)
 
 
 
-![honeycomb walkthrough 8](/content/observability/img/honey-tracing-8-n+1.png)
+![honeycomb walkthrough 8](content/observability/img/honey-tracing-8-n+1.png)
 
 
 
@@ -469,7 +469,7 @@ Goal: Improve Build Times
 4. Verify hypothesis
 
 
-![build timings graph](/content/observability/img/build-before.png)
+![build timings graph](content/observability/img/build-before.png)
 
 
 1. Hypothesis
@@ -495,7 +495,7 @@ Goal: Improve Build Times
 4. Verify hypothesis
 
 
-![build timings detailed](/content/observability/img/build-slow.png)
+![build timings detailed](content/observability/img/build-slow.png)
 
 
 1. Hypothesis
@@ -525,7 +525,7 @@ Goal: Improve Build Times
 4. **Verify hypothesis**
 
 
-![build timings detailed](/content/observability/img/build-fast.png)
+![build timings detailed](content/observability/img/build-fast.png)
 note:
 - original 507s
 - saving 322s / 5m22s
