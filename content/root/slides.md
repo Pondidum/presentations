@@ -1,3 +1,4 @@
+* [![Observability](content/observability/logo.png) Observability Driven Development](index.html?observability)
 * [![Feature Toggles](content/feature-toggles/logo.png)Feature Toggles: The Good, The Bad and The Ugly](index.html?feature-toggles)
 * [![Nomad](content/nomad/logo.png) Nomad: Kubernetes Without the Complexity](index.html?nomad)
 * [![Vault](content/vault/logo.png)How To Secure Your MicroServices](index.html?vault)
