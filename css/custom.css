@@ -6,12 +6,13 @@
   color: #c00;
 }
 
+table.small,
 a.small,
 p.small,
 ul.small,
 span.small,
 code.small {
-  font-size: 60%;
+  font-size: 75%;
 }
 
 table.smaller,
